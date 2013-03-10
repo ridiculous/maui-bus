@@ -1,0 +1,7 @@
+<div class="regions">
+  <h3>Select your starting region</h3>
+
+  <% @regions.each do |region| %>
+      <%= link_to(region, show_region_path(region.downcase), class: 'btn list btn-large ') %>
+  <% end %>
+</div>

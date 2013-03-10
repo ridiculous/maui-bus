@@ -1,0 +1,7 @@
+<h3>Routes for <%= params[:name].titleize %></h3>
+
+<div class="regions">
+  <% @region.routes.each do |route| %>
+      <%= link_to(route.name, '#', class: 'btn btn-large list')  %>
+  <% end %>
+</div>
