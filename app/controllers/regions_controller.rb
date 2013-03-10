@@ -18,6 +18,8 @@ class RegionsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @region }
     end
+  rescue
+    redirect_to root_path, alert: 'Region not found'
   end
 
 end
