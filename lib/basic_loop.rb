@@ -9,6 +9,10 @@ class BasicLoop
     @reversed = false
   end
 
+  def class_name
+    self.class.to_s.sub(/^.+::/, '').downcase
+  end
+
   def reverse_stops!(min=0)
     return [] if reversed
     @reversed = true

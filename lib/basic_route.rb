@@ -5,4 +5,8 @@ class BasicRoute
     @name = name
     @stops = self.class::STOPS.dup
   end
+
+  def class_name
+    self.class.to_s.sub(/^.+::/, '').downcase
+  end
 end

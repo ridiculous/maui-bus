@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+
+  <title>Maui Bus App</title>
+  <style type="text/css">
+      html {
+          height: 100%
+      }
+
+      body {
+          height: 100%;
+          margin: 0;
+          padding: 0
+      }
+
+      #map_canvas {
+          height: 100%
+      }
+  </style>
+  <%= stylesheet_link_tag('application', media: 'all') %>
+
+  <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbernP0NZYEAk0kDX-Yt1z0_jJj0CkMH0&sensor=false&libraries=geometry">
+  </script>
+  <script type="text/javascript">
+      var the_mall = new google.maps.LatLng(20.886570, -156.475375);
+      var infowindow = new google.maps.InfoWindow(
+              {
+                  size: new google.maps.Size(150, 50)
+              });
+      var directionsDisplay;
+      var directionsService = new google.maps.DirectionsService();
+      var map;
+
+      function initialize() {
+          var display_opts = {};
+//          display_opts.suppressMarkers = true;
+          directionsDisplay = new google.maps.DirectionsRenderer();
+          var mapOptions = {
+              zoom: 7,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              center: the_mall
+          };
+          map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+          directionsDisplay.setMap(map);
+          calcRoute();
+          var busMarker = new google.maps.Marker({
+              position: new google.maps.LatLng(20.838378, -156.326630),
+              map: map,
+              title: '300 Makawao Avenue, Makawao'
+          });
+          google.maps.event.addListener(busMarker, 'click', function () {
+              infowindow.setContent('300 Makawao Avenue, Makawao');
+              infowindow.open(map, busMarker);
+          });
+      }
+
+      function calcRoute() {
+          var back_of_mall = new google.maps.LatLng(20.884325, -156.476362)
+                  , salvation_army = new google.maps.LatLng(20.88789, -156.4676064)
+                  , pukalani_terrace = new google.maps.LatLng(20.838579, -156.341693)
+                  , airport = new google.maps.LatLng(20.8943, -156.4377)
+                  , library = new google.maps.LatLng(20.853548, -156.310623)
+                  , haliimaile = new google.maps.LatLng(20.868697, -156.338598);
+
+          // NOTE: limited to 8 waypoints with free API
+          var request = {
+              origin: the_mall,
+              destination: the_mall,
+              waypoints: [
+                  {
+                      location: back_of_mall,
+                      stopover: false
+                  },
+                  {
+                      location: salvation_army
+                  },
+                  {
+                      location: airport
+                  },
+                  {
+                      location: pukalani_terrace
+                  },
+                  {
+                      location: library
+                  },
+                  {
+                      location: haliimaile
+                  },
+                  {
+                      location: airport
+                  },
+                  {
+                      location: back_of_mall,
+                      stopover: false
+                  }
+              ],
+              travelMode: google.maps.TravelMode.DRIVING
+          };
+
+          directionsService.route(request, function (result, status) {
+              if (status == google.maps.DirectionsStatus.OK) {
+                  directionsDisplay.setDirections(result);
+              }
+          });
+      }
+
+  </script>
+</head>
+<body onload="initialize()">
+<div class="navbar navbar-fluid-top" style="margin-bottom: 0;">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">MauiBusRoutes</a>
+
+      <div class="container-fluid nav-collapse">
+        <ul class="nav">
+          <li><%= link_to 'Find a Route', '/' %></li>
+          <li><%= link_to 'View Schedule', '#' %></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+<div id="map_canvas" style="width:100%; height:100%"></div>
+</body>
+</html>

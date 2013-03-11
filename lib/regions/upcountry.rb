@@ -21,6 +21,9 @@ class Upcountry < Region
             name: 'Pukalani Terrace in front Bank of Hawaii',
             times: %w{6:30 8:00 9:30 11:00 12:30 14:00 15:30 17:00 18:30 20:00 21:30}
         }, {
+            name: '300 Makawao Avenue',
+            times: %w{6:34 8:04 9:34 11:04 12:34 14:04 15:34 17:04 18:34 20:04 21:34}
+        }, {
             name: 'Across Makawao Library',
             times: %w{6:41 8:11 9:41 11:11 12:41 14:11 15:41 17:11 18:41 20:11 21:41}
         }, {

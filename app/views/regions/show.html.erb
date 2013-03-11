@@ -1,7 +1,21 @@
 <h3>Routes for <%= params[:name].titleize %></h3>
 
 <div class="regions">
-  <% @region.routes.each do |route| %>
-      <%= link_to(route.name, '#', class: 'btn btn-large list')  %>
-  <% end %>
+  <ul class="nav nav-list">
+    <% @region.routes.each do |route| %>
+        <li>
+          <div class="well">
+            <h4 class=""><%= route.name %></h4>
+            <div>
+              <%= link_to('Times', '#', class: 'btn btn-info list') %>
+              <%= link_to('Map', show_bus_map_path(params[:name], route.class_name), class: 'btn btn-success list') %>
+            </div>
+            <div>
+              <%= route.stops.map { |s| content_tag(:span, s[:name], class: 'badge badge-info') }.uniq.join(' ').html_safe %>
+            </div>
+
+          </div>
+        </li>
+    <% end %>
+  </ul>
 </div>

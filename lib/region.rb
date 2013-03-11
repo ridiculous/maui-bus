@@ -16,4 +16,8 @@ class Region
     Module.const_get(name.titleize).new
   end
 
+  def find_bus(name)
+    self.class.const_get(name.titleize).new
+  end
+
 end
