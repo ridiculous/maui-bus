@@ -11,7 +11,8 @@ class Haiku < Region
     STOPS = [
         {
             name: 'Queen Kaahumanu Center',
-            times: %w{5:30 7:00 8:30 10:00 11:30 13:00 14:30 16:00 17:30 19:00 20:30}
+            times: %w{5:30 7:00 8:30 10:00 11:30 13:00 14:30 16:00 17:30 19:00 20:30},
+            location: Location[:queen_kaahumanu]
         }, {
             name: 'Kahului Salvation Army',
             times: %w{5:33 7:03 8:33 10:03 11:33 13:03 14:33 16:03 17:33 19:03 20:33}

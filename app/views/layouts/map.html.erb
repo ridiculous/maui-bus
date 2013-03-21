@@ -56,7 +56,7 @@
               title: '300 Makawao Avenue, Makawao'
           });
           google.maps.event.addListener(busMarker, 'click', function () {
-              infowindow.setContent('300 Makawao Avenue, Makawao');
+              infowindow.setContent(busMarker.title);
               infowindow.open(map, busMarker);
           });
       }
@@ -73,6 +73,7 @@
           var request = {
               origin: the_mall,
               destination: the_mall,
+              travelMode: google.maps.TravelMode.DRIVING,
               waypoints: [
                   {
                       location: back_of_mall,
@@ -100,8 +101,7 @@
                       location: back_of_mall,
                       stopover: false
                   }
-              ],
-              travelMode: google.maps.TravelMode.DRIVING
+              ]
           };
 
           directionsService.route(request, function (result, status) {
