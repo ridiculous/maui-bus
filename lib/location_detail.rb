@@ -1,4 +1,4 @@
-class Detail
+class LocationDetail
   attr_reader :lat, :long, :street, :zip
 
   def initialize(*args)

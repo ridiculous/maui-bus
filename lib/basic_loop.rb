@@ -31,7 +31,7 @@ class BasicLoop
 
   def increment_times(route, min=0)
     dup_route = route.clone
-    dup_times = dup_route[:times].clone
+    dup_times = dup_route.times.clone
     dup_times.collect! do |t|
       time_pieces = t.split(':')
       hour = time_pieces[0].to_i
@@ -43,7 +43,7 @@ class BasicLoop
       hour -= 24 while hour > 23
       "#{0 if hour == 0}#{hour}:#{0 if minute.to_s.length == 1}#{minute}"
     end
-    dup_route[:times] = dup_times
+    dup_route.times = dup_times
     dup_route
   end
 end

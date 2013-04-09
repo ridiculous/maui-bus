@@ -11,7 +11,7 @@
               <%= link_to('Map', show_bus_map_path(params[:name], route.class_name), class: 'btn btn-success list') %>
             </div>
             <div>
-              <%= route.stops.map { |s| content_tag(:span, s[:name], class: 'badge badge-info') }.uniq.join(' ').html_safe %>
+              <%= route.stops.map { |s| content_tag(:span, s.name, class: 'badge badge-info') }.uniq.join(' ').html_safe %>
             </div>
 
           </div>

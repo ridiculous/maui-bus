@@ -1,2 +1,2 @@
-<h1>BusRoutes#show_map</h1>
-<p>Find me in app/views/bus_routes/show_map.html.erb</p>
+<%= javascript_tag("var Locations = #{locations_as_json}") %>
+<%= javascript_include_tag(@bus.class.name.downcase.underscore) %>

@@ -1,12 +1,11 @@
 class BusStop
 
-  attr_accessor :name, :times, :location, :display_order
+  attr_accessor :name, :times, :location
 
-  def initialize(options={}, display_order=0)
+  def initialize(options={})
     @location = options[:location]
     @times = options[:times] || []
     @name = options[:name]
-    @display_order = display_order
   end
 
 end
