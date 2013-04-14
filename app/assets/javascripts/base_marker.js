@@ -8,7 +8,7 @@ function BaseMarker(gmap, marker_options) {
             {
                 size: new google.maps.Size(150, 50)
             });
-        info_window.setContent(me.marker.title.replace('\n', '<br />'));
+        info_window.setContent(me.marker.title.replace(/\n/g, '<br />'));
         info_window.open(gmap, me.marker);
     });
 }

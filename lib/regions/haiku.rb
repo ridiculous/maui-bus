@@ -12,7 +12,7 @@ class Haiku < Region
         BusStop.new({
                         name: 'Queen Kaahumanu Center',
                         times: %w{5:30 7:00 8:30 10:00 11:30 13:00 14:30 16:00 17:30 19:00 20:30},
-                        location: :queen_kaahumanu
+                        location: :queen_kaahumanu_back
                     }),
         BusStop.new({
                         name: 'Kahului Salvation Army',
