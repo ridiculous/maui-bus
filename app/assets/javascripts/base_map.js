@@ -11,14 +11,15 @@ function BaseMap() {
     this.map = new google.maps.Map(document.getElementById('map_canvas'), this.mapOptions);
     this.directionsDisplay.setMap(this.map);
 
-    this.addMarkers = function (route_name) {
-        for (var i = 0; i < Locations.length; i++) {
-            var marker_info = {
-                position: new google.maps.LatLng(Locations[i].lat, Locations[i].long),
-                map: this.map,
-                title: route_name + "\n" + Locations[i].name + "\n" + Locations[i].times
-            };
-            new BaseMarker(this.map, marker_info);
+    this.addMarkers = function (bus_stops, route_name) {
+        for (var i = 0; i < bus_stops.length; i++) {
+            if (!bus_stops[i].hidden) {
+                new BaseMarker(this.map, {
+                    position: new google.maps.LatLng(bus_stops[i].lat, bus_stops[i].long),
+                    map: this.map,
+                    title: route_name + "\n" + bus_stops[i].name + "\n" + bus_stops[i].times
+                });
+            }
         }
     };
 }

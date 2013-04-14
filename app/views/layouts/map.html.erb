@@ -28,6 +28,8 @@
   <script type="text/javascript"
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbernP0NZYEAk0kDX-Yt1z0_jJj0CkMH0&sensor=false&libraries=geometry">
   </script>
+  <%= javascript_include_tag(:class_extensions) %>
+  <%= javascript_include_tag(:maui) %>
   <%= javascript_include_tag(:base_map) %>
   <%= javascript_include_tag(:base_marker) %>
 </head>
@@ -40,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="/">MauiBusRoutes</a>
+      <h1><a class="brand" href="/">Maui Bus Routes</a></h1>
 
       <div class="container-fluid nav-collapse">
         <ul class="nav">

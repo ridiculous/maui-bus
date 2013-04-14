@@ -13,6 +13,7 @@ class Location
       paia_entrance: LocationDetail.new(*Coords::PAIA_ENTRANCE, '134 Hana Highway', 96779),
       haiku_marketplace: LocationDetail.new(*Coords::HAIKU_MARKETPLACE, '810 Haiku Road', 96708),
       haiku_community_center: LocationDetail.new(*Coords::HAIKU_COMMUNITY_CENTER, 'Haiku Community Center', 96708),
+      kuau_mart: LocationDetail.new(*Coords::KUAU_MART, 'Kuau Mart', 96779),
   }
 
   def self.[](name)

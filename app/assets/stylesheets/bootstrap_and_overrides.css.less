@@ -1,22 +1,20 @@
 @import "twitter/bootstrap/bootstrap";
 @import "twitter/bootstrap/responsive";
-
-// Set the correct sprite paths
-//@iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings.png");
-//@iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white.png");
-//
-//// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
-//// Note: If you use asset_path() here, your compiled bootstrap_and_overrides.css will not
-////       have the proper paths. So for now we use the absolute path.
-//@fontAwesomeEotPath: asset-path("fontawesome-webfont.eot?v=3.0.2");
-//@fontAwesomeEotPath_iefix: asset-path("fontawesome-webfont.eot?#iefix&v=3.0.2");
-//@fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff?v=3.0.2");
-//@fontAwesomeTtfPath: asset-path("fontawesome-webfont.ttf?v=3.0.2");
-//
-//// Font Awesome
-//@import "fontawesome";
-
-// Glyphicons
+  // Set the correct sprite paths
+  //@iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings.png");
+  //@iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white.png");
+  //
+  //// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+  //// Note: If you use asset_path() here, your compiled bootstrap_and_overrides.css will not
+  ////       have the proper paths. So for now we use the absolute path.
+  //@fontAwesomeEotPath: asset-path("fontawesome-webfont.eot?v=3.0.2");
+  //@fontAwesomeEotPath_iefix: asset-path("fontawesome-webfont.eot?#iefix&v=3.0.2");
+  //@fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff?v=3.0.2");
+  //@fontAwesomeTtfPath: asset-path("fontawesome-webfont.ttf?v=3.0.2");
+  //
+  //// Font Awesome
+  //@import "fontawesome";
+  // Glyphicons
 @import "twitter/bootstrap/sprites.less";
 
 // Your custom LESS stylesheets goes here
@@ -30,6 +28,17 @@
 // Example:
 // @linkColor: #ff0000;
 
-  .badge {
-    letter-spacing: 1pt;
-  }
+.badge {
+  letter-spacing: 1pt;
+}
+
+.navbar-inner h1 {
+  line-height: 20px;
+  margin-bottom: 0;
+  margin: 0;
+}
+
+.navbar-inner h1 a {
+  padding-top: 10px;
+  padding-bottom: 0;
+}
