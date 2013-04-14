@@ -1,13 +1,17 @@
-function Islander() {
-    var isle = this;
+function Islander(bus_stops) {
 
+    this.maui = new Maui();
     this.gmap = new BaseMap();
-    var back_of_mall = new google.maps.LatLng(Locations[0].lat, Locations[0].long)
-        , salvation_army = new google.maps.LatLng(Locations[1].lat, Locations[1].long)
-        , airport = new google.maps.LatLng(Locations[2].lat, Locations[2].long)
-        , paia = new google.maps.LatLng(Locations[3].lat, Locations[3].long)
-        , haiku_marketplace = new google.maps.LatLng(Locations[4].lat, Locations[4].long)
-        , haiku_community_center = new google.maps.LatLng(Locations[5].lat, Locations[5].long);
+    this.bus_stops = bus_stops || Locations;
+    this.maui.loadBusStops(this.bus_stops); // map location to name
+
+    var isle = this
+        , back_of_mall = this.bus_stops.findObject(this.maui.queen_kaahumanu_back, 'name')
+        , salvation_army = this.bus_stops.findObject(this.maui.kahului_salvation_army, 'name')
+        , airport = this.bus_stops.findObject(this.maui.kahului_airport, 'name')
+        , pukalani = this.bus_stops.findObject(this.maui.pukalani_terrace, 'name')
+        , makawao_library = this.bus_stops.findObject(this.maui.makawao_library, 'name')
+        , haliimaile = this.bus_stops.findObject(this.maui.haliimaile, 'name');
 
     this.drawRoute = function () {
 
@@ -18,29 +22,29 @@ function Islander() {
             travelMode: google.maps.TravelMode.DRIVING,
             waypoints: [
                 {
-                    location: back_of_mall,
+                    location: new google.maps.LatLng(back_of_mall.lat, back_of_mall.long),
                     stopover: false
                 },
                 {
-                    location: salvation_army
+                    location: new google.maps.LatLng(salvation_army.lat, salvation_army.long)
                 },
                 {
-                    location: airport
+                    location: new google.maps.LatLng(airport.lat, airport.long)
                 },
                 {
-                    location: paia
+                    location: new google.maps.LatLng(pukalani.lat, pukalani.long)
                 },
                 {
-                    location: haiku_marketplace
+                    location: new google.maps.LatLng(makawao_library.lat, makawao_library.long)
                 },
                 {
-                    location: haiku_community_center
+                    location: new google.maps.LatLng(haliimaile.lat, haliimaile.long)
                 },
                 {
-                    location: airport
+                    location: new google.maps.LatLng(airport.lat, airport.long)
                 },
                 {
-                    location: back_of_mall,
+                    location: new google.maps.LatLng(back_of_mall.lat, back_of_mall.long),
                     stopover: false
                 }
             ]
@@ -51,9 +55,10 @@ function Islander() {
                 isle.gmap.directionsDisplay.setDirections(result);
             }
         });
-        this.gmap.addMarkers('Haiku Islander Route #35');
+        this.gmap.addMarkers(this.bus_stops, 'Upcountry Islander #40');
     };
 }
+// instantiate this function when loaded
 (function () {
     var islander = new Islander();
     islander.drawRoute();

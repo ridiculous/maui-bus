@@ -2,7 +2,7 @@
   <h3>Pick a region</h3>
   <ul class="inline">
     <% @regions.each do |region| %>
-        <li><%= link_to(region, show_region_path(region.downcase), class: 'btn list btn-large ') %></li>
+        <li><%= link_to(region, show_region_path(region.downcase), class: 'btn list btn-large') %></li>
     <% end %>
   </ul>
 </div>

@@ -8,7 +8,7 @@ module BusRoutesHelper
       begin
         my_location = locations.find { |loc| loc[:name] == my_stop.name }
         if my_location
-          my_location[:times] += "\n To #{origin}: #{my_stop.times.join(' ')}"
+          my_location[:times] += "\n To #{origin}: #{my_stop.times.join(' ')}" unless origin == my_stop.name
         else
           my_location = {
               name: my_stop.name,
