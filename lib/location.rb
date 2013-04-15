@@ -18,6 +18,14 @@ class Location
       poalima_place_makawao: LocationDetail.new(*Coords::POALIMA_PLACE, 'Poalima Place / Makawao Ave, Makawao', 96779),
       makani_road_makawao: LocationDetail.new(*Coords::MAKANI_ROAD_MAKAWAO_AVE, 'Makani Road / Makawao Ave, Makawao', 96779),
       eddie_tam: LocationDetail.new(*Coords::EDDIE_TAM, 'Mahola St / Makawao Ave, Makawao', 96779),
+      longs_pukalani: LocationDetail.new(*Coords::LONGS_PUKALANI, 'Aapueo Parkway / Kula Highway, Pukalani', 96768),
+      waimele_place_kula: LocationDetail.new(*Coords::WAIMELE_PLACE_KULA, 'Lower Kula Rd. / Waimele Place, Kula', 96790),
+      lower_kimo_drive: LocationDetail.new(*Coords::LOWER_KIMO_DRIVE, 'Lower Kula Rd. / Lower Kimo Dr., Kula', 96790),
+      kula_hardware: LocationDetail.new(*Coords::KULA_HARDWARE, 'Kula Hardware, Kula', 96790),
+      kula_community_center: LocationDetail.new(*Coords::KULA_COMMUNITY_CENTER, 'Kula Community Center, Kula', 96790),
+      kula_gym: LocationDetail.new(*Coords::KULA_GYM, 'Kula Community Center, Kula', 96790),
+      naalae_road: LocationDetail.new(*Coords::NAALAE_ROAD, 'Lower Kula Rd. / Naalae Rd., Kula', 96790),
+      rice_park: LocationDetail.new(*Coords::RICE_PARK, 'Rice Park, Kula', 96790),
   }
 
   def self.[](name)

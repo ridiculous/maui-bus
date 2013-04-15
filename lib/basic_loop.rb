@@ -13,6 +13,10 @@ class BasicLoop
     self.class.to_s.sub(/^.+::/, '').downcase
   end
 
+  def visible_stops
+    stops.reject { |s| s.hidden }
+  end
+
   def reverse_stops!(min=0)
     return [] if reversed
     @reversed = true
