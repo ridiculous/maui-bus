@@ -14,11 +14,12 @@ function BaseMap() {
     this.addMarkers = function (bus_stops, route_name) {
         for (var i = 0; i < bus_stops.length; i++) {
             if (!bus_stops[i].hidden) {
-                new BaseMarker(this.map, {
+                var gmap_options = {
                     position: new google.maps.LatLng(bus_stops[i].lat, bus_stops[i].long),
                     map: this.map,
-                    title: route_name + "\n" + bus_stops[i].name + "\n" + bus_stops[i].times
-                });
+                    title: route_name + "\n" + bus_stops[i].name
+                };
+                new BaseMarker(this.map, gmap_options, gmap_options.title + '<br />' + bus_stops[i].times);
             }
         }
     };

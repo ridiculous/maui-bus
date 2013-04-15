@@ -113,7 +113,7 @@ class Kahului < Region
                     }),
         BusStop.new({
                         name: 'Hale Mahaolu Elua',
-                        times: %w{7:40 8:40 9:40 10:40 40:40 12:40 13:40 14:40 15:40 16:40 17:40 18:40 19:40 20:40 21:40}
+                        times: %w{7:40 8:40 9:40 10:40 11:40 12:40 13:40 14:40 15:40 16:40 17:40 18:40 19:40 20:40 21:40}
                     }),
         BusStop.new({
                         name: 'Onehee / S. Papa Ave.',

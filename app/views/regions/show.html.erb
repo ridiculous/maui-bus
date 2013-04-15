@@ -5,12 +5,26 @@
     <% @region.routes.each do |route| %>
         <li>
           <div class="well">
-            <h4 class=""><%= route.name %></h4>
+            <h4><%= route.name %></h4>
+
             <div>
               <%= link_to('Times', '#', class: 'btn btn-info list') %>
               <%= link_to('Map', show_bus_map_path(params[:name], route.class_name), class: 'btn btn-success list') %>
             </div>
             <div>
+              <h5>Upcoming Stops</h5>
+              <ul style="list-style: none;margin-left: 10px;padding: 0 0 10px 0">
+                <% if route.next_stops.any? %>
+                    <% route.next_stops.each do |nxt| %>
+                        <li><%= "#{Time.zone.parse(nxt.time).strftime('%l:%M %p')} @ #{nxt.bus_stop.name}" %></li>
+                    <% end %>
+                <% else %>
+                    <li>None</li>
+                <% end %>
+              </ul>
+            </div>
+            <div>
+              <h5>Bus Stops</h5>
               <%= route.visible_stops.map { |s| content_tag(:span, s.name, class: 'badge badge-info') }.uniq.join(' ').html_safe %>
             </div>
 

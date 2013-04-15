@@ -1,20 +1,12 @@
-class BasicLoop
+class BasicLoop < BusRoute
 
-  attr_reader :stops, :reversed, :name
+  attr_reader :reversed
 
   def initialize(name, offset=0)
     @name = name
     @stops = self.class::STOPS.dup
     @stops << increment_times(@stops[0], offset)
     @reversed = false
-  end
-
-  def class_name
-    self.class.to_s.sub(/^.+::/, '').downcase
-  end
-
-  def visible_stops
-    stops.reject { |s| s.hidden }
   end
 
   def reverse_stops!(min=0)
