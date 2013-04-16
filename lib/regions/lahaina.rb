@@ -18,24 +18,29 @@ class Lahaina < Region
                     }),
         BusStop.new({
                         name: 'State Office Building and Wells St.',
-                        times: %w{5:40 6:40 7:40 8:40 9:40 10:40 11:40 12:40 13:40 14:40 15:40 16:40 17:40 18:40 19:40}
+                        times: %w{5:40 6:40 7:40 8:40 9:40 10:40 11:40 12:40 13:40 14:40 15:40 16:40 17:40 18:40 19:40},
+                        location: :state_bldg_wells_st
                     }),
         BusStop.new({
                         name: 'Maalaea Harbor Village',
-                        times: %w{5:55 6:55 7:55 8:55 9:55 10:55 11:55 12:55 13:55 14:55 15:55 16:55 17:55 18:55 19:55}
+                        times: %w{5:55 6:55 7:55 8:55 9:55 10:55 11:55 12:55 13:55 14:55 15:55 16:55 17:55 18:55 19:55},
+                        location: :maalaea_harbor
                     }),
         BusStop.new({
                         name: 'Wharf Cinema Center',
                         times: %w{6:30 7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30 20:30},
-                        location: :wharf_cinema
+                        location: :wharf_cinema,
+                        destination: true
                     }),
         BusStop.new({
                         name: 'Maalaea Harbor Village',
-                        times: %w{7:05 8:05 9:05 10:05 11:05 12:05 13:05 14:05 15:05 16:05 17:05 18:05 19:05 20:05 21:05}
+                        times: %w{7:05 8:05 9:05 10:05 11:05 12:05 13:05 14:05 15:05 16:05 17:05 18:05 19:05 20:05 21:05},
+                        location: :maalaea_harbor
                     }),
         BusStop.new({
                         name: 'State Office Building',
-                        times: %w{7:18 8:18 9:18 10:18 11:18 12:18 13:18 14:18 15:18 16:18 17:18 18:18 19:18 20:18 21:18}
+                        times: %w{7:18 8:18 9:18 10:18 11:18 12:18 13:18 14:18 15:18 16:18 17:18 18:18 19:18 20:18 21:18},
+                        location: :state_bldg
                     })
     ]
 
@@ -53,19 +58,23 @@ class Lahaina < Region
                     }),
         BusStop.new({
                         name: '505 Front Street',
-                        times: %w{8:04 9:04 10:04 11:04 12:04 13:04 15:04 16:04 17:04 18:04 19:04 20:04 21:04 22:04}
+                        times: %w{8:04 9:04 10:04 11:04 12:04 13:04 15:04 16:04 17:04 18:04 19:04 20:04 21:04 22:04},
+                        location: :front_street_505
                     }),
         BusStop.new({
                         name: 'Lahaina Aquatics Center',
-                        times: %w{8:09 9:09 10:09 11:09 12:09 13:09 15:09 16:09 17:09 18:09 19:09 20:09 21:09 22:09}
+                        times: %w{8:09 9:09 10:09 11:09 12:09 13:09 15:09 16:09 17:09 18:09 19:09 20:09 21:09 22:09},
+                        location: :lahaina_aquatic_center
                     }),
         BusStop.new({
                         name: 'Kuailua Street / Kumukahi Street',
-                        times: %w{8:15 9:15 10:15 11:15 12:15 13:15 15:15 16:15 17:15 18:15 19:15 20:15 21:15 22:15}
+                        times: %w{8:15 9:15 10:15 11:15 12:15 13:15 15:15 16:15 17:15 18:15 19:15 20:15 21:15 22:15},
+                        location: :kuailua_kumukahi_lahaina
                     }),
         BusStop.new({
                         name: 'Kalena Street / Pikanele Street',
-                        times: %w{8:17 9:17 10:17 11:17 12:17 13:17 15:17 16:17 17:17 18:17 19:17 20:17 21:17 22:17}
+                        times: %w{8:17 9:17 10:17 11:17 12:17 13:17 15:17 16:17 17:17 18:17 19:17 20:17 21:17 22:17},
+                        location: :kalena_pikanele_lahaina
                     }),
         BusStop.new({
                         name: 'Lahaina Gateway',

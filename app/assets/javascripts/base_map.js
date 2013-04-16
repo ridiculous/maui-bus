@@ -19,7 +19,7 @@ function BaseMap() {
                     map: this.map,
                     title: route_name + "\n" + bus_stops[i].name
                 };
-                new BaseMarker(this.map, gmap_options, gmap_options.title + '<br />' + bus_stops[i].times);
+                new BaseMarker(this.map, gmap_options, gmap_options.title.replace(/\n/,'<br />') + '<br />' + bus_stops[i].times);
             }
         }
     };

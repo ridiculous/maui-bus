@@ -35,8 +35,13 @@ class Location
       leialii_parkway_lahaina: LocationDetail.new(*Coords::LEIALII_PARKWAY, 'Leialii Parkway, Lahaina', 96761),
       lahaina_civic_center: LocationDetail.new(*Coords::LAHAINA_CIVIC_CENTER, 'Lahaina Civic Center, Lahaina', 96761),
       whalers_village: LocationDetail.new(*Coords::WHALERS_VILLAGE, 'Whalers Village, Lahaina', 96761),
-      front_kenui_lahaina: LocationDetail.new(*Coords::FRONT_KENUI_LAHAINA, 'Front St. / Kenui St., Lahaina', 96761),
-      kenui_honoapiilani: LocationDetail.new(*Coords::KENUI_HONOAPIILANI, 'Honapiilani Highway / Kenui St., Lahaina', 96761),
+      front_street_505: LocationDetail.new(*Coords::FRONT_STREET_505, '505 Front Street, Lahaina', 96761),
+      lahaina_aquatic_center: LocationDetail.new(*Coords::LAHAINA_AQUATIC_CENTER, 'Lahaina Aquatic Center, Lahaina', 96761),
+      kuailua_kumukahi_lahaina: LocationDetail.new(*Coords::KUAILUA_KUMUKAHI_LAHAINA, 'Kuailua Street / Kumukahi Street, Lahaina', 96761),
+      kalena_pikanele_lahaina: LocationDetail.new(*Coords::KALENA_PIKANELE_LAHAINA, 'Kalena Street / Pikanele Street, Lahaina', 96761),
+      maalaea_harbor: LocationDetail.new(*Coords::MAALAEA_HARBOR, 'Maalaea Harbor, Kihei', 96753),
+      state_bldg: LocationDetail.new(*Coords::STATE_BLDG, 'State Building, Wailuku', 96793),
+      state_bldg_wells_st: LocationDetail.new(*Coords::STATE_BLDG_WELLS_ST, 'State Building / Wells St., Wailuku', 96793),
   }
 
   def self.[](name)
