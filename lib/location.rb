@@ -25,7 +25,18 @@ class Location
       kula_community_center: LocationDetail.new(*Coords::KULA_COMMUNITY_CENTER, 'Kula Community Center, Kula', 96790),
       kula_gym: LocationDetail.new(*Coords::KULA_GYM, 'Kula Community Center, Kula', 96790),
       naalae_road: LocationDetail.new(*Coords::NAALAE_ROAD, 'Lower Kula Rd. / Naalae Rd., Kula', 96790),
-      rice_park: LocationDetail.new(*Coords::RICE_PARK, 'Rice Park, Kula', 96790),
+      wharf_cinema: LocationDetail.new(*Coords::WHARF_CINEMA, 'Wharf Cinema Center Luakini Street, Lahaina', 96790),
+      papalaua_st: LocationDetail.new(*Coords::PAPALAUA_ST, 'Papalaua Street, Lahaina', 96761),
+      lahaina_cannery_mall: LocationDetail.new(*Coords::LAHAINA_CANNERY_MALL, 'Lahaina Cannery Mall, Lahaina', 96761),
+      lahaina_gateway: LocationDetail.new(*Coords::LAHAINA_GATEWAY, 'Lahaina Gateway, Lahaina', 96761),
+      ainakea_malolo_lahaina: LocationDetail.new(*Coords::AINAKEA_MALOLO_LAHAINA, 'Ainakea Rd / Malolo St., Lahaina', 96761),
+      ainakea_fleming_lahaina: LocationDetail.new(*Coords::AINAKEA_FLEMING_LAHAINA, 'Ainakea Rd / Fleming St., Lahaina', 96761),
+      ainakea_kaniau_lahaina: LocationDetail.new(*Coords::AINAKEA_KANIAU_LAHAINA, 'Ainakea Rd / Kaniau Rd, Lahaina', 96761),
+      leialii_parkway_lahaina: LocationDetail.new(*Coords::LEIALII_PARKWAY, 'Leialii Parkway, Lahaina', 96761),
+      lahaina_civic_center: LocationDetail.new(*Coords::LAHAINA_CIVIC_CENTER, 'Lahaina Civic Center, Lahaina', 96761),
+      whalers_village: LocationDetail.new(*Coords::WHALERS_VILLAGE, 'Whalers Village, Lahaina', 96761),
+      front_kenui_lahaina: LocationDetail.new(*Coords::FRONT_KENUI_LAHAINA, 'Front St. / Kenui St., Lahaina', 96761),
+      kenui_honoapiilani: LocationDetail.new(*Coords::KENUI_HONOAPIILANI, 'Honapiilani Highway / Kenui St., Lahaina', 96761),
   }
 
   def self.[](name)

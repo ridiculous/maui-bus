@@ -13,7 +13,8 @@ class Lahaina < Region
     STOPS = [
         BusStop.new({
                         name: 'Queen Kaahumanu Center',
-                        times: %w{5:30 6:30 7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30}
+                        times: %w{5:30 6:30 7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30},
+                        location: :queen_kaahumanu
                     }),
         BusStop.new({
                         name: 'State Office Building and Wells St.',
@@ -25,7 +26,8 @@ class Lahaina < Region
                     }),
         BusStop.new({
                         name: 'Wharf Cinema Center',
-                        times: %w{6:30 7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30 20:30}
+                        times: %w{6:30 7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30 20:30},
+                        location: :wharf_cinema
                     }),
         BusStop.new({
                         name: 'Maalaea Harbor Village',
@@ -46,7 +48,8 @@ class Lahaina < Region
     STOPS = [
         BusStop.new({
                         name: 'Wharf Cinema Center Luakini Street',
-                        times: %w{8:00 9:00 10:00 11:00 12:00 13:00 15:00 16:00 17:00 18:00 19:00 20:00 21:00 22:00}
+                        times: %w{8:00 9:00 10:00 11:00 12:00 13:00 15:00 16:00 17:00 18:00 19:00 20:00 21:00 22:00},
+                        location: :wharf_cinema
                     }),
         BusStop.new({
                         name: '505 Front Street',
@@ -66,27 +69,43 @@ class Lahaina < Region
                     }),
         BusStop.new({
                         name: 'Lahaina Gateway',
-                        times: %w{8:23 9:23 10:23 11:23 12:23 13:23 15:23 16:23 17:23 18:23 19:23 20:23 21:23 22:23}
+                        times: %w{8:23 9:23 10:23 11:23 12:23 13:23 15:23 16:23 17:23 18:23 19:23 20:23 21:23 22:23},
+                        location: :lahaina_gateway
+                    }),
+        BusStop.new({
+                        name: 'Ainakea Road / Malolo St.',
+                        times: %w{8:26 9:26 10:26 11:26 12:26 13:26 15:26 16:26 17:26 18:26 19:26 20:26 21:26 22:26},
+                        location: :ainakea_malolo_lahaina
                     }),
         BusStop.new({
                         name: 'Ainakea Road / Fleming Road',
-                        times: %w{8:27 9:27 10:27 11:27 12:27 13:27 15:27 16:27 17:27 18:27 19:27 20:27 21:27 22:27}
+                        times: %w{8:27 9:27 10:27 11:27 12:27 13:27 15:27 16:27 17:27 18:27 19:27 20:27 21:27 22:27},
+                        location: :ainakea_fleming_lahaina
+                    }),
+        BusStop.new({
+                        name: 'Ainakea Road / Kaniau Road',
+                        times: %w{8:27 9:27 10:27 11:27 12:27 13:27 15:27 16:27 17:27 18:27 19:27 20:27 21:27 22:27},
+                        location: :ainakea_kaniau_lahaina
                     }),
         BusStop.new({
                         name: 'Leialii Parkway / Near Hooli Street',
-                        times: %w{8:31 9:31 10:31 11:31 12:31 13:31 15:31 16:31 17:31 18:31 19:31 20:31 21:31 22:31}
+                        times: %w{8:31 9:31 10:31 11:31 12:31 13:31 15:31 16:31 17:31 18:31 19:31 20:31 21:31 22:31},
+                        location: :leialii_parkway_lahaina
                     }),
         BusStop.new({
                         name: 'Lahaina Civic Center (back)',
-                        times: %w{8:34 9:34 10:34 11:34 12:34 13:34 15:34 16:34 17:34 18:34 19:34 20:34 21:34 22:34}
+                        times: %w{8:34 9:34 10:34 11:34 12:34 13:34 15:34 16:34 17:34 18:34 19:34 20:34 21:34 22:34},
+                        location: :lahaina_civic_center
                     }),
         BusStop.new({
                         name: 'Lahaina Cannery Mall',
-                        times: %w{8:42 9:42 10:42 11:42 12:42 13:42 15:42 16:42 17:42 18:42 19:42 20:42 21:42 22:42}
+                        times: %w{8:42 9:42 10:42 11:42 12:42 13:42 15:42 16:42 17:42 18:42 19:42 20:42 21:42 22:42},
+                        location: :lahaina_cannery_mall
                     }),
         BusStop.new({
                         name: 'Papalaua Street',
-                        times: %w{8:48 9:48 10:48 11:48 12:48 13:48 15:48 16:48 17:48 18:48 19:48 20:48 21:48 22:48}
+                        times: %w{8:48 9:48 10:48 11:48 12:48 13:48 15:48 16:48 17:48 18:48 19:48 20:48 21:48 22:48},
+                        location: :papalaua_st
                     })
     ]
 
