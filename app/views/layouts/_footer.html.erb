@@ -1,13 +1,11 @@
 <footer>
   <div style="padding: 5px;">
-    <div style="float:left;" class="current-time">
+    <div style="float:left;" class="hidden-phone">
       <%= "Time: #{in_format(Time.zone.now)}" %>
     </div>
     <div style="float:right;">
       Comments? Let me know
-      <a href="https://twitter.com/arebuckley">@arebuckley</a>
-      <span style="margin-left: 5px;margin-right:5px">|</span>
-      <%= Version::CURRENT %>
+      <a href="https://twitter.com/arebuckley">@arebuckley</a> v<%= Version::CURRENT %>
     </div>
     <div class="c"></div>
   </div>

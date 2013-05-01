@@ -7597,9 +7597,6 @@ footer a:hover {
     footer {
         position: static;
     }
-    .current-time {
-        display: none;
-    }
     .navbar .brand {
         padding-left: 0;
         padding-right: 0;
