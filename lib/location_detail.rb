@@ -7,4 +7,8 @@ class LocationDetail
     @street = args[2]
     @zip = args[3]
   end
+
+  def coords
+    "#{lat},#{long}"
+  end
 end

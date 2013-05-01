@@ -25,6 +25,8 @@ class Location
       kula_community_center: LocationDetail.new(*Coords::KULA_COMMUNITY_CENTER, 'Kula Community Center, Kula', 96790),
       kula_gym: LocationDetail.new(*Coords::KULA_GYM, 'Kula Community Center, Kula', 96790),
       naalae_road: LocationDetail.new(*Coords::NAALAE_ROAD, 'Lower Kula Rd. / Naalae Rd., Kula', 96790),
+      rice_park: LocationDetail.new(*Coords::RICE_PARK, 'Rice Park, Kula', 96790),
+
       wharf_cinema: LocationDetail.new(*Coords::WHARF_CINEMA, 'Wharf Cinema Center Luakini Street, Lahaina', 96790),
       papalaua_st: LocationDetail.new(*Coords::PAPALAUA_ST, 'Papalaua Street, Lahaina', 96761),
       lahaina_cannery_mall: LocationDetail.new(*Coords::LAHAINA_CANNERY_MALL, 'Lahaina Cannery Mall, Lahaina', 96761),

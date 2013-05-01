@@ -120,7 +120,7 @@ class Kahului < Region
                         times: %w{7:43 8:43 9:43 10:43 11:43 12:43 13:43 14:43 15:43 16:43 17:43 18:43 19:43 20:43 21:43}
                     }),
         BusStop.new({
-                        name: 'Roselane Place',
+                        name: 'Roselani Place',
                         times: %w{7:45 8:45 9:45 10:45 11:45 12:45 13:45 14:45 15:45 16:45 17:45 18:45 19:45 20:45 21:45}
                     }),
         BusStop.new({

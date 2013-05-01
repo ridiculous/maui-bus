@@ -9,6 +9,10 @@ class RegionsController < ApplicationController
     end
   end
 
+  def schedule
+    @regions = Region.all.sort.map { |region| Region.find(region.downcase) }
+  end
+
   # GET /regions/1
   # GET /regions/1.json
   def show
@@ -18,8 +22,8 @@ class RegionsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @region }
     end
-  #rescue
-  #  redirect_to root_path, alert: 'Region not found'
+    #rescue
+    #  redirect_to root_path, alert: 'Region not found'
   end
 
 end

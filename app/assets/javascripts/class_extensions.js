@@ -37,10 +37,10 @@ Array.prototype.compacted = function () {
 };
 
 Array.prototype.find = function (value) {
-    var found = false;
+    var found = -1;
     for (var i = 0; i < this.length; i++) {
         if (this[i] == value) {
-            found = true;
+            found = i;
         }
     }
     return found;

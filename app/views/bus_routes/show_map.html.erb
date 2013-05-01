@@ -1,2 +1,8 @@
-<%= javascript_tag("var Locations = #{locations_as_json}") %>
-<%= javascript_include_tag(@bus.class.name.downcase.underscore) %>
+<% if Rails.application.assets.find_asset(js_file = @bus.class.name.downcase.underscore) %>
+    <%= javascript_tag("var Locations = #{locations_as_json}") %>
+    <%= javascript_include_tag(js_file) %>
+<% else %>
+    <%= content_for(:map) do %>
+        <h4 style="text-align: center">There is no map for this route yet.</h4>
+    <% end %>
+<% end %>

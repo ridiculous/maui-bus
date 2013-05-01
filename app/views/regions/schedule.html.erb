@@ -1,0 +1,28 @@
+<h3 style="float:left;">Bus Schedules</h3>
+<ul class="unstyled inline" style="float:left;">
+  <% @regions.each do |region| %>
+      <li><%= link_to(region.class, "##{region.class.to_s.downcase}") %></li>
+  <% end %>
+</ul>
+
+<div class="c" style="padding-bottom: 30px;">
+  <% @regions.each do |region| %>
+      <a name="<%= region.class.to_s.downcase %>"></a>
+      <h4><%= region.class.to_s %></h4>
+
+      <div style="border-bottom: 1px solid #DDD">
+        <% region.routes.each do |route| %>
+            <h5 style="float:left;"><%= route.name %></h5>
+            <%= link_to('<span class="icon icon-globe icon-white"></span>Map'.html_safe,
+                        show_bus_map_path(region.class.to_s.downcase, route.class_name),
+                        class: 'btn btn-success list',
+                        style: 'float:right;'
+                ) %>
+            <%= schedule_for(route) %>
+            <div class="c"></div>
+        <% end %>
+      </div>
+  <% end %>
+</div>
+<%= render('modal') %>
+<%= javascript_include_tag('region_manifest') %>

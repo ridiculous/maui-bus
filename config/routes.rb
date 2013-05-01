@@ -1,8 +1,9 @@
 MauiBusRoutes::Application.routes.draw do
   match 'regions/:name', to: 'regions#show', as: 'show_region'
   match 'regions/:region_name/routes/:name/map', to: 'bus_routes#show_map', as: 'show_bus_map'
-
+  match 'bus/schedules', to: 'regions#schedule', as: 'schedule'
   root to: 'regions#index'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,18 @@
+<%= content_tag(:table, options) do %>
+    <%= content_tag(:tbody) do %>
+        <% route.visible_stops.each do |vs| %>
+            <tr>
+              <td style="max-width: 200px;font-size:12px;">
+                <% if Location[vs.location] %>
+                    <%= link_to_static_map(vs.name, Location[vs.location].coords) %>
+                <% else %>
+                    <%= vs.name %>
+                <% end %>
+              </td>
+              <% route.max_stop_length.times do |s| %>
+                  <td><%= in_format(Time.zone.parse(vs.times[s])) if vs.times[s] %></td>
+              <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+<% end %>
