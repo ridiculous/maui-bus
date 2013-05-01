@@ -108,6 +108,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.21)
     multi_json (1.6.1)
+    newrelic_rpm (3.6.1.88)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -159,6 +160,7 @@ DEPENDENCIES
   journey!
   jquery-rails
   less-rails
+  newrelic_rpm
   rails!
   rails-dev-boost
   therubyracer
