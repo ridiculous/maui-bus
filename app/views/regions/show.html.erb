@@ -1,3 +1,4 @@
+<%= content_for(:title) { "#{params[:name].titleize} | Maui Bus Routes" } %>
 <h3>Routes for <%= params[:name].titleize %></h3>
 <%= render('modal') %>
 <div class="regions">
@@ -26,7 +27,7 @@
           <%= content_tag(:div, id: route.class_name, style: 'position:relative;') do %>
               <%= stops_as_badges(route) %>
           <% end %>
-          <%= schedule_for(route, style: 'display:none') %>
+          <%= schedule_for(route, style: 'display:none;visibility:visible;') %>
         </div>
       </div>
   <% end %>
