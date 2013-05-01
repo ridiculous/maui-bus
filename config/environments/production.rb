@@ -46,7 +46,15 @@ MauiBusRoutes::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( region_manifest.js map_manifest.js )
+  config.assets.precompile << Proc.new { |path|
+    if path =~ /\.(css|js)\z/
+      full_path = Rails.application.assets.resolve(path).to_path
+      app_assets_path = Rails.root.join('app', 'assets').to_path
+      full_path.starts_with?(app_assets_path)
+    else
+      false
+    end
+  }
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
