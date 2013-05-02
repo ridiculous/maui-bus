@@ -33,6 +33,7 @@ class Location
       lahaina_gateway: LocationDetail.new(*Coords::LAHAINA_GATEWAY, 'Lahaina Gateway, Lahaina', 96761),
       ainakea_malolo_lahaina: LocationDetail.new(*Coords::AINAKEA_MALOLO_LAHAINA, 'Ainakea Rd / Malolo St., Lahaina', 96761),
       ainakea_fleming_lahaina: LocationDetail.new(*Coords::AINAKEA_FLEMING_LAHAINA, 'Ainakea Rd / Fleming St., Lahaina', 96761),
+      ainakea_park_lahaina: LocationDetail.new(*Coords::AINAKEA_PARK_LAHAINA, 'Ainakea Rd / Kaniau Rd, Lahaina', 96761),
       ainakea_kaniau_lahaina: LocationDetail.new(*Coords::AINAKEA_KANIAU_LAHAINA, 'Ainakea Rd / Kaniau Rd, Lahaina', 96761),
       leialii_parkway_lahaina: LocationDetail.new(*Coords::LEIALII_PARKWAY, 'Leialii Parkway, Lahaina', 96761),
       lahaina_civic_center: LocationDetail.new(*Coords::LAHAINA_CIVIC_CENTER, 'Lahaina Civic Center, Lahaina', 96761),

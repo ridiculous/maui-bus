@@ -92,8 +92,13 @@ class Lahaina < Region
                         location: :ainakea_fleming_lahaina
                     }),
         BusStop.new({
+                        name: 'Ainakea Park',
+                        times: %w{8:28 9:28 10:28 11:28 12:28 13:28 15:28 16:28 17:28 18:28 19:28 20:28 21:28 22:28},
+                        location: :ainakea_park_lahaina
+                    }),
+        BusStop.new({
                         name: 'Ainakea Road / Kaniau Road',
-                        times: %w{8:27 9:27 10:27 11:27 12:27 13:27 15:27 16:27 17:27 18:27 19:27 20:27 21:27 22:27},
+                        times: %w{8:29 9:29 10:29 11:29 12:29 13:29 15:29 16:29 17:29 18:29 19:29 20:29 21:29 22:29},
                         location: :ainakea_kaniau_lahaina
                     }),
         BusStop.new({

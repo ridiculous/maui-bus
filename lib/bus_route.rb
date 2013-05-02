@@ -7,7 +7,7 @@ class BusRoute
     nxt = []
     stops.each do |my_stop|
       nxt_time = my_stop.times.detect { |t| Time.zone.parse(t) >= Time.zone.now }
-      if nxt_time
+      if nxt_time && !nxt.find { |nx| nx.time == nxt_time }
         nxt << NextStop.new(my_stop, nxt_time, Location[my_stop.location].try(:coords))
       end
     end
