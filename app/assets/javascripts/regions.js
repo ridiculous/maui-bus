@@ -19,9 +19,9 @@ var jUtils = {
 };
 
 jUtils.addEvent(window, 'load', function () {
-    for (var t = 0, times = jUtils.findByClass('time-list'); t < times.length; t++) {
-        jUtils.addEvent(times[t], 'click', showBusStops)
-    }
+//    for (var t = 0, times = jUtils.findByClass('time-list'); t < times.length; t++) {
+//        jUtils.addEvent(times[t], 'click', showBusStops)
+//    }
     jUtils.addEvent(document.getElementById('close_modal'), 'click', function () {
         var modal = document.getElementById('mba_modal');
         modal.className += ' fade';

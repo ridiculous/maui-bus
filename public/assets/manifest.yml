@@ -63,10 +63,10 @@ map_manifest.js: map_manifest-b9e264743e6c9b4d2401dd163d1890d2.js
 map_manifest/index.js: map_manifest-b9e264743e6c9b4d2401dd163d1890d2.js
 maui.js: maui-f682b0c0d355cb1b9a9f8fc7d139378b.js
 maui/index.js: maui-f682b0c0d355cb1b9a9f8fc7d139378b.js
-region_manifest.js: region_manifest-e3b49aad7b2eff79293606f9f88c9228.js
-region_manifest/index.js: region_manifest-e3b49aad7b2eff79293606f9f88c9228.js
-regions.js: regions-b5d6dfd34c9f3bd606bb966118b32bbe.js
-regions/index.js: regions-b5d6dfd34c9f3bd606bb966118b32bbe.js
+region_manifest.js: region_manifest-a6c9404ff5cc04193269efcf1a961c12.js
+region_manifest/index.js: region_manifest-a6c9404ff5cc04193269efcf1a961c12.js
+regions.js: regions-f2c350c496bd7a3f09d4604a8e09a170.js
+regions/index.js: regions-f2c350c496bd7a3f09d4604a8e09a170.js
 upcountry/islander.js: upcountry/islander-a46fccf6d85a41bcbefb215034e3b165.js
 upcountry/islander/index.js: upcountry/islander-a46fccf6d85a41bcbefb215034e3b165.js
 application.css: application-d093d041a64384142c2c404ee6259cf6.css
