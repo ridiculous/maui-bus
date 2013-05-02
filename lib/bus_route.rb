@@ -6,7 +6,7 @@ class BusRoute
   def next_stops(count=5)
     nxt = []
     stops.each do |my_stop|
-      nxt_time = my_stop.times.detect { |t| Time.parse(t) >= Time.zone.now }
+      nxt_time = my_stop.times.detect { |t| Time.zone.parse(t) >= Time.zone.now }
       if nxt_time
         nxt << NextStop.new(my_stop, nxt_time, Location[my_stop.location].try(:coords))
         break if nxt.length == count
