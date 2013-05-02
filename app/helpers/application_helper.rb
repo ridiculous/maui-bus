@@ -21,4 +21,9 @@ module ApplicationHelper
         route: my_route
     })
   end
+
+  def morning?
+    Time.zone.now.hour < 12
+  end
+
 end
