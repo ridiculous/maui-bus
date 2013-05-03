@@ -3,7 +3,9 @@ var jUtils = {
         if (el.addEventListener) {
             el.addEventListener(event_name, callback);
         } else if (el.attachEvent) {
-            el.attachEvent('on' + event_name, callback);
+            el.attachEvent('on' + event_name, function() {
+                callback.call(this.target || this.event.srcElement);
+            });
         } else {
             el[event_name] = callback;
         }
