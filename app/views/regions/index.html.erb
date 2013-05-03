@@ -1,5 +1,5 @@
 <div class="regions">
-  <h3>Pick a region to view the routes</h3>
+  <h3 class="well app-subheader">Pick a Region</h3>
   <ul class="inline">
     <% @regions.each do |region| %>
         <li><%= link_to(region, show_region_path(region.downcase), class: 'btn list btn-large') %></li>

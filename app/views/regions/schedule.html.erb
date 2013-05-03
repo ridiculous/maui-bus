@@ -1,14 +1,18 @@
 <%= content_for(:title) { 'Bus Schedules | Maui Bus Routes' } %>
-<h3 style="float:left;">Bus Schedules</h3>
-<ul class="unstyled inline" style="float:left;">
-  <% @regions.each do |region| %>
-      <li><%= link_to(region.class, "##{region.class.to_s.downcase}") %></li>
-  <% end %>
-</ul>
+<div class="well app-subheader mt10">
+  <h3 class="fl" style="margin: 0;">Bus Schedules</h3>
+  <ul class="unstyled inline fl">
+    <% @regions.each do |region| %>
+        <li><%= link_to(region.class, "##{region.class.to_s.downcase}") %></li>
+    <% end %>
+  </ul>
+  <div class="c"></div>
+</div>
 
-<div class="c" style="padding-bottom: 30px;">
+<div style="padding-bottom: 30px;">
   <% @regions.each do |region| %>
       <a name="<%= region.class.to_s.downcase %>"></a>
+
       <div style="border-bottom: 1px solid #DDD">
         <% region.routes.each do |route| %>
             <h4 class="fl"><%= route.name %></h4>
