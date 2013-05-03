@@ -1,0 +1,1 @@
+var jUtils={addEvent:function(e,t,n){e.addEventListener?e.addEventListener(t,n):e.attachEvent?e.attachEvent("on"+t,n):e[t]=n},findByClass:function(e){return document.getElementsByClassName?document.getElementsByClassName(e):document.querySelectorAll("."+e)},hasClass:function(e,t){return e.classList?e.classList.contains(t):e.className.split(/\s+/).find(t)!==-1}};

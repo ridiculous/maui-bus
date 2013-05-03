@@ -1,5 +1,5 @@
 class RegionsController < ApplicationController
-  #layout 'map'
+
   def index
     @regions = Region.all.sort
 

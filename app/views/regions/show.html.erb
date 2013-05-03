@@ -7,7 +7,7 @@
         <h4 style="float:left;padding-right: 10px;"><%= route.name %></h4>
 
         <div style="margin-top: 5px;margin-bottom: -5px;">
-          <%= link_to_void('<span class="icon icon-time icon-white"></span>Times', class: 'btn btn-info list time-list', rel: route.class_name) %>
+          <%= link_to_void('<span class="icon icon-time icon-white"></span>Times', class: 'btn btn-info list time-list', rel: route.full_class_name) %>
           <%= link_to('<span class="icon icon-globe icon-white"></span>Map'.html_safe, show_bus_map_path(params[:name], route.class_name), class: 'btn btn-success list') %>
         </div>
         <div>
@@ -23,8 +23,8 @@
           </ul>
         </div>
         <div style="padding-bottom: 10px;">
-          <h5>Bus Stops</h5>
-          <%= content_tag(:div, id: route.class_name, style: 'display:block;') do %>
+          <%= content_tag(:div, id: route.full_class_name, class: 'badge-wrap') do %>
+              <h5 class="bus-schedule-header">Bus Stops</h5>
               <%= stops_as_badges(route) %>
           <% end %>
           <%= schedule_for(route, style: 'display:none;visibility:visible;') %>
@@ -32,5 +32,4 @@
       </div>
   <% end %>
 </div>
-<!-- Placed at the end of the document so the pages load faster -->
 <%= javascript_include_tag(:region_manifest) %>

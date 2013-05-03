@@ -15,15 +15,15 @@ module ApplicationHelper
                  rel: coords)
   end
 
-  def schedule_for(my_route, options={})
+  def schedule_for(my_route, html_options={})
     render(partial: 'regions/table', locals: {
-        options: options.merge(id: "#{my_route.class_name}_table", class: 'table bus-stops'),
+        html_options: html_options.merge(id: "#{my_route.full_class_name}_container"),
         route: my_route
     })
   end
 
   def morning?
-    Time.zone.now.hour < 12
+    @_morning ||= Time.zone.now.hour < 12
   end
 
 end

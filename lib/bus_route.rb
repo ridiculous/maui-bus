@@ -1,5 +1,5 @@
 class BusRoute
-  attr_reader :name, :stops
+  attr_reader :name, :stops, :_class_name
 
   attr_accessor :_visible_stops
 
@@ -23,7 +23,11 @@ class BusRoute
   end
 
   def class_name
-    self.class.to_s.sub(/^.+::/, '').downcase
+    full_class_name.sub(/^.+_/, '').downcase
+  end
+
+  def full_class_name
+    @_class_name ||= self.class.to_s.sub(/::/,'_').downcase
   end
 
   class NextStop < Struct.new(:bus_stop, :time, :coords)
