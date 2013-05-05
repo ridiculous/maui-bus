@@ -9,7 +9,7 @@ class Upcountry < Region
   class Islander < BasicRoute
     STOPS = [
         BusStop.new({
-                        name: 'Queen Kaahumanu Center',
+                        name: 'Queen Kaahumanu Mall',
                         times: %w{6:00 7:30 9:00 10:30 12:00 13:30 15:00 16:30 18:00 19:30 21:00},
                         location: :queen_kaahumanu
                     }),
@@ -20,12 +20,17 @@ class Upcountry < Region
                         hidden: true
                     }),
         BusStop.new({
-                        name: 'Kahului Salvation Army',
+                        name: 'Salvation Army',
                         times: %w{6:03 7:33 9:03 10:33 12:03 13:33 15:03 16:33 18:03 19:33 21:03},
                         location: :kahului_salvation_army
                     }),
         BusStop.new({
-                        name: 'Kahului Airport Pick-up Zone #3',
+                        name: 'Safeway',
+                        times: %w{6:04 7:34 9:04 10:34 12:04 13:34 15:04 16:34 18:04 19:34 21:04},
+                        location: :kahului_safeway
+                    }),
+        BusStop.new({
+                        name: 'Airport Pick-up Zone #3',
                         times: %w{6:10 7:40 9:10 10:40 12:10 13:40 15:10 16:40 18:10 19:40 21:10},
                         location: :kahului_airport
                     }),
@@ -71,17 +76,22 @@ class Upcountry < Region
                         location: :haliimaile
                     }),
         BusStop.new({
-                        name: 'Kahului Airport Pick-up Zone #3',
+                        name: 'Airport Pick-up Zone #3',
                         times: %w{7:11 8:41 10:11 11:41 13:11 14:41 16:11 17:41 19:11 20:41 22:11},
                         location: :kahului_airport
                     }),
         BusStop.new({
-                        name: 'Kahului Salvation Army',
+                        name: 'Safeway / Maui Mall Entrance',
+                        times: %w{7:19 8:49 10:19 11:49 13:19 14:49 16:19 17:49 19:19 20:49},
+                        location: :kahului_safeway_across
+                    }),
+        BusStop.new({
+                        name: 'Salvation Army',
                         times: %w{7:20 8:50 10:20 11:50 13:20 14:50 16:20 17:50 19:20 20:50},
                         location: :kahului_salvation_army
                     }),
         BusStop.new({
-                        name: 'Queen Kaahumanu Center',
+                        name: 'Queen Kaahumanu Mall',
                         times: %w{7:30 9:00 10:30 12:00 13:30 15:00 16:30 18:00 19:30 21:00},
                         location: :queen_kaahumanu
                     })

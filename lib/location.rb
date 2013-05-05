@@ -4,7 +4,7 @@ class Location
       queen_kaahumanu: LocationDetail.new(*Coords::QUEEN_KAAHUMANU, '275 W Kaahumanu Ave, Kahului', 96732),
       queen_kaahumanu_back: LocationDetail.new(*Coords::QUEEN_KAAHUMANU_BACK, 'W Wakea Street, Kahului', 96732),
       kahului_salvation_army: LocationDetail.new(*Coords::KAHULUI_SALVATION_ARMY, '45 W Kamehameha Ave, Kahului', 96732),
-      kahului_airport: LocationDetail.new(*Coords::KAHULUI_AIRPORT, 'Kahului Airport Pick-up Zone #3, Kahului', 96732),
+      kahului_airport: LocationDetail.new(*Coords::KAHULUI_AIRPORT, 'Airport Pick-up Zone #3, Kahului', 96732),
       pukalani_terrace: LocationDetail.new(*Coords::PUKALANI_TERRACE, '55 Pukalani St, Pukalani', 96768),
       makawao_library: LocationDetail.new(*Coords::MAKAWAO_LIBRARY, '1159 Makawao Ave, Makawao', 96768),
       haliimaile: LocationDetail.new(*Coords::HALIIMAILE, 'Haliimaile Park, Makawao', 96768),
@@ -45,6 +45,10 @@ class Location
       maalaea_harbor: LocationDetail.new(*Coords::MAALAEA_HARBOR, 'Maalaea Harbor, Kihei', 96753),
       state_bldg: LocationDetail.new(*Coords::STATE_BLDG, 'State Building, Wailuku', 96793),
       state_bldg_wells_st: LocationDetail.new(*Coords::STATE_BLDG_WELLS_ST, 'State Building / Wells St., Wailuku', 96793),
+
+      # kahului
+      kahului_safeway: LocationDetail.new(*Coords::KAHULUI_SAFEWAY, 'Kamehameha Ave. / Hoohana St., Kahului', 96732),
+      kahului_safeway_across: LocationDetail.new(*Coords::KAHULUI_SAFEWAY_ACROSS, 'Kamehameha Ave. / Maui Mall Entrance, Kahului', 96732),
   }
 
   def self.[](name)

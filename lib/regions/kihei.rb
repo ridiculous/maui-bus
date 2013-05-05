@@ -11,11 +11,11 @@ class Kihei < Region
   class Islander < BasicLoop
     STOPS = [
         BusStop.new({
-                        name: 'Queen Kaahumanu Center',
+                        name: 'Queen Kaahumanu Mall',
                         times: %w{5:30 6:30 7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30}
                     }),
         BusStop.new({
-                        name: 'Kahului Salvation Army',
+                        name: 'Salvation Army',
                         times: %w{5:35 6:35 7:35 8:35 9:35 10:35 11:35 12:35 13:35 14:35 15:35 16:35 17:35 18:35 19:35}
                     }),
         BusStop.new({
@@ -63,7 +63,7 @@ class Kihei < Region
                         times: %w{7:02 8:02 9:02 10:02 11:02 12:02 13:02 14:02 15:02 16:02 17:02 18:02 19:02 20:02 21:02}
                     }),
         BusStop.new({
-                        name: 'Kahului Salvation Army',
+                        name: 'Salvation Army',
                         times: %w{7:18 8:18 9:18 10:18 11:18 12:18 13:18 14:18 15:18 16:18 17:18 18:18 19:18 20:18 21:18}
                     })
     ]

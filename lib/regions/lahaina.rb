@@ -12,7 +12,7 @@ class Lahaina < Region
   class Islander < BasicLoop
     STOPS = [
         BusStop.new({
-                        name: 'Queen Kaahumanu Center',
+                        name: 'Queen Kaahumanu Mall',
                         times: %w{5:30 6:30 7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30},
                         location: :queen_kaahumanu
                     }),

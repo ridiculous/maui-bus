@@ -11,7 +11,7 @@ class Wailuku < Region
   class Loop1 < BasicLoop
     STOPS = [
         BusStop.new({
-                        name: 'Queen Kaahumanu Center',
+                        name: 'Queen Kaahumanu Mall',
                         times: %w{6:30 7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30 20:30}
                     }),
         BusStop.new({
@@ -76,7 +76,7 @@ class Wailuku < Region
   class Loop2 < BasicLoop
     STOPS = [
         BusStop.new({
-                        name: 'Queen Kaahumanu Center',
+                        name: 'Queen Kaahumanu Mall',
                         times: %w{7:00 8:00 9:00 10:00 11:00 12:00 13:00 14:00 15:00 16:00 17:00 18:00 19:00 20:00 21:00}
                     }),
         BusStop.new({

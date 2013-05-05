@@ -10,7 +10,7 @@ class Kahului < Region
   class Loop5 < BasicRoute
     STOPS = [
         BusStop.new({
-                        name: 'Queen Kaahumanu Center',
+                        name: 'Queen Kaahumanu Mall',
                         times: %w{6:30 7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30 20:30}
                     }),
         BusStop.new({
@@ -54,15 +54,16 @@ class Kahului < Region
                         times: %w{7:08 8:08 9:08 10:08 11:08 12:08 13:08 14:08 15:08 16:08 17:08 18:08 19:08 20:08 21:08}
                     }),
         BusStop.new({
-                        name: 'Kamehameha Ave. / Maui Mall Entrance',
-                        times: %w{7:14 8:14 9:14 10:14 11:14 12:14 13:14 14:14 15:14 16:14 17:14 18:14 19:14 20:14}
+                        name: 'Safeway / Maui Mall Entrance',
+                        times: %w{7:14 8:14 9:14 10:14 11:14 12:14 13:14 14:14 15:14 16:14 17:14 18:14 19:14 20:14},
+                        location: :kahului_safeway_across
                     }),
         BusStop.new({
                         name: 'Kahului Shopping Center',
                         times: %w{7:17 8:17 9:17 10:17 11:17 12:17 13:17 14:17 15:17 16:17 17:17 18:17 19:17 20:17}
                     }),
         BusStop.new({
-                        name: 'Queen Kaahumanu Center',
+                        name: 'Queen Kaahumanu Mall',
                         times: %w{7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30 20:30}
                     })
     ]
@@ -76,7 +77,7 @@ class Kahului < Region
   class Loop6 < BasicRoute
     STOPS = [
         BusStop.new({
-                        name: 'Queen Kaahumanu Center',
+                        name: 'Queen Kaahumanu Mall',
                         times: %w{7:00 8:00 9:00 10:00 11:00 12:00 13:00 14:00 15:00 16:00 17:00 18:00 19:00 20:00 21:00}
                     }),
         BusStop.new({
@@ -84,8 +85,9 @@ class Kahului < Region
                         times: %w{7:08 8:08 9:08 10:08 11:08 12:08 13:08 14:08 15:08 16:08 17:08 18:08 19:08 20:08 21:08}
                     }),
         BusStop.new({
-                        name: 'Kamehameha Ave. / Hoohana St.',
-                        times: %w{7:10 8:10 9:10 10:10 11:10 12:10 13:10 14:10 15:10 16:10 17:10 18:10 19:10 20:10 21:10}
+                        name: 'Safeway',
+                        times: %w{7:10 8:10 9:10 10:10 11:10 12:10 13:10 14:10 15:10 16:10 17:10 18:10 19:10 20:10 21:10},
+                        location: :kahului_safeway
                     }),
         BusStop.new({
                         name: 'K-Mart',
@@ -128,7 +130,7 @@ class Kahului < Region
                         times: %w{7:48 8:48 9:48 10:48 11:48 12:48 13:48 14:48 15:48 16:48 17:48 18:48 19:48 20:48 21:48}
                     }),
         BusStop.new({
-                        name: 'Queen Kaahumanu Center',
+                        name: 'Queen Kaahumanu Mall',
                         times: %w{8:00 9:00 10:00 11:00 12:00 13:00 14:00 15:00 16:00 17:00 18:00 19:00 20:00 21:00 22:00}
                     })
     ]
