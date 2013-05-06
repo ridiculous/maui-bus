@@ -1,5 +1,4 @@
 function BusSchedule() {
-    var bus = this;
 
     this.schedule = [];
     this.route_name = '';
@@ -26,7 +25,7 @@ function BusSchedule() {
                     this.schedule[cell_index] = [];
                 }
 
-                if (this.schedule[cell_index].find(am_pm) === -1) {
+                if (am_pm && this.schedule[cell_index].find(am_pm) === -1) {
                     this.schedule[cell_index].push(am_pm);
                 }
             }

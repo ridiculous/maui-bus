@@ -8746,6 +8746,16 @@ footer a:hover {
     .navbar .nav > li > a {
         padding-right: 0;
     }
+
+
+    .route-wrap h4 {
+        float: none;
+    }
+
+    .clearfix a {
+        float: left;
+        margin-bottom: 10px;
+    }
 }
 
 .schedule-nav-pills {
@@ -8774,6 +8784,10 @@ footer a:hover {
     padding: 5px 10px;
 }
 
+.route-wrap {
+    border-bottom: 1px solid #DDD
+}
+
 .regions .btn.list{margin-bottom:5px;}
 .back-button{float:left;margin-right:10px;}
 .bus-stops{display:table;width:100%;clear:both;}
@@ -8782,3 +8796,4 @@ footer a:hover {
 .mba-list{list-style:none;margin-left:10px;padding:0 0 10px 0;}
 .badge-wrap{clear:both;}
 .bus-schedule-header{margin-top:4px;}
+.mr10{margin-right:10px;}

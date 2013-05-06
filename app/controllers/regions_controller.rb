@@ -27,3 +27,19 @@ class RegionsController < ApplicationController
   end
 
 end
+
+
+#time do
+#  20.times do |x|
+#  @regions = Region.all.sort.map { |region| Region.find(region.downcase) }
+#  @regions.each do |region|
+#    region.routes.each do |route|
+#      if route.next_stops.any?
+#        route.next_stops.each do |nxt|
+#          puts nxt
+#        end
+#      end
+#    end
+#  end
+#end
+#end

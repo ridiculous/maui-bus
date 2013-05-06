@@ -23,11 +23,7 @@
         </ul>
       </div>
       <div style="padding-bottom: 10px;">
-        <%= content_tag(:div, id: route.full_class_name, class: 'badge-wrap') do %>
-            <h5 class="bus-schedule-header">Bus Stops</h5>
-            <%= stops_as_badges(route) %>
-        <% end %>
-        <%= schedule_for(route, style: 'display:none;visibility:visible;') %>
+        <%= schedule_for(route) %>
       </div>
       <div style="border-bottom: 1px solid #DDD;margin: 10px;"></div>
   <% end %>

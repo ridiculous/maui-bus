@@ -1,22 +1,21 @@
 function Villager(bus_stops) {
 
     this.bus_stops = bus_stops || Locations; // locations for creating markers
-    Maui.gmap = new BaseMap();
-    Maui.loadBusStops(this.bus_stops); // map location to name
+    maui.loadBusStops(this.bus_stops); // map location to name
 
     // locations used for drawing the route
-    var wharf_cinema = this.bus_stops.findObject(Maui.wharf_cinema, 'name')
-        , front_street_505 = this.bus_stops.findObject(Maui.front_street_505, 'name')
-        , na_halee = this.bus_stops.findObject(Maui.na_halee, 'name')
-        , liloa_hokeo = this.bus_stops.findObject(Maui.liloa_hokeo, 'name')
-        , kalena_pikanele_lahaina = this.bus_stops.findObject(Maui.kalena_pikanele_lahaina, 'name')
-        , hale_mahaolu_eono = this.bus_stops.findObject(Maui.hale_mahaolu_eono, 'name')
-        , lahaina_gateway = this.bus_stops.findObject(Maui.lahaina_gateway, 'name')
-        , civic_center = this.bus_stops.findObject(Maui.lahaina_civic_center, 'name')
-        , ainakea_malolo = this.bus_stops.findObject(Maui.ainakea_malolo_lahaina, 'name')
-        , leialii_parkway = this.bus_stops.findObject(Maui.leialii_parkway_lahaina, 'name')
-        , cannery_mall = this.bus_stops.findObject(Maui.lahaina_cannery_mall, 'name')
-        , papalaua_st = this.bus_stops.findObject(Maui.papalaua_st, 'name')
+    var wharf_cinema = this.bus_stops.findObject(maui.wharf_cinema, 'name')
+        , front_street_505 = this.bus_stops.findObject(maui.front_street_505, 'name')
+        , na_halee = this.bus_stops.findObject(maui.na_halee, 'name')
+        , liloa_hokeo = this.bus_stops.findObject(maui.liloa_hokeo, 'name')
+        , kalena_pikanele_lahaina = this.bus_stops.findObject(maui.kalena_pikanele_lahaina, 'name')
+        , hale_mahaolu_eono = this.bus_stops.findObject(maui.hale_mahaolu_eono, 'name')
+        , lahaina_gateway = this.bus_stops.findObject(maui.lahaina_gateway, 'name')
+        , civic_center = this.bus_stops.findObject(maui.lahaina_civic_center, 'name')
+        , ainakea_malolo = this.bus_stops.findObject(maui.ainakea_malolo_lahaina, 'name')
+        , leialii_parkway = this.bus_stops.findObject(maui.leialii_parkway_lahaina, 'name')
+        , cannery_mall = this.bus_stops.findObject(maui.lahaina_cannery_mall, 'name')
+        , papalaua_st = this.bus_stops.findObject(maui.papalaua_st, 'name')
         , wharf_coords = new google.maps.LatLng(wharf_cinema.lat, wharf_cinema.long)
         , civic_coords = new google.maps.LatLng(civic_center.lat, civic_center.long)
 
@@ -79,13 +78,13 @@ function Villager(bus_stops) {
             ]
         };
 
-        Maui.gmap.directionsService.route(first_leg, function (result, status) {
+        maui.gmap.directionsService.route(first_leg, function (result, status) {
             if (status == google.maps.DirectionsStatus.OK) {
-                Maui.gmap.directionsDisplay.setDirections(result);
+                maui.gmap.directionsDisplay.setDirections(result);
             }
         });
-        Maui.gmap.addRoute(second_leg);
-        Maui.gmap.addMarkers(this.bus_stops, 'Lahaina Villager #23');
+        maui.gmap.addRoute(second_leg);
+        maui.gmap.addMarkers(this.bus_stops, 'Lahaina Villager #23');
     };
 }
 // instantiate this function when loaded

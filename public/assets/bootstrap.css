@@ -8741,6 +8741,16 @@ footer a:hover {
     .navbar .nav > li > a {
         padding-right: 0;
     }
+
+
+    .route-wrap h4 {
+        float: none;
+    }
+
+    .clearfix a {
+        float: left;
+        margin-bottom: 10px;
+    }
 }
 
 .schedule-nav-pills {
@@ -8767,4 +8777,8 @@ footer a:hover {
 
 .app-subheader {
     padding: 5px 10px;
+}
+
+.route-wrap {
+    border-bottom: 1px solid #DDD
 }

@@ -31,7 +31,7 @@
   <%= javascript_include_tag(:map_manifest) %>
   <script type="text/javascript">
       //<![CDATA[
-      var Maui = new Maui();
+      var maui = new Maui();
       //]]>
   </script>
 </head>
@@ -39,7 +39,7 @@
 <div class="navbar navbar-fluid-top" style="margin-bottom: 0;">
   <div class="navbar-inner">
     <div class="container-fluid">
-      <%= link_to('Back', show_region_path(params[:region_name]), class: 'btn btn-small back-button') if params[:region_name] %>
+      <%= link_to('Back', (request.referrer || show_region_path(params[:region_name])), class: 'btn btn-small back-button') if params[:region_name] %>
       <h1><a class="brand" href="/">Maui Bus<span class="hidden-phone"> Routes</span></a></h1>
 
       <div class="container-fluid">

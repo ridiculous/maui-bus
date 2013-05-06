@@ -1,5 +1,5 @@
 <%= content_tag(:div, html_options) do %>
-    <h5 class="bus-schedule-header fl">Bus Stops</h5>
+    <h5 class="bus-schedule-header fl">Times</h5>
     <%= time_frames(route.full_class_name) %>
     <%= content_tag(:table, id: "#{route.full_class_name}_table", class: 'table table-striped table-hover bus-stops') do %>
         <%= content_tag(:tbody) do %>

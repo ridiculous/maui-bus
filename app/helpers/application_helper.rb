@@ -15,11 +15,31 @@ module ApplicationHelper
                  rel: coords)
   end
 
-  def schedule_for(my_route, html_options={})
-    render(partial: 'regions/table', locals: {
-        html_options: html_options.merge(id: "#{my_route.full_class_name}_container"),
-        route: my_route
-    })
+  def schedule_for(route)
+    content_tag(:div, id: "#{route.full_class_name}_container",style: 'display:none;visibility:visible;') do
+      concat(content_tag(:h5, 'Times', class: 'bus-schedule-header fl'))
+      concat(time_frames(route.full_class_name))
+      concat(content_tag(:table, id: "#{route.full_class_name}_table", class: 'table table-striped table-hover bus-stops') do
+        content_tag(:tbody) do
+          concat(route.visible_stops.map do |vs|
+            content_tag(:tr) do
+              concat(content_tag(:td, class: 'row-header', style: 'max-width: 200px;font-size:12px;') do
+                if Location[vs.location]
+                  link_to_static_map(vs.name, Location[vs.location].coords)
+                else
+                  vs.name
+                end
+              end)
+              concat(route.max_stop_length.times.each_with_index.map do |s, i|
+                content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i}") do
+                  in_format(Time.zone.parse(vs.times[s])) if vs.times[s]
+                end
+              end.join.html_safe)
+            end
+          end.join.html_safe)
+        end
+      end)
+    end
   end
 
   def morning?

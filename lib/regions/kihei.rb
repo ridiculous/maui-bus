@@ -12,11 +12,13 @@ class Kihei < Region
     STOPS = [
         BusStop.new({
                         name: 'Queen Kaahumanu Mall',
-                        times: %w{5:30 6:30 7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30}
+                        times: %w{5:30 6:30 7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30},
+                        location: :queen_kaahumanu
                     }),
         BusStop.new({
                         name: 'Salvation Army',
-                        times: %w{5:35 6:35 7:35 8:35 9:35 10:35 11:35 12:35 13:35 14:35 15:35 16:35 17:35 18:35 19:35}
+                        times: %w{5:35 6:35 7:35 8:35 9:35 10:35 11:35 12:35 13:35 14:35 15:35 16:35 17:35 18:35 19:35},
+                        location: :kahului_salvation_army
                     }),
         BusStop.new({
                         name: 'Uwapo / S. Kihei Rd.',
@@ -64,7 +66,8 @@ class Kihei < Region
                     }),
         BusStop.new({
                         name: 'Salvation Army',
-                        times: %w{7:18 8:18 9:18 10:18 11:18 12:18 13:18 14:18 15:18 16:18 17:18 18:18 19:18 20:18 21:18}
+                        times: %w{7:18 8:18 9:18 10:18 11:18 12:18 13:18 14:18 15:18 16:18 17:18 18:18 19:18 20:18 21:18},
+                        location: :kahului_salvation_army
                     })
     ]
 
@@ -77,7 +80,8 @@ class Kihei < Region
     STOPS = [
         BusStop.new({
                         name: 'Maalaea Harbor Village',
-                        times: %w{6:05 7:05 8:05 9:05 10:05 11:05 12:05 13:05 14:05 15:05 16:05 17:05 18:05 19:05 20:05}
+                        times: %w{6:05 7:05 8:05 9:05 10:05 11:05 12:05 13:05 14:05 15:05 16:05 17:05 18:05 19:05 20:05},
+                        location: :maalaea_harbor
                     }),
         BusStop.new({
                         name: 'Uwapo Rd. / S. Kihei Rd.',
@@ -134,7 +138,8 @@ class Kihei < Region
                     }),
         BusStop.new({
                         name: 'Maalaea Harbor Village',
-                        times: %w{5:55 6:55 7:55 8:55 9:55 10:55 11:55 12:55 13:55 14:55 15:55 16:55 17:55 18:55 19:55 20:55}
+                        times: %w{5:55 6:55 7:55 8:55 9:55 10:55 11:55 12:55 13:55 14:55 15:55 16:55 17:55 18:55 19:55 20:55},
+                        location: :maalaea_harbor
                     })
     ]
 

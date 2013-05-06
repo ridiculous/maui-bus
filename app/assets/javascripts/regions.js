@@ -1,3 +1,5 @@
+var Schedules = {};
+
 jUtils.addEvent(window, 'load', function () {
     for (var t = 0, times = jUtils.findByClass('time-list'); t < times.length; t++) {
         jUtils.addEvent(times[t], 'click', showBusStops)
@@ -22,12 +24,9 @@ jUtils.addEvent(window, 'load', function () {
     for (var a = 0, pills = jUtils.findByClass('active'); a < pills.length; a++) {
         changeTimeFrame.call(pills[a].childNodes[0]);
     }
-});
 
-// ensure badges are visible by default ... hidden on my phone :/
-jUtils.addEvent(window, 'pageshow', function () {
-    for (var i = 0, wraps = jUtils.findByClass('badge-wrap'); i < wraps.length; i++) {
-        wraps[i].style.display = 'block';
+    for (var x = 0, nxt = jUtils.findByClass('next-stop-list'); x < nxt.length; x++) {
+        jUtils.addEvent(nxt[x], 'click', ShowNextStops);
     }
 });
 
@@ -36,16 +35,13 @@ function showBusStops() {
         , active_class = class_names.find('active')
         , route_name = this.rel
         , times_table = document.getElementById(route_name + '_container')
-        , badge_wrap = document.getElementById(route_name);
 
     if (active_class === -1) {
         this.className += ' active';
-        badge_wrap.style.display = 'none';
         times_table.style.display = 'block';
     } else {
         class_names.splice(active_class, 1);
         this.className = class_names.join(' ');
-        badge_wrap.style.display = 'block';
         times_table.style.display = 'none';
     }
 
@@ -63,7 +59,16 @@ function showStaticMap() {
     modal_body.innerHTML = '<img src="' + map_url + '" width="530" height="400" />';
     modal.className = 'modal';
 }
-var Schedules = {};
+
+function ShowNextStops() {
+    var me = document.getElementById(this.rel);
+
+    if (jUtils.hasClass(me, 'hidden-phone')) {
+        me.className = '';
+    } else {
+        me.className = 'hidden-phone hidden-tablet';
+    }
+}
 
 function changeTimeFrame() {
     var route_name = this.rel
