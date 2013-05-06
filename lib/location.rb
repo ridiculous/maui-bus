@@ -45,6 +45,11 @@ class Location
       maalaea_harbor: LocationDetail.new(*Coords::MAALAEA_HARBOR, 'Maalaea Harbor, Kihei', 96753),
       state_bldg: LocationDetail.new(*Coords::STATE_BLDG, 'State Building, Wailuku', 96793),
       state_bldg_wells_st: LocationDetail.new(*Coords::STATE_BLDG_WELLS_ST, 'State Building / Wells St., Wailuku', 96793),
+      hale_mahaolu_eono: LocationDetail.new(*Coords::HALE_MAHAOLU_EONO, 'Hale Mahaolu Eono, Lahaina', 96761),
+      lahainaluna_kuhua: LocationDetail.new(*Coords::LAHAINALUNA_KUHUA, 'Lahainaluna Rd. / Kuhua St., Lahaina', 96761),
+      lahainaluna_kuhua_across: LocationDetail.new(*Coords::LAHAINALUNA_KUHUA_ACROSS, 'Lahainaluna Rd. / Kuhua St., Lahaina', 96761),
+      liloa_hokeo: LocationDetail.new(*Coords::LILOA_HOKEO, 'Liloa St. / Hokeo St., Lahaina', 96761),
+      na_halee: LocationDetail.new(*Coords::NA_HALEE, 'Na Halee O Wainee, Lahaina', 96761),
 
       # kahului
       kahului_safeway: LocationDetail.new(*Coords::KAHULUI_SAFEWAY, 'Kamehameha Ave. / Hoohana St., Kahului', 96732),

@@ -8,6 +8,9 @@ class Lahaina < Region
     super
   end
 
+  #
+  # Lahaina Islander #20
+  #
   # basic loop adds one extra stop which is the same as the first but incremented
   class Islander < BasicLoop
     STOPS = [
@@ -49,10 +52,14 @@ class Lahaina < Region
     end
   end
 
+  #
+  # Lahaina Villager #23
+  #
+
   class Villager < BasicLoop
     STOPS = [
         BusStop.new({
-                        name: 'Wharf Cinema Center Luakini Street',
+                        name: 'Wharf Cinema Center',
                         times: %w{8:00 9:00 10:00 11:00 12:00 13:00 15:00 16:00 17:00 18:00 19:00 20:00 21:00 22:00},
                         location: :wharf_cinema
                     }),
@@ -62,9 +69,24 @@ class Lahaina < Region
                         location: :front_street_505
                     }),
         BusStop.new({
+                        name: 'Na Halee O Wainee',
+                        times: %w{8:08 9:08 10:08 11:08 12:08 13:08 15:08 16:08 17:08 18:08 19:08 20:08 21:08 22:08},
+                        location: :na_halee
+                    }),
+         BusStop.new({
                         name: 'Lahaina Aquatics Center',
                         times: %w{8:09 9:09 10:09 11:09 12:09 13:09 15:09 16:09 17:09 18:09 19:09 20:09 21:09 22:09},
                         location: :lahaina_aquatic_center
+                    }),
+        BusStop.new({
+                        name: 'Lahainaluna Rd. / Kuhua St.',
+                        times: %w{8:12 9:12 10:12 11:12 12:12 13:12 15:12 16:12 17:12 18:12 19:12 20:12 21:12 22:12},
+                        location: :lahainaluna_kuhua
+                    }),
+        BusStop.new({
+                        name: 'Liloa St. / Hokeo St.',
+                        times: %w{8:14 9:14 10:14 11:14 12:14 13:14 15:14 16:14 17:14 18:14 19:14 20:14 21:14 22:14},
+                        location: :liloa_hokeo
                     }),
         BusStop.new({
                         name: 'Kuailua Street / Kumukahi Street',
@@ -73,8 +95,18 @@ class Lahaina < Region
                     }),
         BusStop.new({
                         name: 'Kalena Street / Pikanele Street',
-                        times: %w{8:17 9:17 10:17 11:17 12:17 13:17 15:17 16:17 17:17 18:17 19:17 20:17 21:17 22:17},
+                        times: %w{8:16 9:16 10:16 11:16 12:16 13:16 15:16 16:16 17:16 18:16 19:16 20:16 21:16 22:16},
                         location: :kalena_pikanele_lahaina
+                    }),
+        BusStop.new({
+                        name: 'Hale Mahaolu Eono',
+                        times: %w{8:17 9:17 10:17 11:17 12:17 13:17 15:17 16:17 17:17 18:17 19:17 20:17 21:17 22:17},
+                        location: :hale_mahaolu_eono
+                    }),
+        BusStop.new({
+                        name: 'Lahainaluna Rd. / Kuhua St.',
+                        times: %w{8:19 9:19 10:19 11:19 12:19 13:19 15:19 16:19 17:19 18:19 19:19 20:19 21:19 22:19},
+                        location: :lahainaluna_kuhua_across
                     }),
         BusStop.new({
                         name: 'Lahaina Gateway',
@@ -109,7 +141,8 @@ class Lahaina < Region
         BusStop.new({
                         name: 'Lahaina Civic Center (back)',
                         times: %w{8:34 9:34 10:34 11:34 12:34 13:34 15:34 16:34 17:34 18:34 19:34 20:34 21:34 22:34},
-                        location: :lahaina_civic_center
+                        location: :lahaina_civic_center,
+                        destination: true
                     }),
         BusStop.new({
                         name: 'Lahaina Cannery Mall',

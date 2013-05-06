@@ -19,8 +19,20 @@ function BaseMap() {
                     map: this.map,
                     title: route_name + "\n" + bus_stops[i].name
                 };
-                new BaseMarker(this.map, gmap_options, gmap_options.title.replace(/\n/,'<br />') + '<br />' + bus_stops[i].times);
+                new BaseMarker(this.map, gmap_options, gmap_options.title.replace(/\n/, '<br />') + '<br />' + bus_stops[i].times);
             }
         }
     };
+
+    this.addRoute = function (route_obj) {
+        var direct_service = new google.maps.DirectionsService(),
+            direct_display = new google.maps.DirectionsRenderer({suppressMarkers: true});
+
+        direct_display.setMap(this.map);
+        direct_service.route(route_obj, function (result, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                direct_display.setDirections(result);
+            }
+        });
+    }
 }
