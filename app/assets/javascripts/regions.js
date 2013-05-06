@@ -1,8 +1,13 @@
 var Schedules = {};
 
 jUtils.addEvent(window, 'load', function () {
-    for (var t = 0, times = jUtils.findByClass('time-list'); t < times.length; t++) {
-        jUtils.addEvent(times[t], 'click', showBusStops)
+    jUtils.addEvent(jUtils.findByClass('time-list'), 'click', showBusStops);
+    jUtils.addEvent(jUtils.findByClass('show-static-map'), 'click', showStaticMap);
+    jUtils.addEvent(jUtils.findByClass('next-stop-list'), 'click', ShowNextStops);
+    jUtils.addEvent(jUtils.findByClass('time-frame'), 'click', changeTimeFrame);
+
+    for (var a = 0, pills = jUtils.findByClass('active'); a < pills.length; a++) {
+        changeTimeFrame.call(pills[a].childNodes[0]);
     }
 
     jUtils.addEvent(document.getElementById('close_modal'), 'click', function () {
@@ -12,29 +17,13 @@ jUtils.addEvent(window, 'load', function () {
             modal.className += ' hide';
         }, 500);
     });
-
-    for (var vs = 0, locations = jUtils.findByClass('show-static-map'); vs < locations.length; vs++) {
-        jUtils.addEvent(locations[vs], 'click', showStaticMap);
-    }
-
-    for (var i = 0, options = jUtils.findByClass('time-frame'); i < options.length; i++) {
-        jUtils.addEvent(options[i], 'click', changeTimeFrame);
-    }
-
-    for (var a = 0, pills = jUtils.findByClass('active'); a < pills.length; a++) {
-        changeTimeFrame.call(pills[a].childNodes[0]);
-    }
-
-    for (var x = 0, nxt = jUtils.findByClass('next-stop-list'); x < nxt.length; x++) {
-        jUtils.addEvent(nxt[x], 'click', ShowNextStops);
-    }
 });
 
 function showBusStops() {
     var class_names = this.className.split(/\s+/)
         , active_class = class_names.find('active')
         , route_name = this.rel
-        , times_table = document.getElementById(route_name + '_container')
+        , times_table = document.getElementById(route_name + '_container');
 
     if (active_class === -1) {
         this.className += ' active';

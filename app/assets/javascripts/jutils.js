@@ -1,14 +1,25 @@
 var jUtils = {
     addEvent: function (el, event_name, callback) {
-        if (el.addEventListener) {
-            el.addEventListener(event_name, callback);
-        } else if (el.attachEvent) {
-            el.attachEvent('on' + event_name, function() {
-                callback.call(this.target || this.event.srcElement);
-            });
+        var addHandler = function (elem) {
+            if (elem.addEventListener) {
+                elem.addEventListener(event_name, callback);
+            } else if (elem.attachEvent) {
+                elem.attachEvent('on' + event_name, function () {
+                    callback.call(this.target || this.event.srcElement);
+                });
+            } else {
+                elem[event_name] = callback;
+            }
+        };
+
+        if (typeof el[0] !== 'undefined') {
+            for (var i = 0; i < el.length; i++) {
+                addHandler(el[i])
+            }
         } else {
-            el[event_name] = callback;
+            addHandler(el)
         }
+
     },
     findByClass: function (class_name) {
         if (document.getElementsByClassName) {
