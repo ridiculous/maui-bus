@@ -62,6 +62,17 @@ class Location
 
       # Kihei
       maalaea_harbor: LocationDetail.new(*Coords::MAALAEA_HARBOR, 'Maalaea Harbor, Kihei', 96753),
+      uwapo_south_kihei: LocationDetail.new(*Coords::UWAPO_SOUTH_KIHEI, 'Uwapo Rd. / S. Kihei Rd., Kihei', 96753),
+      uwapo_south_kihei_mauka: LocationDetail.new(*Coords::UWAPO_SOUTH_KIHEI_MAUKA, 'Uwapo Rd. / S. Kihei Rd., Kihei', 96753),
+      ohukai_south_kihei: LocationDetail.new(*Coords::OHUKA_SOUTH_KIHEI, 'Ohukai Rd. / S. Kihei Rd., Kihei', 96753),
+      kaonoulu_south_kihei_makai: LocationDetail.new(*Coords::KAONOULU_SOUTH_KIHEI_MAKAI, 'Kaonoulu St. / S. Kihei Rd., Kihei', 96753),
+      kaonoulu_south_kihei: LocationDetail.new(*Coords::KAONOULU_SOUTH_KIHEI, 'Kaonoulu St. / S. Kihei Rd., Kihei', 96753),
+      kulanihakoi_south_kihei: LocationDetail.new(*Coords::KULANIHAKOI_SOUTH_KIHEI, 'Kulanihakoi St. / S. Kihei Rd., Kihei', 96753),
+      waipuilani_south_kihei: LocationDetail.new(*Coords::WAIPUILANI_SOUTH_KIHEI, 'Waipuilani Rd. / S. Kihei Rd., Kihei', 96753),
+      waipuilani_south_kihei_makai: LocationDetail.new(*Coords::WAIPUILANI_SOUTH_KIHEI_MAKAI, 'Waipuilani Rd. / S. Kihei Rd., Kihei', 96753),
+      piikea_south_kihei_across: LocationDetail.new(*Coords::PIIKEA_SOUTH_KIHEI_ACROSS, 'Piikea Ave. / S. Kihei Rd., Kihei', 96753),
+      piikea_south_kihei: LocationDetail.new(*Coords::PIIKEA_SOUTH_KIHEI, 'Piikea Ave. / S. Kihei Rd., Kihei', 96753),
+      piilani_shopping_center: LocationDetail.new(*Coords::PIILANI_SHOPPING_CENTER, 'Piilani Shopping Center, Kihei', 96753),
 
       # Wailuku
       state_bldg: LocationDetail.new(*Coords::STATE_BLDG, 'State Building, Wailuku', 96793),

@@ -59,6 +59,8 @@ jutils.js: jutils-a5d1b00aa2393c3ab274c02c67e433ad.js
 jutils/index.js: jutils-a5d1b00aa2393c3ab274c02c67e433ad.js
 kaanapali/islander.js: kaanapali/islander-21cb0d18211c6d9baed0e153a0b7debe.js
 kaanapali/islander/index.js: kaanapali/islander-21cb0d18211c6d9baed0e153a0b7debe.js
+kihei/villager.js: kihei/villager-48f226c12394432fc8b34e29908c820b.js
+kihei/villager/index.js: kihei/villager-48f226c12394432fc8b34e29908c820b.js
 kula/villager.js: kula/villager-6574576dadd73730b41fb964d4dc2b15.js
 kula/villager/index.js: kula/villager-6574576dadd73730b41fb964d4dc2b15.js
 lahaina/islander.js: lahaina/islander-91ddb56ef4920a0655f7f5faa438d9e6.js

@@ -22,24 +22,8 @@ class RegionsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @region }
     end
-  #rescue
-  #  redirect_to root_path, alert: 'Region not found'
+  rescue
+    redirect_to root_path, alert: 'Error! Maybe the region couldnt be found. Please inform @arebuckley'
   end
 
 end
-
-
-#time do
-#  20.times do |x|
-#  @regions = Region.all.sort.map { |region| Region.find(region.downcase) }
-#  @regions.each do |region|
-#    region.routes.each do |route|
-#      if route.next_stops.any?
-#        route.next_stops.each do |nxt|
-#          puts nxt
-#        end
-#      end
-#    end
-#  end
-#end
-#end
