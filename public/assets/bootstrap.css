@@ -2845,8 +2845,13 @@ table {
 }
 
 .table-striped tbody > tr:nth-child(odd) > td,
-.table-striped tbody > tr:nth-child(odd) > th {
+.table-striped tbody > tr:nth-child(odd) > th,
+.odd {
     background-color: #f9f9f9;
+}
+
+.even {
+    background: none;
 }
 
 .table-hover tbody tr:hover > td,

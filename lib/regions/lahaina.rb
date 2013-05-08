@@ -20,7 +20,7 @@ class Lahaina < Region
                         location: :queen_kaahumanu
                     }),
         BusStop.new({
-                        name: 'State Office Building and Wells St.',
+                        name: 'State Office Building / Wells St.',
                         times: %w{5:40 6:40 7:40 8:40 9:40 10:40 11:40 12:40 13:40 14:40 15:40 16:40 17:40 18:40 19:40},
                         location: :state_bldg_wells_st
                     }),
