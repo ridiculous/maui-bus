@@ -7,7 +7,7 @@ module RegionsHelper
   end
 
   def wrap_next_stop(nxt)
-    link_to_static_map("#{in_format(Time.zone.parse(nxt.time))} @ #{nxt.bus_stop.name}", nxt.bus_stop)
+    link_to_static_map("#{in_format(nxt.time)} @ #{nxt.bus_stop.name}", nxt.bus_stop)
   end
 
   def time_frames(route_name)

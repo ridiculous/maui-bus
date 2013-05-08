@@ -8731,7 +8731,9 @@ footer a:hover {
 .modal-footer {
     padding: 5px;
 }
-
+.content-wrap {
+    padding-bottom: 35px;
+}
 @media (max-width: 767px) {
     footer {
         position: static;
@@ -8760,6 +8762,10 @@ footer a:hover {
     .clearfix a {
         float: left;
         margin-bottom: 10px;
+    }
+
+    .content-wrap {
+        padding-bottom: 20px;
     }
 }
 

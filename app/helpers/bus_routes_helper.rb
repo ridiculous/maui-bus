@@ -8,7 +8,7 @@ module BusRoutesHelper
     @bus.stops.each do |my_stop|
       begin
         my_location = locations.find { |loc| loc[:name] == my_stop.name }
-        my_times = my_stop.times.map { |t| in_format(Time.zone.parse(t)) }.join(', ')
+        my_times = my_stop.future_times.map { |t| in_format(t) }.join(', ')
         if my_location
           my_location[:times] += "<br /><b>To #{origin}</b>: #{my_times}" unless origin == my_stop.name
         else
