@@ -25,11 +25,7 @@ module ApplicationHelper
     end
   end
 
-  def mobile_device?
-    @is_mobile ||= request.user_agent =~ /Mobile|webOS/
-  end
-
-  # mobile detection needs refactoring or something ... Ugh
+  # has mobile detection
   def schedule_for(route)
     reset_cycle('times_table')
     content_tag(:div, id: "#{route.full_class_name}_container", style: 'display:none;visibility:visible;') do
@@ -40,29 +36,10 @@ module ApplicationHelper
       concat(content_tag(:table, id: "#{route.full_class_name}_table", class: 'table table-hover bus-stops') do
         content_tag(:tbody) do
           concat(route.visible_stops.map do |vs|
-            content_tag(:tr, class: ('hidden' unless mobile_device?)) do
-              # full span row header
-              content_tag(:td, colspan: vs.times.length, class: 'row-header even') do
-                link_to_static_map(vs.name, vs) if mobile_device?
-              end
-            end +
-            content_tag(:tr, class: "#{mobile_device? ? 'odd' : cycle('odd', '', name: 'times_table')}") do
-
-              # row header
-              unless mobile_device?
-                concat(content_tag(:td, class: 'row-header') do
-                  link_to_static_map(vs.name, vs)
-                end)
-              end
-
-              # time cells
-              route.max_stop_length.times.each_with_index.map do |s, i|
-                css_class = "#{route.full_class_name}-time-cell-#{i}"
-                concat(content_tag(:td, class: css_class) do
-                  in_format(Time.zone.parse(vs.times[s])) if vs.times[s]
-                end)
-              end.join.html_safe
-
+            if mobile_device?
+              mobile_table_rows(route, vs)
+            else
+              table_rows(route, vs)
             end
           end.join.html_safe)
         end
@@ -72,6 +49,43 @@ module ApplicationHelper
 
   def morning?
     @_morning ||= Time.zone.now.hour < 12
+  end
+
+  def mobile_device?
+    @is_mobile ||= request.user_agent =~ /Mobile|webOS/
+  end
+
+  #
+  # NOTE: It takes 1 sec to load the full schedule, of that 500ms is spent here formatting the time :/
+  #
+
+  def time_cells(route, vs)
+    route.max_stop_length.times.each_with_index.map do |s, i|
+      concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i}") do
+        if vs.times[s]
+          in_format(Time.zone.parse(vs.times[s]))
+        end
+      end)
+    end.join.html_safe
+  end
+
+  def table_rows(route, vs)
+    content_tag(:tr, class: cycle('odd', '', name: 'times_table')) do
+      concat(content_tag(:td, class: 'row-header') do
+        link_to_static_map(vs.name, vs)
+      end)
+      time_cells(route, vs)
+    end
+  end
+
+  def mobile_table_rows(route, vs)
+    content_tag(:tr) do
+      content_tag(:td, colspan: vs.times.length, class: 'row-header even') do
+        link_to_static_map(vs.name, vs)
+      end
+    end + content_tag(:tr, class: 'odd') do
+      time_cells(route, vs)
+    end
   end
 
 end
