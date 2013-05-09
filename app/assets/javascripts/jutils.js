@@ -19,7 +19,15 @@ var jUtils = {
         } else {
             addHandler(el)
         }
-
+    },
+    removeEvent: function (elem, event_name, callback) {
+        if (elem.removeEventListener) {
+            elem.removeEventListener(event_name, callback, false);
+        } else if (elem.detachEvent) {
+            elem.detachEvent('on' + event_name, callback);
+        } else {
+            elem[event_name] = null;
+        }
     },
     findByClass: function (class_name) {
         if (document.getElementsByClassName) {
