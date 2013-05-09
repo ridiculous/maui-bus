@@ -81,22 +81,22 @@ sub {
     bottom: -0.25em;
 }
 
-/*img {*/
-/* Responsive images (ensure images don't scale beyond their parents) */
+img {
+    /*Responsive images (ensure images don't scale beyond their parents)*/
 
-/*max-width: 100%;*/
-/* Part 1: Set a maxium relative to the parent */
+    max-width: 100%;
+    /*Part 1: Set a maxium relative to the parent*/
 
-/*width: auto\9;*/
-/* IE7-8 need help adjusting responsive images */
+    width: auto\9;
+    /*IE7-8 need help adjusting responsive images*/
 
-/*height: auto;*/
-/* Part 2: Scale the height according to the width, otherwise you get stretching */
+    height: auto;
+    /*Part 2: Scale the height according to the width, otherwise you get stretching*/
 
-/*vertical-align: middle;*/
-/*border: 0;*/
-/*-ms-interpolation-mode: bicubic;*/
-/*}*/
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
 
 button,
 input {
@@ -745,7 +745,7 @@ button.close {
 
 .btn:active,
 .btn.active {
-    background-color: #cccccc       \9;
+    background-color: #cccccc        \9;
 }
 
 .btn:hover,
@@ -761,7 +761,7 @@ button.close {
 
 .btn:active,
 .btn.active {
-    background-color: #cccccc       \9;
+    background-color: #cccccc        \9;
 }
 
 .btn:first-child {
@@ -912,7 +912,7 @@ input[type="button"].btn-block {
 
 .btn-primary:active,
 .btn-primary.active {
-    background-color: #003399       \9;
+    background-color: #003399        \9;
 }
 
 .btn-primary:hover,
@@ -928,7 +928,7 @@ input[type="button"].btn-block {
 
 .btn-primary:active,
 .btn-primary.active {
-    background-color: #003399       \9;
+    background-color: #003399        \9;
 }
 
 .btn-warning {
@@ -963,7 +963,7 @@ input[type="button"].btn-block {
 
 .btn-warning:active,
 .btn-warning.active {
-    background-color: #c67605       \9;
+    background-color: #c67605        \9;
 }
 
 .btn-warning:hover,
@@ -979,7 +979,7 @@ input[type="button"].btn-block {
 
 .btn-warning:active,
 .btn-warning.active {
-    background-color: #c67605       \9;
+    background-color: #c67605        \9;
 }
 
 .btn-danger {
@@ -1014,7 +1014,7 @@ input[type="button"].btn-block {
 
 .btn-danger:active,
 .btn-danger.active {
-    background-color: #942a25       \9;
+    background-color: #942a25        \9;
 }
 
 .btn-danger:hover,
@@ -1030,7 +1030,7 @@ input[type="button"].btn-block {
 
 .btn-danger:active,
 .btn-danger.active {
-    background-color: #942a25       \9;
+    background-color: #942a25        \9;
 }
 
 .btn-success {
@@ -1065,7 +1065,7 @@ input[type="button"].btn-block {
 
 .btn-success:active,
 .btn-success.active {
-    background-color: #408140       \9;
+    background-color: #408140        \9;
 }
 
 .btn-success:hover,
@@ -1081,7 +1081,7 @@ input[type="button"].btn-block {
 
 .btn-success:active,
 .btn-success.active {
-    background-color: #408140       \9;
+    background-color: #408140        \9;
 }
 
 .btn-info {
@@ -1116,7 +1116,7 @@ input[type="button"].btn-block {
 
 .btn-info:active,
 .btn-info.active {
-    background-color: #24748c       \9;
+    background-color: #24748c        \9;
 }
 
 .btn-info:hover,
@@ -1132,7 +1132,7 @@ input[type="button"].btn-block {
 
 .btn-info:active,
 .btn-info.active {
-    background-color: #24748c       \9;
+    background-color: #24748c        \9;
 }
 
 .btn-inverse {
@@ -1167,7 +1167,7 @@ input[type="button"].btn-block {
 
 .btn-inverse:active,
 .btn-inverse.active {
-    background-color: #080808       \9;
+    background-color: #080808        \9;
 }
 
 .btn-inverse:hover,
@@ -1183,7 +1183,7 @@ input[type="button"].btn-block {
 
 .btn-inverse:active,
 .btn-inverse.active {
-    background-color: #080808       \9;
+    background-color: #080808        \9;
 }
 
 button.btn,
