@@ -19,7 +19,7 @@ module ApplicationHelper
 
     if bus_stop_location
       options[:rel] = bus_stop_location.coords
-      link_to_void("<i class='icon icon-map-marker'></i>#{name}", options)
+      link_to_void(name, options)
     else
       name
     end

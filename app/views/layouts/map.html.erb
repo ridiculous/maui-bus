@@ -8,6 +8,7 @@
   <meta name="apple-touch-fullscreen" content="yes">
 
   <title><%= @page_title || 'Maui Bus Routes' %></title>
+  <%= stylesheet_link_tag('application', media: 'all') %>
   <style type="text/css">
       html {
           height: 100%
@@ -22,9 +23,12 @@
       #map_canvas {
           height: 100%
       }
-  </style>
-  <%= stylesheet_link_tag('application', media: 'all') %>
 
+      #map_canvas img,
+      .google-maps img {
+          max-width: none;
+      }
+  </style>
   <script type="text/javascript"
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbernP0NZYEAk0kDX-Yt1z0_jJj0CkMH0&sensor=false&libraries=geometry">
   </script>
