@@ -1,1 +1,0 @@
-function Islander(e){maui.setMapName("Kaanapali Islander #25"),maui.loadBusStops(e||Locations);var t=maui.bus_stops.findObject(maui.wharf_cinema,"name"),n=new google.maps.LatLng(t.lat,t.long);maui.drawRoute(n,n,["wharf_cinema","papalaua_st","lahaina_cannery_mall","whalers_village"])}(function(){new Islander})();
