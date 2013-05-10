@@ -43,5 +43,8 @@ var jUtils = {
         } else {
             return elem.className.split(/\s+/).find(class_name) !== -1;
         }
+    },
+    getEvent: function(e) {
+        return e ? e : window.event;
     }
 };

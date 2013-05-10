@@ -34,7 +34,7 @@ function StaticMap() {
     };
 
     this.hideModalIf = function (e) {
-        if (e.keyCode === 27) {
+        if (jUtils.getEvent(e).keyCode === 27) {
             sm.hideModal();
         }
     };
