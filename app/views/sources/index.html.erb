@@ -1,0 +1,21 @@
+<div>
+  <h3 class="well app-subheader"><span class="hidden-phone">My&nbsp;</span>Sources</h3>
+
+  <div>
+    <p>
+      The bus schedule PDF
+      <b>(<a href="http://co.maui.hi.us/documents/21/BusFixRouteSchedule_201212281341180673.pdf" target="_blank">co.maui.hi.us</a>)</b>
+      is way out of
+      date but was helpful as a starting point. The map images
+      <b>(<a href="http://mobilemaplets.com/showplace/8327" target="_blank">mobilemaplets.com</a>)</b>
+      were useful for finding stops not in the PDF. Google Maps for the discovery and times of
+      stops that also weren't listed. Also their API for plotting routes!
+    </p>
+    <ul class="">
+      <li><%= link_to('Google Maps', 'https://maps.google.com/', target: '_blank') %></li>
+      <% @files.each do |f| %>
+          <li><%= link_to(f, "/sources/#{f}") %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
