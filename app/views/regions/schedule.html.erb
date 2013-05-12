@@ -19,15 +19,15 @@
               <h4 class="fl">
                 <%= link_to(route.name, show_region_path(region.class.to_s.downcase), style: 'float:none') %>
               </h4>
-              <%= link_to('<span class="icon icon-globe icon-white"></span>Map'.html_safe,
+              <%= link_to('<span class="icon icon-globe"></span>Map'.html_safe,
                           show_bus_map_path(region.class.to_s.downcase, route.class_name),
                           class: 'btn btn-success list fr mt5 mr10'
                   ) %>
-              <%= link_to_void('<span class="icon icon-time icon-white"></span>Times',
+              <%= link_to_void('<span class="icon icon-time"></span>Times',
                                class: 'btn btn-info list time-list fr mt5 mr10',
                                rel: route.full_class_name
                   ) %>
-              <%= link_to_void('<span class="icon icon-road icon-white"></span>Upcoming',
+              <%= link_to_void('<span class="icon icon-road"></span>Upcoming',
                                class: 'btn btn-info hidden-desktop list next-stop-list fr mt5 mr10',
                                rel: route.full_class_name
                   ) %>

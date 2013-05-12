@@ -8,11 +8,20 @@ jUtils.addEvent(window, 'load', function () {
     jUtils.addEvent(document.getElementById('close_modal'), 'click', SM.hideModal);
     jUtils.addEvent(jUtils.findByClass('time-frame'), 'click', changeTimeFrame);
 
+    // trigger time frames with morning/afternoon nav pill
     for (var a = 0, pills = jUtils.findByClass('active'); a < pills.length; a++) {
         changeTimeFrame.call(pills[a].childNodes[0]);
     }
 
+    // the glyphicons are the largest asset loaded so lets load it afterward as not to delay DOM +ready+
+    for (var i = 0, icons = jUtils.findByClass('icon'); i < icons.length; i++) {
+        addIconClass.call(icons[i]);
+    }
 });
+
+function addIconClass() {
+    this.className += ' icon-white';
+}
 
 function changeTimeFrame() {
     var route_name = this.rel
@@ -21,12 +30,16 @@ function changeTimeFrame() {
         , nxt = parent
         , bus = Schedules[route_name];
 
-    if (!route_name) return;
+    if (!route_name) {
+        return;
+    }
+
     if (!bus) {
         bus = new BusSchedule();
         bus.init(route_name);
         Schedules[route_name] = bus;
     }
+
     parent.className = 'active';
 
     while (nxt = nxt.nextSibling) {
