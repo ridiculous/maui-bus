@@ -5,9 +5,17 @@ class BusStop
   def initialize(options={})
     @location = options[:location]
     @times = options[:times] || []
-    @name = options[:name]
+    @name = if location && !options[:name]
+              Location[location].street
+            else
+              options[:name]
+            end
     @hidden = options[:hidden]
     @destination = options[:destination]
+  end
+
+  def transfer?
+    location && Location[location].transfer
   end
 
   def future_times(n=3)

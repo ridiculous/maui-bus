@@ -1,11 +1,9 @@
-var Schedules = {}, SM = new StaticMap(), Toga = new Toggler();
+var Schedules = {}, Toga = new Toggler();
 
 jUtils.addEvent(window, 'load', function () {
 
     jUtils.addEvent(jUtils.findByClass('time-list'), 'click', Toga.tableToggle);
     jUtils.addEvent(jUtils.findByClass('next-stop-list'), 'click', Toga.nextStopsToggle);
-    jUtils.addEvent(jUtils.findByClass('show-static-map'), 'click', SM.init);
-    jUtils.addEvent(document.getElementById('close_modal'), 'click', SM.hideModal);
     jUtils.addEvent(jUtils.findByClass('time-frame'), 'click', changeTimeFrame);
 
     // trigger time frames with morning/afternoon nav pill
@@ -15,13 +13,9 @@ jUtils.addEvent(window, 'load', function () {
 
     // the glyphicons are the largest asset loaded so lets load it afterward as not to delay DOM +ready+
     for (var i = 0, icons = jUtils.findByClass('icon'); i < icons.length; i++) {
-        addIconClass.call(icons[i]);
+        icons[i].className += ' icon-white';
     }
 });
-
-function addIconClass() {
-    this.className += ' icon-white';
-}
 
 function changeTimeFrame() {
     var route_name = this.rel

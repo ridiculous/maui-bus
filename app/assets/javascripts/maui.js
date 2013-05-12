@@ -6,6 +6,7 @@ function Maui() {
     this.bus_stops = [];
     this.way_points = [];
     this.map_name = '';
+    this.centering = false;
 
     // creates and assigns attributes for this
     this.loadBusStops = function (buses) {
@@ -27,22 +28,26 @@ function Maui() {
      * @param waypoints (Array)
      */
     this.drawRoute = function (origin, destination, waypoints) {
+        if (typeof Center !== 'undefined') {
+            this.centering = true;
+            this.centerMap();
+        } else {
+            this.setWayPoints(waypoints);
 
-        this.setWayPoints(waypoints);
+            var request = {
+                origin: origin,
+                destination: destination,
+                travelMode: google.maps.TravelMode.DRIVING,
+                waypoints: this.way_points
+            };
 
-        var request = {
-            origin: origin,
-            destination: destination,
-            travelMode: google.maps.TravelMode.DRIVING,
-            waypoints: this.way_points
-        };
-
-        this.gmap.directionsService.route(request, function (result, status) {
-            if (status == google.maps.DirectionsStatus.OK) {
-                mowee.gmap.directionsDisplay.setDirections(result);
-            }
-        });
-        this.gmap.addMarkers(this.bus_stops, this.map_name);
+            this.gmap.directionsService.route(request, function (result, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    mowee.gmap.directionsDisplay.setDirections(result);
+                }
+            });
+            this.gmap.addMarkers(this.bus_stops, this.map_name);
+        }
     };
 
     this.setWayPoints = function (waypoints) {
@@ -64,5 +69,15 @@ function Maui() {
 
     this.setMapName = function (name) {
         this.map_name = name;
+    };
+
+    this.centerMap = function () {
+        var my_center = this.bus_stops.findObject(this[Center], 'name')
+            , coords = new google.maps.LatLng(my_center.lat, my_center.long)
+            , base = this.gmap.addMarkers([my_center], this.map_name)[0];
+
+        this.gmap.map.setCenter(coords);
+        this.gmap.map.setZoom(this.gmap.map.getZoom() + 11);
+        google.maps.event.trigger(base.marker, 'click');
     }
 }

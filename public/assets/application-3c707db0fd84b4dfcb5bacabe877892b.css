@@ -2839,6 +2839,7 @@ footer a:focus,footer a:hover{text-decoration:none;background-color:transparent;
 .fr{float:right;}
 .mt5{margin-top:5px;}
 .mr5{margin-right:5px;}
+.ml5{margin-left:5px;}
 .mt10{margin-top:10px;}
 .app-subheader{padding:5px 10px;}
 .route-wrap{border-bottom:1px solid #dddddd;}

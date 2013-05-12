@@ -1,5 +1,8 @@
 <% if Rails.application.assets.find_asset(js_file = @bus.class.name.downcase.underscore) %>
     <%= javascript_tag("var Locations = #{locations_as_json}") %>
+    <% if params[:center] && params[:center].to_s.match(/\w+\z/) %>
+        <%= javascript_tag("var Center = undefined;try{Center = '#{params[:center]}'}catch(e){console.log('blah! ' + e)}") %>
+    <% end %>
     <%= javascript_include_tag(js_file) %>
 <% else %>
     <%= content_for(:map) do %>

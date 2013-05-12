@@ -30,26 +30,28 @@ function Villager(bus_stops) {
     );
 
     // additional route to complete the map
-    maui.gmap.addRoute({
-        origin: civic_coords,
-        destination: wharf_coords,
-        travelMode: google.maps.TravelMode.DRIVING,
-        avoidHighways: true,
-        waypoints: [
-            {
-                location: front_st
-            },
-            {
-                location: new google.maps.LatLng(cannery_mall.lat, cannery_mall.long)
-            },
-            {
-                location: front_st_kenui
-            },
-            {
-                location: new google.maps.LatLng(papalaua_st.lat, papalaua_st.long)
-            }
-        ]
-    });
+    if (!maui.centering) {
+        maui.gmap.addRoute({
+            origin: civic_coords,
+            destination: wharf_coords,
+            travelMode: google.maps.TravelMode.DRIVING,
+            avoidHighways: true,
+            waypoints: [
+                {
+                    location: front_st
+                },
+                {
+                    location: new google.maps.LatLng(cannery_mall.lat, cannery_mall.long)
+                },
+                {
+                    location: front_st_kenui
+                },
+                {
+                    location: new google.maps.LatLng(papalaua_st.lat, papalaua_st.long)
+                }
+            ]
+        });
+    }
 }
 // instantiate this function when loaded
 (function () {

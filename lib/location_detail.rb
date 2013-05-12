@@ -1,11 +1,8 @@
 class LocationDetail
-  attr_reader :lat, :long, :street, :zip
+  attr_reader :lat, :long, :street, :zip, :transfer
 
   def initialize(*args)
-    @lat = args[0]
-    @long = args[1]
-    @street = args[2]
-    @zip = args[3]
+    @lat, @long, @street, @zip, @transfer = *args
   end
 
   def coords

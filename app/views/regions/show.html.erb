@@ -15,9 +15,7 @@
           <h5>Upcoming Stops</h5>
           <ul class="mba-list">
             <% if route.next_stops.any? %>
-                <% route.next_stops.each do |nxt| %>
-                    <li><%= wrap_next_stop(nxt) %></li>
-                <% end %>
+                <%= upcoming_stops(route) %>
             <% else %>
                 <li>None</li>
             <% end %>

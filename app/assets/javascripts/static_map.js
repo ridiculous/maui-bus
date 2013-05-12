@@ -1,3 +1,11 @@
+/**
+ * usage:
+ *
+ * var SM = new StaticMap();
+ * jUtils.addEvent(jUtils.findByClass('show-static-map'), 'click', SM.init);
+ * jUtils.addEvent(document.getElementById('close_modal'), 'click', SM.hideModal);
+ * @constructor
+ */
 function StaticMap() {
 
     var sm = this;

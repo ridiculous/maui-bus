@@ -8,6 +8,14 @@ module ApplicationHelper
     link_to(txt.html_safe, 'javascript:;', *args)
   end
 
+  def link_to_map(txt, region_and_route, location=nil)
+    if location
+      link_to(txt, show_bus_map_path(*region_and_route, center: location))
+    else
+      content_tag(:span, txt)
+    end
+  end
+
   # @param name String
   # @param bus_stop BusStop
   def link_to_static_map(name, bus_stop)
@@ -52,7 +60,7 @@ module ApplicationHelper
   end
 
   def mobile_device?
-    @is_mobile ||= request.user_agent =~ /Mobile|webOS/
+    @is_mobile ||= params[:m] || request.user_agent =~ /Mobile|webOS/
   end
 
   #
@@ -70,22 +78,29 @@ module ApplicationHelper
   end
 
   def table_rows(route, vs)
+    path_parts = route.full_class_name.split('_')
     content_tag(:tr, class: cycle('odd', '', name: 'times_table')) do
       concat(content_tag(:td, class: 'row-header') do
-        link_to_static_map(vs.name, vs)
+        link_to_map(vs.name, path_parts, vs.location) + badges(vs)
       end)
       time_cells(route, vs)
     end
   end
 
   def mobile_table_rows(route, vs)
+    path_parts = route.full_class_name.split('_')
     content_tag(:tr) do
       content_tag(:td, colspan: vs.times.length, class: 'row-header even') do
-        link_to_static_map(vs.name, vs)
+        link_to_map(vs.name, path_parts, vs.location) + badges(vs)
       end
     end + content_tag(:tr, class: 'odd') do
       time_cells(route, vs)
     end
+  end
+
+  def badges(bus_stop)
+    content_tag(:span, 'Destination', class: (bus_stop.destination ? 'badge badge-info ml5' : 'hide')) +
+        content_tag(:span, 'Transfer', class: (bus_stop.transfer? ? 'badge badge-success ml5' : 'hide'))
   end
 
 end

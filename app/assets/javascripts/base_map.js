@@ -1,7 +1,7 @@
-function BaseMap() {
+function BaseMap(options) {
     this.Mall = new google.maps.LatLng(20.886570, -156.475375);
 
-    this.mapOptions = {
+    this.mapOptions = options || {
         zoom: 7,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         center: this.Mall
@@ -12,6 +12,7 @@ function BaseMap() {
     this.directionsDisplay.setMap(this.map);
 
     this.addMarkers = function (bus_stops, route_name) {
+        var markers = [];
         for (var i = 0; i < bus_stops.length; i++) {
             if (!bus_stops[i].hidden) {
                 var gmap_options = {
@@ -19,9 +20,10 @@ function BaseMap() {
                     map: this.map,
                     title: route_name + "\n" + bus_stops[i].name
                 };
-                new BaseMarker(this.map, gmap_options, gmap_options.title.replace(/\n/, '<br />') + '<br />' + bus_stops[i].times);
+                markers.push(new BaseMarker(this.map, gmap_options, gmap_options.title.replace(/\n/, '<br />') + '<br />' + bus_stops[i].times));
             }
         }
+        return markers;
     };
 
     this.addRoute = function (route_obj) {
