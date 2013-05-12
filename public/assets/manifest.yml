@@ -33,12 +33,12 @@ map_manifest.js: map_manifest-3db7a4c674e7ae0fa4b6b5aaac8c8569.js
 map_manifest/index.js: map_manifest-3db7a4c674e7ae0fa4b6b5aaac8c8569.js
 maui.js: maui-675749e2e0d71627a99f64c12eb9c354.js
 maui/index.js: maui-675749e2e0d71627a99f64c12eb9c354.js
-region_manifest.js: region_manifest-9d83e4079f8e101fdccf71ad7431842a.js
-region_manifest/index.js: region_manifest-9d83e4079f8e101fdccf71ad7431842a.js
+region_manifest.js: region_manifest-131446c7514c4232851f54e9d386a9d4.js
+region_manifest/index.js: region_manifest-131446c7514c4232851f54e9d386a9d4.js
 regions.js: regions-44e0c99b9ac3fb5d29ef9d71ddc46d91.js
 regions/index.js: regions-44e0c99b9ac3fb5d29ef9d71ddc46d91.js
-static_map.js: static_map-9ed13b0610e5d533a5db942398a9c42c.js
-static_map/index.js: static_map-9ed13b0610e5d533a5db942398a9c42c.js
+static_map.js: static_map-2871bb6dffd57ab85f6307561c46019b.js
+static_map/index.js: static_map-2871bb6dffd57ab85f6307561c46019b.js
 toggler.js: toggler-bc6827fd45628a7defbc171725af30d8.js
 toggler/index.js: toggler-bc6827fd45628a7defbc171725af30d8.js
 upcountry/islander.js: upcountry/islander-2c4a636cbf345b0de6b0ef262ac64237.js
