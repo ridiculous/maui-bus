@@ -4,11 +4,8 @@
   <% end %>
   <% route.buses.each_with_index do |bus, i| %>
       <%= content_tag(:div, class: "fl mr15 bus-#{i + 1}") do %>
-          <h5 class="well mini">Upcoming Stops
-            <% if route.buses.length > 1 %>
-                -
-                <%= content_tag(:span, "Bus #{i + 1}") %>
-            <% end %>
+          <h5 class="well mini">
+            Upcoming Stops<%= content_tag(:span, " - Bus #{i + 1}") if route.buses.length > 1 %>
           </h5>
           <ul class="mba-list">
             <% if bus.next_stops.any? %>
