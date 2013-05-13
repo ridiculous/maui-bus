@@ -29,7 +29,11 @@ class BusStop
   end
 
   def sorted_times
-    @_sorted_times ||= times.map { |t| Time.zone.parse(t) }.sort { |a, b| a <=> b }
+    @_sorted_times ||= self.class.sort_times(times)
+  end
+
+  def self.sort_times(timez)
+    timez.map { |t| Time.zone.parse(t) unless t.empty? }.compact.sort { |a, b| a <=> b }
   end
 
 end

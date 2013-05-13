@@ -1,21 +1,6 @@
 module ApplicationHelper
 
-  def in_format(the_time)
-    the_time.strftime('%l:%M %p')
-  end
-
-  def link_to_void(txt, *args)
-    link_to(txt.html_safe, 'javascript:;', *args)
-  end
-
-  def link_to_map(txt, region_and_route, location=nil)
-    if location
-      link_to(txt, show_bus_map_path(*region_and_route, center: location))
-    else
-      content_tag(:span, txt)
-    end
-  end
-
+  #! DEPRECATED
   # @param name String
   # @param bus_stop BusStop
   def link_to_static_map(name, bus_stop)
@@ -55,21 +40,15 @@ module ApplicationHelper
     end
   end
 
-  def morning?
-    @_morning ||= Time.zone.now.hour < 12
-  end
-
-  def mobile_device?
-    @is_mobile ||= params[:m] || request.user_agent =~ /Mobile|webOS/
-  end
-
   #
   # NOTE: It takes 1 sec to load the full schedule, of that 500ms is spent here formatting the time :/
   #
 
   def time_cells(route, vs)
+    nxt_ups = route.next_stops_as_hash
     route.max_stop_length.times.each_with_index.map do |s, i|
-      concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i}") do
+      nxt_stop = nxt_ups["#{vs.name}#{vs.times[s]}"]
+      concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}") do
         if vs.times[s]
           in_format(Time.zone.parse(vs.times[s]))
         end
@@ -99,8 +78,32 @@ module ApplicationHelper
   end
 
   def badges(bus_stop)
-    content_tag(:span, 'Destination', class: (bus_stop.destination ? 'badge badge-info ml5' : 'hide')) +
+    content_tag(:span, 'Destination', class: (bus_stop.destination ? 'badge badge-dest ml5' : 'hide')) +
         content_tag(:span, 'Transfer', class: (bus_stop.transfer? ? 'badge badge-success ml5' : 'hide'))
+  end
+
+  def morning?
+    @_morning ||= Time.zone.now.hour < 12
+  end
+
+  def mobile_device?
+    @is_mobile ||= params[:m] || request.user_agent =~ /Mobile|webOS/
+  end
+
+  def in_format(the_time)
+    the_time.strftime('%l:%M %p') if the_time
+  end
+
+  def link_to_void(txt, *args)
+    link_to(txt.html_safe, 'javascript:;', *args)
+  end
+
+  def link_to_map(txt, region_and_route, location=nil)
+    if location
+      link_to(txt, show_bus_map_path(*region_and_route, center: location))
+    else
+      content_tag(:span, txt)
+    end
   end
 
 end

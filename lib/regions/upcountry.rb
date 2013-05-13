@@ -87,12 +87,12 @@ class Upcountry < Region
                     }),
         BusStop.new({
                         name: 'Salvation Army',
-                        times: %w{7:20 8:50 10:20 11:50 13:20 14:50 16:20 17:50 19:20 20:50},
+                        times: ["7:20", "8:50", "10:20", "11:50", "13:20", "14:50", "16:20", "17:50", "19:20", "20:50", ''],
                         location: :kahului_salvation_army
                     }),
         BusStop.new({
                         name: 'Queen Kaahumanu Mall',
-                        times: %w{7:30 9:00 10:30 12:00 13:30 15:00 16:30 18:00 19:30 21:00},
+                        times: ["7:30", "9:00", "10:30", "12:00", "13:30", "15:00", "16:30", "18:00", "19:30", "21:00", ''],
                         location: :queen_kaahumanu
                     })
     ]

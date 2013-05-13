@@ -88,12 +88,12 @@ class Haiku < Region
                     }),
         BusStop.new({
                         name: 'Salvation Army',
-                        times: %w{6:48 8:18 9:48 11:18 12:48 12:18 15:48 17:18 18:48 20:18},
+                        times: ['6:48', '8:18', '9:48', '11:18', '12:48', '12:18', '15:48', '17:18', '18:48', '20:18', ''],
                         location: :kahului_salvation_army
                     }),
         BusStop.new({
                         name: 'Queen Kaahumanu Mall',
-                        times: %w{7:00 8:30 10:00 11:30 13:00 14:30 16:00 17:30 19:00 20:30},
+                        times: ['7:00', '8:30', '10:00', '11:30', '13:00', '14:30', '16:00', '17:30', '19:00', '20:30', ''],
                         location: :queen_kaahumanu
                     })
     ]

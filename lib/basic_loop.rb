@@ -2,11 +2,13 @@ class BasicLoop < BusRoute
 
   attr_reader :reversed
 
-  def initialize(name, offset=0)
+  def initialize(name, offset=0, bus_count=1, options={})
     @name = name
     @stops = self.class::STOPS.dup
     @stops << increment_times(@stops[0], offset)
     @reversed = false
+    @bus_count = bus_count
+    @options = options
   end
 
   def reverse_stops!(min=0)

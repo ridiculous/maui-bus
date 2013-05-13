@@ -33,14 +33,7 @@
                   ) %>
             </div>
             <div id="<%= route.full_class_name %>" class="hidden-tablet hidden-phone a-route">
-              <h5>Upcoming Stops</h5>
-              <ul class="mba-list">
-                <% if route.next_stops.any? %>
-                    <%= upcoming_stops(route) %>
-                <% else %>
-                    <li>None</li>
-                <% end %>
-              </ul>
+              <%= render(partial: 'upcoming_stops', locals: {route: route}) %>
             </div>
             <%= schedule_for(route) %>
           </div>

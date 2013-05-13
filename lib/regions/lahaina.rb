@@ -48,7 +48,7 @@ class Lahaina < Region
     ]
 
     def initialize(name='Lahaina Islander #20')
-      super(name, 120) # loop offset
+      super(name, 120, 2) # loop offset bus_count
     end
   end
 

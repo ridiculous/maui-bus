@@ -14,10 +14,9 @@ module RegionsHelper
     end
   end
 
-  def upcoming_stops(route)
-    path_parts = route.full_class_name.split('_')
-    route.next_stops.map do |nxt|
-      content_tag(:li, link_to_map("#{in_format(nxt.time)} @ #{nxt.bus_stop.name}", path_parts, nxt.bus_stop.location) + badges(nxt.bus_stop))
+  def upcoming_stops(bus)
+    bus.next_stops.map do |nxt|
+      content_tag(:li, link_to_map("#{in_format(nxt.time)} @ #{nxt.bus_stop.name}", bus.path_parts, nxt.bus_stop.location) + badges(nxt.bus_stop))
     end.join.html_safe
   end
 end

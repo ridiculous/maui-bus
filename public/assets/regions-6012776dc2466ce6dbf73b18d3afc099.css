@@ -1,13 +1,13 @@
 .regions .btn.list{margin-bottom:5px;}
 .back-button{float:left;margin-right:10px;}
 .bus-stops{display:table;width:100%;clear:both;}
-.bus-stops td{font-size:11px;line-height:16px;padding:4px;}
+.bus-stops td{font-size:11px;line-height:16px;padding:4px;text-align:center;}
 .bus-stops td .icon-map-marker{margin-top:-1px;cursor:pointer;}
 .mba-list{list-style:none;margin-left:10px;padding:0 0 10px 0;}
 .badge-wrap{clear:both;}
 .bus-schedule-header{margin-top:4px;}
 .mr10{margin-right:10px;}
-.bus-stops td.row-header{max-width:200px;font-size:14px;line-height:20px;}
+.bus-stops td.row-header{max-width:200px;font-size:14px;line-height:20px;text-align:left;}
 .c{clear:both;}
 footer{position:fixed;bottom:0;left:0;width:100%;background-color:#1B1B1B;background-image:-moz-linear-gradient(top, #222222, #111111);background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));background-image:-webkit-linear-gradient(top, #222222, #111111);background-image:-o-linear-gradient(top, #222222, #111111);background-image:linear-gradient(to bottom, #222222, #111111);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);border-color:#252525;color:#BBBBBB;}
 footer a:focus,footer a:hover{text-decoration:none;background-color:transparent;color:#20CF20;-o-transition:color 0.5s ease-out;-ms-transition:color 0.5s ease-out;-moz-transition:color 0.5s ease-out;-webkit-transition:color 0.5s ease-out;transition:color 0.5s ease-out;}
@@ -18,7 +18,15 @@ footer a:focus,footer a:hover{text-decoration:none;background-color:transparent;
 .fr{float:right;}
 .mt5{margin-top:5px;}
 .mr5{margin-right:5px;}
+.mr10{margin-right:10px;}
+.mr15{margin-right:15px;}
 .ml5{margin-left:5px;}
 .mt10{margin-top:10px;}
+.pad5{padding:5px;}
 .app-subheader{padding:5px 10px;}
 .route-wrap{border-bottom:1px solid #dddddd;}
+.table td.bus-1,.table td.bus-2,.bus-1 .well,.bus-2 .well{-webkit-box-shadow:inset 0 0px 5px 2px #FFF;-moz-box-shadow:inset 0 0px 5px 2px #FFF;box-shadow:inset 0 0px 5px 2px #FFF;}
+.bus-1 .well,.table td.bus-1{background-color:#F7F8E0;border:1px solid #c3c082;}
+.bus-2 .well,.table td.bus-2{background-color:#F5ECCE;border:1px solid #d9a548;}
+.table-hover tbody tr:hover>td.bus-1{background-color:#e5e29e;}
+.table-hover tbody tr:hover>td.bus-2{background-color:#e3ab72;}
