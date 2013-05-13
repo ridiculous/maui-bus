@@ -2,7 +2,9 @@ var Schedules = {}, Toga = new Toggler();
 
 jUtils.addEvent(window, 'load', function () {
 
-    jUtils.addEvent(jUtils.findByClass('time-list'), 'click', Toga.tableToggle);
+    var show_times = jUtils.findByClass('time-list');
+
+    jUtils.addEvent(show_times, 'click', Toga.tableToggle);
     jUtils.addEvent(jUtils.findByClass('next-stop-list'), 'click', Toga.nextStopsToggle);
     jUtils.addEvent(jUtils.findByClass('time-frame'), 'click', changeTimeFrame);
 
@@ -14,6 +16,18 @@ jUtils.addEvent(window, 'load', function () {
     // the glyphicons are the largest asset loaded so lets load it afterward as not to delay DOM +ready+
     for (var i = 0, icons = jUtils.findByClass('icon'); i < icons.length; i++) {
         icons[i].className += ' icon-white';
+    }
+
+    if (window.location.hash) {
+        for (var b = 0; b < show_times.length; b++) {
+            if ('#' + show_times[b].rel == window.location.hash) {
+                Toga.tableToggle.call(show_times[b]);
+            }
+        }
+    } else {
+        if (show_times.length === 1) {
+            Toga.tableToggle.call(show_times[0]);
+        }
     }
 });
 

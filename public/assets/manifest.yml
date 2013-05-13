@@ -35,10 +35,10 @@ map_manifest.js: map_manifest-9c6ab34411951ba5ee876d1f65965ff3.js
 map_manifest/index.js: map_manifest-9c6ab34411951ba5ee876d1f65965ff3.js
 maui.js: maui-786b7a06a359264321a7ec759165d14a.js
 maui/index.js: maui-786b7a06a359264321a7ec759165d14a.js
-region_manifest.js: region_manifest-25c3e62e9d429a732c325947e9a355f6.js
-region_manifest/index.js: region_manifest-25c3e62e9d429a732c325947e9a355f6.js
-regions.js: regions-bd2d0f1f32412013e3958e01cec8114e.js
-regions/index.js: regions-bd2d0f1f32412013e3958e01cec8114e.js
+region_manifest.js: region_manifest-c8dfe81dfe954c2d85a92b7b8a13d4ce.js
+region_manifest/index.js: region_manifest-c8dfe81dfe954c2d85a92b7b8a13d4ce.js
+regions.js: regions-c7aaa4cb2bd7f306e6cf0e477cedcf98.js
+regions/index.js: regions-c7aaa4cb2bd7f306e6cf0e477cedcf98.js
 static_map.js: static_map-388faba6c0661080a946c77ea38d1df7.js
 static_map/index.js: static_map-388faba6c0661080a946c77ea38d1df7.js
 toggler.js: toggler-bc6827fd45628a7defbc171725af30d8.js

@@ -3,8 +3,8 @@
 <%= render('modal') %>
 <div class="regions">
   <% @region.routes.each do |route| %>
+      <a name="<%= route.full_class_name %>"></a>
       <div class="route-wrap">
-
         <h4 class="fl mt5" style="padding-right: 10px;"><%= route.name %></h4>
 
         <div style="margin-top: 5px;margin-bottom: -5px;">

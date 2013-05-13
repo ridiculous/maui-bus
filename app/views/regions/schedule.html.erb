@@ -17,7 +17,7 @@
           <div class="route-wrap">
             <div class="clearfix">
               <h4 class="fl">
-                <%= link_to(route.name, show_region_path(region.class.to_s.downcase), style: 'float:none') %>
+                <%= link_to(route.name, show_region_path(region.class.to_s.downcase, anchor: route.full_class_name), style: 'float:none') %>
               </h4>
               <%= link_to('<span class="icon icon-globe"></span>Map'.html_safe,
                           show_bus_map_path(region.class.to_s.downcase, route.class_name),
