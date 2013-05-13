@@ -61,7 +61,19 @@ module MauiBusRoutes
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+    #
+    # rake time:zones:all
+    #
+
+    #config.time_zone = 'Alaska'         # + 1 hour
     config.time_zone = 'Hawaii'
+    #config.time_zone = 'American Samoa' # - 1 hour
+    #config.time_zone = 'Sydney' # - 4 hours
+    #config.time_zone = 'Adelaide' # - 4.5 hours
+    #config.time_zone = 'Seoul' # - 5 hours
+    #config.time_zone = 'Beijing' # - 6 hours
+
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

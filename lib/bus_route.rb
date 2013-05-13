@@ -1,8 +1,15 @@
+# The fact that Kaanapali starts up another bus in the middle of the day made this code kind of complicated ...
 class BusRoute
+  class NextStop < Struct.new(:bus_stop, :time)
+
+    def time_to_s
+      time.strftime('%-H:%M')
+    end
+
+  end
+
   attr_reader :_class_name, :name, :stops, :note, :bus_count
-
   attr_writer :buses
-
   attr_accessor :_visible_stops, :options
 
   def max_stop_length
@@ -32,30 +39,42 @@ class BusRoute
   # @return _next_stops {2D Array}
   def next_stops(count=5)
     current_time = Time.zone.now
-
-    bus_count.times.reject { |bus| options[:bus] == bus && !ready?(current_time) }.map do |bus|
-      nxt = []
-      stops.each do |my_stop|
-        my_times = if bus_count > 1 && (no_delay || ready?(current_time))
-                     BusStop.sort_times(my_stop.times.each_with_index.reject { |t, i| i % bus_count != bus }.map { |t| t[0] })
-                   else
-                     my_stop.sorted_times
-                   end
-        nxt_time = my_times.detect { |t| t >= current_time }
-        if nxt_time && !nxt.find { |nx| nx.time == nxt_time }
-          nxt << NextStop.new(my_stop, nxt_time)
+    bus_count.times.map do |bus|
+      if delayed_bus?(bus) && !bus_active?(current_time)
+        []
+      else
+        nxt = []
+        stops.each do |my_stop|
+          my_times = find_times(my_stop, bus, current_time)
+          nxt_time = my_times.detect { |t| t >= current_time }
+          if nxt_time && !nxt.find { |nx| nx.time == nxt_time }
+            nxt << NextStop.new(my_stop, nxt_time)
+          end
         end
+        nxt.sort { |a, b| a.time <=> b.time }.slice(0, count)
       end
-      nxt.sort { |a, b| a.time <=> b.time }.slice(0, count)
     end
   end
 
   def no_delay
-    !options[:delay]
+    !options[:start_time]
   end
 
-  def ready?(current_time)
-    options[:delay] && options[:delay] < current_time
+  def delayed_bus?(this_bus)
+    options[:bus] == this_bus
+  end
+
+  #! -time_advanced- is to account for upcoming stops
+  #
+  # @param current_time {ActiveSupport::TimeWithZone}
+  # @param time_advanced
+  def bus_active?(current_time, time_advanced=30.minutes)
+    is_bus_active = options[:start_time] && options[:start_time] < (current_time + time_advanced)
+    if is_bus_active && options[:end_time]
+      options[:end_time] > current_time
+    else
+      is_bus_active
+    end
   end
 
   def next_stops_as_hash
@@ -66,10 +85,22 @@ class BusRoute
     nxt_ups
   end
 
-  class NextStop < Struct.new(:bus_stop, :time)
+  def bus_about_active?(my_stop, current_time)
+    my_stop.sorted_times.detect { |t| t >= options[:start_time] && options[:end_time] > current_time }
+  end
 
-    def time_to_s
-      time.strftime('%H:%M')
+  private
+
+  def find_times(my_stop, bus, current_time)
+    if bus_count > 1 && (no_delay || bus_active?(current_time) || bus_about_active?(my_stop, current_time))
+      my_times = BusStop.sort_times(my_stop.times.each_with_index.reject { |t, i| i % bus_count != bus }.map { |t| t[0] })
+      if options[:end_time] && options[:bus] == bus
+        my_times.reject { |t| t > options[:end_time] }
+      else
+        my_times
+      end
+    else
+      my_stop.sorted_times
     end
   end
 end

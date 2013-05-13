@@ -5,7 +5,7 @@
   <% route.buses.each_with_index do |bus, i| %>
       <%= content_tag(:div, class: "fl mr15 bus-#{i + 1}") do %>
           <h5 class="well mini">Upcoming Stops
-            <% unless route.buses.length == 1 %>
+            <% if route.buses.length > 1 %>
                 &nbsp;-&nbsp;
                 <%= content_tag(:span, "Bus #{i + 1}") %>
             <% end %>
@@ -14,7 +14,7 @@
             <% if bus.next_stops.any? %>
                 <%= upcoming_stops(bus) %>
             <% else %>
-                <li>None</li>
+                <li>Nothing going on here</li>
             <% end %>
           </ul>
       <% end %>

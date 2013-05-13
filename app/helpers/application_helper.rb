@@ -47,6 +47,7 @@ module ApplicationHelper
   def time_cells(route, vs)
     nxt_ups = route.next_stops_as_hash
     route.max_stop_length.times.each_with_index.map do |s, i|
+
       nxt_stop = nxt_ups["#{vs.name}#{vs.times[s]}"]
       concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}") do
         if vs.times[s]
