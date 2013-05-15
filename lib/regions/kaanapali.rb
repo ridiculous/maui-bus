@@ -48,7 +48,7 @@ class Kaanapali < Region
     ]
 
     def initialize(name='Kaanapali Islander #25')
-      super(name, 2, {start_time: Time.zone.parse('14:30'), end_time: Time.zone.parse('17:31'), bus: 1}) # route, bus_count, and delay bus #2 until 2:30pm
+      super(name, 2, {start_time: Time.parse('14:30').in_time_zone(Time.zone), end_time: Time.parse('17:31').in_time_zone(Time.zone), bus: 1}) # route, bus_count, and delay bus #2 until 2:30pm
     end
   end
 

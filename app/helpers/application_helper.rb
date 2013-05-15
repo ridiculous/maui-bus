@@ -47,11 +47,11 @@ module ApplicationHelper
   def time_cells(route, vs)
     nxt_ups = route.next_stops_as_hash
     route.max_stop_length.times.each_with_index.map do |s, i|
-
-      nxt_stop = nxt_ups["#{vs.name}#{vs.times[s]}"]
+      my_time = vs.times[s]
+      nxt_stop = nxt_ups["#{vs.name}#{my_time}"]
       concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}") do
-        if vs.times[s]
-          in_format(Time.zone.parse(vs.times[s]))
+        if my_time && !my_time.empty?
+          in_format(Time.parse(my_time).in_time_zone(Time.zone))
         end
       end)
     end.join.html_safe
