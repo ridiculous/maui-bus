@@ -51,7 +51,7 @@ module ApplicationHelper
       nxt_stop = nxt_ups["#{vs.name}#{my_time}"]
       concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}") do
         if my_time && !my_time.empty?
-          in_format(Time.parse(my_time).in_time_zone(Time.zone))
+          in_format(DateTime.parse(my_time))
         end
       end)
     end.join.html_safe

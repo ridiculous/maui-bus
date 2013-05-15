@@ -33,7 +33,7 @@ class BusStop
   end
 
   def self.sort_times(timez)
-    timez.map { |t| Time.parse(t).in_time_zone(Time.zone) unless t.empty? }.compact.sort { |a, b| a <=> b }
+    timez.map { |t| DateTime.parse(t) unless t.empty? }.compact.sort { |a, b| a <=> b }
   end
 
 end
