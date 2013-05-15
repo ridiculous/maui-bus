@@ -38,7 +38,8 @@ class BusRoute
 
   # @return _next_stops {2D Array}
   def next_stops(count=5)
-    current_time = Time.zone.now
+    current_time = DateTime.now.change(offset: '+0000')
+
     bus_count.times.map do |bus|
       if delayed_bus?(bus) && !bus_active?(current_time)
         []
