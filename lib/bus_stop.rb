@@ -29,7 +29,7 @@ class BusStop
   end
 
   def sorted_times
-    @_sorted_times ||= self.class.sort_times(times)
+    self.class.sort_times(times)
   end
 
   def self.sort_times(timez)
