@@ -10,7 +10,6 @@ class Kahului < Region
   class Loop5 < BasicRoute
     STOPS = [
         BusStop.new({
-                        name: 'Queen Kaahumanu Mall',
                         times: %w{6:30 7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30 20:30},
                         location: :queen_kaahumanu
                     }),
@@ -19,15 +18,19 @@ class Kahului < Region
                         times: %w{6:38 7:38 8:38 9:38 10:38 11:38 12:38 13:38 14:38 15:38 16:38 17:38 18:38 19:38 20:38}
                     }),
         BusStop.new({
-                        name: 'Roselani Place',
-                        times: %w{6:41 7:41 8:41 9:41 10:41 11:41 12:41 13:41 14:41 15:41 16:41 17:41 18:41 19:41 20:41}
+                        times: %w{6:41 7:41 8:41 9:41 10:41 11:41 12:41 13:41 14:41 15:41 16:41 17:41 18:41 19:41 20:41},
+                        location: :roselani_place
+                    }),
+        BusStop.new({
+                        times: %w{6:42 7:42 8:42 9:42 10:42 11:42 12:42 13:42 14:42 15:42 16:42 17:42 18:42 19:42 20:42},
+                        location: :papa_ave_kea_st
                     }),
         BusStop.new({
                         name: 'Onehee Ave. / S. Papa Ave.',
                         times: %w{6:44 7:44 8:44 9:44 10:44 11:44 12:44 13:44 14:44 15:44 16:44 17:44 18:44 19:44 20:44}
                     }),
         BusStop.new({
-                        name: 'Hale Mahaolu Elua',
+                        name: 'Hale Mahaolu Elua', #location: :hale_mahaolu_elua
                         times: %w{6:47 7:47 8:47 9:47 10:47 11:47 12:47 13:47 14:47 15:47 16:47 17:47 18:47 19:47 20:47}
                     }),
         BusStop.new({
@@ -64,7 +67,6 @@ class Kahului < Region
                         times: ["7:17", "8:17", "9:17", "10:17", "11:17", "12:17", "13:17", "14:17", "15:17", "16:17", "17:17", "18:17", "19:17", "20:17", '']
                     }),
         BusStop.new({
-                        name: 'Queen Kaahumanu Mall',
                         times: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30", "16:30", "17:30", "18:30", "19:30", "20:30", ''],
                         location: :queen_kaahumanu
                     })
@@ -79,7 +81,6 @@ class Kahului < Region
   class Loop6 < BasicRoute
     STOPS = [
         BusStop.new({
-                        name: 'Queen Kaahumanu Mall',
                         times: %w{7:00 8:00 9:00 10:00 11:00 12:00 13:00 14:00 15:00 16:00 17:00 18:00 19:00 20:00 21:00},
                         location: :queen_kaahumanu
                     }),
@@ -125,15 +126,14 @@ class Kahului < Region
                         times: %w{7:43 8:43 9:43 10:43 11:43 12:43 13:43 14:43 15:43 16:43 17:43 18:43 19:43 20:43 21:43}
                     }),
         BusStop.new({
-                        name: 'Roselani Place',
-                        times: %w{7:45 8:45 9:45 10:45 11:45 12:45 13:45 14:45 15:45 16:45 17:45 18:45 19:45 20:45 21:45}
+                        times: %w{7:45 8:45 9:45 10:45 11:45 12:45 13:45 14:45 15:45 16:45 17:45 18:45 19:45 20:45 21:45},
+                        location: :roselani_place_across
                     }),
         BusStop.new({
                         name: 'Harbor Lights / UH Maui College',
                         times: %w{7:48 8:48 9:48 10:48 11:48 12:48 13:48 14:48 15:48 16:48 17:48 18:48 19:48 20:48 21:48}
                     }),
         BusStop.new({
-                        name: 'Queen Kaahumanu Mall',
                         times: %w{8:00 9:00 10:00 11:00 12:00 13:00 14:00 15:00 16:00 17:00 18:00 19:00 20:00 21:00 22:00},
                         location: :queen_kaahumanu
                     })

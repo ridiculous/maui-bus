@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  #! DEPRECATED
+  #! DEPRECATED (kinda useful still)
   # @param name String
   # @param bus_stop BusStop
   def link_to_static_map(name, bus_stop)
@@ -14,7 +14,7 @@ module ApplicationHelper
       options[:rel] = bus_stop_location.coords
       link_to_void(name, options)
     else
-      name
+      name.html_safe
     end
   end
 
@@ -61,6 +61,7 @@ module ApplicationHelper
     path_parts = route.full_class_name.split('_')
     content_tag(:tr, class: cycle('odd', '', name: 'times_table')) do
       concat(content_tag(:td, class: 'row-header') do
+        # link_to_static_map(vs.name, vs)
         link_to_map(vs.name, path_parts, vs.location) + badges(vs)
       end)
       time_cells(route, vs)

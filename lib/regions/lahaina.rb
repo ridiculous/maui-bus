@@ -25,6 +25,10 @@ class Lahaina < Region
                         location: :state_bldg_wells_st
                     }),
         BusStop.new({
+                        times: %w{5:45 6:45 7:45 8:45 9:45 10:45 11:45 12:45 13:45 14:45 15:45 16:45 17:45 18:45 19:45},
+                        location: :waikapu
+                    }),
+        BusStop.new({
                         name: 'Maalaea Harbor Village',
                         times: %w{5:55 6:55 7:55 8:55 9:55 10:55 11:55 12:55 13:55 14:55 15:55 16:55 17:55 18:55 19:55},
                         location: :maalaea_harbor
@@ -39,6 +43,10 @@ class Lahaina < Region
                         name: 'Maalaea Harbor Village',
                         times: %w{7:05 8:05 9:05 10:05 11:05 12:05 13:05 14:05 15:05 16:05 17:05 18:05 19:05 20:05 21:05},
                         location: :maalaea_harbor
+                    }),
+         BusStop.new({
+                        times: %w{7:15 8:15 9:15 10:15 11:15 12:15 13:15 14:15 15:15 16:15 17:15 18:15 19:15 20:15 21:15},
+                        location: :waikapu
                     }),
         BusStop.new({
                         name: 'State Office Building',

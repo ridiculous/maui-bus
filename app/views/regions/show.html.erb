@@ -1,6 +1,6 @@
 <%= content_for(:title) { "#{params[:name].titleize} | Maui Bus Routes" } %>
 <h3 class="well app-subheader">Routes for <%= params[:name].titleize %></h3>
-<%= render('modal') %>
+<%#= render('modal') %>
 <div class="regions">
   <% @region.routes.each do |route| %>
       <a name="<%= route.full_class_name %>"></a>

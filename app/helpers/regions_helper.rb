@@ -16,6 +16,7 @@ module RegionsHelper
 
   def upcoming_stops(bus)
     bus.next_stops.map do |nxt|
+      # content_tag(:li, link_to_static_map("#{in_format(nxt.time)} @ #{nxt.bus_stop.name}", nxt.bus_stop) + badges(nxt.bus_stop))
       content_tag(:li, link_to_map("#{in_format(nxt.time)} @ #{nxt.bus_stop.name}", bus.path_parts, nxt.bus_stop.location) + badges(nxt.bus_stop))
     end.join.html_safe
   end
