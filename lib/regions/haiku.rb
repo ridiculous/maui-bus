@@ -47,7 +47,7 @@ class Haiku < Region
                     }),
         BusStop.new({
                         name: 'Kuau Mart',
-                        times: %w{5:56 7:26 8:56 10:26 11:56 13:26 16:56 16:26 17:56 19:26 20:56},
+                        times: %w{5:56 7:26 8:56 10:26 11:56 13:26 14:56 16:26 17:56 19:26 20:56},
                         location: :kuau_mart
                     }),
         BusStop.new({
