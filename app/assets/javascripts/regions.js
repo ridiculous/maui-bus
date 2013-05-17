@@ -1,11 +1,11 @@
-var Schedules = {}, Toga = new Toggler(), SM = new StaticMap();
+var Schedules = {}, Toga = new Toggler(); //, SM = new StaticMap()
 
 jUtils.addEvent(window, 'load', function () {
 
     var show_times = jUtils.findByClass('time-list');
 
-    jUtils.addEvent(jUtils.findByClass('show-static-map'), 'click', SM.init);
-    jUtils.addEvent(document.getElementById('close_modal'), 'click', SM.hideModal);
+//    jUtils.addEvent(jUtils.findByClass('show-static-map'), 'click', SM.init);
+//    jUtils.addEvent(document.getElementById('close_modal'), 'click', SM.hideModal);
     jUtils.addEvent(show_times, 'click', Toga.tableToggle);
     jUtils.addEvent(jUtils.findByClass('next-stop-list'), 'click', Toga.nextStopsToggle);
     jUtils.addEvent(jUtils.findByClass('time-frame'), 'click', changeTimeFrame);
