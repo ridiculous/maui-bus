@@ -1,18 +1,10 @@
 <div class="regions">
   <h3 class="well app-subheader">Pick a Region</h3>
-  <ul class="inline">
+  <ul class="inline" style="margin-bottom: 17px;">
     <% @regions.each do |region| %>
         <li><%= link_to(region, show_region_path(region.downcase), class: 'btn list btn-large') %></li>
     <% end %>
   </ul>
-  <div>
-    <h3 class="well app-subheader" style="font-size: 14px;line-height: 22px;">
-      $2 GENERAL BOARDING <span style="font-weight: normal">- All Routes (including Commuter and ADA Paratransit Service).
-      There will be no charge for transfers to other Maui Bus commuter routes.
-      See the <%= link_to('Maui County site', 'http://www.co.maui.hi.us/index.aspx?NID=609', target: '_blank') %>
-      more information on <%= link_to('buses', 'http://www.co.maui.hi.us/index.aspx?NID=606', target: '_blank') %>
-      and <%= link_to('commuter routes', 'http://www.co.maui.hi.us/index.aspx?NID=608', target: '_blank') %>.
-    </span>
-    </h3>
-  </div>
+  <%= render('general_info') %>
+  <%= render('insight') %>
 </div>

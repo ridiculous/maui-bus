@@ -7,8 +7,8 @@
     <% end %>
   </ul>
   <div class="c"></div>
+  <b>$2 GENERAL BOARDING </b>- All Routes
 </div>
-
 <div style="padding-bottom: 30px;">
   <% @regions.each do |region| %>
       <a name="<%= region.class.to_s.downcase %>"></a>
@@ -41,4 +41,5 @@
   <% end %>
 </div>
 <%#= render('modal') %>
+<%= render('insight') %>
 <%= javascript_include_tag(:region_manifest) %>

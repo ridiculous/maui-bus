@@ -2853,6 +2853,7 @@ footer a:focus,footer a:hover{text-decoration:none;background-color:transparent;
 .mr15{margin-right:15px;}
 .ml5{margin-left:5px;}
 .mt10{margin-top:10px;}
+.mb10{margin-bottom:10px;}
 .pad5{padding:5px;}
 .app-subheader{padding:5px 10px;}
 .route-wrap{border-bottom:1px solid #dddddd;}
@@ -2861,3 +2862,4 @@ footer a:focus,footer a:hover{text-decoration:none;background-color:transparent;
 .bus-2 .well,.table td.bus-2{background-color:#F5ECCE;border:1px solid #d9a548;}
 .table-hover tbody tr:hover>td.bus-1{background-color:#e5e29e;}
 .table-hover tbody tr:hover>td.bus-2{background-color:#e3ab72;}
+.comment{font-size:14px;line-height:22px;font-weight:normal;margin-bottom:0;}
