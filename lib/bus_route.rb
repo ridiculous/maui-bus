@@ -1,5 +1,7 @@
 # The fact that Kaanapali starts up another bus in the middle of the day made this code kind of complicated ...
 class BusRoute
+  TIME_ADVANCED = 30.minutes
+
   class NextStop < Struct.new(:bus_stop, :time)
 
     def time_to_s
@@ -68,7 +70,7 @@ class BusRoute
   #
   # @param current_time {ActiveSupport::TimeWithZone}
   # @param time_advanced
-  def bus_active?(current_time, time_advanced=30.minutes)
+  def bus_active?(current_time, time_advanced=TIME_ADVANCED)
     is_bus_active = options[:start_time] && options[:start_time] < (current_time + time_advanced)
     if is_bus_active && options[:end_time]
       options[:end_time] > current_time
@@ -85,14 +87,14 @@ class BusRoute
     nxt_ups
   end
 
-  def bus_about_active?(my_stop, current_time)
-    my_stop.sorted_times.detect { |t| t >= options[:start_time] && options[:end_time] > current_time }
+  def bus_about_active?(current_time)
+    current_time < options[:end_time] && current_time >= options[:start_time] - TIME_ADVANCED
   end
 
   private
 
   def find_times(my_stop, bus, current_time)
-    if bus_count > 1 && (no_delay || bus_active?(current_time) || bus_about_active?(my_stop, current_time))
+    if bus_count > 1 && (no_delay || bus_active?(current_time) || bus_about_active?(current_time))
       my_times = BusStop.sort_times(my_stop.times.each_with_index.reject { |t, i| i % bus_count != bus }.map { |t| t[0] })
       if options[:end_time] && options[:bus] == bus
         my_times.reject { |t| t > options[:end_time] }
