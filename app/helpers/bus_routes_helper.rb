@@ -3,7 +3,7 @@ module BusRoutesHelper
   def locations_as_json
     locations = []
     origin = @bus.stops[0].name
-    destination = @bus.stops.detect { |s| s.destination }.name
+    destination = @bus.stops.detect { |s| s.destination }.name # determines the "To: ..." in map marker bubble
     destination_reached = false
     @bus.stops.each do |my_stop|
       begin

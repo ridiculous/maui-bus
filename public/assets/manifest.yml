@@ -21,6 +21,10 @@ jutils.js: jutils-e597511339935233eae411117737fb2b.js
 jutils/index.js: jutils-e597511339935233eae411117737fb2b.js
 kaanapali/islander.js: kaanapali/islander-21cb0d18211c6d9baed0e153a0b7debe.js
 kaanapali/islander/index.js: kaanapali/islander-21cb0d18211c6d9baed0e153a0b7debe.js
+kahului/loop5.js: kahului/loop5-a70ebd420a8ff6fd793eaa821ffcc4b7.js
+kahului/loop5/index.js: kahului/loop5-a70ebd420a8ff6fd793eaa821ffcc4b7.js
+kahului/loop6.js: kahului/loop6-b8e72c5789608423e008ace9133a8f9f.js
+kahului/loop6/index.js: kahului/loop6-b8e72c5789608423e008ace9133a8f9f.js
 kihei/islander.js: kihei/islander-ab2f0022ad434f68131c5e5ae157ee7e.js
 kihei/islander/index.js: kihei/islander-ab2f0022ad434f68131c5e5ae157ee7e.js
 kihei/villager.js: kihei/villager-48f226c12394432fc8b34e29908c820b.js
@@ -45,6 +49,10 @@ toggler.js: toggler-bc6827fd45628a7defbc171725af30d8.js
 toggler/index.js: toggler-bc6827fd45628a7defbc171725af30d8.js
 upcountry/islander.js: upcountry/islander-2c4a636cbf345b0de6b0ef262ac64237.js
 upcountry/islander/index.js: upcountry/islander-2c4a636cbf345b0de6b0ef262ac64237.js
+wailuku/loop1.js: wailuku/loop1-9f95f5aefa95decaa76ade58d40ca7bd.js
+wailuku/loop1/index.js: wailuku/loop1-9f95f5aefa95decaa76ade58d40ca7bd.js
+wailuku/loop2.js: wailuku/loop2-d252e46a02a693bc93aa76d07f1b63dd.js
+wailuku/loop2/index.js: wailuku/loop2-d252e46a02a693bc93aa76d07f1b63dd.js
 BusFixRouteSchedule_201212281341180673.pdf: BusFixRouteSchedule_201212281341180673-dede1879470b23b26dcb331e808fa412.pdf
 BusFixRouteSchedule_201212281341180673/index.pdf: BusFixRouteSchedule_201212281341180673-dede1879470b23b26dcb331e808fa412.pdf
 haiku_islander.jpg: haiku_islander-941ec749733ca324c0b321426c231658.jpg

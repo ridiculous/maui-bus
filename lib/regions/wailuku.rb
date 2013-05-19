@@ -68,7 +68,8 @@ class Wailuku < Region
                     }),
         BusStop.new({
                         times: %w{7:10 8:10 9:10 10:10 11:10 12:10 13:10 14:10 15:10 16:10 17:10 18:10 19:10 20:10 21:10},
-                        location: :waiehu_heights_aukai
+                        location: :waiehu_heights_aukai,
+                        destination: true
                     }),
         BusStop.new({
                         times: %w{7:11 8:11 9:11 10:11 11:11 12:11 13:11 14:11 15:11 16:11 17:11 18:11 19:11 20:11 21:11},
@@ -143,7 +144,8 @@ class Wailuku < Region
                     }),
         BusStop.new({
                         times: %w{7:16 8:16 9:16 10:16 11:16 12:16 13:16 14:16 15:16 16:16 17:16 18:16 19:16 20:16 21:16},
-                        location: :waiehu_heights_aukai
+                        location: :waiehu_heights_aukai,
+                        destination: true
                     }),
         BusStop.new({
                         times: %w{7:17 8:17 9:17 10:17 11:17 12:17 13:17 14:17 15:17 16:17 17:17 18:17 19:17 20:17 21:17},

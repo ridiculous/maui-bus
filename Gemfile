@@ -18,6 +18,11 @@ group :development, :test do
   gem 'rails-dev-boost'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'debugger'
+end
+
+group :test do
+  gem 'rspec-rails'
 end
 
 gem 'jquery-rails'
@@ -28,18 +33,11 @@ gem 'less-rails' # Sprockets (what Rails 3.1 uses for its asset pipeline) suppor
 gem 'twitter-bootstrap-rails'
 gem 'newrelic_rpm'
 
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
