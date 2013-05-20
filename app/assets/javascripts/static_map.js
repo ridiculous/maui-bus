@@ -2,8 +2,8 @@
  * usage:
  *
  * var SM = new StaticMap();
- * jUtils.addEvent(jUtils.findByClass('show-static-map'), 'click', SM.init);
- * jUtils.addEvent(document.getElementById('close_modal'), 'click', SM.hideModal);
+ * $.addEvent($.findByClass('show-static-map'), 'click', SM.init);
+ * $.addEvent(document.getElementById('close_modal'), 'click', SM.hideModal);
  * @constructor
  */
 function StaticMap() {
@@ -24,14 +24,14 @@ function StaticMap() {
         sm.$modal_body.innerHTML = '<img src="' + this_map_url + '" width="530" height="400" />';
         sm.$modal.className = 'modal';
         setTimeout(function () {
-            jUtils.addEvent(document, 'keyup', sm.hideModalIf);
+            $.addEvent(document, 'keyup', sm.hideModalIf);
         }, 300);
     };
 
     this.hideModal = function () {
 
         // remove the binding after we've used it
-        jUtils.removeEvent(document, 'keyup', sm.hideModalIf);
+        $.removeEvent(document, 'keyup', sm.hideModalIf);
 
         // triggers slide up animation
         sm.$modal.className += ' fade';
@@ -43,7 +43,7 @@ function StaticMap() {
     };
 
     this.hideModalIf = function (e) {
-        if (jUtils.getEvent(e).keyCode === 27) {
+        if ($.getEvent(e).keyCode === 27) {
             sm.hideModal();
         }
     };

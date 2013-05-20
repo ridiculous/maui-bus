@@ -13,7 +13,7 @@ footer{position:fixed;bottom:0;left:0;width:100%;background-color:#1B1B1B;backgr
 footer a:focus,footer a:hover{text-decoration:none;background-color:transparent;color:#20CF20;-o-transition:color 0.5s ease-out;-ms-transition:color 0.5s ease-out;-moz-transition:color 0.5s ease-out;-webkit-transition:color 0.5s ease-out;transition:color 0.5s ease-out;}
 .modal-footer{padding:5px;}
 .content-wrap{padding-bottom:35px;}
-@media (max-width:767px){footer{position:static;} .navbar .brand{padding-left:0;padding-right:0;margin:0;} .navbar-inner{padding-left:10px;padding-right:10px;} .navbar .nav>li>a{padding-right:0;} .route-wrap h4{float:none;} .clearfix a{float:left;margin-bottom:10px;} .content-wrap{padding-bottom:20px;}}.schedule-nav-pills{float:left;margin-left:20px;margin-bottom:0;}
+@media (max-width:767px){footer{position:static;} .navbar .brand{padding-left:0;padding-right:0;margin:0;} .navbar-inner{padding-left:10px;padding-right:10px;} .route-wrap h4{float:none;} .clearfix a{float:left;margin-bottom:10px;} .content-wrap{padding-bottom:20px;}}.schedule-nav-pills{float:left;margin-left:20px;margin-bottom:0;}
 .fl{float:left;}
 .fr{float:right;}
 .mt5{margin-top:5px;}
