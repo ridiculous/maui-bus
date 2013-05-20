@@ -1,15 +1,26 @@
 class Location
 
+  ZIP_CODES = {
+      96708 => 'Haiku',
+      96732 => 'Kahului',
+      96753 => 'Kihei',
+      96790 => 'Kula',
+      96761 => 'Lahaina',
+      96768 => 'Makawao',
+      96779 => 'Paia',
+      96793 => 'Wailuku'
+  }
+
   #  <# latitude, longitude, address, zip >
   LIST = {
       # Kahului
       queen_kaahumanu: Detail.new(20.886570, -156.475375, 'Queen Kaahumanu Mall', 96732, true),
       queen_kaahumanu_back: Detail.new(20.884325, -156.476362, 'W Wakea Street / Queen Kaahumanu Mall', 96732),
-      kahului_salvation_army: Detail.new(20.88789, -156.4676064, '45 W Kamehameha Ave', 96732),
-      kahului_salvation_army_across: Detail.new(20.888100, -156.467757, '45 W Kamehameha Ave', 96732),
+      kahului_salvation_army: Detail.new(20.88789, -156.4676064, 'Salvation Army', 96732),
+      kahului_salvation_army_across: Detail.new(20.888100, -156.467757, 'Salvation Army', 96732),
       kahului_airport: Detail.new(20.8943, -156.4377, 'Airport Pick-up Zone #3', 96732),
-      kahului_safeway: Detail.new(20.889237, -156.464077, 'Kamehameha Ave. / Hoohana St.', 96732),
-      kahului_safeway_across: Detail.new(20.889402, -156.464152, 'Kamehameha Ave. / Maui Mall Entrance', 96732),
+      kahului_safeway: Detail.new(20.889237, -156.464077, 'Kahului Safeway', 96732),
+      kahului_safeway_across: Detail.new(20.889402, -156.464152, 'Safeway / Maui Mall Entrance', 96732),
       papa_ave_kea_st: Detail.new(20.882790, -156.485657, 'Papa Ave. / Kea St.', 96732),
       papa_ave_kea_across: Detail.new(20.882741, -156.485586, 'Papa Ave. / Kea St.', 96732),
       roselani_place: Detail.new(20.887098, -156.484196, 'Roselani Place', 96732),
@@ -38,55 +49,55 @@ class Location
       onehee_papa_ave: Detail.new(20.877629, -156.482206, 'Onehee / S. Papa Ave.', 96732),
 
       # Makawao
-      pukalani_terrace: Detail.new(20.838579, -156.341693, '55 Pukalani St, Pukalani', 96768, true),
-      makawao_library: Detail.new(20.853548, -156.310623, '1159 Makawao Ave, Makawao', 96768),
-      haliimaile: Detail.new(20.868697, -156.338598, 'Haliimaile Park, Makawao', 96768),
-      koehana_place_makawao: Detail.new(20.838378, -156.326630, 'Koehana Place / Makawao Ave, Makawao', 96768),
-      longs_pukalani: Detail.new(20.823136, -156.329269, 'Aapueo Parkway / Kula Highway, Pukalani', 96768),
+      pukalani_terrace: Detail.new(20.838579, -156.341693, 'Pukalani Terrace', 96768, true),
+      makawao_library: Detail.new(20.853548, -156.310623, 'Makawao Library', 96768),
+      haliimaile: Detail.new(20.868697, -156.338598, 'Haliimaile Park', 96768),
+      koehana_place_makawao: Detail.new(20.838378, -156.326630, 'Koehana Place / Makawao Ave', 96768),
+      longs_pukalani: Detail.new(20.823136, -156.329269, 'Longs Drugs Store / Kula Highway', 96768),
+      alana_place_makawao: Detail.new(20.844813, -156.320190, 'Alana Place / Makawao Ave', 96768),
+      poalima_place_makawao: Detail.new(20.846347, -156.319157, 'Poalima Place / Makawao Ave', 96768),
+      makani_road_makawao: Detail.new(20.848289, -156.317975, 'Makani Road / Makawao Ave', 96768),
+      eddie_tam: Detail.new(20.850275, -156.315563, 'Mahola St / Makawao Ave (Eddie Tam)', 96768),
 
       # Paia
-      paia_charleys: Detail.new(20.916779, -156.380424, 'Luna Lane / [181] Hana Highway, Paia', 96779),
-      paia_entrance: Detail.new(20.915426, -156.383058, '134 Hana Highway, Paia', 96779),
-      kuau_mart: Detail.new(20.927542, -156.366777, 'Kuau Mart, Paia', 96779),
-      alana_place_makawao: Detail.new(20.844813, -156.320190, 'Alana Place / Makawao Ave, Makawao', 96779),
-      poalima_place_makawao: Detail.new(20.846347, -156.319157, 'Poalima Place / Makawao Ave, Makawao', 96779),
-      makani_road_makawao: Detail.new(20.848289, -156.317975, 'Makani Road / Makawao Ave, Makawao', 96779),
-      eddie_tam: Detail.new(20.850275, -156.315563, 'Mahola St / Makawao Ave (Eddie Tam), Makawao', 96779),
+      paia_charleys: Detail.new(20.916779, -156.380424, "Charley's Restaurant", 96779),
+      paia_entrance: Detail.new(20.915426, -156.383058, '134 Hana Highway', 96779),
+      kuau_mart: Detail.new(20.927542, -156.366777, 'Kuau Mart', 96779),
 
       # Kula
-      waimele_place_kula: Detail.new(20.791424, -156.324731, 'Lower Kula Rd. / Waimele Place, Kula', 96790),
-      lower_kimo_drive: Detail.new(20.787352, -156.325396, 'Lower Kula Rd. / Lower Kimo Dr., Kula', 96790),
-      kula_hardware: Detail.new(20.776915, -156.325844, 'Kula Hardware, Kula', 96790),
-      kula_community_center: Detail.new(20.763643, -156.326635, 'Kula Community Center, Kula', 96790),
-      kula_gym: Detail.new(20.759625, -156.327381, 'Kula Community Center, Kula', 96790),
-      naalae_road: Detail.new(20.749447, -156.329543, 'Lower Kula Rd. / Naalae Rd., Kula', 96790),
-      rice_park: Detail.new(20.741641, -156.332327, 'Rice Park, Kula', 96790),
+      waimele_place_kula: Detail.new(20.791424, -156.324731, 'Lower Kula Rd. / Waimele Place', 96790),
+      lower_kimo_drive: Detail.new(20.787352, -156.325396, 'Lower Kula Rd. / Lower Kimo Dr.', 96790),
+      kula_hardware: Detail.new(20.776915, -156.325844, 'Kula Hardware', 96790),
+      kula_community_center: Detail.new(20.763643, -156.326635, 'Kula Community Center', 96790),
+      kula_gym: Detail.new(20.759625, -156.327381, 'Kula Community Center', 96790),
+      naalae_road: Detail.new(20.749447, -156.329543, 'Lower Kula Rd. / Naalae Rd.', 96790),
+      rice_park: Detail.new(20.741641, -156.332327, 'Rice Park', 96790),
 
       # Haiku
-      haiku_marketplace: Detail.new(20.913502, -156.322564, '810 Haiku Road, Haiku', 96708),
-      haiku_community_center: Detail.new(20.929556, -156.321201, 'Haiku Community Center, Haiku', 96708),
+      haiku_marketplace: Detail.new(20.913502, -156.322564, 'Haiku Marketplace', 96708),
+      haiku_community_center: Detail.new(20.929556, -156.321201, 'Haiku Community Center', 96708),
 
       # Lahaina
-      wharf_cinema: Detail.new(20.872799, -156.676799, 'Wharf Cinema Center Luakini Street, Lahaina', 96761, true),
-      papalaua_st: Detail.new(20.877316, -156.680821, 'Papalaua Street, Lahaina', 96761),
-      lahaina_cannery_mall: Detail.new(20.886098, -156.683599, 'Lahaina Cannery Mall, Lahaina', 96761),
-      lahaina_gateway: Detail.new(20.885035, -156.681439, 'Lahaina Gateway, Lahaina', 96761),
-      ainakea_malolo_lahaina: Detail.new(20.890104, -156.682558, 'Ainakea Rd / Malolo St., Lahaina', 96761),
-      ainakea_fleming_lahaina: Detail.new(20.893979, -156.682797, 'Ainakea Rd / Fleming St., Lahaina', 96761),
-      ainakea_park_lahaina: Detail.new(20.895868, -156.682952, 'Ainakea Rd / Kaniau Rd, Lahaina', 96761),
-      ainakea_kaniau_lahaina: Detail.new(20.899398, -156.683192, 'Ainakea Rd / Kaniau Rd, Lahaina', 96761),
-      leialii_parkway_lahaina: Detail.new(20.901590, -156.682066, 'Leialii Parkway, Lahaina', 96761),
-      lahaina_civic_center: Detail.new(20.905604, -156.684018, 'Lahaina Civic Center, Lahaina', 96761),
+      wharf_cinema: Detail.new(20.872799, -156.676799, 'Wharf Cinema Center Luakini Street', 96761, true),
+      papalaua_st: Detail.new(20.877316, -156.680821, 'Papalaua Street', 96761),
+      lahaina_cannery_mall: Detail.new(20.886098, -156.683599, 'Lahaina Cannery Mall', 96761),
+      lahaina_gateway: Detail.new(20.885035, -156.681439, 'Lahaina Gateway', 96761),
+      ainakea_malolo_lahaina: Detail.new(20.890104, -156.682558, 'Ainakea Rd / Malolo St.', 96761),
+      ainakea_fleming_lahaina: Detail.new(20.893979, -156.682797, 'Ainakea Rd / Fleming St.', 96761),
+      ainakea_park_lahaina: Detail.new(20.895868, -156.682952, 'Ainakea Rd / Kaniau Rd', 96761),
+      ainakea_kaniau_lahaina: Detail.new(20.899398, -156.683192, 'Ainakea Rd / Kaniau Rd', 96761),
+      leialii_parkway_lahaina: Detail.new(20.901590, -156.682066, 'Leialii Parkway', 96761),
+      lahaina_civic_center: Detail.new(20.905604, -156.684018, 'Lahaina Civic Center', 96761),
       whalers_village: Detail.new(20.921345, -156.693918, 'Whalers Village', 96761, true),
-      front_street_505: Detail.new(20.867962, -156.675119, '505 Front Street, Lahaina', 96761),
-      lahaina_aquatic_center: Detail.new(20.869246, -156.670994, 'Lahaina Aquatic Center, Lahaina', 96761),
-      kuailua_kumukahi_lahaina: Detail.new(20.885413, -156.665247, 'Kuailua Street / Kumukahi Street, Lahaina', 96761),
-      kalena_pikanele_lahaina: Detail.new(20.882914, -156.671184, 'Kalena Street / Pikanele Street, Lahaina', 96761),
-      hale_mahaolu_eono: Detail.new(20.881210, -156.671852, 'Hale Mahaolu Eono, Lahaina', 96761),
-      lahainaluna_kuhua: Detail.new(20.878601, -156.675486, 'Lahainaluna Rd. / Kuhua St., Lahaina', 96761),
-      lahainaluna_kuhua_across: Detail.new(20.878639, -156.675540, 'Lahainaluna Rd. / Kuhua St., Lahaina', 96761),
-      liloa_hokeo: Detail.new(20.886057, -156.667657, 'Liloa St. / Hokeo St., Lahaina', 96761),
-      na_halee: Detail.new(20.868956, -156.667994, 'Na Halee O Wainee, Lahaina', 96761),
+      front_street_505: Detail.new(20.867962, -156.675119, '505 Front Street', 96761),
+      lahaina_aquatic_center: Detail.new(20.869246, -156.670994, 'Lahaina Aquatic Center', 96761),
+      kuailua_kumukahi_lahaina: Detail.new(20.885413, -156.665247, 'Kuailua Street / Kumukahi Street', 96761),
+      kalena_pikanele_lahaina: Detail.new(20.882914, -156.671184, 'Kalena Street / Pikanele Street', 96761),
+      hale_mahaolu_eono: Detail.new(20.881210, -156.671852, 'Hale Mahaolu Eono', 96761),
+      lahainaluna_kuhua: Detail.new(20.878601, -156.675486, 'Lahainaluna Rd. / Kuhua St.', 96761),
+      lahainaluna_kuhua_across: Detail.new(20.878639, -156.675540, 'Lahainaluna Rd. / Kuhua St.', 96761),
+      liloa_hokeo: Detail.new(20.886057, -156.667657, 'Liloa St. / Hokeo St.', 96761),
+      na_halee: Detail.new(20.868956, -156.667994, 'Na Halee O Wainee', 96761),
 
       # Kihei
       maalaea_harbor: Detail.new(20.792111, -156.513081, 'Maalaea Harbor', 96753, true),
@@ -122,7 +133,7 @@ class Location
       state_bldg: Detail.new(20.886598, -156.504729, 'State Office Building', 96793),
       state_bldg_wells_st: Detail.new(20.886182, -156.503795, 'State Building / Wells St.', 96793),
       maui_memorial_hospital: Detail.new(20.884227, -156.488586, 'Maui Memorial Hospital', 96793),
-      maui_memorial_hospital_across: Detail.new(20.884395, -156.488147, 'Maui Memorial Hospital', 96793, false, '244-9056'),
+      maui_memorial_hospital_across: Detail.new(20.884395, -156.488147, 'Maui Memorial Hospital', 96793),
       maui_lani_parkway: Detail.new(20.887706, -156.491017, 'Maui Lani Parkway', 96793),
       kamole_st_kehalani_sub: Detail.new(20.875990, -156.502519, 'Kamole Street / Kehalani Subdivision', 96793),
       ka_hale_ake_ola: Detail.new(20.875702, -156.499342, 'Ka Hale A Ke Ola', 96793),
@@ -179,7 +190,18 @@ class Location
       napili_kai: Detail.new(20.997119, -156.665188, 'Napili Kai', 96761)
   }
 
-  def self.[](name)
-    LIST[name]
+  class << self
+    def [](name)
+      LIST[name]
+    end
+
+    def all
+      LIST.dup.reject { |l| l == :queen_kaahumanu_back }
+    end
+
+    def transfers_only(list)
+      list.reject { |l| !self[l].transfer? }.uniq
+    end
   end
+
 end

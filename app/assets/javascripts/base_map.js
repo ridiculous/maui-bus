@@ -12,15 +12,18 @@ function BaseMap(options) {
     this.directionsDisplay.setMap(this.map);
 
     this.addMarkers = function (bus_stops, route_name) {
-        var markers = [];
+        var markers = [], prefix = route_name ? route_name + "\n" : '';
         for (var i = 0; i < bus_stops.length; i++) {
             if (!bus_stops[i].hidden) {
                 var gmap_options = {
                     position: new google.maps.LatLng(bus_stops[i].lat, bus_stops[i].long),
                     map: this.map,
-                    title: route_name + "\n" + bus_stops[i].name
-                };
-                markers.push(new BaseMarker(this.map, gmap_options, gmap_options.title.replace(/\n/, '<br />') + '<br />' + bus_stops[i].times));
+                    title: prefix + bus_stops[i].name
+                }, content = gmap_options.title.replace(/\n/, '<br />');
+                if (bus_stops[i].times) {
+                    content += '<br />' + bus_stops[i].times
+                }
+                markers.push(new BaseMarker(this.map, gmap_options, content));
             }
         }
         return markers;

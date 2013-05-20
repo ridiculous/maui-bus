@@ -12,7 +12,7 @@ module BusRoutesHelper
         if my_location
           my_location[:times] += "<br /><b>To #{origin}</b>: #{my_times}" unless origin == my_stop.name
         else
-          destination_reached = true if destination == my_stop.name && !destination_reached
+          destination_reached = true if !destination_reached && destination == my_stop.name
           my_location = {
               name: my_stop.name,
               location: my_stop.location.to_s,
@@ -29,4 +29,5 @@ module BusRoutesHelper
     end
     locations.to_json.html_safe
   end
+
 end

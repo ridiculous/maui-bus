@@ -10,7 +10,7 @@ class RegionsController < ApplicationController
   end
 
   def schedule
-    @regions = Region.all.sort.map { |region| Region.find(region.downcase) }
+    @regions = Region.load_all
   end
 
   # GET /regions/1

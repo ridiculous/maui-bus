@@ -31,7 +31,6 @@ class Haiku < Region
                         location: :kahului_safeway
                     }),
         BusStop.new({
-                        name: 'Airport Pick-up Zone #3',
                         times: %w{5:40 7:10 8:40 10:10 11:40 13:10 14:40 16:10 17:40 19:10 20:40},
                         location: :kahului_airport
                     }),
@@ -77,7 +76,6 @@ class Haiku < Region
                         location: :paia_entrance
                     }),
         BusStop.new({
-                        name: 'Airport Pick-up Zone #3',
                         times: %w{6:43 8:13 9:43 11:13 12:43 12:13 15:43 17:13 18:43 20:13 21:43},
                         location: :kahului_airport
                     }),
@@ -87,7 +85,6 @@ class Haiku < Region
                         location: :kahului_safeway_across
                     }),
         BusStop.new({
-                        name: 'Salvation Army',
                         times: ['6:48', '8:18', '9:48', '11:18', '12:48', '12:18', '15:48', '17:18', '18:48', '20:18', ''],
                         location: :kahului_salvation_army
                     }),

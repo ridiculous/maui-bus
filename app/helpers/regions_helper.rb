@@ -20,4 +20,8 @@ module RegionsHelper
       content_tag(:li, link_to_map("#{in_format(nxt.time)} @ #{nxt.bus_stop.name}", bus.path_parts, nxt.bus_stop.location) + badges(nxt.bus_stop))
     end.join.html_safe
   end
+
+  def all_stops
+    Location.all.map { |key, detail| {name: detail.name, lat: detail.lat, long: detail.long} }.to_json.html_safe
+  end
 end

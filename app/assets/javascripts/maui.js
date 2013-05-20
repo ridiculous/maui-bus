@@ -71,8 +71,8 @@ function Maui() {
         this.map_name = name;
     };
 
-    this.centerMap = function () {
-        var my_center = this.bus_stops.findObject(this[Center], 'name')
+    this.centerMap = function (the_center) {
+        var my_center = the_center || this.bus_stops.findObject(this[Center], 'name')
             , coords = new google.maps.LatLng(my_center.lat, my_center.long)
             , base = this.gmap.addMarkers([my_center], this.map_name)[0];
 

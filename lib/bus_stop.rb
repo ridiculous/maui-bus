@@ -6,7 +6,7 @@ class BusStop
     @location = options[:location]
     @times = options[:times] || []
     @name = if location && !options[:name]
-              Location[location].street
+              Location[location].name
             else
               options[:name]
             end
