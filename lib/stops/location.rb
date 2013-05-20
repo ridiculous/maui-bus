@@ -77,7 +77,7 @@ class Location
       ainakea_kaniau_lahaina: Detail.new(20.899398, -156.683192, 'Ainakea Rd / Kaniau Rd, Lahaina', 96761),
       leialii_parkway_lahaina: Detail.new(20.901590, -156.682066, 'Leialii Parkway, Lahaina', 96761),
       lahaina_civic_center: Detail.new(20.905604, -156.684018, 'Lahaina Civic Center, Lahaina', 96761),
-      whalers_village: Detail.new(20.921345, -156.693918, 'Whalers Village, Lahaina', 96761),
+      whalers_village: Detail.new(20.921345, -156.693918, 'Whalers Village', 96761, true),
       front_street_505: Detail.new(20.867962, -156.675119, '505 Front Street, Lahaina', 96761),
       lahaina_aquatic_center: Detail.new(20.869246, -156.670994, 'Lahaina Aquatic Center, Lahaina', 96761),
       kuailua_kumukahi_lahaina: Detail.new(20.885413, -156.665247, 'Kuailua Street / Kumukahi Street, Lahaina', 96761),
@@ -151,6 +151,32 @@ class Location
       makaala_kuhio_pl: Detail.new(20.903947, -156.498434, 'Makaala Drive / Kuhio Place', 96793),
       makaala_makamua_st: Detail.new(20.903248, -156.500495, 'Makaala Drive / Makamua St.', 96793),
       makaala_makamua_st_across: Detail.new(20.903278, -156.500271, 'Makaala Drive / Makamua St.', 96793),
+
+      # Napili
+      kekaa_drive: Detail.new(20.925355, -156.690942, "Keka'a Drive", 96761),
+      kaanapali_beach_club: Detail.new(20.948582, -156.689587, 'Kaanapali Beach Club', 96761),
+      kaanapali_shores: Detail.new(20.949199, -156.687894, 'Kaanapali Shores', 96761),
+      nahono_place: Detail.new(20.950401, -156.687419, 'Nahono Place', 96761),
+      honokowai_villa: Detail.new(20.951468, -156.687140, 'Honokowai Villa', 96761),
+      honokowai_beach_park: Detail.new(20.953800, -156.686220, 'Sunset Terrace (Honokowai Beach Park)', 96761),
+      honokowai_beach_park_makai: Detail.new(20.954103, -156.686204, 'Honokowai Beach Park', 96761),
+      makani_sands: Detail.new(20.957264, -156.684847, 'Makani Sands', 96761),
+      kuleana: Detail.new(20.961377, -156.683369, 'Kuleana', 96761),
+      #lower_honopiilani_rd_halui: Detail.new(20.963028, -156.682790, 'Lower Honopiilani Rd / Halui', 96761),
+      polynesian_shores: Detail.new(20.963686, -156.682490, 'Polynesian Shores', 96761),
+      pohaku_park: Detail.new(20.967478, -156.681076, 'Pohaku Park (S-Turns)', 96761),
+      valley_isle_resort: Detail.new(20.970798, -156.678409, 'Valley Isle Resort', 96761),
+      kahana_manor: Detail.new(20.971195, -156.678408, 'Kahana Manor', 96761),
+      royal_kahana: Detail.new(20.972387, -156.678760, 'Royal Kahana', 96761),
+      kahana_outrigger: Detail.new(20.975601, -156.677404, 'Kahana Outrigger/Kepola Place', 96761),
+      omaikai_place: Detail.new(20.977574, -156.676578, 'Omaikai Place', 96761),
+      kahana_sunset: Detail.new(20.983765, -156.672176, 'Kahana Sunset', 96761),
+      alaeloa_across: Detail.new(20.986200, -156.670802, 'Alaeloa (Mauka)', 96761),
+      alaeloa: Detail.new(20.986645, -156.670128, 'Alaeloa', 96761),
+      napili_plaza: Detail.new(20.985072, -156.667196, 'Napili Plaza', 96761),
+      napili_shores: Detail.new(20.992067, -156.667072, 'Napili Shores', 96761),
+      napili_village: Detail.new(20.994691, -156.665382, 'Napili Village', 96761),
+      napili_kai: Detail.new(20.997119, -156.665188, 'Napili Kai', 96761)
   }
 
   def self.[](name)

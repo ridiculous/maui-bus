@@ -39,6 +39,8 @@ map_manifest.js: map_manifest-9c6ab34411951ba5ee876d1f65965ff3.js
 map_manifest/index.js: map_manifest-9c6ab34411951ba5ee876d1f65965ff3.js
 maui.js: maui-786b7a06a359264321a7ec759165d14a.js
 maui/index.js: maui-786b7a06a359264321a7ec759165d14a.js
+napili/islander.js: napili/islander-c1fef7da6232f659172f5367a4a332ec.js
+napili/islander/index.js: napili/islander-c1fef7da6232f659172f5367a4a332ec.js
 region_manifest.js: region_manifest-0c5ec25010e8d37e50676490d3ca8f60.js
 region_manifest/index.js: region_manifest-0c5ec25010e8d37e50676490d3ca8f60.js
 regions.js: regions-3905311f5a55d4ac15f258960bd6aefa.js
