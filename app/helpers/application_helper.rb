@@ -28,11 +28,11 @@ module ApplicationHelper
       # times table
       concat(content_tag(:table, id: "#{route.full_class_name}_table", class: 'table table-hover bus-stops') do
         content_tag(:tbody) do
-          concat(route.visible_stops.map do |vs|
+          concat(route.stops.map do |s|
             if mobile_device?
-              mobile_table_rows(route, vs)
+              mobile_table_rows(route, s)
             else
-              table_rows(route, vs)
+              table_rows(route, s)
             end
           end.join.html_safe)
         end
@@ -44,11 +44,11 @@ module ApplicationHelper
   # NOTE: It takes 1 sec to load the full schedule, of that 500ms is spent here formatting the time :/
   #
 
-  def time_cells(route, vs)
+  def time_cells(route, stop)
     nxt_ups = route.next_stops_as_hash
     route.max_stop_length.times.each_with_index.map do |s, i|
-      my_time = vs.times[s]
-      nxt_stop = nxt_ups["#{vs.name}#{my_time}"]
+      my_time = stop.times[s]
+      nxt_stop = nxt_ups["#{stop.name}#{my_time}"]
       concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}") do
         if my_time && !my_time.empty?
           in_format(Time.zone.parse(my_time))
@@ -57,25 +57,25 @@ module ApplicationHelper
     end.join.html_safe
   end
 
-  def table_rows(route, vs)
+  def table_rows(route, stop)
     path_parts = route.full_class_name.split('_')
     content_tag(:tr, class: cycle('odd', '', name: 'times_table')) do
       concat(content_tag(:td, class: 'row-header') do
-        #link_to_static_map(vs.name, vs)
-        link_to_map(vs.name, path_parts, vs.location) + badges(vs)
+        #link_to_static_map(stop.name, stop)
+        link_to_map(stop.name, path_parts, stop.location) + badges(stop)
       end)
-      time_cells(route, vs)
+      time_cells(route, stop)
     end
   end
 
-  def mobile_table_rows(route, vs)
+  def mobile_table_rows(route, stop)
     path_parts = route.full_class_name.split('_')
     content_tag(:tr) do
-      content_tag(:td, colspan: vs.times.length, class: 'row-header even') do
-        link_to_map(vs.name, path_parts, vs.location) + badges(vs)
+      content_tag(:td, colspan: stop.times.length, class: 'row-header even') do
+        link_to_map(stop.name, path_parts, stop.location) + badges(stop)
       end
     end + content_tag(:tr, class: 'odd') do
-      time_cells(route, vs)
+      time_cells(route, stop)
     end
   end
 

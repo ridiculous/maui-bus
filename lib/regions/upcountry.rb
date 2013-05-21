@@ -13,12 +13,6 @@ class Upcountry < Region
                         times: %w{6:00 7:30 9:00 10:30 12:00 13:30 15:00 16:30 18:00 19:30 21:00},
                         location: :queen_kaahumanu
                     }),
-        # to force correct route on map
-        BusStop.new({
-                        name: 'Back of Queen Kaahumanu',
-                        location: :queen_kaahumanu_back,
-                        hidden: true
-                    }),
         BusStop.new({
                         name: 'Salvation Army',
                         times: %w{6:03 7:33 9:03 10:33 12:03 13:33 15:03 16:33 18:03 19:33 21:03},

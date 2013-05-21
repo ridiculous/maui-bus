@@ -18,8 +18,7 @@ module BusRoutesHelper
               location: my_stop.location.to_s,
               lat: Location[my_stop.location].lat,
               long: Location[my_stop.location].long,
-              times: "<b>To #{destination_reached ? origin : destination}</b>: #{my_times}",
-              hidden: my_stop.hidden
+              times: "<b>To #{destination_reached ? origin : destination}</b>: #{my_times}"
           }
         end
         locations << my_location

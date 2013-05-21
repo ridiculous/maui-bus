@@ -26,7 +26,7 @@ class Trip
   # 3. Not on same route and no similar transfer. Search other routes for common transfer and return those
   def plot_course
     if same_route?
-      Journey.new(finishers)
+      self.journies = finishers.map{ |f| Journey.new(f) }
     else
 
     end

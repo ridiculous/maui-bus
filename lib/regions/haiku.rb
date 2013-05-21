@@ -14,12 +14,6 @@ class Haiku < Region
                         times: %w{5:30 7:00 8:30 10:00 11:30 13:00 14:30 16:00 17:30 19:00 20:30},
                         location: :queen_kaahumanu
                     }),
-        # to force correct route on map
-        BusStop.new({
-                        name: 'Back of Queen Kaahumanu',
-                        location: :queen_kaahumanu_back,
-                        hidden: true
-                    }),
         BusStop.new({
                         name: 'Salvation Army',
                         times: %w{5:33 7:03 8:33 10:03 11:33 13:03 14:33 16:03 17:33 19:03 20:33},

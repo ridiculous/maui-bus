@@ -2,6 +2,7 @@ function Islander(bus_stops) {
 
     maui.setMapName('Haiku Islander Route #35');
     maui.loadBusStops(bus_stops || Locations); // map location to name
+    maui.addQueenKaahumanuBack();
     maui.drawRoute(maui.gmap.Mall, maui.gmap.Mall,
         [
             'queen_kaahumanu_back:stopover',

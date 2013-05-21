@@ -15,11 +15,7 @@ class BusRoute
   attr_accessor :_visible_stops, :options
 
   def max_stop_length
-    visible_stops.map(&:times).map(&:length).sort[-1]
-  end
-
-  def visible_stops
-    @_visible_stops ||= stops.reject { |s| s.hidden }
+    stops.map(&:times).map(&:length).sort[-1]
   end
 
   def class_name

@@ -15,7 +15,6 @@ class Location
   LIST = {
       # Kahului
       queen_kaahumanu: Detail.new(20.886570, -156.475375, 'Queen Kaahumanu Mall', 96732, true),
-      queen_kaahumanu_back: Detail.new(20.884325, -156.476362, 'W Wakea Street / Queen Kaahumanu Mall', 96732),
       kahului_salvation_army: Detail.new(20.88789, -156.4676064, 'Salvation Army', 96732),
       kahului_salvation_army_across: Detail.new(20.888100, -156.467757, 'Salvation Army', 96732),
       kahului_airport: Detail.new(20.8943, -156.4377, 'Airport Pick-up Zone #3', 96732),
@@ -196,7 +195,7 @@ class Location
     end
 
     def all
-      LIST.dup.reject { |l| l == :queen_kaahumanu_back }
+      LIST.dup
     end
 
     def transfers_only(list)

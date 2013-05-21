@@ -1,7 +1,7 @@
 module RegionsHelper
 
   def stops_as_badges(route)
-    route.visible_stops.map do |s|
+    route.stops.map do |s|
       content_tag(:span, s.name, class: "badge badge-info #{route.full_class_name}-stop")
     end.uniq.join(' ').html_safe
   end

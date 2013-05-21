@@ -79,5 +79,15 @@ function Maui() {
         this.gmap.map.setCenter(coords);
         this.gmap.map.setZoom(this.gmap.map.getZoom() + 11);
         google.maps.event.trigger(base.marker, 'click');
-    }
+    };
+
+    this.addQueenKaahumanuBack = function () {
+        this.bus_stops.push({
+            hidden: true,
+            lat: 20.884325,
+            long: -156.476362,
+            location: "queen_kaahumanu_back",
+            name: "Back of Queen Kaahumanu"
+        });
+    };
 }

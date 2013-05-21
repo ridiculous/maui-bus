@@ -1,6 +1,6 @@
 class BusStop
 
-  attr_accessor :name, :times, :location, :hidden, :destination
+  attr_accessor :name, :times, :location, :destination
 
   def initialize(options={})
     @location = options[:location]
@@ -10,7 +10,6 @@ class BusStop
             else
               options[:name]
             end
-    @hidden = options[:hidden]
     @destination = options[:destination]
   end
 
