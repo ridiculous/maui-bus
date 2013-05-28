@@ -20,7 +20,7 @@ class Trip
     end
   end
 
-  # three scenarios
+  # Three scenarios
   # 1. On same route. Just return the finishers
   # 2. Not on same route, but their routes have a similar transfer. Return routes and transfers
   # 3. Not on same route and no similar transfer. Search other routes for common transfer and return those

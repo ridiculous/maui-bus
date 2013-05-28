@@ -1959,7 +1959,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav > li > a {
     float: none;
-    padding: 10px 15px 10px;
+    padding: 10px 7px 10px;
     color: #777777;
     text-decoration: none;
     text-shadow: 0 1px 0 #ffffff;
@@ -2782,9 +2782,13 @@ a.badge:focus {
     background-position: -72px -24px;
 }
 
-.icon-map-marker {
-    background-position: -24px -72px;
-}
+/*.icon-map-marker {*/
+    /*background-position: -24px -72px;*/
+/*}*/
+
+/*.icon-search {*/
+    /*background-position: -48px 0;*/
+/*}*/
 
 .icon-globe {
     background-position: -336px -144px;
