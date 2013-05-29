@@ -43,7 +43,9 @@
 <div class="navbar navbar-fluid-top" style="margin-bottom: 0;">
   <div class="navbar-inner">
     <div class="container-fluid">
-      <%= link_to('Back', (request.referrer || show_region_path(params[:region_name])), class: 'btn btn-small back-button') if params[:region_name] %>
+      <% if back_path = request.referrer || params[:region_name] %>
+          <%= link_to('Back', back_path, class: 'btn btn-small back-button') %>
+      <% end %>
       <h1><a class="brand" href="/">Maui Bus</a></h1>
 
       <div class="container-fluid">
