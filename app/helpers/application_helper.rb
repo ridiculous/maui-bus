@@ -40,23 +40,6 @@ module ApplicationHelper
     end
   end
 
-  #
-  # NOTE: It takes 1 sec to load the full schedule, of that 500ms is spent here formatting the time :/
-  #
-
-  def time_cells(route, stop)
-    nxt_ups = route.next_stops_as_hash
-    route.max_stop_length.times.each_with_index.map do |s, i|
-      my_time = stop.times[s]
-      nxt_stop = nxt_ups["#{stop.name}#{my_time}"]
-      concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}") do
-        if my_time && !my_time.empty?
-          in_format(Time.zone.parse(my_time))
-        end
-      end)
-    end.join.html_safe
-  end
-
   def table_rows(route, stop)
     path_parts = route.full_class_name.split('_')
     content_tag(:tr, class: cycle('odd', '', name: 'times_table')) do
@@ -77,6 +60,23 @@ module ApplicationHelper
     end + content_tag(:tr, class: 'odd') do
       time_cells(route, stop)
     end
+  end
+
+  #
+  # NOTE: It takes 1 sec to load the full schedule, of that 500ms is spent here formatting the time :/
+  #
+
+  def time_cells(route, stop)
+    nxt_ups = route.next_stops_as_hash
+    route.max_stop_length.times.each_with_index.map do |s, i|
+      my_time = stop.times[s]
+      nxt_stop = nxt_ups["#{stop.name}#{my_time}"]
+      concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}") do
+        if my_time && !my_time.empty?
+          in_format(Time.zone.parse(my_time))
+        end
+      end)
+    end.join.html_safe
   end
 
   def badges(bus_stop)
