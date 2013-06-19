@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.0.0'
 
-gem 'rails',     :git => 'git://github.com/rails/rails.git', :branch => '3-2-stable'
+gem 'rails',     '3.2.13'
 gem 'journey',   :git => 'git://github.com/rails/journey.git', :branch => '1-0-stable'
 gem 'arel',      :git => 'git://github.com/rails/arel.git', :branch => '3-0-stable'
 
