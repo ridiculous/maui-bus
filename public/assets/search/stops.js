@@ -1,1 +1,0 @@
-(function(){maui.loadBusStops(Locations);var e=maui.bus_stops.findObject("Waikapu","name"),t=new google.maps.LatLng(e.lat,e.long);maui.gmap.addMarkers(maui.bus_stops),maui.gmap.map.setCenter(t),maui.gmap.map.setZoom(maui.gmap.map.getZoom()+4)})();
