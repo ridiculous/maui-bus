@@ -19,11 +19,16 @@ class Region
 
     def find(name)
       Module.const_get(name.titleize).new
+    rescue NameError
+      raise RecordNotFound, 'Could not find the region!'
     end
 
     def load_all
       all.sort.map { |region| Region.find(region.downcase) }
     end
+  end
+
+  class RecordNotFound < StandardError
   end
 
 end

@@ -4,6 +4,7 @@
 <div class="regions">
   <% @region.routes.each do |route| %>
       <a name="<%= route.full_class_name %>"></a>
+
       <div class="route-wrap">
         <h4 class="fl mt5" style="padding-right: 10px;"><%= route.name %></h4>
 
@@ -11,7 +12,13 @@
           <%= link_to_void('<span class="icon icon-time icon-white"></span>Times', class: 'btn btn-info list time-list', rel: route.full_class_name) %>
           <%= link_to('<span class="icon icon-globe icon-white"></span>Map'.html_safe, show_bus_map_path(params[:name], route.class_name), class: 'btn btn-success list') %>
         </div>
-        <%= render(partial: 'upcoming_stops', locals: {route: route}) %>
+        <div class="c">
+          <% if route.note %>
+              <div class="c pad5" style="font-size: 13px;"><%= route.note.html_safe %></div>
+          <% end %>
+          <%= upcoming_stops_box(route) %>
+          <div class="c"></div>
+        </div>
         <div style="padding-bottom: 10px;">
           <%= schedule_for(route) %>
           <%# empty the cached object %>

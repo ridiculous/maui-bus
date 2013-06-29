@@ -24,4 +24,13 @@ module RegionsHelper
   def all_stops
     Location.all.map { |key, detail| {name: detail.name, lat: detail.lat, long: detail.long} }.to_json.html_safe
   end
+
+  def upcoming_stops_box(route)
+    route.buses.each_with_index.map do |bus, i|
+      content_tag(:div, class: "fl mr15 bus-#{i + 1}") do
+        content_tag(:h5, "Upcoming Stops#{(content_tag(:span, " - Bus #{i + 1}") if route.buses.length > 1)}".html_safe, class: 'well mini') +
+            content_tag(:ul, bus.next_stops.any? ? upcoming_stops(bus) : content_tag(:li, 'Nothing going on here'), class: 'mba-list')
+      end
+    end.join.html_safe
+  end
 end

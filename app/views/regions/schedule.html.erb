@@ -33,7 +33,13 @@
                   ) %>
             </div>
             <div id="<%= route.full_class_name %>" class="hidden-tablet hidden-phone a-route">
-              <%= render(partial: 'upcoming_stops', locals: {route: route}) %>
+              <div class="c">
+                <% if route.note %>
+                    <div class="c pad5" style="font-size: 13px;"><%= route.note.html_safe %></div>
+                <% end %>
+                <%= upcoming_stops_box(route) %>
+                <div class="c"></div>
+              </div>
             </div>
             <%= schedule_for(route) %>
             <%# empty the cached object %>
