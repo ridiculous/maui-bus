@@ -2,14 +2,13 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails',     '3.2.13'
-gem 'journey',   :git => 'git://github.com/rails/journey.git', :branch => '1-0-stable'
-gem 'arel',      :git => 'git://github.com/rails/arel.git', :branch => '3-0-stable'
+gem 'rails', '4.0.0'
+gem 'activeresource', '4.0.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'coffee-rails', :git => 'git://github.com/rails/coffee-rails.git', :branch => '3-2-stable'
+  gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
@@ -17,7 +16,6 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'rails-dev-boost'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'debugger'
