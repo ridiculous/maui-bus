@@ -96,6 +96,10 @@ module ApplicationHelper
     the_time.strftime('%l:%M %p') if the_time
   end
 
+  def time_at_name(the_time, name)
+    "#{in_format(the_time)} @ #{name}"
+  end
+
   def link_to_void(txt, *args)
     link_to(txt.html_safe, 'javascript:;', *args)
   end

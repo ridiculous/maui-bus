@@ -2,26 +2,33 @@ class Trip
 
   attr_accessor :origin, :destination, :transfers
 
-  def initialize(origin=:liholiho_kanaloa_ave, destination=:alana_place_makawao)
-    @origin = origin
-    @destination = destination
+  def initialize(origin=nil, destination=nil) #alana_place_makawao
+    @origin = (origin || :liholiho_kanaloa_ave).to_sym
+    @destination = (destination || :queen_kaahumanu).to_sym
     @transfers = []
   end
 
   # Loop through all routes and grab the ones that have our origin and destination in their list of stops
-  def find_routes
+  def find_direct_routes
     routes = Region.load_all.map(&:routes).flatten
     direct_routes = []
     routes.each do |my_route|
-      locations = my_route.stops.map(&:location)
-      if locations.include?(origin)
-        
-        if locations.include?(destination)
-          direct_routes << my_route
+      start_at = my_route.stops.find { |s| s.location == origin }
+      if start_at
+
+        stop_at = my_route.stops.find { |s| s.location == destination }
+        if stop_at
+          direct_routes << DirectRoute.new(my_route, start_at, stop_at)
         end
 
       end
     end
+    direct_routes
+  end
+
+  # helpers
+  def start_info
+
   end
 
   # Three scenarios
@@ -32,7 +39,7 @@ class Trip
 
   end
 
-  class Run < Struct.new(:route, :transfers)
+  class DirectRoute < Struct.new(:route, :start_at, :stop_at)
     def name
       route.name
     end

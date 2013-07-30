@@ -1,2 +1,39 @@
-<%= javascript_tag("var Locations = #{all_stops}") %>
-<%= javascript_include_tag('search/stops') %>
+<%#= javascript_tag("var Locations = #{all_stops}") %>
+<%#= javascript_include_tag('search/stops') %>
+<%= content_tag(:div) do %>
+    <%= form_tag({}, method: :get) do %>
+        <div class="field">
+          <%= label_tag(:origin) %>
+          <%= select_tag(:origin, options_for_select(%w[liholiho_kanaloa_ave])) %>
+        </div>
+        <div class="field">
+          <%= label_tag(:destination) %>
+          <%= select_tag(:destination, options_for_select(%w[queen_kaahumanu])) %>
+        </div>
+        <div class="field">
+          <%= submit_tag('Search', class: 'btn btn-primary') %>
+        </div>
+    <% end %>
+<% end %>
+<%= content_tag(:div) do %>
+    <% if @trips.any? %>
+        <h3>Direct Routes</h3>
+        <% @trips.each do |t| %>
+            <b><%= t.name %></b>
+            <table class="plain align-left padcol">
+              <tbody>
+              <tr>
+                <th>Pick up</th>
+                <td><%= link_to_map(time_at_name(t.start_at.future_times[0], t.start_at.name), t.route.path_parts, t.start_at.location) %></td>
+              </tr>
+              <tr>
+                <th>Drop off</th>
+                <td><%= link_to_map(time_at_name(t.stop_at.future_times[0], t.stop_at.name), t.route.path_parts, t.stop_at.location) %></td>
+              </tr>
+              </tbody>
+            </table>
+        <% end %>
+    <% else %>
+        <div>No direct trips</div>
+    <% end %>
+<% end %>

@@ -26,6 +26,11 @@ class BusRoute
     @_class_name ||= self.class.to_s.downcase.sub(/::/, '_')
   end
 
+  # path to the routes map
+  def path_parts
+    full_class_name.split('_')
+  end
+
   def buses
     @buses ||= begin
       next_stops.map do |nxt|
