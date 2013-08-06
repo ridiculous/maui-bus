@@ -11,12 +11,8 @@ function Maui() {
     // creates and assigns attributes for this
     this.loadBusStops = function (buses) {
         if (!this.gmap) this.gmap = new BaseMap();
-
         this.bus_stops = buses;
-
-        for (var i = 0; i < buses.length; i++) {
-            this[buses[i]['location']] = buses[i]['name'];
-        }
+        for (var i = 0; i < buses.length; i++) this[buses[i]['location']] = buses[i]['name'];
     };
 
     /**
