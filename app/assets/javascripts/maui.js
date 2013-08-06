@@ -10,9 +10,7 @@ function Maui() {
 
     // creates and assigns attributes for this
     this.loadBusStops = function (buses) {
-        if (!this.gmap) {
-            this.gmap = new BaseMap();
-        }
+        if (!this.gmap) this.gmap = new BaseMap();
 
         this.bus_stops = buses;
 

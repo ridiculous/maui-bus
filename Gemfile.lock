@@ -146,7 +146,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activeresource (= 4.0.0)
+  activeresource
   better_errors
   binding_of_caller
   coffee-rails
