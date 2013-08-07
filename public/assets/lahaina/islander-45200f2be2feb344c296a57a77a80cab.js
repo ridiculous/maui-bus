@@ -1,0 +1,1 @@
+function Islander(a){maui.setMapName("Lahaina Islander #20"),maui.loadBusStops(a||Locations),maui.drawRoute(maui.gmap.Mall,maui.gmap.Mall,["state_bldg_wells_st","maalaea_harbor","wharf_cinema","maalaea_harbor","state_bldg"])}!function(){new Islander}();
