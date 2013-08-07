@@ -45,12 +45,15 @@ MauiBusRoutes::Application.configure do
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
 
+  config.assets.css_compressor = :sass
+  config.assets.js_compressor = :uglify
+
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   config.assets.precompile << Proc.new { |path|
-    if path =~ /\.(css|js)\z/
+    if path =~ /\.(css|js|png)\z/
       full_path = Rails.application.assets.resolve(path).to_path
       app_assets_path = Rails.root.join('app', 'assets').to_path
       full_path.starts_with?(app_assets_path)

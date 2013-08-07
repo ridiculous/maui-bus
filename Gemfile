@@ -8,13 +8,12 @@ gem 'activeresource'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'coffee-rails'
+gem 'coffee-rails'
+gem 'sass-rails'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-  gem 'uglifier', '>= 1.0.3'
-end
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem 'therubyracer', :platforms => :ruby
+gem 'uglifier'
 
 group :development, :test do
   gem 'better_errors'
@@ -29,8 +28,6 @@ end
 gem 'jquery-rails'
 
 gem 'thin'
-gem 'therubyracer'
-gem 'less-rails' # Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'twitter-bootstrap-rails'
 gem 'newrelic_rpm'
 

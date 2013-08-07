@@ -20,9 +20,7 @@ function BaseMap(options) {
                     map: this.map,
                     title: prefix + bus_stops[i].name
                 }, content = gmap_options.title.replace(/\n/, '<br />');
-                if (bus_stops[i].times) {
-                    content += '<br />' + bus_stops[i].times
-                }
+                if (bus_stops[i].times) content += '<br />' + bus_stops[i].times;
                 markers.push(new BaseMarker(this.map, gmap_options, content));
             }
         }
