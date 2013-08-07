@@ -39,3 +39,4 @@ function BaseMap(options) {
         });
     }
 }
+;
