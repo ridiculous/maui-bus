@@ -17,8 +17,8 @@ class BusStop
     location && Location[location].transfer
   end
 
-  def future_times(n=3)
-    return_times = sorted_times.reject { |t| t < Time.zone.now }
+  def future_times(n=3, cutoff=Time.zone.now)
+    return_times = sorted_times.reject { |t| t < cutoff }
     return_times = return_times.slice(0, n)
     if return_times.any?
       return_times
