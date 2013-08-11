@@ -1,22 +1,22 @@
 var Schedules = {}, Toga = new Toggler(); //, SM = new StaticMap()
 
-$.addEvent(window, 'load', function () {
+jUtils.addEvent(window, 'load', function () {
 
-    var show_times = $.findByClass('time-list');
+    var show_times = jUtils.findByClass('time-list');
 
-//    $.addEvent($.findByClass('show-static-map'), 'click', SM.init);
-//    $.addEvent(document.getElementById('close_modal'), 'click', SM.hideModal);
-    $.addEvent(show_times, 'click', Toga.tableToggle);
-    $.addEvent($.findByClass('next-stop-list'), 'click', Toga.nextStopsToggle);
-    $.addEvent($.findByClass('time-frame'), 'click', changeTimeFrame);
+//    jUtils.addEvent(jUtils.findByClass('show-static-map'), 'click', SM.init);
+//    jUtils.addEvent(document.getElementById('close_modal'), 'click', SM.hideModal);
+    jUtils.addEvent(show_times, 'click', Toga.tableToggle);
+    jUtils.addEvent(jUtils.findByClass('next-stop-list'), 'click', Toga.nextStopsToggle);
+    jUtils.addEvent(jUtils.findByClass('time-frame'), 'click', changeTimeFrame);
 
     // trigger time frames with morning/afternoon nav pill
-    for (var a = 0, pills = $.findByClass('active'); a < pills.length; a++) {
+    for (var a = 0, pills = jUtils.findByClass('active'); a < pills.length; a++) {
         changeTimeFrame.call(pills[a].childNodes[0]);
     }
 
     // the glyphicons are the largest asset loaded so lets load it afterward as not to delay DOM +ready+
-    for (var i = 0, icons = $.findByClass('icon'); i < icons.length; i++) {
+    for (var i = 0, icons = jUtils.findByClass('icon'); i < icons.length; i++) {
         icons[i].className += ' icon-white';
     }
 
@@ -60,9 +60,9 @@ function changeTimeFrame() {
         prev.className = '';
     }
 
-    if ($.hasClass(this, 'morning')) {
+    if (jUtils.hasClass(this, 'morning')) {
         bus.toggleAM('table-cell').togglePM('none');
-    } else if ($.hasClass(this, 'afternoon')) {
+    } else if (jUtils.hasClass(this, 'afternoon')) {
         bus.toggleAM('none').togglePM('table-cell');
     } else {
         bus.toggleAM('table-cell').togglePM('table-cell');

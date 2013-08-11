@@ -45,7 +45,7 @@ function BusSchedule() {
     this.toggler = function (am_pm, display_value) {
         for (var i = 0; i < this.schedule.length; i++) {
             if (this.schedule[i].length === 1 && this.schedule[i][0] === am_pm) {
-                for (var t = 0, time_cells = $.findByClass(this.route_name + '-time-cell-' + i); t < time_cells.length; t++) {
+                for (var t = 0, time_cells = jUtils.findByClass(this.route_name + '-time-cell-' + i); t < time_cells.length; t++) {
                     time_cells[t].style.display = display_value;
                 }
             }

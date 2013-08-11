@@ -1,4 +1,4 @@
-var $ = {
+var jUtils = {
     addEvent: function (el, event_name, callback) {
         var addHandler = function (elem) {
             if (elem.addEventListener) {
