@@ -52,8 +52,10 @@
 </div>
 <div id="map_canvas" style="width:100%; height:100%">Try wait ...</div>
 <%= yield %>
-<div class="hidden-phone">
-  <%= render('layouts/footer') %>
-</div>
+<% unless mobile_device? %>
+    <div class="hidden-phone">
+      <%= render('layouts/footer') %>
+    </div>
+<% end %>
 </body>
 </html>

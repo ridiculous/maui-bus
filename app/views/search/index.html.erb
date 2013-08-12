@@ -22,17 +22,16 @@
             <% @trips.each do |t| %>
                 <div class="well app-subheader fl mb10 c">
 
-                  <% next_start_time = t.start_at.future_times[0] %>
                   <b><%= link_to(t.name, show_region_path(t.route.path_parts[0])) %></b>
                   <table class="plain align-left padcol">
                     <tbody>
                     <tr>
                       <th>Pick up</th>
-                      <td><%= link_to_map(time_at_name(next_start_time, t.start_at.name), t.route.path_parts, t.start_at.location) %></td>
+                      <td><%= link_to_map(time_at_name(t.start_at.time, t.start_at.bus_stop.name), t.route.path_parts, t.start_at.bus_stop.location) %></td>
                     </tr>
                     <tr>
                       <th>Drop off</th>
-                      <td><%= link_to_map(time_at_name(t.stop_at.future_times(1, next_start_time)[0], t.stop_at.name), t.route.path_parts, t.stop_at.location) %></td>
+                      <td><%= link_to_map(time_at_name(t.stop_at.time, t.stop_at.bus_stop.name), t.route.path_parts, t.stop_at.bus_stop.location) %></td>
                     </tr>
                     </tbody>
                   </table>

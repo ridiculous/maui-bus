@@ -13,13 +13,18 @@ class Trip
     routes = Region.load_all.map(&:routes).flatten
     direct_routes = []
     routes.each do |my_route|
-      start_at = my_route.stops.find { |s| true_name(s.location) == true_name(origin) }
-      if start_at
-        stop_at = my_route.stops.find { |s| true_name(s.location) == true_name(destination) }
-        if stop_at
-          direct_routes << DirectRoute.new(my_route, start_at, stop_at)
+      buses = my_route.next_stops(nil) # all next stops
+      # cycle through each bus for this route
+      buses.map do |nxt_stop|
+        start_at = nxt_stop.find { |s| true_name(s.bus_stop.location) == true_name(origin) }
+        if start_at
+          stop_at = nxt_stop.find { |s| true_name(s.bus_stop.location) == true_name(destination) }
+          if stop_at && stop_at.time > start_at.time
+            direct_routes << DirectRoute.new(my_route, start_at, stop_at)
+          end
         end
       end
+
     end
     direct_routes
   end

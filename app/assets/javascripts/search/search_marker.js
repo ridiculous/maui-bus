@@ -8,6 +8,11 @@ function SearchMarker(location_key, gmap_options, marker_content) {
         if (info_window) {
             info_window.close();
         }
+        // toggle essentially
+        if (this.title === last_stop) {
+            last_stop = '';
+            return;
+        }
         last_stop = this.title;
         info_window = new google.maps.InfoWindow(
             {
