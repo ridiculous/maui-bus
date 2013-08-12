@@ -226,3 +226,10 @@ table.align-left tr td {
 table.padcol td {
     padding: 2px 6px;
 }
+
+.search-map-box {
+    position: absolute;
+    top: 51px;
+    left: 15px;
+    z-index: 10000;
+}
