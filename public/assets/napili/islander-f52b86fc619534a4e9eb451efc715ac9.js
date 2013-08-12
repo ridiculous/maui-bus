@@ -1,0 +1,1 @@
+function Islander(a){maui.setMapName("Napili Islander Route #30"),maui.loadBusStops(a||Locations);var e=maui.bus_stops.findObject(maui.whalers_village,"name"),l=new google.maps.LatLng(e.lat,e.long);maui.drawRoute(l,l,["kaanapali_beach_club","kuleana","royal_kahana","alaeloa","napili_plaza:stopover","napili_kai","kuleana","kekaa_drive"])}!function(){new Islander}();
