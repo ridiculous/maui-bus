@@ -1,1 +1,0 @@
-function Villager(a){maui.setMapName("Kihei Villager Route #15"),maui.loadBusStops(a||Locations);var i=maui.bus_stops.findObject(maui.maalaea_harbor,"name"),e=maui.bus_stops.findObject(maui.piilani_shopping_center,"name");maui.drawRoute(new google.maps.LatLng(i.lat,i.long),new google.maps.LatLng(e.lat,e.long),["piikea_south_kihei_across"])}!function(){new Villager}();

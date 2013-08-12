@@ -26,10 +26,15 @@ class BusRoute
     @_class_name ||= self.class.to_s.downcase.sub(/::/, '_')
   end
 
+  # path to the routes map
+  def path_parts
+    full_class_name.split('_')
+  end
+
   def buses
     @buses ||= begin
       next_stops.map do |nxt|
-        Bus.new(nxt, full_class_name)
+        Bus.new(nxt, path_parts)
       end
     end
   end
@@ -49,7 +54,7 @@ class BusRoute
             nxt << NextStop.new(my_stop, nxt_time)
           end
         end
-        nxt.sort { |a, b| a.time <=> b.time }.slice(0, count)
+        nxt.sort { |a, b| a.time <=> b.time }.slice(0, count || nxt.length)
       end
     end
   end

@@ -2,9 +2,9 @@ class Bus
 
   attr_reader :next_stops, :path_parts # for the map path
 
-  def initialize(nxt_stops, full_route_name)
+  def initialize(nxt_stops, link_path_parts)
     @next_stops = nxt_stops
-    @path_parts = full_route_name.split('_')
+    @path_parts = link_path_parts
   end
 
 end

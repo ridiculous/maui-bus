@@ -22,7 +22,7 @@ module RegionsHelper
   end
 
   def all_stops
-    Location.all.map { |key, detail| {name: detail.name, lat: detail.lat, long: detail.long} }.to_json.html_safe
+    Location.unique.map { |key, detail| {key: key, name: detail.to_s, lat: detail.lat, long: detail.long} }.to_json.html_safe
   end
 
   def upcoming_stops_box(route)
