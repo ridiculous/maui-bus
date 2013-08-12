@@ -22,12 +22,8 @@ class Trip
           new_buses = my_route.next_stops(nil, start_at.time)
           new_buses.each do |origin_stops|
             stop_at = origin_stops.find { |s| true_name(s.bus_stop.location) == true_name(destination) }
-            if stop_at
-              if start_at && stop_at.time > start_at.time
-                unless direct_routes.find { |d| d.name == my_route.name }
-                  direct_routes << DirectRoute.new(my_route, start_at, stop_at)
-                end
-              end
+            if stop_at && stop_at.time > start_at.time && !direct_routes.find { |d| d.name == my_route.name }
+              direct_routes << DirectRoute.new(my_route, start_at, stop_at)
             end
           end
         end
@@ -36,15 +32,15 @@ class Trip
     direct_routes
   end
 
-  # helpers
+# helpers
   def true_name(name)
     name.to_s.sub(Location::PARTNER_PATTERN, '')
   end
 
-  # Three scenarios
-  # 1. On same route, return DirectRoute (done)
-  # 2. Not on same route, but their routes have a similar transfer. Return routes and transfers
-  # 3. Not on same route and no similar transfer. Search other routes for common transfer and return those
+# Three scenarios
+# 1. On same route, return DirectRoute (done)
+# 2. Not on same route, but their routes have a similar transfer. Return routes and transfers
+# 3. Not on same route and no similar transfer. Search other routes for common transfer and return those
 
   class DirectRoute < Struct.new(:route, :start_at, :stop_at)
     def name
