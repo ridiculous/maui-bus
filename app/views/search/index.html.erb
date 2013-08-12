@@ -1,2 +1,45 @@
 <%= javascript_tag("var Locations = #{all_stops}") %>
-<%= javascript_include_tag('search/stops') %>
+<%= javascript_include_tag('search/search') %>
+<div style="position: absolute;top:51px;left: 15px;" class="pad5">
+  <%= form_tag({}, method: :get) do %>
+      <div class="field">
+        <%= label_tag(:origin, nil, style: 'font-weight: bold;') %>
+        <%= select_tag(:origin, options_for_select(@locations, params[:origin])) %>
+      </div>
+      <div class="field">
+        <%= label_tag(:destination, nil, style: 'font-weight: bold;') %>
+        <%= select_tag(:destination, options_for_select(@locations, params[:destination])) %>
+      </div>
+      <div class="field">
+        <%= submit_tag('Search', class: 'btn btn-primary', name: nil) %>
+        <%= link_to('Reset', search_path, class: 'btn') %>
+      </div>
+  <% end %>
+  <div>
+    <% if params[:origin] && params[:destination] %>
+        <% if @trips.any? %>
+            <h3>Direct Routes</h3>
+            <% @trips.each do |t| %>
+                <div class="well app-subheader fl mb10 c">
+
+                  <b><%= link_to(t.name, show_region_path(t.route.path_parts[0])) %></b>
+                  <table class="plain align-left padcol">
+                    <tbody>
+                    <tr>
+                      <th>Pick up</th>
+                      <td><%= link_to_map(time_at_name(t.start_at.time, t.start_at.bus_stop.name), t.route.path_parts, t.start_at.bus_stop.location) %></td>
+                    </tr>
+                    <tr>
+                      <th>Drop off</th>
+                      <td><%= link_to_map(time_at_name(t.stop_at.time, t.stop_at.bus_stop.name), t.route.path_parts, t.stop_at.bus_stop.location) %></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+            <% end %>
+        <% else %>
+            <div class="pad5" style="font-size: 16px;">No direct trips found</div>
+        <% end %>
+    <% end %>
+  </div>
+</div>

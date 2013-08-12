@@ -23,7 +23,7 @@ function Toggler() {
             , active_class = class_names.find('active')
             , me = document.getElementById(this.rel);
 
-        if ($.hasClass(me, 'hidden-phone')) {
+        if (jUtils.hasClass(me, 'hidden-phone')) {
             this.className += ' active';
             me.className = '';
         } else {
