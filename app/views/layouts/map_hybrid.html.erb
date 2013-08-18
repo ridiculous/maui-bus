@@ -51,10 +51,5 @@
   </div>
 </div>
 <%= yield %>
-<% unless mobile_device? %>
-    <div class="hidden-phone">
-      <%= render('layouts/footer') %>
-    </div>
-<% end %>
 </body>
 </html>
