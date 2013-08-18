@@ -70,16 +70,16 @@ class Haiku < Region
                         location: :paia_entrance
                     }),
         BusStop.new({
-                        times: %w{6:43 8:13 9:43 11:13 12:43 12:13 15:43 17:13 18:43 20:13 21:43},
+                        times: %w{6:43 8:13 9:43 11:13 12:43 14:13 15:43 17:13 18:43 20:13 21:43},
                         location: :kahului_airport
                     }),
         BusStop.new({
                         name: 'Safeway / Maui Mall Entrance',
-                        times: %w{6:47 8:17 9:47 11:17 12:47 12:17 15:47 17:17 18:47 20:17},
+                        times: %w{6:47 8:17 9:47 11:17 12:47 14:17 15:47 17:17 18:47 20:17},
                         location: :kahului_safeway_across
                     }),
         BusStop.new({
-                        times: ['6:48', '8:18', '9:48', '11:18', '12:48', '12:18', '15:48', '17:18', '18:48', '20:18', ''],
+                        times: ['6:48', '8:18', '9:48', '11:18', '12:48', '14:18', '15:48', '17:18', '18:48', '20:18', ''],
                         location: :kahului_salvation_army
                     }),
         BusStop.new({
