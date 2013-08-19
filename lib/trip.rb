@@ -20,8 +20,7 @@ class Trip
 
   # Loop through all routes and grab the ones that have our origin and destination in their list of stops
   def find_direct_routes(current_time=Time.zone.now)
-    routes = Region.load_all.map(&:routes).flatten
-    routes.each do |my_route|
+    Region.load_all.map(&:routes).flatten.each do |my_route|
       my_route.next_stops(nil, current_time).each do |nxt_stops|
         # each stop for this bus
         nxt_stops.each do |nxt|
