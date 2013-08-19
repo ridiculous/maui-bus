@@ -41,21 +41,19 @@ module ApplicationHelper
   end
 
   def table_rows(route, stop)
-    path_parts = route.full_class_name.split('_')
     content_tag(:tr, class: cycle('odd', '', name: 'times_table')) do
       concat(content_tag(:td, class: 'row-header') do
         #link_to_static_map(stop.name, stop)
-        link_to_map(stop.name, path_parts, stop.location) + badges(stop)
+        link_to_map(stop.name, route.path_parts, stop.location) + badges(stop)
       end)
       time_cells(route, stop)
     end
   end
 
   def mobile_table_rows(route, stop)
-    path_parts = route.full_class_name.split('_')
     content_tag(:tr) do
       content_tag(:td, colspan: stop.times.length, class: 'row-header even') do
-        link_to_map(stop.name, path_parts, stop.location) + badges(stop)
+        link_to_map(stop.name, route.path_parts, stop.location) + badges(stop)
       end
     end + content_tag(:tr, class: 'odd') do
       time_cells(route, stop)

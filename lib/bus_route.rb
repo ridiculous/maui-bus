@@ -1,4 +1,4 @@
-# The fact that Kaanapali starts up another bus in the middle of the day made this code kind of complicated ...
+# Kaanapali starts up another bus in the middle of the day, making this kind of complicated ...
 class BusRoute
   TIME_ADVANCED = 30.minutes
 
@@ -6,6 +6,10 @@ class BusRoute
 
     def time_to_s
       time.strftime('%-H:%M')
+    end
+
+    def <=>(other)
+      time - other.time
     end
 
   end
@@ -53,7 +57,7 @@ class BusRoute
             nxt << NextStop.new(my_stop, nxt_time)
           end
         end
-        nxt.sort { |a, b| a.time <=> b.time }.slice(0, count || nxt.length)
+        nxt.sort.slice(0, count || nxt.length)
       end
     end
   end

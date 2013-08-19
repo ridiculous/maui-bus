@@ -189,10 +189,11 @@ class Location
       wailuku_ymca: Detail.new(20.895789, -156.486176, 'YMCA - Mikohu Loop / Kanaloa Ave.', 96793)
   }
 
-  # some locations have partners, which are usually on the other side of the street
+  # some locations have "partners" which are usually on the other side of the street
   PARTNER_PATTERN = /_(across|parkside|makai|mauka)$/
 
   class << self
+
     def [](name)
       LIST[name]
     end
