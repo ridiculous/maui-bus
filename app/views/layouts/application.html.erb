@@ -24,7 +24,7 @@
 
       <div class="container-fluid">
         <ul class="nav">
-          <li><%= link_to 'Schedule', schedule_path %></li>
+          <li class="<%= 'active' if controller_name == 'regions' && action_name == 'schedule' %>"><%= link_to 'Schedule', schedule_path %></li>
           <li><%= link_to 'Search', search_path %></li>
         </ul>
       </div>
