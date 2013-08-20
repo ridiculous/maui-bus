@@ -1,5 +1,7 @@
 class Haiku < Region
 
+  extend RegionClassMethods
+
   attr_reader :islander
 
   def initialize
@@ -8,6 +10,7 @@ class Haiku < Region
   end
 
   class Islander < BasicRoute
+
     STOPS = [
         BusStop.new({
                         name: 'Queen Kaahumanu Mall',

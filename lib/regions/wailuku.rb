@@ -1,5 +1,7 @@
 class Wailuku < Region
 
+  extend RegionClassMethods
+
   attr_reader :loop_one, :loop_two
 
   def initialize

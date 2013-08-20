@@ -1,4 +1,7 @@
 class Kahului < Region
+
+  extend RegionClassMethods
+
   attr_reader :loop_five, :loop_six
 
   def initialize

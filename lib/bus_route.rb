@@ -95,6 +95,10 @@ class BusRoute
     current_time < options[:end_time] && current_time >= options[:start_time] - TIME_ADVANCED
   end
 
+  #
+  # = Private
+  #
+
   private
 
   def find_times(my_stop, bus, current_time)

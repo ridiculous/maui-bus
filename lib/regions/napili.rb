@@ -1,4 +1,7 @@
 class Napili < Region
+
+  extend RegionClassMethods
+
   attr_reader :islander
 
   def initialize

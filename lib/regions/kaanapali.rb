@@ -1,5 +1,7 @@
 class Kaanapali < Region
 
+  extend RegionClassMethods
+
   attr_reader :islander
 
   def initialize

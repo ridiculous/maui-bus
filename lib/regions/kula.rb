@@ -1,4 +1,7 @@
 class Kula < Region
+
+  extend RegionClassMethods
+
   attr_reader :villager
 
   def initialize

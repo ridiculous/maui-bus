@@ -1,5 +1,7 @@
 class Lahaina < Region
 
+  extend RegionClassMethods
+
   attr_reader :islander, :villager
 
   def initialize

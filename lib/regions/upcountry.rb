@@ -1,4 +1,7 @@
 class Upcountry < Region
+
+  extend RegionClassMethods
+
   attr_reader :islander
 
   def initialize
