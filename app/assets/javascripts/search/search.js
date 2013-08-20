@@ -2,7 +2,7 @@ var maui = new Maui()
     , Locations = Locations || {};
 (function () {
     maui.gmap = new BaseMap({
-        zoom: 7,
+        zoom: 10,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         zoomControlOptions: {
             position: google.maps.ControlPosition.TOP_RIGHT
@@ -13,8 +13,6 @@ var maui = new Maui()
     maui.loadBusStops(Locations); // map location to name
 
     var my_map = maui.gmap.map
-        , my_center = maui.bus_stops.findObject('Wailuku - Waikapu', 'name')
-        , coords = new google.maps.LatLng(my_center.lat, my_center.long)
         , bubble_html = '<br /><a href="javascript:;" class="origin">Set as Origin</a><br /><a href="javascript:;" class="destination">Set as Destination</a>'
         , addMarkers = function () {
             var markers = [], bus_stops = maui.bus_stops;
@@ -32,7 +30,7 @@ var maui = new Maui()
         };
 
     addMarkers();
-    my_map.setCenter(coords);
+    my_map.setCenter(maui.gmap.Mall);
     my_map.setZoom(my_map.getZoom() + 4);
 
 })();
