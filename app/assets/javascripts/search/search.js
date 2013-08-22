@@ -70,7 +70,7 @@ var maui = new Maui()
         var evt = jUtils.getEvent(e);
         this.value = 'Searching';
         this.disabled = true;
-        agile.send({async: '1', origin: origin.value, destination: destination.value});
+        agile.send({origin: origin.value, destination: destination.value});
         window.location.hash = origin.value + '-' + destination.value;
         if (typeof evt.preventDefault === 'function') {
             evt.preventDefault();
@@ -83,7 +83,7 @@ var maui = new Maui()
     if (points.length === 2) {
         origin.value = points[0].replace('#', '');
         destination.value = points[1];
-        agile.send({async: '1', origin: origin.value, destination: destination.value});
+        agile.send({origin: origin.value, destination: destination.value});
     }
 
     if (document.getElementById('is_desktop')) {
