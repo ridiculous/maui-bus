@@ -36,11 +36,13 @@ var maui = new Maui()
             try {
                 var search_box = document.getElementById('search_box')
                     , map_canvas = document.getElementById('map_canvas')
-                    , conservative_height = map_canvas.offsetHeight - 75;
-                if (search_box.offsetHeight > conservative_height + 25) {
-                    search_box.style.maxHeight = conservative_height + 'px';
+                    , map_canvas_height = map_canvas.offsetHeight
+                    , val = 0;
+
+                if (search_box.offsetHeight > map_canvas_height - (search_box.style.overflowY == 'scroll' ? 54 : 40)) {
+                    search_box.style.maxHeight = (map_canvas_height - 75) + 'px';
                     search_box.style.overflowY = 'scroll';
-                } else{
+                } else {
                     search_box.style.maxHeight = '';
                     search_box.style.overflowY = '';
                 }
