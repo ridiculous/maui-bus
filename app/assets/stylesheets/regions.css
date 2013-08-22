@@ -250,3 +250,8 @@ table.padcol td {
 #submit_search[disabled] {
     font-style: italic;
 }
+
+#direct_routes .table td.bus-1 {
+    border-left: none;
+    border-right: none;
+}
