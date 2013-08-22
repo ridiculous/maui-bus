@@ -84,7 +84,7 @@ class Trip
     start_legs.each do |route_name, l|
       start_route = all_routes.find { |x| x.name == route_name }
       l.transfers.each do |tname|
-        starters << start_route.find_between(l.start_at, tname)
+        starters << start_route.find_between(l.start_at, tname, current_time)
       end
       starters.flatten!
       if starters.any?
