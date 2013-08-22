@@ -1,20 +1,9 @@
 require 'direct_route'
+require 'next_stop'
 
 # Kaanapali starts up another bus in the middle of the day, making this kind of complicated ...
 class BusRoute
   TIME_ADVANCED = 30.minutes
-
-  class NextStop < Struct.new(:bus_stop, :time)
-
-    def time_to_s
-      time.strftime('%-H:%M')
-    end
-
-    def <=>(other)
-      time - other.time
-    end
-
-  end
 
   attr_reader :_class_name, :name, :stops, :note, :bus_count
   attr_writer :buses
