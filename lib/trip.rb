@@ -21,37 +21,12 @@ class Trip
 
   # Loop through all routes and grab the ones that have our origin and destination in their list of stops
   def find_direct_routes(current_time=Time.zone.now)
-    Region.load_all.map(&:routes).flatten.each do |my_route|
-      my_route.next_stops(nil, current_time).each_with_index do |nxt_stops, start_bus|
-        # each stop for this bus
-        nxt_stops.each do |nxt|
-          # check for starting location
-          if true_name(nxt.bus_stop.location) == origin
-            # upcoming stops w/ the start time as the cut off, so stopping point >= starting point
-            my_route.next_stops(nil, nxt.time).each_with_index do |origin_stops, stop_bus|
-              stop_at = origin_stops.find { |s| true_name(s.bus_stop.location) == destination }
-
-              # make sure this is the same bus
-              if stop_at && start_bus == stop_bus
-                direct_routes << DirectRoute.new(my_route, nxt, stop_at)
-              end
-
-            end
-          end
-        end
-      end
-    end
-    direct_routes
+    @direct_routes = Region.load_all.map(&:routes).flatten.map { |route| route.find_between(origin, destination, current_time) }.flatten
   end
 
   # get most direct route for each bus
   def prioritize
     direct_routes.group_by(&:name).map { |name, my_direct_routes| my_direct_routes.sort.first }
-  end
-
-  # remove mauka, makai, across, etc from the location name
-  def true_name(name)
-    name.to_s.sub(Location::PARTNER_PATTERN, '')
   end
 
   #

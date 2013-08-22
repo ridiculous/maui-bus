@@ -1,4 +1,4 @@
-class Trip::DirectRoute
+class DirectRoute
 
   attr_reader :route, :start_at, :stop_at, :rank
 

@@ -31,6 +31,15 @@ class BusStop
     self.class.sort_times(times)
   end
 
+  # remove mauka, makai, across, etc from the location name
+  def true_location
+    location.to_s.sub(Location::PARTNER_PATTERN, '')
+  end
+
+  #
+  # = Class Methods
+  #
+
   def self.sort_times(timez)
     timez.map { |t| Time.zone.parse(t) unless t.empty? }.compact.sort { |a, b| a <=> b }
   end

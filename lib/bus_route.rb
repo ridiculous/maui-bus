@@ -1,3 +1,5 @@
+require 'direct_route'
+
 # Kaanapali starts up another bus in the middle of the day, making this kind of complicated ...
 class BusRoute
   TIME_ADVANCED = 30.minutes
@@ -93,6 +95,29 @@ class BusRoute
 
   def bus_about_active?(current_time)
     current_time < options[:end_time] && current_time >= options[:start_time] - TIME_ADVANCED
+  end
+
+  def find_between(point_a, point_b, current_time=Time.zone.now)
+    direct_routes = []
+    next_stops(nil, current_time).each_with_index do |nxt_stops, start_bus|
+      # each stop for this bus
+      nxt_stops.each do |nxt|
+        # check for starting location
+        if nxt.bus_stop.true_location == point_a
+          # upcoming stops w/ the start time as the cut off, so stopping point >= starting point
+          self.next_stops(nil, nxt.time).each_with_index do |origin_stops, stop_bus|
+            stop_at = origin_stops.find { |s| s.bus_stop.true_location == point_b }
+
+            # make sure this is the same bus
+            if stop_at && start_bus == stop_bus
+              direct_routes << DirectRoute.new(self, nxt, stop_at)
+            end
+
+          end
+        end
+      end
+    end
+    direct_routes
   end
 
   #
