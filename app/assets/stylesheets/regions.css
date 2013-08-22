@@ -246,3 +246,7 @@ table.padcol td {
     background: #E5E5E5;
     box-shadow: rgba(0, 0, 0, 0.4) 1px 0px 6px inset;
 }
+
+#submit_search[disabled] {
+    font-style: italic;
+}
