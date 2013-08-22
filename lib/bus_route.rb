@@ -109,6 +109,10 @@ class BusRoute
     direct_routes
   end
 
+  def transfers
+    stops.reject { |s| !s.transfer? }
+  end
+
   #
   # = Private
   #
