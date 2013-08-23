@@ -1,7 +1,7 @@
 Maui Bus Routes Application
 ========
 
-A Ruby web app aimed at better organizing the Maui County Bus information. Stored as classes for speed and ease of use. Locations have coordinates, which are used in conjunction with Google Maps API V3 to create map markers and draw routes (`DirectionService`). 
+A Ruby web app aimed at better organizing the Maui County Bus information. The data is stored in classes for speed and ease of use. Locations have coordinates, which are used in conjunction with Google Maps API V3 to create map markers and draw routes (`DirectionService`). 
 
 Some features:
   1. Search          - click on any bus stop to use it as the origin or destination. Finds direct and indirect routes by joining transfer points
