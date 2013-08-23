@@ -79,24 +79,24 @@
         <% @voyages.each do |voyage| %>
             <div class="well app-subheader fl c" style="margin-bottom: 3px;">
 
-              <b><%= link_to(voyage.point_a.route.name, show_region_path(voyage.point_a.route.path_parts[0])) %></b>
+              <b><%= link_to(voyage.leg_1.route.name, show_region_path(voyage.leg_1.route.path_parts[0])) %></b>
               <table class="plain align-left padcol table" style="margin-bottom: 2px;border-top: 1px solid #000">
                 <tbody>
                 <tr>
                   <th>Pick up</th>
                   <td>
-                    <%= link_to_map(time_at_name(voyage.point_a.start_at.time, voyage.point_a.start_at.bus_stop.name), voyage.point_a.route.path_parts, voyage.point_a.start_at.bus_stop.location) %>
+                    <%= link_to_map(time_at_name(voyage.leg_1.start_at.time, voyage.leg_1.start_at.bus_stop.name), voyage.leg_1.route.path_parts, voyage.leg_1.start_at.bus_stop.location) %>
                   </td>
                 </tr>
                 <tr>
                   <th>Drop off</th>
                   <td>
-                    <%= link_to_map(time_at_name(voyage.point_a.stop_at.time, voyage.point_a.stop_at.bus_stop.name), voyage.point_a.route.path_parts, voyage.point_a.stop_at.bus_stop.location) %>
+                    <%= link_to_map(time_at_name(voyage.leg_1.stop_at.time, voyage.leg_1.stop_at.bus_stop.name), voyage.leg_1.route.path_parts, voyage.leg_1.stop_at.bus_stop.location) %>
                   </td>
                 </tr>
                 </tbody>
               </table>
-              <% [voyage.point_b, voyage.point_c].each do |dr| %>
+              <% [voyage.leg_2, voyage.leg_3].each do |dr| %>
                   <div style="border: 1px solid #0275AF;border-radius: 4px;" class="mb10">
                     <table class="plain align-left padcol table" style="margin-bottom: 2px;border-top: 1px solid #000">
                       <tbody>
