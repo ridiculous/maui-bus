@@ -71,6 +71,26 @@ describe Trip do
       idr2.point_bs.first.stop_at.time.should == Time.zone.parse('15:36:00')
       idr2.point_bs.first.stop_at.bus_stop.name.should == "Alana Place / Makawao Ave"
     end
+
+  end
+
+  context 'Voyages' do
+    let(:trip) { Trip.new('liholiho_kanaloa_ave', 'lahaina_cannery_mall') }
+    let(:current_time) { Time.zone.parse('13:00:00') }
+
+    it 'should create a 3 step voyage if all else fails' do
+      trip.find_indirect_routes(current_time)
+      a = trip.find_voyages(current_time)
+      v = a[0]
+      voyage_times = [v.leg_1.start_at.time, v.leg_1.stop_at.time, v.leg_2.start_at.time, v.leg_2.stop_at.time, v.leg_3.start_at.time, v.leg_3.stop_at.time]
+      valid_times = [Time.zone.parse('13:20:00'),
+              Time.zone.parse('13:30:00'),
+              Time.zone.parse('13:30:00'),
+              Time.zone.parse('14:30:00'),
+              Time.zone.parse('14:30:00'),
+              Time.zone.parse('14:50:00')]
+      voyage_times.should == valid_times
+    end
   end
 
 end

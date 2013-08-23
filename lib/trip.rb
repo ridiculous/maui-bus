@@ -5,11 +5,12 @@
 
 require 'leg'
 require 'indirect_routes'
+require 'voyage'
 
 class Trip
 
   attr_reader :all_routes
-  attr_accessor :origin, :destination, :transfers, :direct_routes, :indirect_routes
+  attr_accessor :origin, :destination, :transfers, :direct_routes, :indirect_routes, :first_legs, :last_legs, :voyages
 
   def initialize(origin=nil, destination=nil) # alana_place_makawao
     @origin = origin || 'liholiho_kanaloa_ave'
@@ -17,6 +18,7 @@ class Trip
     @transfers = []
     @direct_routes = []
     @indirect_routes = []
+    @voyages = []
     @all_routes = Region.load_all.map(&:routes).flatten
   end
 
@@ -46,20 +48,21 @@ class Trip
   # and then join them together on the their transfer points
   # ASSUMES there is no direct route between origin and destination
   def find_indirect_routes(current_time=Time.zone.now)
-    first_legs = []
-    start_legs, last_legs = first_and_last_legs
+    starters = []
+    find_first_and_last_legs
+    reject_invalid_legs!
     last_leg_transfers = last_legs.map { |k, v| v.transfers }.flatten
 
-    start_legs.each do |name, leg|
+    first_legs.each do |name, leg|
       start_route = find_route_by_name(name)
       leg.transfers.uniq.each do |transfer_name|
         if transfer_name.in?(last_leg_transfers) && leg.stop_at.nil?
-          first_legs.concat(start_route.find_between(leg.start_at, leg.stop_at = transfer_name, current_time))
+          starters.concat(start_route.find_between(leg.start_at, leg.stop_at = transfer_name, current_time))
         end
       end
     end
 
-    first_legs.each do |dir_route|
+    starters.each do |dir_route|
       ir = IndirectRoute.new(dir_route)
       last_legs.each do |name, leg|
         route = find_route_by_name(name)
@@ -77,39 +80,83 @@ class Trip
     @indirect_routes
   end
 
-  #
-  # = Helpers
-  #
+  def find_voyages(current_time=Time.zone.now)
+    lasts = uniq_transfers(:last_legs)
+    firsts = uniq_transfers(:first_legs)
+    starter_routes = []
+    others = {}
+    all_routes.each do |r|
+      starting_transfers = r.transfer_locations & firsts
+      ending_transfers = r.transfer_locations & lasts
+      if starting_transfers.any? && ending_transfers.any?
+        others[r.name] ||= Leg.new(starting_transfers[0], ending_transfers[0])
+      end
+    end
+    others.each do |oname, leg|
+      first_legs.each do |fname, fleg|
+        fleg_route = find_route_by_name(fname)
+        similar_stops = fleg.transfers & [leg.start_at, leg.stop_at]
+        similar_stops.each do |transfer_name|
+          starter_routes.concat(fleg_route.find_between(fleg.start_at, fleg.stop_at = transfer_name, current_time))
+        end
+      end
+    end
+    starter_routes.each do |start_direct_route|
+      voyage = Voyage.new(start_direct_route)
+      others.each do |oname, oleg|
+        oroute = find_route_by_name(oname)
+        voyage.leg_2 ||= oroute.find_between(oleg.start_at, oleg.stop_at, start_direct_route.stop_at.time).sort[0]
+      end
+      if voyage.leg_2
+        last_legs.each do |name, leg|
+          route = find_route_by_name(name)
+          voyage.leg_3 ||= route.find_between(voyage.leg_2.stop_at.bus_stop.true_location, leg.stop_at, voyage.leg_2.stop_at.time).sort[0]
+        end
+      end
+      voyages << voyage if voyage.complete?
+    end
+    voyages
+  end
+
+  def uniq_transfers(attr)
+    send(attr).map { |k, v| v }.map(&:transfers).flatten.uniq
+  end
+
+#
+# = Helpers
+#
 
   def find_route_by_name(name)
     all_routes.find { |x| x.name == name }
   end
 
-  # collect all possible id_routes and then reject invalid ones (neither start or stop)
-  def first_and_last_legs
-    start_legs, last_legs = {}, {}
+  def reject_invalid_legs!
+    [first_legs, last_legs].each do |legs|
+      legs.reject! { |name, leg| leg.invalid? }
+    end
+  end
+
+# collect all possible id_routes
+  def find_first_and_last_legs
+    @first_legs, @last_legs = {}, {}
     all_routes.each do |my_route|
       my_route.stops.each do |s|
         key = my_route.name
         location_name = s.true_location
-        start_legs[key] ||= Leg.new
+        first_legs[key] ||= Leg.new
         last_legs[key] ||= Leg.new
 
         # attach as a transfer
         last_legs[key].transfers |= [location_name] if s.transfer?
-        start_legs[key].transfers |= [location_name] if s.transfer?
+        first_legs[key].transfers |= [location_name] if s.transfer?
 
         # attach start/stop
         if location_name == origin
-          start_legs[key].start_at ||= origin
+          first_legs[key].start_at ||= origin
         elsif location_name == destination
           last_legs[key].stop_at ||= destination
         end
       end
-    end
-
-    [start_legs, last_legs].each do |leg|
-      leg.reject! { |name, l| l.invalid? }
     end
   end
 

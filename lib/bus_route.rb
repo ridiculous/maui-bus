@@ -113,6 +113,10 @@ class BusRoute
     stops.reject { |s| !s.transfer? }
   end
 
+  def transfer_locations
+    @_transfer_locations ||= transfers.map(&:location).map(&:to_s).uniq
+  end
+
   #
   # = Private
   #
