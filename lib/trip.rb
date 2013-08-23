@@ -1,7 +1,7 @@
 # Three scenarios
 # 1. On same route, return DirectRoute (done)
-# 2. Not on same route, but their routes have a similar transfer. Return routes and transfers
-# 3. Not on same route and no similar transfer. Search other routes for common transfer and return those
+# 2. Not on same route, but their routes have a similar transfer. Return routes and transfers (done)
+# 3. Not on same route and no similar transfer. Search other routes for common transfer and return those (pending)
 
 require 'leg'
 require 'indirect_routes'
@@ -21,7 +21,7 @@ class Trip
   end
 
   #
-  # Direct Routes
+  # = Direct Routes
   #
 
   # Loop through all routes and grab the ones that have our origin and destination in their list of stops
@@ -39,7 +39,7 @@ class Trip
   end
 
   #
-  # Indirect Routes and Transfers
+  # = Indirect Routes and Transfers
   #
 
   # find and save bus routes that include -origin- or -destination- in list of stops
@@ -77,6 +77,10 @@ class Trip
     @indirect_routes
   end
 
+  #
+  # = Helpers
+  #
+
   def find_route_by_name(name)
     all_routes.find { |x| x.name == name }
   end
@@ -107,31 +111,6 @@ class Trip
     [start_legs, last_legs].each do |leg|
       leg.reject! { |name, l| l.invalid? }
     end
-  end
-
-  #
-  # Pre-test tests
-  #
-
-  def self.test
-    noon = Time.zone.parse('Sun, 18 Aug 2013 12:00:00')
-    t = new('kahului_airport', 'queen_kaahumanu')
-    t.find_direct_routes(noon)
-    t
-  end
-
-  def self.test2
-    noon = Time.zone.parse('Sun, 18 Aug 2013 12:00:00')
-    t = Trip.new('liholiho_kanaloa_ave', 'alana_place_makawao')
-    t.find_direct_routes(noon)
-    directs = t.prioritize.sort_by { |x| x.stop_at.time }
-    if directs.empty?
-      indirects = t.find_indirect_routes(noon)
-      if indirects.any?
-        puts 'true'
-      end
-    end
-    t
   end
 
 end
