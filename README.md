@@ -1,7 +1,7 @@
 Maui Bus Routes Application
 ========
 
-An organization of routes, times and locations for the Maui County Bus System. Stored as constants and classes, searching and other mining techniques are easy. 
+An organization of routes, times and locations for the Maui County Bus System. Stored as constants and classes, searching and other mining techniques are easy. Locations have coordinates which are used to create maps and plot the route using Google Maps API V3. 
 
 Some features:
   1. Search - finds direct and indirect routes by joining routes on transfer points
