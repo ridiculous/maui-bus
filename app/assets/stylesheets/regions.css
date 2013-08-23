@@ -255,3 +255,7 @@ table.padcol td {
     border-left: none;
     border-right: none;
 }
+.error-text {
+    font-size: 14px;
+    color: #DF0101;
+}

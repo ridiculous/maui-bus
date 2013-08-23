@@ -46,9 +46,44 @@ class Trip
   # and then join them together on the their transfer points
   # ASSUMES there is no direct route between origin and destination
   def find_indirect_routes(current_time=Time.zone.now)
-    start_legs, last_legs, id_routes = {}, {}, []
+    first_legs = []
+    start_legs, last_legs = first_and_last_legs
+    last_leg_transfers = last_legs.map { |k, v| v.transfers }.flatten
 
-    # collect all possible id_routes and then reject invalid ones (neither a start or stop)
+    start_legs.each do |name, leg|
+      start_route = find_route_by_name(name)
+      leg.transfers.uniq.each do |transfer_name|
+        if transfer_name.in?(last_leg_transfers) && leg.stop_at.nil?
+          first_legs.concat(start_route.find_between(leg.start_at, leg.stop_at = transfer_name, current_time))
+        end
+      end
+    end
+
+    first_legs.each do |dir_route|
+      ir = IndirectRoute.new(dir_route)
+      last_legs.each do |name, leg|
+        route = find_route_by_name(name)
+        leg.transfers.map do |transfer_name|
+          if transfer_name == dir_route.stop_at.bus_stop.true_location
+            route.find_between(transfer_name, leg.stop_at, dir_route.stop_at.time).each do |my_dr|
+              ir.point_bs.concat(Array(my_dr))
+            end
+          end
+        end
+      end
+      @indirect_routes << ir if ir.point_bs.any?
+    end
+
+    @indirect_routes
+  end
+
+  def find_route_by_name(name)
+    all_routes.find { |x| x.name == name }
+  end
+
+  # collect all possible id_routes and then reject invalid ones (neither start or stop)
+  def first_and_last_legs
+    start_legs, last_legs = {}, {}
     all_routes.each do |my_route|
       my_route.stops.each do |s|
         key = my_route.name
@@ -72,43 +107,6 @@ class Trip
     [start_legs, last_legs].each do |leg|
       leg.reject! { |name, l| l.invalid? }
     end
-
-    last_leg_transfers = last_legs.map { |k, v| v.transfers }.flatten
-
-    start_legs.each do |name, leg|
-      leg.transfers.uniq.each do |transfer_name|
-        leg.stop_at = transfer_name if transfer_name.in?(last_leg_transfers)
-      end
-    end
-
-    start_legs.reject { |name, l| l.incomplete? }.map { |route_name, l|
-      start_route = find_route_by_name(route_name)
-      l.transfers.map { |tname|
-        start_route.find_between(l.start_at, tname, current_time)
-      }
-    }.flatten.each do |dir_route|
-      ir = IndirectRoute.new(dir_route)
-      last_legs.each do |name, leg|
-        route = find_route_by_name(name)
-        leg.transfers.map do |transfer_name|
-          if transfer_name == dir_route.stop_at.bus_stop.true_location
-            route.find_between(transfer_name, leg.stop_at, dir_route.stop_at.time).each do |my_dr|
-              ir.point_bs << my_dr
-            end
-          end
-        end
-      end
-      ir.point_bs.flatten!
-      if ir.point_bs.any?
-        id_routes << ir
-      end
-    end
-
-    id_routes
-  end
-
-  def find_route_by_name(name)
-    all_routes.find { |x| x.name == name }
   end
 
   #
@@ -117,9 +115,23 @@ class Trip
 
   def self.test
     noon = Time.zone.parse('Sun, 18 Aug 2013 12:00:00')
-    @trip = new('kahului_airport', 'queen_kaahumanu')
-    @trip.find_direct_routes(noon)
-    @trip
+    t = new('kahului_airport', 'queen_kaahumanu')
+    t.find_direct_routes(noon)
+    t
+  end
+
+  def self.test2
+    noon = Time.zone.parse('Sun, 18 Aug 2013 12:00:00')
+    t = Trip.new('liholiho_kanaloa_ave', 'alana_place_makawao')
+    t.find_direct_routes(noon)
+    directs = t.prioritize.sort_by { |x| x.stop_at.time }
+    if directs.empty?
+      indirects = t.find_indirect_routes(noon)
+      if indirects.any?
+        puts 'true'
+      end
+    end
+    t
   end
 
 end

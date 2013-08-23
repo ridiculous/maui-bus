@@ -62,8 +62,14 @@ var maui = new Maui()
         submit_search.value = 'Search';
         tryResizeSearchBox();
     });
-    agile.on('error', function () {
-        document.getElementById('direct_routes').innerHTML = '<h3 class="error-text">Oops, an error has occured!</h3>';
+    agile.on('failure', function (response) {
+        var dr = document.getElementById('direct_routes'), msg = '';
+        if (!response.status) {
+            msg = "Server can't be reached! Please check your connection."
+        } else {
+            msg = "Oops, something went wrong ..."
+        }
+        dr.innerHTML = '<div class="error-text mini well mt10">' + msg + '</div>';
         submit_search.disabled = false;
         submit_search.value = 'Search';
     });
