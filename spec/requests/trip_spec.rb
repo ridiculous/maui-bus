@@ -83,12 +83,14 @@ describe Trip do
       a = trip.find_voyages(current_time)
       v = a[0]
       voyage_times = [v.leg_1.start_at.time, v.leg_1.stop_at.time, v.leg_2.start_at.time, v.leg_2.stop_at.time, v.leg_3.start_at.time, v.leg_3.stop_at.time]
-      valid_times = [Time.zone.parse('13:20:00'),
-              Time.zone.parse('13:30:00'),
-              Time.zone.parse('13:30:00'),
-              Time.zone.parse('14:30:00'),
-              Time.zone.parse('14:30:00'),
-              Time.zone.parse('14:50:00')]
+      valid_times = [
+          Time.zone.parse('13:20:00'),
+          Time.zone.parse('13:30:00'),
+          Time.zone.parse('13:30:00'),
+          Time.zone.parse('14:30:00'),
+          Time.zone.parse('14:30:00'),
+          Time.zone.parse('14:50:00')
+      ]
       voyage_times.should == valid_times
     end
   end

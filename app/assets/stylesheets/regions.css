@@ -259,3 +259,7 @@ table.padcol td {
     font-size: 14px;
     color: #DF0101;
 }
+
+.plain.table th, plain.table td {
+    padding: 4px;
+}
