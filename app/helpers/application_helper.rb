@@ -18,18 +18,29 @@ module ApplicationHelper
     end
   end
 
-  # has mobile detection
+  def pdf_schedule_for(route, statement)
+    reset_cycle('times_table')
+    statement.page.add("</tbody></table><div class='route-name'>#{route.name}</div><table class='table'><tbody>")
+    route.stops.each do |s|
+      statement.page.add(mobile_table_rows(route, s))
+    end
+    statement
+  end
+
+# has mobile detection
   def schedule_for(route)
     reset_cycle('times_table')
     content_tag(:div, id: "#{route.full_class_name}_container", style: 'display:none;visibility:visible;') do
-      concat(content_tag(:h5, 'Times', class: 'bus-schedule-header fl'))
-      concat(time_frames(route.full_class_name))
+      unless request.format.pdf?
+        concat(content_tag(:h5, 'Times', class: 'bus-schedule-header fl'))
+        concat(time_frames(route.full_class_name))
+      end
 
       # times table
       concat(content_tag(:table, id: "#{route.full_class_name}_table", class: 'table table-hover bus-stops') do
         content_tag(:tbody) do
           concat(route.stops.map do |s|
-            if mobile_device?
+            if mobile_device? || request.format.pdf?
               mobile_table_rows(route, s)
             else
               table_rows(route, s)
@@ -69,8 +80,11 @@ module ApplicationHelper
     route.max_stop_length.times.each_with_index.map do |s, i|
       my_time = stop.times[s]
       nxt_stop = nxt_ups["#{stop.name}#{my_time}"]
-      concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}") do
+      td_classes = "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}"
+      my_time =~ /(\d+):/
+      concat(content_tag(:td, class: td_classes) do
         if my_time && !my_time.empty?
+          td_classes.send(:<<, $1.to_i < 12 ? ' am' : ' pm') if $1.is_a?(String)
           in_format(Time.zone.parse(my_time))
         end
       end)
@@ -78,6 +92,7 @@ module ApplicationHelper
   end
 
   def badges(bus_stop)
+    return content_tag(:span) if request.format.pdf?
     content_tag(:span, 'Destination', class: (bus_stop.destination ? 'badge badge-dest ml5' : 'hide')) +
         content_tag(:span, 'Transfer', class: (bus_stop.transfer? ? 'badge badge-success ml5' : 'hide'))
   end
@@ -91,7 +106,8 @@ module ApplicationHelper
   end
 
   def in_format(the_time)
-    the_time.strftime('%l:%M %p') if the_time
+    return unless the_time
+    the_time.strftime('%l:%M'.send(:<<, (request.format.pdf? ? '' : ' %p')))
   end
 
   def time_at_name(the_time, name)
@@ -103,7 +119,7 @@ module ApplicationHelper
   end
 
   def link_to_map(txt, region_and_route, location=nil)
-    if location
+    if location && !request.format.pdf?
       link_to(txt, show_bus_map_path(*region_and_route, center: location))
     else
       content_tag(:span, txt)

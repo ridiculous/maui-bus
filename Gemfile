@@ -30,6 +30,7 @@ gem 'jquery-rails'
 gem 'thin'
 gem 'twitter-bootstrap-rails'
 gem 'newrelic_rpm'
+gem 'wicked_pdf', '~> 0.7.9' # PDF generation
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

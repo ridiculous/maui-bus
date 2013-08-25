@@ -1,1 +1,0 @@
-function Islander(a){maui.setMapName("Upcountry Islander #40"),maui.loadBusStops(a||Locations),maui.addQueenKaahumanuBack(),maui.drawRoute(maui.gmap.Mall,maui.gmap.Mall,["queen_kaahumanu_back","kahului_salvation_army","kahului_airport","pukalani_terrace","makawao_library","haliimaile","kahului_airport","queen_kaahumanu_back"])}!function(){new Islander}();

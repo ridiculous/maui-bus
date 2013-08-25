@@ -11,6 +11,22 @@ class RegionsController < ApplicationController
 
   def schedule
     @regions = Region.load_all
+    respond_to do |format|
+      format.html #{ render template: 'regions/schedule', formats: [:pdf] }
+      format.pdf do
+        file_name = "maui_bus_schedule_#{Time.now.strftime('%m_%d_%Y_%H%S')}"
+        pdf_file = Rails.root.join('private', "#{file_name}.pdf")
+        render :pdf => file_name,
+               :formats => [:pdf],
+               :save_to_file => pdf_file,
+               :save_only => true,
+               :page_size => "Letter",
+               :header => {right: '[page] of [topage]'},
+               :footer => {center: 'mauibus.net'}
+
+        send_file(pdf_file, type: 'application/pdf')
+      end
+    end
   end
 
   # GET /regions/1
