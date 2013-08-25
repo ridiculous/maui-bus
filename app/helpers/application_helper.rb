@@ -110,4 +110,8 @@ module ApplicationHelper
     end
   end
 
+  def link_to_schedule_pdf
+    link_to('Maui Bus Schedule as PDF - 08/24/13', '/maui_bus_schedule_08_24_2013_1414.pdf')
+  end
+
 end
