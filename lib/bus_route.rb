@@ -13,6 +13,10 @@ class BusRoute
     stops.map(&:times).map(&:length).sort[-1]
   end
 
+  def last_stop_time
+    Time.zone.parse(stops.map(&:times).flatten.reject(&:empty?).last)
+  end
+
   def class_name
     full_class_name.sub(/^.+_/, '').downcase
   end

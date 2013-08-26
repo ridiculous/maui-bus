@@ -9,3 +9,4 @@ Some features:
   3. Browser Support - from IE 8 and up to the most recent Chrome
   4. Mobile Support  - responsive and with a need for speed, everything is done with plain JavaScript
   5. Maps            - every route has a map and every bus stop is marked using its coordinates
+  6. PDF             - capable of generating a PDF for the bus schedule

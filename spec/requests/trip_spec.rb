@@ -5,10 +5,10 @@ describe Trip do
 
   context 'Direct Routes' do
     let(:current_time) { Time.zone.parse('12:00:00') }
-    let(:trip) { Trip.new('kahului_airport', 'queen_kaahumanu') }
+    let(:trip) { Trip.new('kahului_airport', 'queen_kaahumanu', current_time) }
 
     it 'should find direct routes' do
-      trip.find_direct_routes(current_time)
+      trip.find_direct_routes
       trips = trip.prioritize
       trips.length.should == 2
       trips.each do |t|
@@ -30,21 +30,21 @@ describe Trip do
     end
 
     it 'should sort by the fastest route' do
-      trip.find_direct_routes(current_time)
+      trip.find_direct_routes
       trips = trip.prioritize.sort_by { |x| x.stop_at.time }
       trips.first.start_at.time.should == Time.zone.parse('12:43:00')
     end
   end
 
   context 'Indirect Routes' do
-    let(:trip) { Trip.new('liholiho_kanaloa_ave', 'alana_place_makawao') }
     let(:current_time) { Time.zone.parse('13:00:00') }
+    let(:trip) { Trip.new('liholiho_kanaloa_ave', 'alana_place_makawao', current_time) }
 
     it 'should find indirect routes with transfers' do
-      trip.find_direct_routes(current_time)
+      trip.find_direct_routes
       direct_trips = trip.prioritize
       direct_trips.should be_empty
-      id_routes = trip.find_indirect_routes(current_time)
+      id_routes = trip.find_indirect_routes
       id_routes.length.should == 2
       id_routes.each { |route| route.should be_a(IndirectRoute) }
       idr1 = id_routes[0]
@@ -75,12 +75,12 @@ describe Trip do
   end
 
   context 'Voyages' do
-    let(:trip) { Trip.new('liholiho_kanaloa_ave', 'lahaina_cannery_mall') }
     let(:current_time) { Time.zone.parse('13:00:00') }
+    let(:trip) { Trip.new('liholiho_kanaloa_ave', 'lahaina_cannery_mall', current_time) }
 
     it 'should create a 3 step voyage if all else fails' do
-      trip.find_indirect_routes(current_time)
-      a = trip.find_voyages(current_time)
+      trip.find_indirect_routes
+      a = trip.find_voyages
       v = a[0]
       voyage_times = [v.leg_1.start_at.time, v.leg_1.stop_at.time, v.leg_2.start_at.time, v.leg_2.stop_at.time, v.leg_3.start_at.time, v.leg_3.stop_at.time]
       valid_times = [

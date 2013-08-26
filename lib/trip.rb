@@ -12,9 +12,10 @@ class Trip
   attr_reader :all_routes
   attr_accessor :origin, :destination, :transfers, :direct_routes, :indirect_routes, :first_legs, :last_legs, :voyages
 
-  def initialize(origin=nil, destination=nil) # alana_place_makawao
+  def initialize(origin=nil, destination=nil, custom_time=Time.zone.now) # alana_place_makawao
     @origin = origin || 'liholiho_kanaloa_ave'
     @destination = destination || 'queen_kaahumanu'
+    @current_time = custom_time
     @transfers = []
     @direct_routes = []
     @indirect_routes = []
@@ -27,10 +28,10 @@ class Trip
   #
 
   # Loop through all routes and grab the ones that have our origin and destination in their list of stops
-  def find_direct_routes(current_time=Time.zone.now)
+  def find_direct_routes
     all_routes.each do |route|
       if route.stops.find { |s| s.location.to_s.in?([origin, destination]) }
-        @direct_routes.concat(route.find_between(origin, destination, current_time))
+        @direct_routes.concat(route.find_between(origin, destination, current_time(route)))
       end
     end
   end
@@ -47,17 +48,16 @@ class Trip
   # find and save bus routes that include -origin- or -destination- in list of stops
   # and then join them together on the their transfer points
   # ASSUMES there is no direct route between origin and destination
-  def find_indirect_routes(current_time=Time.zone.now)
+  def find_indirect_routes
     starters = []
     find_first_and_last_legs
     reject_invalid_legs!
     last_leg_transfers = last_legs.map { |k, v| v.transfers }.flatten
-
     first_legs.each do |name, leg|
       start_route = find_route_by_name(name)
       leg.transfers.uniq.each do |transfer_name|
         if transfer_name.in?(last_leg_transfers) && leg.stop_at.nil?
-          starters.concat(start_route.find_between(leg.start_at, leg.stop_at = transfer_name, current_time))
+          starters.concat(start_route.find_between(leg.start_at, leg.stop_at = transfer_name, current_time(start_route)))
         end
       end
     end
@@ -80,7 +80,7 @@ class Trip
     @indirect_routes
   end
 
-  def find_voyages(current_time=Time.zone.now)
+  def find_voyages
     lasts = uniq_transfers(:last_legs)
     firsts = uniq_transfers(:first_legs)
     starter_routes = []
@@ -97,7 +97,7 @@ class Trip
         fleg_route = find_route_by_name(fname)
         similar_stops = fleg.transfers & [leg.start_at, leg.stop_at]
         similar_stops.each do |transfer_name|
-          starter_routes.concat(fleg_route.find_between(fleg.start_at, fleg.stop_at = transfer_name, current_time))
+          starter_routes.concat(fleg_route.find_between(fleg.start_at, fleg.stop_at = transfer_name, current_time(fleg_route)))
         end
       end
     end
@@ -122,9 +122,18 @@ class Trip
     send(attr).map { |k, v| v }.map(&:transfers).flatten.uniq
   end
 
-#
-# = Helpers
-#
+  #
+  # = Helpers
+  #
+
+  # search morning routes if all routes finished for the day
+  def current_time(route)
+    if @current_time >= route.last_stop_time
+      @current_time - 18.hours
+    else
+      @current_time
+    end
+  end
 
   def find_route_by_name(name)
     all_routes.find { |x| x.name == name }
