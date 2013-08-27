@@ -1,5 +1,6 @@
 require 'direct_route'
 require 'next_stop'
+require 'node_map'
 
 # Kaanapali starts up another bus in the middle of the day, making this kind of complicated ...
 class BusRoute
@@ -119,6 +120,12 @@ class BusRoute
 
   def transfer_locations
     @_transfer_locations ||= transfers.map(&:location).map(&:to_s).uniq
+  end
+
+  def node_map
+    nm = NodeMap.new(self)
+    nm.do_nodes
+    nm
   end
 
   #
