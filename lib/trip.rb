@@ -20,7 +20,7 @@ class Trip
     @direct_routes = []
     @indirect_routes = []
     @voyages = []
-    @all_routes = Region.load_all.map(&:routes).flatten
+    @all_routes = Region::ALL
   end
 
   #

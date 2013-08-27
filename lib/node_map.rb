@@ -1,16 +1,15 @@
 require 'node'
 class NodeMap
 
-  attr_reader :name, :names, :routes, :transfer_locations
+  attr_reader :name, :routes, :transfer_locations
   attr_accessor :nodes
 
   def initialize(route)
     @route = route
     @name = route.name
     @transfer_locations = route.transfer_locations
-    @routes = Region.load_all.map(&:routes).flatten
+    @routes = Region::ALL
     @nodes = []
-    @names = []
   end
 
   def find_by_name(el_name)
@@ -23,20 +22,18 @@ class NodeMap
 
   def find_nodes(node)
     others = []
+    node.transfers |= [node.transfer]
     routes.reject { |x| x.name == node.name }.each do |route|
       route.transfer_locations.each do |trans|
-        if trans.match(Regexp.new("(#{(node.transfers |= [node.transfer]).join('|')})"))
-          @names |= [node.name]
-          unless others.detect { |n| n.name == route.name }
-            others << Node.new(route, $1, node)
-          end
+        if !others.detect { |n| n.name == route.name } && trans =~ Regexp.new("(#{node.transfers.join('|')})")
+          others << Node.new(route, $1, node)
         end
       end
     end
     others
   end
 
-  def do_nodes
+  def map_nodes
     transfer_locations.each do |transfer|
       base_node = Node.new(@route, transfer)
       base_node.nodes = find_nodes(base_node)

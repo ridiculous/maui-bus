@@ -124,7 +124,7 @@ class BusRoute
 
   def node_map
     nm = NodeMap.new(self)
-    nm.do_nodes
+    nm.map_nodes
     nm
   end
 
