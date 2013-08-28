@@ -3,7 +3,7 @@
   <h3 class="fl" style="margin: 0;"><span class="hidden-phone">Bus</span> Schedule</h3>
   <ul class="unstyled inline fl">
     <% @regions.each do |region| %>
-        <li><%= link_to(region.class, "##{region.class.to_s.downcase}") %></li>
+        <li><%= link_to(region, "##{region.downcase}") %></li>
     <% end %>
   </ul>
   <div class="c"></div>
@@ -11,42 +11,40 @@
   <div class="pad5" style="padding-left: 0"><%= link_to_schedule_pdf %></div>
 </div>
 <div style="padding-bottom: 30px;">
-  <% @regions.each do |region| %>
-      <a name="<%= region.class.to_s.downcase %>"></a>
+  <% @routes.each do |route| %>
+      <a name="<%= region_name = route.full_class_name.split('_')[0] %>"></a>
 
-      <% region.routes.each do |route| %>
-          <div class="route-wrap">
-            <div class="clearfix">
-              <h4 class="fl">
-                <%= link_to(route.name, show_region_path(region.class.to_s.downcase, anchor: route.full_class_name), style: 'float:none') %>
-              </h4>
-              <%= link_to('<span class="icon icon-globe"></span>Map'.html_safe,
-                          show_bus_map_path(region.class.to_s.downcase, route.class_name),
-                          class: 'btn btn-success list fr mt5 mr10'
-                  ) %>
-              <%= link_to_void('<span class="icon icon-time"></span>Times',
-                               class: 'btn btn-info list time-list fr mt5 mr10',
-                               rel: route.full_class_name
-                  ) %>
-              <%= link_to_void('<span class="icon icon-road"></span>Upcoming',
-                               class: 'btn btn-primary hidden-desktop list next-stop-list fr mt5 mr10',
-                               rel: route.full_class_name
-                  ) %>
-            </div>
-            <div id="<%= route.full_class_name %>" class="hidden-tablet hidden-phone a-route">
-              <div class="c">
-                <% if route.note %>
-                    <div class="c pad5" style="font-size: 13px;"><%= route.note.html_safe %></div>
-                <% end %>
-                <%= upcoming_stops_box(route) %>
-                <div class="c"></div>
-              </div>
-            </div>
-            <%= schedule_for(route) %>
-            <%# empty the cached object %>
-            <% route.buses = nil %>
+      <div class="route-wrap">
+        <div class="clearfix">
+          <h4 class="fl">
+            <%= link_to(route.name, show_region_path(region_name, anchor: route.full_class_name), style: 'float:none') %>
+          </h4>
+          <%= link_to('<span class="icon icon-globe"></span>Map'.html_safe,
+                      show_bus_map_path(*route.path_parts),
+                      class: 'btn btn-success list fr mt5 mr10'
+              ) %>
+          <%= link_to_void('<span class="icon icon-time"></span>Times',
+                           class: 'btn btn-info list time-list fr mt5 mr10',
+                           rel: route.full_class_name
+              ) %>
+          <%= link_to_void('<span class="icon icon-road"></span>Upcoming',
+                           class: 'btn btn-primary hidden-desktop list next-stop-list fr mt5 mr10',
+                           rel: route.full_class_name
+              ) %>
+        </div>
+        <div id="<%= route.full_class_name %>" class="hidden-tablet hidden-phone a-route">
+          <div class="c">
+            <% if route.note %>
+                <div class="c pad5" style="font-size: 13px;"><%= route.note.html_safe %></div>
+            <% end %>
+            <%= upcoming_stops_box(route) %>
+            <div class="c"></div>
           </div>
-      <% end %>
+        </div>
+        <%= schedule_for(route) %>
+        <%# empty the cached object %>
+        <% route.buses = nil %>
+      </div>
   <% end %>
 </div>
 <%#= render('modal') %>

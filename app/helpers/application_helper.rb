@@ -114,4 +114,8 @@ module ApplicationHelper
     link_to('Maui Bus Schedule as PDF - 08/24/13', '/maui_bus_schedule_08_24_2013_1414.pdf')
   end
 
+  def times_for_select
+    ['Now'] + ((4...23).to_a + (4...23).to_a).sort.each_with_index.map { |a, i| in_format("#{a < 10 ? '0' : ''}#{a}:#{i % 2 == 0 ? '00' : '30'}:00".to_time).strip }
+  end
+
 end

@@ -122,6 +122,7 @@ class BusRoute
     @_transfer_locations ||= transfers.map(&:location).map(&:to_s).uniq
   end
 
+  # used in searching, data is loaded into BusData on init
   def node_map
     nm = NodeMap.new(self)
     nm.map_nodes

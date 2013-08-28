@@ -8,7 +8,7 @@ class NodeMap
     @route = route
     @name = route.name
     @transfer_locations = route.transfer_locations
-    @routes = Region::ALL
+    @routes = BusData.routes
     @nodes = []
   end
 
@@ -33,6 +33,7 @@ class NodeMap
     others
   end
 
+  # Four levels of mapping seems to cover every possible search combination
   def map_nodes
     transfer_locations.each do |transfer|
       base_node = Node.new(@route, transfer)
@@ -41,6 +42,9 @@ class NodeMap
         node.nodes = find_nodes(node)
         node.nodes.each do |inode|
           inode.nodes = find_nodes(inode)
+          inode.nodes.each do |iinode|
+            iinode.nodes = find_nodes(iinode)
+          end
         end
       end
       nodes << base_node

@@ -10,7 +10,8 @@ class RegionsController < ApplicationController
   end
 
   def schedule
-    @regions = Region.load_all
+    @regions = Region.all.sort
+    @routes = BusData.routes
   end
 
   # GET /regions/1

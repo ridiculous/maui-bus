@@ -8,7 +8,7 @@ describe Trip do
     let(:trip) { Trip.new('kahului_airport', 'queen_kaahumanu', current_time) }
 
     it 'should find direct routes' do
-      trip.find_direct_routes
+      trip.plan
       trips = trip.prioritize
       trips.length.should == 2
       trips.each do |t|

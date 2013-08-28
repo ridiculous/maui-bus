@@ -30,14 +30,14 @@ var maui = new Maui()
         }
         , destination = document.getElementById('destination')
         , origin = document.getElementById('origin')
+        , search_time = document.getElementById('search_time')
         , submit_search = document.getElementById('submit_search')
         , agile = new AjaxService('/search', 'GET')
         , tryResizeSearchBox = function () {
             try {
                 var search_box = document.getElementById('search_box')
                     , map_canvas = document.getElementById('map_canvas')
-                    , map_canvas_height = map_canvas.offsetHeight
-                    , val = 0;
+                    , map_canvas_height = map_canvas.offsetHeight;
 
                 if (search_box.offsetHeight > map_canvas_height - (search_box.style.overflowY == 'scroll' ? 54 : 40)) {
                     search_box.style.maxHeight = (map_canvas_height - 75) + 'px';
@@ -78,8 +78,8 @@ var maui = new Maui()
         var evt = jUtils.getEvent(e);
         this.value = 'Searching';
         this.disabled = true;
-        agile.send({origin: origin.value, destination: destination.value});
-        window.location.hash = origin.value + '-' + destination.value;
+        agile.send({origin: origin.value, destination: destination.value, search_time: search_time.value});
+        window.location.hash = origin.value + '-' + destination.value + '-' + search_time.value.replace(/\s/g, '_');
         if (typeof evt.preventDefault === 'function') {
             evt.preventDefault();
         }
@@ -88,10 +88,11 @@ var maui = new Maui()
 
     var points = window.location.hash.split('-');
 
-    if (points.length === 2) {
+    if (points.length === 3) {
         origin.value = points[0].replace('#', '');
         destination.value = points[1];
-        agile.send({origin: origin.value, destination: destination.value});
+        search_time.value = points[2].replace(/_/g, ' ');
+        agile.send({origin: origin.value, destination: destination.value, search_time: search_time.value});
     }
 
     if (document.getElementById('is_desktop')) {

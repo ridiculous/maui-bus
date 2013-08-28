@@ -1,10 +1,9 @@
 class Node
 
-  attr_reader :parent, :route, :stops
+  attr_reader :parent, :stops
   attr_accessor :name, :transfer, :nodes, :transfers
 
   def initialize(route, transfer, parent=nil)
-    @route = route
     @name = route.name
     @transfer = transfer
     @transfers = route.transfer_locations

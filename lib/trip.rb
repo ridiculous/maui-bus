@@ -1,125 +1,107 @@
-# Three scenarios
-# 1. On same route, return DirectRoute (done)
-# 2. Not on same route, but their routes have a similar transfer. Return routes and transfers (done)
-# 3. Not on same route and no similar transfer. Search other routes for common transfer and return those (pending)
-
 require 'leg'
-require 'indirect_routes'
-require 'voyage'
+require 'course'
 
 class Trip
 
-  attr_reader :all_routes
-  attr_accessor :origin, :destination, :transfers, :direct_routes, :indirect_routes, :first_legs, :last_legs, :voyages
+  attr_accessor :origin, :destination, :courses, :course_options
 
-  def initialize(origin=nil, destination=nil, custom_time=Time.zone.now) # alana_place_makawao
+  def initialize(origin=nil, destination=nil, custom_time=Time.zone.now)
     @origin = origin || 'liholiho_kanaloa_ave'
     @destination = destination || 'queen_kaahumanu'
     @current_time = custom_time
-    @transfers = []
-    @direct_routes = []
-    @indirect_routes = []
-    @voyages = []
-    @all_routes = Region::ALL
+    @courses = []
+    @course_options = []
   end
 
-  #
-  # = Direct Routes
-  #
+  # = Builds out list of possible courses, composed of legs
+  # starts with the first leg of the course, the origin
+  # finds any inbetween legs, in case of indirect routes, and put in other_legs
+  # adds the destination to the last leg of the course
 
-  # Loop through all routes and grab the ones that have our origin and destination in their list of stops
-  def find_direct_routes
-    all_routes.each do |route|
-      if route.stops.find { |s| s.location.to_s.in?([origin, destination]) }
-        @direct_routes.concat(route.find_between(origin, destination, current_time(route)))
-      end
-    end
-  end
+  def search_for_courses
+    BusData.routes.each do |route|
+      transfers_added = []
+      stops = route.stops.map(&:true_location).uniq
+      if stops.include?(origin)
+        # => name, start_at, stop_at
+        first_leg = Leg.new(route.name, origin)
+        last_leg = Leg.new(nil, nil, destination)
+        others = []
 
-  # get most direct route for each bus
-  def prioritize
-    direct_routes.group_by(&:name).map { |name, my_direct_routes| my_direct_routes.sort.first }
-  end
-
-  #
-  # = Indirect Routes and Transfers
-  #
-
-  # find and save bus routes that include -origin- or -destination- in list of stops
-  # and then join them together on the their transfer points
-  # ASSUMES there is no direct route between origin and destination
-  def find_indirect_routes
-    starters = []
-    find_first_and_last_legs
-    reject_invalid_legs!
-    last_leg_transfers = last_legs.map { |k, v| v.transfers }.flatten
-    first_legs.each do |name, leg|
-      start_route = find_route_by_name(name)
-      leg.transfers.uniq.each do |transfer_name|
-        if transfer_name.in?(last_leg_transfers) && leg.stop_at.nil?
-          starters.concat(start_route.find_between(leg.start_at, leg.stop_at = transfer_name, current_time(start_route)))
-        end
-      end
-    end
-
-    starters.each do |dir_route|
-      ir = IndirectRoute.new(dir_route)
-      last_legs.each do |name, leg|
-        route = find_route_by_name(name)
-        leg.transfers.map do |transfer_name|
-          if transfer_name == dir_route.stop_at.bus_stop.true_location
-            route.find_between(transfer_name, leg.stop_at, dir_route.stop_at.time).each do |my_dr|
-              ir.point_bs.concat(Array(my_dr))
+        if stops.include?(destination) && first_leg.start_at != destination
+          first_leg.stop_at = destination
+        else
+          # fetch the node map for this route
+          node_map = BusData.node_map[route.name]
+          node = node_map.find_by_name(destination) # search nodes for destination (always finds it)
+          while node
+            last_transfer = node.transfer
+            has_origin, has_destination = node.stops.include?(origin), node.stops.include?(destination)
+            my_route = find_route_by_name(node.name)
+            # = first_leg - assign stop_at
+            if has_origin && first_leg.stop_at.nil? && first_leg.name == node.name
+              first_leg.stop_at = node.transfer
+            elsif has_destination && last_leg.start_at.nil?
+              # = last_leg - assign name and start_at
+              last_leg.name = my_route.name
+              last_leg.start_at = node.transfer
+            elsif transfers_added.exclude?(node.transfer)
+              # = stop_at - assign to start_at of latest -other_legs- || last_leg.start_at || node.transfer
+              stop_at = others.any? && node.stops.include?(others[-1].start_at) ? others[-1].start_at : nil
+              stop_at ||= last_leg.start_at && node.stops.include?(last_leg.start_at) ? last_leg.start_at : node.transfer
+              # = start_at - assign to first_leg.stop_at || last_transfer
+              start_at = first_leg.stop_at && node.stops.include?(first_leg.stop_at) ? first_leg.stop_at : last_transfer
+              # filter our worthless legs
+              unless start_at == stop_at
+                others << Leg.new(my_route.name, start_at, stop_at)
+              end
+              transfers_added.concat([node.transfer])
             end
+            node = node.parent
           end
         end
-      end
-      @indirect_routes << ir if ir.point_bs.any?
-    end
-
-    @indirect_routes
-  end
-
-  def find_voyages
-    lasts = uniq_transfers(:last_legs)
-    firsts = uniq_transfers(:first_legs)
-    starter_routes = []
-    others = {}
-    all_routes.each do |r|
-      starting_transfers = r.transfer_locations & firsts
-      ending_transfers = r.transfer_locations & lasts
-      if starting_transfers.any? && ending_transfers.any?
-        others[r.name] ||= Leg.new(starting_transfers[0], ending_transfers[0])
-      end
-    end
-    others.each do |oname, leg|
-      first_legs.each do |fname, fleg|
-        fleg_route = find_route_by_name(fname)
-        similar_stops = fleg.transfers & [leg.start_at, leg.stop_at]
-        similar_stops.each do |transfer_name|
-          starter_routes.concat(fleg_route.find_between(fleg.start_at, fleg.stop_at = transfer_name, current_time(fleg_route)))
+        # true when origin is a transfer, try to take a different one instead
+        if first_leg.start_at == first_leg.stop_at && first_leg.start_at == (others[-1] || last_leg).start_at
+          if others.any?
+            first_leg = others.pop
+          else
+            first_leg = last_leg
+            last_leg.start_at = nil
+          end
+        end
+        # filter out dups
+        unless course_options.find { |co| co.first_leg.name == first_leg.name && co.first_leg.start_at == first_leg.start_at }
+          course_options << Course.new(first_leg, last_leg, others.reverse)
         end
       end
     end
-    starter_routes.each do |start_direct_route|
-      voyage = Voyage.new(start_direct_route)
-      others.each do |oname, oleg|
-        oroute = find_route_by_name(oname)
-        voyage.leg_2 ||= oroute.find_between(oleg.start_at, oleg.stop_at, start_direct_route.stop_at.time).sort[0]
-      end
-      if voyage.leg_2
-        last_legs.each do |name, leg|
-          route = find_route_by_name(name)
-          voyage.leg_3 ||= route.find_between(voyage.leg_2.stop_at.bus_stop.true_location, leg.stop_at, voyage.leg_2.stop_at.time).sort[0]
-        end
-      end
-      voyages << voyage if voyage.complete?
-    end
-    voyages
   end
 
-  def uniq_transfers(attr)
-    send(attr).map { |k, v| v }.map(&:transfers).flatten.uniq
+  def limit_results!(limit=2)
+    lcourses = Hash.new(0)
+    courses.reject! { |co| (lcourses[co.first_leg.name] += 1) > limit }
+  end
+
+  def plot_course
+    course_options.each do |course|
+      find_stops_for(course.first_leg).each do |start_dir_route|
+        my_course = Course.new(start_dir_route)
+        course.other_legs.each do |leg|
+          my_course.other_legs << find_stops_for(leg, my_course.latest_leg.stop_at.time).sort[0]
+        end
+        if my_course.other_legs.exclude?(nil)
+          if course.last_leg.complete? && (course.other_legs.empty? || my_course.other_legs[-1])
+            my_course.last_leg = find_stops_for(course.last_leg, my_course.latest_leg.stop_at.time).sort[0]
+          end
+          @courses << my_course
+        end
+      end
+    end
+  end
+
+  def find_stops_for(leg, start_time = nil)
+    route = find_route_by_name(leg.name)
+    route.find_between(leg.start_at, leg.stop_at, start_time || current_time(route))
   end
 
   #
@@ -136,37 +118,7 @@ class Trip
   end
 
   def find_route_by_name(name)
-    all_routes.find { |x| x.name == name }
-  end
-
-  def reject_invalid_legs!
-    [first_legs, last_legs].each do |legs|
-      legs.reject! { |name, leg| leg.invalid? }
-    end
-  end
-
-# collect all possible id_routes
-  def find_first_and_last_legs
-    @first_legs, @last_legs = {}, {}
-    all_routes.each do |my_route|
-      my_route.stops.each do |s|
-        key = my_route.name
-        location_name = s.true_location
-        first_legs[key] ||= Leg.new
-        last_legs[key] ||= Leg.new
-
-        # attach as a transfer
-        last_legs[key].transfers |= [location_name] if s.transfer?
-        first_legs[key].transfers |= [location_name] if s.transfer?
-
-        # attach start/stop
-        if location_name == origin
-          first_legs[key].start_at ||= origin
-        elsif location_name == destination
-          last_legs[key].stop_at ||= destination
-        end
-      end
-    end
+    BusData.routes.find { |x| x.name == name }
   end
 
 end

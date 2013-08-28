@@ -181,6 +181,7 @@ footer a:hover {
     border-bottom: 1px solid #DDD
 }
 
+.table th.bus-1,
 .table td.bus-1,
 .table td.bus-2,
 .bus-1 .well,
@@ -191,6 +192,7 @@ footer a:hover {
 }
 
 .bus-1 .well,
+.table th.bus-1,
 .table td.bus-1 {
     background-color: #F7F8E0;
     border: 1px solid #c3c082;
@@ -251,10 +253,15 @@ table.padcol td {
     font-style: italic;
 }
 
+#direct_routes .table th.bus-1,
 #direct_routes .table td.bus-1 {
     border-left: none;
     border-right: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
+
 .error-text {
     font-size: 14px;
     color: #DF0101;
