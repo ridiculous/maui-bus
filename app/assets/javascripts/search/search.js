@@ -55,7 +55,7 @@ var maui = new Maui()
     my_map.setCenter(maui.gmap.Mall);
     my_map.setZoom(my_map.getZoom() + 4);
 
-    agile.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    agile.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); // to play nice with rails (allows request.xhr?)
     agile.on('success', function (data) {
         document.getElementById('direct_routes').innerHTML = data.responseText;
         submit_search.disabled = false;

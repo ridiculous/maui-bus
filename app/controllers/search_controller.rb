@@ -6,7 +6,7 @@ class SearchController < ApplicationController
   def index
     search_time = Time.zone.parse(params[:search_time]) rescue Time.zone.now
     @trip = Trip.new(params[:origin], params[:destination], search_time || Time.zone.now)
-    if @trip.origin == @trip.destination
+    if @trip.has_same_points?
       request.flash[:alert] = "You're already there!"
     else
       @trip.search_for_courses

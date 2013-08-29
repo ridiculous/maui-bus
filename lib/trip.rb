@@ -5,7 +5,7 @@ class Trip
 
   attr_accessor :origin, :destination, :courses, :course_options
 
-  def initialize(origin=nil, destination=nil, custom_time=Time.zone.now)
+  def initialize(origin = nil, destination = nil, custom_time = Time.zone.now)
     @origin = origin || 'liholiho_kanaloa_ave'
     @destination = destination || 'queen_kaahumanu'
     @current_time = custom_time
@@ -14,9 +14,14 @@ class Trip
   end
 
   # = Builds out list of possible courses, composed of legs
-  # starts with the first leg of the course, the origin
-  # finds any inbetween legs, in case of indirect routes, and put in other_legs
-  # adds the destination to the last leg of the course
+  # Search all routes that have origin in their stops and then lookup that routes
+  # -node_map- and search its nodes for the destination. When found, the destination
+  # node is returned and we build the route by climbing up the node tree, from parent to parent.
+  # Starts with the first leg of the course, the origin
+  # finds any inbetween legs, in case of indirect routes, and puts it in other_legs.
+  # Adds the destination to the last leg of the course. Filter out dups and try
+  # to work with legs where the start/stop at are the same. Deal with this issue
+  # by replacing -first_leg- with a later leg, i.e. -last_leg- || -other_legs-.
 
   def search_for_courses
     BusData.routes.each do |route|
@@ -81,6 +86,8 @@ class Trip
     courses.reject! { |co| (lcourses[co.first_leg.name] += 1) > limit }
   end
 
+  # at this point, -course_options- should be a list of Courses containing Legs
+  # afterwards, -courses- should be a list of Courses containing DirectRoutes
   def plot_course
     course_options.each do |course|
       find_stops_for(course.first_leg).each do |start_dir_route|
@@ -98,14 +105,20 @@ class Trip
     end
   end
 
+  def has_same_points?
+    origin == destination
+  end
+
+  #
+  # = Private Helpers
+  #
+
+  private
+
   def find_stops_for(leg, start_time = nil)
     route = find_route_by_name(leg.name)
     route.find_between(leg.start_at, leg.stop_at, start_time || current_time(route))
   end
-
-  #
-  # = Helpers
-  #
 
   # search morning routes if all routes finished for the day
   def current_time(route)
