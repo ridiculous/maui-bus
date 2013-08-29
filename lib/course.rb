@@ -12,7 +12,7 @@ class Course
   end
 
   def rank
-    other_legs.length + (last_leg ? 1 : 0)
+    (first_leg.try(:rank) || 0) + other_legs.length + (last_leg ? 1 : 0)
   end
 
 end

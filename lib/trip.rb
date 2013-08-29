@@ -51,7 +51,6 @@ class Trip
               stop_at ||= last_leg.start_at && node.stops.include?(last_leg.start_at) ? last_leg.start_at : node.transfer
               # = start_at - assign to first_leg.stop_at || last_transfer
               start_at = first_leg.stop_at && node.stops.include?(first_leg.stop_at) ? first_leg.stop_at : last_transfer
-              # filter our worthless legs
               unless start_at == stop_at
                 others << Leg.new(my_route.name, start_at, stop_at)
               end
@@ -66,7 +65,7 @@ class Trip
             first_leg = others.pop
           else
             first_leg = last_leg
-            last_leg.start_at = nil
+            last_leg.start_at = nil # so its not -complete?- and will be discarded
           end
         end
         # filter out dups
