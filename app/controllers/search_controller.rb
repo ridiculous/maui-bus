@@ -6,10 +6,14 @@ class SearchController < ApplicationController
   def index
     search_time = Time.zone.parse(params[:search_time]) rescue Time.zone.now
     @trip = Trip.new(params[:origin], params[:destination], search_time || Time.zone.now)
-    @trip.search_for_courses
-    @trip.plot_course
-    @trip.limit_results!
-    @locations = Location.unique.map { |key, val| [val.to_s, key] } unless request.xhr?
+    if @trip.origin == @trip.destination
+      request.flash[:alert] = "You're already there!"
+    else
+      @trip.search_for_courses
+      @trip.plot_course
+      @trip.limit_results!
+      @locations = Location.unique.map { |key, val| [val.to_s, key] } unless request.xhr?
+    end
     render partial: 'direct_routes' if request.xhr?
   end
 end
