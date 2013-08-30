@@ -12,9 +12,9 @@ class NodeMap
     @nodes = []
   end
 
-  def find_by_name(el_name)
+  def find_by_name(el_name, others=[])
     nodes.each do |node|
-      my_node = node.find(el_name)
+      my_node = node.find(el_name, others)
       return my_node if my_node
     end
     nil

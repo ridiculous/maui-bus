@@ -6,7 +6,7 @@ class DirectRoute
     @route = route
     @start_at = start_at
     @stop_at = stop_at
-    @rank = stop_at.time - start_at.time
+    @rank = (stop_at.time.to_f * 2) - start_at.time.to_f
   end
 
   def name

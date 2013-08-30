@@ -44,6 +44,17 @@ var jUtils = {
             return elem.className.split(/\s+/).find(class_name) !== -1;
         }
     },
+    fireEvent: function (element, event) {
+        if (document.createEvent) {
+            // dispatch for firefox + others
+            var evt = document.createEvent("HTMLEvents");
+            evt.initEvent(event, true, true); // event type,bubbling,cancelable
+            return !element.dispatchEvent(evt);
+        } else {
+            // dispatch for IE
+            return element.fireEvent('on' + event, document.createEventObject())
+        }
+    },
     getEvent: function(e) {
         return e ? e : window.event;
     }

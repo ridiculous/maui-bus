@@ -9,9 +9,7 @@ class SearchController < ApplicationController
     if @trip.has_same_points?
       request.flash[:alert] = "You're already there!"
     else
-      @trip.search_for_courses
-      @trip.plot_course
-      @trip.limit_results!
+      @trip.plan!
       @locations = Location.unique.map { |key, val| [val.to_s, key] } unless request.xhr?
     end
     render partial: 'direct_routes' if request.xhr?

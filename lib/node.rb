@@ -12,15 +12,20 @@ class Node
     @stops = route.stops.map(&:true_location).uniq
   end
 
-  def find(el_name)
-    if stops.include?(el_name)
+  # find this node if not already found, else search its nodes (recursive)
+  def find(el_name, others=[])
+    if stops.include?(el_name) && others.exclude?(name)
       self
     else
       nodes.each do |n|
-        desired_node = n.find(el_name)
+        desired_node = n.find(el_name, others)
         return desired_node if desired_node
       end
       nil
     end
+  end
+
+  def find_stop_or_default(stop_name, default_val = nil)
+    stop_name && stops.include?(stop_name) ? stop_name : default_val
   end
 end

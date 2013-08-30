@@ -1,6 +1,16 @@
 require 'leg'
 require 'course'
 
+# = Builds out list of possible courses, composed of nodes, legs and direct_routes
+# Search all routes that have origin in their stops and then lookup that routes
+# -node_map- and search its nodes for the destination. When found, the destination
+# node is returned and we build the route by climbing up the node tree, from parent to parent.
+# Starts with the first leg of the course, the origin
+# finds any inbetween legs, in case of indirect routes, and puts it in other_legs.
+# Adds the destinations to the last legs of the course. Filter out dups and try
+# to work with legs where the start/stop at are the same. Deal with this issue
+# by replacing -first_leg- with a later leg, i.e. -last_legs- || -other_legs-.
+
 class Trip
 
   attr_accessor :origin, :destination, :courses, :course_options
@@ -13,72 +23,49 @@ class Trip
     @course_options = []
   end
 
-  # = Builds out list of possible courses, composed of legs
-  # Search all routes that have origin in their stops and then lookup that routes
-  # -node_map- and search its nodes for the destination. When found, the destination
-  # node is returned and we build the route by climbing up the node tree, from parent to parent.
-  # Starts with the first leg of the course, the origin
-  # finds any inbetween legs, in case of indirect routes, and puts it in other_legs.
-  # Adds the destination to the last leg of the course. Filter out dups and try
-  # to work with legs where the start/stop at are the same. Deal with this issue
-  # by replacing -first_leg- with a later leg, i.e. -last_leg- || -other_legs-.
+  def plan!
+    collect_starting_routes
+    collect_course_nodes
+    complete_course_legs
+    plot_course
+    limit_results!
+  end
 
-  def search_for_courses
+  def collect_starting_routes
     BusData.routes.each do |route|
-      transfers_added = []
       stops = route.stops.map(&:true_location).uniq
       if stops.include?(origin)
-        # => name, start_at, stop_at
-        first_leg = Leg.new(route.name, origin)
-        last_leg = Leg.new(nil, nil, destination)
-        others = []
-
-        if stops.include?(destination) && first_leg.start_at != destination
-          first_leg.stop_at = destination
-        else
-          # fetch the node map for this route
-          node_map = BusData.node_map[route.name]
-          node = node_map.find_by_name(destination) # search nodes for destination (always finds it)
-          while node
-            last_transfer = node.transfer
-            has_origin, has_destination = node.stops.include?(origin), node.stops.include?(destination)
-            my_route = find_route_by_name(node.name)
-            # = first_leg - assign stop_at
-            if has_origin && first_leg.stop_at.nil? && first_leg.name == node.name
-              first_leg.stop_at = node.transfer
-            elsif has_destination && last_leg.start_at.nil?
-              # = last_leg - assign name and start_at
-              last_leg.name = my_route.name
-              last_leg.start_at = node.transfer
-            elsif transfers_added.exclude?(node.transfer)
-              # = stop_at - assign to start_at of latest -other_legs- || last_leg.start_at || node.transfer
-              stop_at = others.any? && node.stops.include?(others[-1].start_at) ? others[-1].start_at : nil
-              stop_at ||= last_leg.start_at && node.stops.include?(last_leg.start_at) ? last_leg.start_at : node.transfer
-              # = start_at - assign to first_leg.stop_at || last_transfer
-              start_at = first_leg.stop_at && node.stops.include?(first_leg.stop_at) ? first_leg.stop_at : last_transfer
-              unless start_at == stop_at
-                others << Leg.new(my_route.name, start_at, stop_at)
-              end
-              transfers_added.concat([node.transfer])
-            end
-            node = node.parent
-          end
-        end
-        # true when origin is a transfer, try to take a different one instead
-        if first_leg.start_at == first_leg.stop_at && first_leg.start_at == (others[-1] || last_leg).start_at
-          if others.any?
-            first_leg = others.pop
-          else
-            first_leg = last_leg
-            last_leg.start_at = nil # so its not -complete?- and will be discarded
-          end
-        end
-        # filter out dups
-        unless course_options.find { |co| co.first_leg.name == first_leg.name && co.first_leg.start_at == first_leg.start_at }
-          course_options << Course.new(first_leg, last_leg, others.reverse)
-        end
+        course = Course.new(Leg.new(route.name, origin), [], []) # first_leg, last_legs, other_legs
+        course.first_leg.stop_at = destination if stops.include?(destination) && course.first_leg.start_at != destination
+        course_options << course
       end
     end
+    nil
+  end
+
+  def collect_course_nodes
+    incomplete_course_options.each do |co|
+      others = []
+      node_map = BusData.node_map[co.first_leg.name]
+      while result = node_map.find_by_name(destination, others)
+        others << result.name
+        co.nodes << result
+      end
+    end
+    nil
+  end
+
+  def complete_course_legs
+    incomplete_course_options.each do |co|
+      co.complete_legs_from_nodes(destination)
+      co.origin_is_transfer_workaround
+      co.other_legs.reverse!
+    end
+  end
+
+  # course is complete if first_leg.stop_at is set (in +collect_starting_routes+)
+  def incomplete_course_options
+    course_options.reject { |co| !co.first_leg.stop_at.nil? }
   end
 
   def limit_results!(limit=2)
@@ -90,15 +77,20 @@ class Trip
   # afterwards, -courses- should be a list of Courses containing DirectRoutes
   def plot_course
     course_options.each do |course|
+      next if course.first_leg.has_same_points?
       find_stops_for(course.first_leg).each do |start_dir_route|
         my_course = Course.new(start_dir_route)
         course.other_legs.each do |leg|
-          my_course.other_legs << find_stops_for(leg, my_course.latest_leg.stop_at.time).sort[0]
-        end
-        if my_course.other_legs.exclude?(nil)
-          if course.last_leg.complete? && (course.other_legs.empty? || my_course.other_legs[-1])
-            my_course.last_leg = find_stops_for(course.last_leg, my_course.latest_leg.stop_at.time).sort[0]
+          if leg.start_at == my_course.latest_leg.stop_at.bus_stop.true_location
+            my_course.other_legs << find_stops_for(leg, my_course.latest_leg.stop_at.time).sort[0]
           end
+        end
+        my_course.last_legs = course.last_legs.reject(&:incomplete?).map { |leg|
+          if leg.start_at == my_course.stop_at_location
+            find_stops_for(leg, my_course.latest_leg.stop_at.time).sort[0]
+          end
+        }.compact.sort[0]
+        unless @courses.find { |c| c.same_as?(my_course) }
           @courses << my_course
         end
       end

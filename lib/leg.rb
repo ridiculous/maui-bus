@@ -24,4 +24,8 @@ class Leg
     !complete?
   end
 
+  def has_same_points?
+    start_at == stop_at
+  end
+
 end

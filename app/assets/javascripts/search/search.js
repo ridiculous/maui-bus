@@ -49,6 +49,11 @@ var maui = new Maui()
             } catch (e) {
                 if (window.console) console.log('Error setting height of search box! ' + e);
             }
+        }, requestSearchResults = function () {
+            submit_search.value = 'Searching';
+            submit_search.disabled = true;
+            agile.send({origin: origin.value, destination: destination.value, search_time: search_time.value});
+            window.location.hash = origin.value + '-' + destination.value + '-' + search_time.value.replace(/\s/g, '_');
         };
 
     addMarkers();
@@ -76,10 +81,7 @@ var maui = new Maui()
 
     jUtils.addEvent(submit_search, 'click', function (e) {
         var evt = jUtils.getEvent(e);
-        this.value = 'Searching';
-        this.disabled = true;
-        agile.send({origin: origin.value, destination: destination.value, search_time: search_time.value});
-        window.location.hash = origin.value + '-' + destination.value + '-' + search_time.value.replace(/\s/g, '_');
+        requestSearchResults();
         if (typeof evt.preventDefault === 'function') {
             evt.preventDefault();
         }
@@ -98,6 +100,10 @@ var maui = new Maui()
     if (document.getElementById('is_desktop')) {
         tryResizeSearchBox()
     }
+
+    jUtils.addEvent([origin, destination, search_time], 'change', function () {
+        requestSearchResults();
+    });
 
 })();
 
