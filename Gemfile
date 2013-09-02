@@ -30,13 +30,13 @@ gem 'jquery-rails'
 
 gem 'thin'
 gem 'twitter-bootstrap-rails'
-gem 'newrelic_rpm'
+gem 'newrelic_rpm', '3.6.6.147'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # To use debugger
 # gem 'debugger'
