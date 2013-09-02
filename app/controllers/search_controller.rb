@@ -10,8 +10,8 @@ class SearchController < ApplicationController
       request.flash[:alert] = "You're already there!"
     else
       @trip.plan!
-      @locations = Location.unique.map { |key, val| [val.to_s, key] } unless request.xhr?
     end
+    @locations = Location.unique.map { |key, val| [val.to_s, key] } unless request.xhr?
     render partial: 'direct_routes' if request.xhr?
   end
 end

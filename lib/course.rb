@@ -3,9 +3,15 @@ require 'leg'
 class Course
   attr_accessor :first_leg, :last_legs, :other_legs, :nodes
 
+  class Legs < Array
+    def completed
+      reject { |a| a.incomplete? }
+    end
+  end
+
   def initialize(first_leg = nil, last_legs = [], others = [])
     @first_leg = first_leg
-    @last_legs = last_legs
+    @last_legs = Legs.new(last_legs)
     @other_legs = others
     @nodes = []
   end

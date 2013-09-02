@@ -3,96 +3,333 @@ require 'trip'
 
 describe Trip do
 
-  context 'Direct Routes' do
-    let(:current_time) { Time.zone.parse('12:00:00') }
-    let(:trip) { Trip.new('kahului_airport', 'queen_kaahumanu', current_time) }
+  context 'Planning a simple trip' do
 
-    it 'should find direct routes' do
-      trip.plan
-      trips = trip.prioritize
-      trips.length.should == 2
-      trips.each do |t|
-        t.should be_a(DirectRoute)
-      end
-      option1 = trips[0]
-      option1.start_at.bus_stop.name.should == "Airport Pick-up Zone #3"
-      option1.start_at.time.should == Time.zone.parse('12:43:00')
-      option1.stop_at.bus_stop.name.should == "Queen Kaahumanu Mall"
-      option1.stop_at.time.should == Time.zone.parse('13:00:00')
-      (option1.stop_at.time > option1.start_at.time).should be_true
+    let(:trip) { Trip.new('kahului_airport', 'queen_kaahumanu', Time.zone.parse('12:00 PM')) }
 
-      option2 = trips[1]
-      option2.start_at.bus_stop.name.should == "Airport Pick-up Zone #3"
-      option2.start_at.time.should == Time.zone.parse('13:11:00')
-      option2.stop_at.bus_stop.name.should == "Queen Kaahumanu Mall"
-      option2.stop_at.time.should == Time.zone.parse('13:30:00')
-      (option2.stop_at.time > option2.start_at.time).should be_true
+    it 'should find routes and set course_options in collect_starting_routes' do
+      trip.collect_starting_routes
+      trip.should have(2).course_options
+      opt1 = trip.course_options.first
+      opt1.should have(0).last_legs
+      opt1.should have(0).other_legs
+      opt1.should have(0).nodes
+      opt1.first_leg.should be_a(Leg)
+      opt1.first_leg.name.should == Haiku.islander.name
+      opt1.first_leg.start_at.should == "kahului_airport"
+      opt1.first_leg.stop_at.should == "queen_kaahumanu"
+      opt2 = trip.course_options.last
+      opt2.should have(0).last_legs
+      opt2.should have(0).other_legs
+      opt2.should have(0).nodes
+      opt2.first_leg.should be_a(Leg)
+      opt2.first_leg.name.should == Upcountry.islander.name
+      opt2.first_leg.start_at.should == "kahului_airport"
+      opt2.first_leg.stop_at.should == "queen_kaahumanu"
     end
 
-    it 'should sort by the fastest route' do
-      trip.find_direct_routes
-      trips = trip.prioritize.sort_by { |x| x.stop_at.time }
-      trips.first.start_at.time.should == Time.zone.parse('12:43:00')
+    it 'collect_course_nodes should skip simple routes' do
+      trip.collect_starting_routes
+      trip.collect_course_nodes
+      trip.should have(0).incomplete_course_options
+      trip.course_options.each do |co|
+        co.should have(0).nodes
+      end
+    end
+
+    it 'should plot_course' do
+      trip.collect_starting_routes
+      trip.collect_course_nodes
+      trip.complete_course_legs
+      trip.plot_course
+      trip.should have(4).courses
+      course1 = trip.courses.first
+      course1.should be_a(Course)
+      course1.first_leg.should be_a(DirectRoute)
+      course1.first_leg.start_at.should be_a(NextStop)
+    end
+
+    it 'should plan! a trip, limit 2 courses per route and sort by fastest route' do
+      trip.plan!
+      trip.should have(4).courses
+      trip.courses.map(&:first_leg).map(&:name).uniq.length.should == 2
+      trip.courses.each { |c| c.should be_a(Course) }
+      sorted_courses = trip.courses.sort
+      option1 = sorted_courses[0]
+      option1.first_leg.start_at.bus_stop.name.should == "Airport Pick-up Zone #3"
+      option1.first_leg.start_at.time.should == Time.zone.parse('12:43:00')
+      option1.first_leg.stop_at.bus_stop.name.should == "Queen Kaahumanu Mall"
+      option1.first_leg.stop_at.time.should == Time.zone.parse('13:00:00')
+      (option1.first_leg.stop_at.time > option1.first_leg.start_at.time).should be_true
+
+      option2 = sorted_courses[1]
+      option2.first_leg.start_at.bus_stop.name.should == "Airport Pick-up Zone #3"
+      option2.first_leg.start_at.time.should == Time.zone.parse('13:11:00')
+      option2.first_leg.stop_at.bus_stop.name.should == "Queen Kaahumanu Mall"
+      option2.first_leg.stop_at.time.should == Time.zone.parse('13:30:00')
+      (option2.first_leg.stop_at.time > option2.first_leg.start_at.time).should be_true
     end
   end
 
-  context 'Indirect Routes' do
+  context 'Planning trips with last_legs' do
     let(:current_time) { Time.zone.parse('13:00:00') }
-    let(:trip) { Trip.new('liholiho_kanaloa_ave', 'alana_place_makawao', current_time) }
+    let(:trip) { Trip.new('liholiho_kanaloa_ave', 'alana_place_makawao', Time.zone.parse('1:00 PM')) }
+
+    it 'should find routes and set course_options in collect_starting_routes' do
+      trip.collect_starting_routes
+      trip.should have(2).course_options
+      opt1 = trip.course_options.first
+      opt1.should have(0).last_legs
+      opt1.should have(0).other_legs
+      opt1.should have(0).nodes
+      opt1.first_leg.should be_a(Leg)
+      opt1.first_leg.name.should == "Wailuku Loop Route #1"
+      opt1.first_leg.start_at.should == "liholiho_kanaloa_ave"
+      opt1.first_leg.stop_at.should be_nil
+      opt2 = trip.course_options.last
+      opt2.should have(0).last_legs
+      opt2.should have(0).other_legs
+      opt2.should have(0).nodes
+      opt2.first_leg.should be_a(Leg)
+      opt2.first_leg.name.should == "Wailuku Loop Route #2 (reverse)"
+      opt2.first_leg.start_at.should == "liholiho_kanaloa_ave"
+      opt2.first_leg.stop_at.should be_nil
+    end
+
+    it 'should collect_course_nodes' do
+      trip.collect_starting_routes
+      trip.collect_course_nodes
+      trip.should have(2).incomplete_course_options
+      trip.incomplete_course_options.each do |ico|
+        ico.should have(1).nodes
+        ico.nodes[0].should be_a(Node)
+        ico.nodes[0].name.should == Upcountry.islander.name
+      end
+    end
+
+    it 'should complete_course_legs' do
+      trip.collect_starting_routes
+      trip.collect_course_nodes
+      trip.complete_course_legs
+      trip.should have(2).course_options
+      c1 = trip.course_options[0]
+      c1.should have(0).other_legs
+      c1.should have(1).nodes
+      c1.first_leg.name.should == Wailuku.loop_one.name
+      c1.first_leg.start_at.should == 'liholiho_kanaloa_ave'
+      c1.first_leg.stop_at.should == 'queen_kaahumanu'
+      c1.last_legs.should be_a(Course::Legs) # subclass of Array
+      c1.last_legs[0].name.should == Upcountry.islander.name
+      c1.last_legs[0].start_at.should == 'queen_kaahumanu'
+      c1.last_legs[0].stop_at.should == 'alana_place_makawao'
+      c2 = trip.course_options[1]
+      c2.should have(0).other_legs
+      c2.should have(1).nodes
+      c2.first_leg.name.should == Wailuku.loop_two.name
+      c2.first_leg.start_at.should == 'liholiho_kanaloa_ave'
+      c2.first_leg.stop_at.should == 'queen_kaahumanu'
+      c2.last_legs[0].name.should == Upcountry.islander.name
+      c2.last_legs[0].start_at.should == 'queen_kaahumanu'
+      c2.last_legs[0].stop_at.should == 'alana_place_makawao'
+    end
 
     it 'should find indirect routes with transfers' do
-      trip.find_direct_routes
-      direct_trips = trip.prioritize
-      direct_trips.should be_empty
-      id_routes = trip.find_indirect_routes
-      id_routes.length.should == 2
-      id_routes.each { |route| route.should be_a(IndirectRoute) }
-      idr1 = id_routes[0]
-      idr1.point_a.should be_a(DirectRoute)
-      idr1.point_a.start_at.bus_stop.name.should == "Liholiho St. / Kanaloa Ave."
-      idr1.point_a.start_at.time.should == Time.zone.parse('13:20:00')
-      idr1.point_a.stop_at.bus_stop.name.should == "Queen Kaahumanu Mall"
-      idr1.point_a.stop_at.time.should == Time.zone.parse('13:30:00')
-      idr1.should have(1).point_bs
-      idr1.point_bs.first.start_at.bus_stop.name.should == 'Queen Kaahumanu Mall'
-      idr1.point_bs.first.start_at.time.should == Time.zone.parse('13:30:00')
-      idr1.point_bs.first.stop_at.time.should == Time.zone.parse('14:06:00')
-      idr1.point_bs.first.stop_at.bus_stop.name.should == "Alana Place / Makawao Ave"
-      # option 2
-      idr2 = id_routes[1]
-      idr2.point_a.should be_a(DirectRoute)
-      idr2.point_a.start_at.bus_stop.name.should == "Liholiho St. / Kanaloa Ave. (Parkside)"
-      idr2.point_a.start_at.time.should == Time.zone.parse('13:07:00')
-      idr2.point_a.stop_at.bus_stop.name.should == "Queen Kaahumanu Mall"
-      idr2.point_a.stop_at.time.should == Time.zone.parse('14:00:00')
-      idr2.should have(1).point_bs
-      idr2.point_bs.first.start_at.bus_stop.name.should == 'Queen Kaahumanu Mall'
-      idr2.point_bs.first.start_at.time.should == Time.zone.parse('15:00:00')
-      idr2.point_bs.first.stop_at.time.should == Time.zone.parse('15:36:00')
-      idr2.point_bs.first.stop_at.bus_stop.name.should == "Alana Place / Makawao Ave"
-    end
+      trip.plan!
+      trip.should have(2).courses
+      trip.courses.map(&:first_leg).map(&:name).uniq.length.should == 2
+      trip.courses.each { |c| c.should be_a(Course) }
+      sorted_courses = trip.courses.sort
+      option1 = sorted_courses[0]
+      option1.first_leg.start_at.bus_stop.name.should == "Liholiho St. / Kanaloa Ave."
+      option1.first_leg.start_at.time.should == Time.zone.parse('1:20 PM')
+      option1.first_leg.stop_at.bus_stop.name.should == "Queen Kaahumanu Mall"
+      option1.first_leg.stop_at.time.should == Time.zone.parse('1:30 PM')
+      option1.last_legs.should be_a(DirectRoute)
+      option1.last_legs.start_at.bus_stop.name.should == "Queen Kaahumanu Mall"
+      option1.last_legs.start_at.time.should == Time.zone.parse('1:30 PM')
+      option1.last_legs.stop_at.bus_stop.name.should == "Alana Place / Makawao Ave"
+      option1.last_legs.stop_at.time.should == Time.zone.parse('2:06 PM')
 
-  end
-
-  context 'Voyages' do
-    let(:current_time) { Time.zone.parse('13:00:00') }
-    let(:trip) { Trip.new('liholiho_kanaloa_ave', 'lahaina_cannery_mall', current_time) }
-
-    it 'should create a 3 step voyage if all else fails' do
-      trip.find_indirect_routes
-      a = trip.find_voyages
-      v = a[0]
-      voyage_times = [v.leg_1.start_at.time, v.leg_1.stop_at.time, v.leg_2.start_at.time, v.leg_2.stop_at.time, v.leg_3.start_at.time, v.leg_3.stop_at.time]
-      valid_times = [
-          Time.zone.parse('13:20:00'),
-          Time.zone.parse('13:30:00'),
-          Time.zone.parse('13:30:00'),
-          Time.zone.parse('14:30:00'),
-          Time.zone.parse('14:30:00'),
-          Time.zone.parse('14:50:00')
-      ]
-      voyage_times.should == valid_times
+      option2 = sorted_courses[1]
+      option2.first_leg.start_at.bus_stop.name.should == "Liholiho St. / Kanaloa Ave. (Parkside)"
+      option2.first_leg.start_at.time.should == Time.zone.parse('1:07 PM')
+      option2.first_leg.stop_at.bus_stop.name.should == "Queen Kaahumanu Mall"
+      option2.first_leg.stop_at.time.should == Time.zone.parse('2:00 PM')
+      option2.last_legs.should be_a(DirectRoute)
+      option2.last_legs.start_at.bus_stop.name.should == "Queen Kaahumanu Mall"
+      option2.last_legs.start_at.time.should == Time.zone.parse('3:00 PM')
+      option2.last_legs.stop_at.bus_stop.name.should == "Alana Place / Makawao Ave"
+      option2.last_legs.stop_at.time.should == Time.zone.parse('3:36 PM')
     end
   end
 
+  context 'Planning advanced trips' do
+    let(:trip) { Trip.new('rice_park', 'napili_kai', Time.zone.parse('1:00 PM')) }
+
+    it 'should find routes and set course_options in collect_starting_routes' do
+      trip.collect_starting_routes
+      trip.should have(1).course_options
+      opt1 = trip.course_options.first
+      opt1.should have(0).last_legs
+      opt1.should have(0).other_legs
+      opt1.should have(0).nodes
+      opt1.first_leg.should be_a(Leg)
+      opt1.first_leg.name.should == Kula.villager.name
+      opt1.first_leg.start_at.should == "rice_park"
+      opt1.first_leg.stop_at.should be_nil
+    end
+
+    it 'should collect_course_nodes' do
+      trip.collect_starting_routes
+      trip.course_options.first.should have(0).nodes
+      BusData.node_map[trip.course_options.first.first_leg.name].should be_a(NodeMap)
+      trip.collect_course_nodes
+      trip.course_options.first.should have(1).nodes
+      trip.course_options.first.nodes.first.should be_a(Node)
+    end
+
+    it 'should complete_course_legs' do
+      trip.collect_starting_routes
+      trip.collect_course_nodes
+      trip.complete_course_legs
+      course = trip.course_options.first
+      course.first_leg.should be_a(Leg)
+      course.first_leg.name.should == Kula.villager.name
+      course.first_leg.start_at.should == 'rice_park'
+      course.first_leg.stop_at.should == 'pukalani_terrace'
+      course.should have(3).other_legs
+      course.other_legs.each { |ol| ol.should be_a(Leg) }
+      course.other_legs[0].name.should == Upcountry.islander.name
+      course.other_legs[0].start_at.should == 'pukalani_terrace'
+      course.other_legs[0].stop_at.should == 'queen_kaahumanu'
+      course.other_legs[1].name.should == Lahaina.islander.name
+      course.other_legs[1].start_at.should == 'queen_kaahumanu'
+      course.other_legs[1].stop_at.should == 'wharf_cinema'
+      course.other_legs[2].name.should == Kaanapali.islander.name
+      course.other_legs[2].start_at.should == 'wharf_cinema'
+      course.other_legs[2].stop_at.should == 'whalers_village'
+      course.should have(1).last_legs
+      course.last_legs.should be_a(Course::Legs)
+      last_leg = course.last_legs[0]
+      last_leg.name.should == Napili.islander.name
+      last_leg.start_at.should == 'whalers_village'
+      last_leg.stop_at.should == 'napili_kai'
+    end
+
+    it 'should plot_course' do
+      trip.collect_starting_routes
+      trip.collect_course_nodes
+      trip.complete_course_legs
+      trip.should have(0).courses
+      trip.plot_course
+      trip.should have(1).courses
+      course = trip.courses.first
+      course.first_leg.should be_a(DirectRoute)
+      course.first_leg.name.should == Kula.villager.name
+      course.first_leg.start_at.should be_a(NextStop)
+      course.first_leg.start_at.bus_stop.location.should == :rice_park
+      course.first_leg.start_at.time.should == Time.zone.parse('1:28 PM')
+      course.first_leg.stop_at.should be_a(NextStop)
+      course.first_leg.stop_at.bus_stop.location.should == :pukalani_terrace
+      course.first_leg.stop_at.time.should == Time.zone.parse('2:00 PM')
+      course.should have(3).other_legs
+      ol1 = course.other_legs[0]
+      ol1.should be_a(DirectRoute)
+      ol1.name.should == Upcountry.islander.name
+      ol1.start_at.bus_stop.location.should == :pukalani_terrace
+      ol1.start_at.time.should == Time.zone.parse('2:00 PM')
+      ol1.stop_at.bus_stop.location.should == :queen_kaahumanu
+      ol1.stop_at.time.should == Time.zone.parse('3:00 PM')
+
+      ol2 = course.other_legs[1]
+      ol2.name.should == Lahaina.islander.name
+      ol2.start_at.bus_stop.location.should == :queen_kaahumanu
+      ol2.start_at.time.should == Time.zone.parse('3:30 PM')
+      ol2.stop_at.bus_stop.location.should == :wharf_cinema
+      ol2.stop_at.time.should == Time.zone.parse('4:30 PM')
+
+      ol3 = course.other_legs[2]
+      ol3.name.should == Kaanapali.islander.name
+      ol3.start_at.bus_stop.location.should == :wharf_cinema
+      ol3.start_at.time.should == Time.zone.parse('4:30 PM')
+      ol3.stop_at.bus_stop.location.should == :whalers_village
+      ol3.stop_at.time.should == Time.zone.parse('5:00 PM')
+
+      course.last_legs.should be_a(DirectRoute)
+      course.last_legs.name.should == Napili.islander.name
+      course.last_legs.start_at.bus_stop.location.should == :whalers_village
+      course.last_legs.start_at.time.should == Time.zone.parse('5:00 PM')
+      course.last_legs.stop_at.bus_stop.location.should == :napili_kai
+      course.last_legs.stop_at.time.should == Time.zone.parse('5:30 PM')
+    end
+  end
+
+  context 'When hub is the origin' do
+    let(:trip) { Trip.new('queen_kaahumanu', 'napili_kai', Time.zone.parse('1:00 PM')) }
+
+    it 'should find routes with the origin and create course_options' do
+      trip.collect_starting_routes
+      trip.should have(8).course_options
+      opts = trip.course_options.map(&:first_leg).map(&:name)
+      opts.should == ["Haiku Islander Route #35",
+                      "Kahului Loop Route #5",
+                      "Kahului Loop Route #6 (reverse)",
+                      "Kihei Islander Route #10",
+                      "Lahaina Islander #20",
+                      "Upcountry Islander #40",
+                      "Wailuku Loop Route #1",
+                      "Wailuku Loop Route #2 (reverse)"]
+    end
+
+    it 'should plan! trip' do
+      trip.plan!
+      trip.should have(8).course_options
+      trip.should have(2).courses
+      course = trip.courses.sort[0]
+      course.first_leg.should be_a(DirectRoute)
+      course.first_leg.name.should == Lahaina.islander.name
+      course.first_leg.start_at.should be_a(NextStop)
+      course.first_leg.start_at.bus_stop.location.should == :queen_kaahumanu
+      course.first_leg.start_at.time.should == Time.zone.parse('1:30 PM')
+      course.first_leg.stop_at.should be_a(NextStop)
+      course.first_leg.stop_at.bus_stop.location.should == :wharf_cinema
+      course.first_leg.stop_at.time.should == Time.zone.parse('2:30 PM')
+      course.should have(1).other_legs
+      other_leg = course.other_legs.first
+      other_leg.name.should == Kaanapali.islander.name
+      other_leg.start_at.bus_stop.location.should == :wharf_cinema
+      other_leg.start_at.time.should == Time.zone.parse('2:30 PM')
+      other_leg.stop_at.bus_stop.location.should == :whalers_village
+      other_leg.stop_at.time.should == Time.zone.parse('3:00 PM')
+
+      course.last_legs.name.should == Napili.islander.name
+      course.last_legs.start_at.bus_stop.location.should == :whalers_village
+      course.last_legs.start_at.time.should == Time.zone.parse('3:00 PM')
+      course.last_legs.stop_at.bus_stop.location.should == :napili_kai
+      course.last_legs.stop_at.time.should == Time.zone.parse('3:30 PM')
+
+      course2 = trip.courses.sort[1]
+      course2.first_leg.should be_a(DirectRoute)
+      course2.first_leg.name.should == Lahaina.islander.name
+      course2.first_leg.start_at.should be_a(NextStop)
+      course2.first_leg.start_at.bus_stop.location.should == :queen_kaahumanu
+      course2.first_leg.start_at.time.should == Time.zone.parse('2:30 PM')
+      course2.first_leg.stop_at.should be_a(NextStop)
+      course2.first_leg.stop_at.bus_stop.location.should == :wharf_cinema
+      course2.first_leg.stop_at.time.should == Time.zone.parse('3:30 PM')
+      course2.should have(1).other_legs
+      other_leg = course2.other_legs.first
+      other_leg.name.should == Kaanapali.islander.name
+      other_leg.start_at.bus_stop.location.should == :wharf_cinema
+      other_leg.start_at.time.should == Time.zone.parse('3:30 PM')
+      other_leg.stop_at.bus_stop.location.should == :whalers_village
+      other_leg.stop_at.time.should == Time.zone.parse('4:00 PM')
+
+      course2.last_legs.name.should == Napili.islander.name
+      course2.last_legs.start_at.bus_stop.location.should == :whalers_village
+      course2.last_legs.start_at.time.should == Time.zone.parse('4:00 PM')
+      course2.last_legs.stop_at.bus_stop.location.should == :napili_kai
+      course2.last_legs.stop_at.time.should == Time.zone.parse('4:30 PM')
+    end
+  end
 end

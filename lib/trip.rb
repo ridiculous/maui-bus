@@ -31,9 +31,10 @@ class Trip
     limit_results!
   end
 
+  # find pertinent routes and create a Course with each one
   def collect_starting_routes
     BusData.routes.each do |route|
-      stops = route.stops.map(&:true_location).uniq
+      stops = route.stops.map { |s| s.true_location }.uniq
       if stops.include?(origin)
         course = Course.new(Leg.new(route.name, origin), [], []) # first_leg, last_legs, other_legs
         course.first_leg.stop_at = destination if stops.include?(destination) && course.first_leg.start_at != destination
@@ -43,6 +44,7 @@ class Trip
     nil
   end
 
+  # search the node_map for the destination
   def collect_course_nodes
     incomplete_course_options.each do |co|
       others = []
@@ -55,12 +57,14 @@ class Trip
     nil
   end
 
+  # climb the node tree starting from the destination and complete the course legs as we go
   def complete_course_legs
     incomplete_course_options.each do |co|
       co.complete_legs_from_nodes(destination)
       co.origin_is_transfer_workaround
       co.other_legs.reverse!
     end
+    nil
   end
 
   # course is complete if first_leg.stop_at is set (in +collect_starting_routes+)
@@ -68,6 +72,7 @@ class Trip
     course_options.reject { |co| !co.first_leg.stop_at.nil? }
   end
 
+  # by route name for origin
   def limit_results!(limit=2)
     lcourses = Hash.new(0)
     courses.reject! { |co| (lcourses[co.first_leg.name] += 1) > limit }
@@ -81,20 +86,17 @@ class Trip
       find_stops_for(course.first_leg).each do |start_dir_route|
         my_course = Course.new(start_dir_route)
         course.other_legs.each do |leg|
-          if leg.start_at == my_course.latest_leg.stop_at.bus_stop.true_location
+          if leg.start_at == my_course.stop_at_location
             my_course.other_legs << find_stops_for(leg, my_course.latest_leg.stop_at.time).sort[0]
           end
         end
-        my_course.last_legs = course.last_legs.reject(&:incomplete?).map { |leg|
-          if leg.start_at == my_course.stop_at_location
-            find_stops_for(leg, my_course.latest_leg.stop_at.time).sort[0]
-          end
-        }.compact.sort[0]
-        unless @courses.find { |c| c.same_as?(my_course) }
-          @courses << my_course
-        end
+        latest_time = my_course.latest_leg.stop_at.time
+        last_legs = course.last_legs.completed.map { |l| find_stops_for(l, latest_time).sort[0] if l.start_at == my_course.stop_at_location }
+        my_course.last_legs = last_legs.compact.sort[0]
+        @courses << my_course unless @courses.find { |c| c.same_as?(my_course) }
       end
     end
+    nil
   end
 
   def has_same_points?
@@ -108,7 +110,7 @@ class Trip
   private
 
   def find_stops_for(leg, start_time = nil)
-    route = find_route_by_name(leg.name)
+    route = BusData.routes.find { |x| x.name == leg.name }
     route.find_between(leg.start_at, leg.stop_at, start_time || current_time(route))
   end
 
@@ -119,10 +121,6 @@ class Trip
     else
       @current_time
     end
-  end
-
-  def find_route_by_name(name)
-    BusData.routes.find { |x| x.name == name }
   end
 
 end

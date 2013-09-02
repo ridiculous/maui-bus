@@ -23,6 +23,7 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'spork-rails', github: 'A-gen/spork-rails'
 end
 
 gem 'jquery-rails'
