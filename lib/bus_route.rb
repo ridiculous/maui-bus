@@ -47,8 +47,7 @@ class BusRoute
       else
         nxt = []
         stops.each do |my_stop|
-          my_times = find_times(my_stop, bus, current_time)
-          nxt_time = my_times.detect { |t| t >= current_time }
+          nxt_time = find_times(my_stop, bus, current_time).detect { |t| t >= current_time }
           if nxt_time && !nxt.find { |nx| nx.time == nxt_time }
             nxt << NextStop.new(my_stop, nxt_time)
           end
@@ -99,7 +98,7 @@ class BusRoute
         # check for starting location
         if nxt.bus_stop.true_location == point_a
           # upcoming stops w/ the start time as the cut off, so stopping point >= starting point
-          self.next_stops(nil, nxt.time).each_with_index do |origin_stops, stop_bus|
+          next_stops(nil, nxt.time).each_with_index do |origin_stops, stop_bus|
             stop_at = origin_stops.find { |s| s.bus_stop.true_location == point_b }
 
             # make sure this is the same bus
@@ -112,10 +111,6 @@ class BusRoute
       end
     end
     direct_routes
-  end
-
-  def transfers
-    stops.reject { |s| !s.transfer? }
   end
 
   def transfer_locations
@@ -146,5 +141,9 @@ class BusRoute
     else
       my_stop.sorted_times
     end
+  end
+
+  def transfers
+    stops.reject { |s| !s.transfer? }
   end
 end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SearchController do
 
   context 'GET index' do
-    it 'should render index page' do
+    it 'should render index view in map_hybrid layout' do
       get :index
       response.should be_success
       response.should have_rendered('layouts/map_hybrid', 'search/index')
@@ -24,7 +24,7 @@ describe SearchController do
       assigns(:trip).should be_has_same_points
     end
 
-    it 'should render partial when request.xhr?' do
+    it 'should render partial when request is AJAX' do
       xhr :get, :index, origin: 'liholiho_kanaloa_ave', destination: 'queen_kaahumanu', search_time: '7:00 AM'
       response.should be_success
       response.should have_rendered(partial: 'search/_direct_routes')

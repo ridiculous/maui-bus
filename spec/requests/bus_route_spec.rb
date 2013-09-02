@@ -4,7 +4,7 @@ describe BusRoute do
 
   context 'Finders' do
 
-    it 'should find_between' do
+    it 'should find_between point_a and point_b at current_time' do
       next_stops = Kihei.new.islander.find_between('queen_kaahumanu', 'piilani_shopping_center', Time.zone.parse('6:00 PM'))
       next_stops.length.should == 2
       nxt = next_stops[0]
@@ -26,7 +26,7 @@ describe BusRoute do
       Kihei.islander.last_stop_time.should == Time.zone.parse('9:30 PM')
     end
 
-    it 'should find next stops for a given time (default now)' do
+    it 'should find upcoming stops for a given time (default now)' do
       buses = Kihei.villager.next_stops(5, Time.zone.parse('12:00 PM'))
       buses.length.should == 1
       next_stops = buses.first
@@ -48,17 +48,19 @@ describe BusRoute do
       Kihei.villager.should have(1).buses
       Kihei.islander.buses.each { |b| b.should be_a(Bus) }
     end
-
   end
 
   context 'Helpers' do
-    it 'should return class name' do
+
+    it "class_name should be the instance's class name" do
       Kihei.islander.class_name.should == 'islander'
     end
-    it 'should return full class name' do
+
+    it 'full_class_name should be instance and parent class name joined w/ underscore' do
       Kihei.islander.full_class_name.should == 'kihei_islander'
     end
-    it 'should return unique transfer locations' do
+
+    it 'transfer_locations should be unique transfer locations as Array' do
       Kihei.islander.transfer_locations.should == %w[queen_kaahumanu piilani_shopping_center]
     end
   end

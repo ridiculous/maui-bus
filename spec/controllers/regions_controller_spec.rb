@@ -25,12 +25,6 @@ describe RegionsController do
       assigns(:region).should be_instance_of(Haiku)
     end
 
-    it 'should find the route by uppercase name' do
-      get :show, name: 'HAIKU'
-      response.should be_success
-      assigns(:region).should be_instance_of(Haiku)
-    end
-
     it 'should redirect to root path when region not found' do
       get :show, name: 'haikus'
       response.should be_redirect
