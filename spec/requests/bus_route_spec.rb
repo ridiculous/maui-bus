@@ -41,8 +41,6 @@ describe BusRoute do
       next_stops[3].bus_stop.location.should == :kaonoulu_south_kihei_makai
       next_stops[4].time.should == Time.zone.parse('12:22 PM')
       next_stops[4].bus_stop.location.should == :kulanihakoi_south_kihei
-      next_stops[5].time.should == Time.zone.parse('12:22 PM')
-      next_stops[5].bus_stop.location.should == :kulanihakoi_south_kihei
     end
 
     it 'should find next stops for each bus on the route' do
