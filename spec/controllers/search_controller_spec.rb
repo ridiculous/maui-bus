@@ -24,7 +24,7 @@ describe SearchController do
       assigns(:trip).should be_has_same_points
     end
 
-    it 'should render partial when request is AJAX' do
+    it 'should respond with a partial when requested via AJAX' do
       xhr :get, :index, origin: 'liholiho_kanaloa_ave', destination: 'queen_kaahumanu', search_time: '7:00 AM'
       response.should be_success
       response.should have_rendered(partial: 'search/_direct_routes')

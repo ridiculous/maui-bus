@@ -91,25 +91,8 @@ class Course
     [
         first_leg.start_at.true_location,
         first_leg.stop_at.true_location,
-        *other_leg_points,
         last_legs.try(:start_at).try(:true_location),
         last_legs.try(:stop_at).try(:true_location)
     ].uniq
   end
-
-  #
-  # = Private
-  #
-
-  private
-
-  def other_leg_points
-    starts, stops = [], []
-    other_legs.compact.each do |ol|
-      starts << ol.start_at.try(:true_location)
-      stops << ol.stop_at.try(:true_location)
-    end
-    starts | stops
-  end
-
 end

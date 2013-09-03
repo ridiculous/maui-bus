@@ -262,6 +262,13 @@ describe Trip do
       course.last_legs.stop_at.bus_stop.location.should == :napili_kai
       course.last_legs.stop_at.time.should == Time.zone.parse('5:30 PM')
     end
+
+    it 'should exclude incomplete trips' do
+      my_trip = Trip.new('rice_park', 'napili_kai', Time.zone.parse('7:00 PM'))
+      my_trip.plan!
+      my_trip.should have(1).course_options
+      my_trip.should have(0).courses
+    end
   end
 
   context 'Transfer as point of origin' do
