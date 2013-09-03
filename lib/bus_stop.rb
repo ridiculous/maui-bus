@@ -1,6 +1,7 @@
 class BusStop
 
   attr_accessor :name, :times, :location, :destination
+  attr_reader :true_location
 
   def initialize(options={})
     @location = options[:location]
@@ -10,6 +11,7 @@ class BusStop
             else
               options[:name]
             end
+    @true_location = location.to_s.sub(Location::PARTNER_PATTERN, '')
     @destination = options[:destination]
   end
 
@@ -29,11 +31,6 @@ class BusStop
 
   def sorted_times
     self.class.sort_times(times)
-  end
-
-  # remove mauka, makai, across, etc from the location name
-  def true_location
-    location.to_s.sub(Location::PARTNER_PATTERN, '')
   end
 
   #

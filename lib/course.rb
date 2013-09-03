@@ -68,15 +68,48 @@ class Course
 
   # expects leg to be a NextStop
   def stop_at_location
-    latest_leg.stop_at.bus_stop.true_location
+    latest_leg.stop_at.true_location
   end
 
   def start_at_location
-    first_leg.start_at.bus_stop.true_location
+    first_leg.start_at.true_location
   end
 
   def same_as?(other)
     first_leg.start_at.time == other.first_leg.start_at.time && start_at_location == other.start_at_location
+  end
+
+  def incomplete?(trip)
+    !complete?(trip)
+  end
+
+  def complete?(trip)
+    points.include?(trip.origin) && points.include?(trip.destination)
+  end
+
+  def points
+    [
+        first_leg.start_at.true_location,
+        first_leg.stop_at.true_location,
+        *other_leg_points,
+        last_legs.try(:start_at).try(:true_location),
+        last_legs.try(:stop_at).try(:true_location)
+    ].uniq
+  end
+
+  #
+  # = Private
+  #
+
+  private
+
+  def other_leg_points
+    starts, stops = [], []
+    other_legs.compact.each do |ol|
+      starts << ol.start_at.try(:true_location)
+      stops << ol.stop_at.try(:true_location)
+    end
+    starts | stops
   end
 
 end

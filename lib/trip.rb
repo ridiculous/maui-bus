@@ -93,7 +93,8 @@ class Trip
         latest_time = my_course.latest_leg.stop_at.time
         last_legs = course.last_legs.completed.map { |l| find_stops_for(l, latest_time).sort[0] if l.start_at == my_course.stop_at_location }
         my_course.last_legs = last_legs.compact.sort[0]
-        @courses << my_course unless @courses.find { |c| c.same_as?(my_course) }
+        next if my_course.incomplete?(self) || @courses.find { |c| c.same_as?(my_course) }
+        @courses << my_course
       end
     end
     nil

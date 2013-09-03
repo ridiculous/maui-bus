@@ -15,10 +15,17 @@ describe BusStop do
     end
 
     it 'should find upcoming times without params (default now)' do
+      current_time = Time.zone.now
+
       bus_stop = Kihei.villager.stops[0]
       future_times = bus_stop.future_times
       future_times.each { |a| a.should be_a(ActiveSupport::TimeWithZone) }
-      future_times.first.should > Time.zone.now
+      if Kihei.villager.last_stop_time <= current_time
+        future_times.first.should > (Time.zone.now - 1.day)
+      else
+        future_times.first.should > Time.zone.now
+      end
+
     end
 
 
