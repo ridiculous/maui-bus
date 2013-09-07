@@ -22,8 +22,12 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.13.1'
   gem 'spork-rails', github: 'A-gen/spork-rails'
+  gem 'capybara', '~> 2.1.0'
+  gem 'capybara-screenshot', '~> 0.3.13'
+  gem 'capybara-webkit', '~> 1.0.0'
+  gem 'headless'
 end
 
 gem 'jquery-rails'

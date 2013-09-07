@@ -18,33 +18,15 @@ Features
 Documentation
 =========
 
-Its not what you say, its what you can prove. That's why we have automated tests :) I like the RSpec testing framework, so thats what the tests, or "specs," are written in.
+Its not what you say, its what you can prove. That's why we have automated tests :) I like the RSpec testing framework and have a few JavaScript specs using Capybara.
 
 Run `rspec . -fs` from the repo root and the output should be something like:
 
     
-    SearchController
-      GET index
-        should render index view in map_hybrid layout
-        should not find routes when origin == destination
-        should render partial when request is AJAX
-        should find routes
-    
-    BusRoute
-      Finders
-        should find_between point_a and point_b at current_time
-        should find upcoming stops for a given time (default now)
-        should find next stops for each bus on the route
-        should find the last time for a route
-      Helpers
-        class_name should be the instance's class name
-        full_class_name should be instance and parent class name joined w/ underscore
-        transfer_locations should be unique transfer locations as Array
-    
-    NodeMap
-      Wailuku
-        should find a bus stop using the node map
-    
+    BusRoutesController
+      GET show_map
+        should find the route and load its map
+
     RegionsController
       GET index
         should show all regions
@@ -53,30 +35,67 @@ Run `rspec . -fs` from the repo root and the output should be something like:
       GET show
         should find the route by name
         should redirect to root path when region not found
-    
-    BusRoutesController
-      GET show_map
-        should find the route and load its map
-    
+
+    SearchController
+      GET index
+        should render index view in map_hybrid layout
+        should find routes
+        should not find routes when origin == destination
+        should respond with a partial when requested via AJAX
+
+    BusRoute
+      Finders
+        should find_between point_a and point_b at current_time
+        should find the last time for a route
+        should find upcoming stops for a given time (default now)
+        should find next stops for each bus on the route
+      Helpers
+        class_name should be the instance's class name
+        full_class_name should be instance and parent class name joined w/ underscore
+        transfer_locations should be unique transfer locations as Array
+
     BusStop
       Helpers
+        true_location should remove the terms 'across', 'makai', 'parkside'
+        should find upcoming times without params (default now)
         should find upcoming times with valid params
         should sort list of times in military format and convert to TimeWithZone
-        should find upcoming times without params (default now)
-        true_location should remove the terms 'across', 'makai', 'parkside'
         should sort list of times for an instance
-    
+
+    Region
+      Time management with JavaScript
+        should toggle times
+        should filter times by time-frame (morning and evening)
+        should start with appropriate default time-frame
+
+    Schedule
+      Time management with JavaScript
+        should request bus times asynchronously and add to DOM
+        should toggle times
+        should filter times by time-frame (morning and evening)
+        should start with appropriate default time-frame
+
+    NodeMap
+      Wailuku
+        should find a bus stop using the node map
+
     Trip
       Planning a simple trip
         should find routes and set course_options in collect_starting_routes
+        should collect_course_nodes but exclude these routes, no node map required
         should plot_course after collecting data
         should plan!, limit, and sort by fastest route
-        should collect_course_nodes but exclude these routes, no node map required
+      Planning a trip with a single transfer
+        should find routes and set course_options in collect_starting_routes
+        should collect_course_nodes
+        should complete_course_legs
+        should plan!, limit, and sort by fastest route
       Planning the farthest possible trip
         should find routes and set course_options in collect_starting_routes
+        should collect_course_nodes
         should complete_course_legs
         should plot_course, piecing together the legs and returning a completed Course
-        should collect_course_nodes
+        should exclude incomplete trips
       Transfer as point of origin
         Kahului to Napili
           should start by finding all routes stopping at the mall
@@ -84,13 +103,8 @@ Run `rspec . -fs` from the repo root and the output should be something like:
         A late night in town
           should start by finding all routes stopping at the mall
           should plan! ... for tomorrow, 'cause its late
-      Planning a trip with a single transfer
-        should find routes and set course_options in collect_starting_routes
-        should complete_course_legs
-        should plan!, limit, and sort by fastest route
-        should collect_course_nodes
     
-    Finished in 6.22 seconds
-    38 examples, 0 failures
+    Finished in 19.89 seconds
+    46 examples, 0 failures
       
 If you are looking for an API, please let me know and I'll get motivated to make it happen.
