@@ -1,18 +1,51 @@
-var Schedules = {}, Toga = new Toggler(); //, SM = new StaticMap()
+var Schedules = {}, Toga = new Toggler();
 
 jUtils.addEvent(window, 'load', function () {
 
-    var show_times = jUtils.findByClass('time-list');
+    var show_times = jUtils.findByClass('time-list')
+        , loadBusSchedule = function () {
+            // if the container is present, great we're good to go, else load the table for this bus
+            if (document.getElementById(this.rel + '_container')) {
+                Toga.tableToggle.call(this);
+            } else {
+                var link = this
+                    , region_route = this.rel.split('_')
+                    , region = region_route[0]
+                    , route = region_route[1]
+                    , container = document.createElement('div')
+                    , agile = new AjaxService('/regions/' + region + '/routes/' + route + '/schedule', 'GET');
 
-//    jUtils.addEvent(jUtils.findByClass('show-static-map'), 'click', SM.init);
-//    jUtils.addEvent(document.getElementById('close_modal'), 'click', SM.hideModal);
-    jUtils.addEvent(show_times, 'click', Toga.tableToggle);
+                container.innerHTML = '<h5 class="loader">Loading ... </h5>';
+                document.getElementById(this.rel).parentNode.appendChild(container);
+                agile.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                agile.on('success', function (data) {
+                    container.innerHTML = data.responseText;
+                    Toga.tableToggle.call(link);
+                    container = document.getElementById(link.rel + '_container');
+
+                    // loop through all the <li> nav pills (morning, evening, all)
+                    for (var a = 0, pills = container.childNodes[1].childNodes; a < pills.length; a++) {
+                        var time_frame_link = pills[a].childNodes[0];
+                        if (pills[a].className == 'active') {
+                            changeTimeFrame.call(time_frame_link);
+                        }
+                        jUtils.addEvent(time_frame_link, 'click', changeTimeFrame);
+                    }
+                });
+                agile.send();
+            }
+        };
+
+    jUtils.addEvent(show_times, 'click', loadBusSchedule);
     jUtils.addEvent(jUtils.findByClass('next-stop-list'), 'click', Toga.nextStopsToggle);
-    jUtils.addEvent(jUtils.findByClass('time-frame'), 'click', changeTimeFrame);
 
-    // trigger time frames with morning/afternoon nav pill
-    for (var a = 0, pills = jUtils.findByClass('active'); a < pills.length; a++) {
-        changeTimeFrame.call(pills[a].childNodes[0]);
+    if (!document.getElementById('delay')) {
+        jUtils.addEvent(jUtils.findByClass('time-frame'), 'click', changeTimeFrame);
+
+        // trigger time frames with morning/afternoon nav pill
+        for (var a = 0, pills = jUtils.findByClass('active'); a < pills.length; a++) {
+            changeTimeFrame.call(pills[a].childNodes[0]);
+        }
     }
 
     // the glyphicons are the largest asset loaded so lets load it afterward as not to delay DOM +ready+
