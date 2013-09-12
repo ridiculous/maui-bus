@@ -25,8 +25,8 @@ class NodeMap
     node.transfers |= [node.transfer]
     routes.reject { |x| x.name == node.name }.each do |route|
       route.transfer_locations.each do |trans|
-        if !others.detect { |n| n.name == route.name } && trans =~ Regexp.new("(#{node.transfers.join('|')})")
-          others << Node.new(route, $1, node)
+        if !others.detect { |n| n.name == route.name } && trans.in?(node.transfers)
+          others << Node.new(route, trans, node)
         end
       end
     end

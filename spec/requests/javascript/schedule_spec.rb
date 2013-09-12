@@ -28,7 +28,7 @@ describe 'Schedule' do
       click_on('Morning')
       page.has_text?(:visible, '5:30 AM').should be_true
       click_on('Afternoon')
-      page.has_text?(:visible, '5:30 AM').should be_false
+      page.has_text?(:visible, '6:11 AM').should be_false
       page.has_text?(:visible, '7:00 PM').should be_true
       click_on('All')
       page.has_text?(:visible, '5:30 AM').should be_true
