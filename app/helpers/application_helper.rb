@@ -61,7 +61,7 @@ module ApplicationHelper
   end
 
   #
-  # NOTE: It takes 1 sec to load the full schedule, of that 500ms is spent here formatting the time :/
+  # TODO: I should really just change the format of the times, from "20:45" to "8:45 PM"
   #
 
   def time_cells(route, stop)
@@ -71,7 +71,12 @@ module ApplicationHelper
       nxt_stop = nxt_ups["#{stop.name}#{my_time}"]
       concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}") do
         if my_time && !my_time.empty?
-          in_format(Time.zone.parse(my_time))
+          hr = my_time.to_i # converts '12:55' to 12
+          if hr > 11
+            "#{hr == 12 ? hr : hr - 12}#{my_time.slice(2, 5)} PM"
+          else
+            "#{my_time} AM"
+          end
         end
       end)
     end.join.html_safe
