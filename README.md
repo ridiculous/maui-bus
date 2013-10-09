@@ -99,7 +99,7 @@ Run `rspec . -fs` from the repo root and the output should be something like:
       Transfer as point of origin
         Kahului to Napili
           should start by finding all routes stopping at the mall
-          should plan! (takes awhile)
+          should plan!
         A late night in town
           should start by finding all routes stopping at the mall
           should plan! ... for tomorrow, 'cause its late
