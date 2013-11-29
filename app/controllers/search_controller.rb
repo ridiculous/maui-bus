@@ -4,8 +4,9 @@ class SearchController < ApplicationController
   layout 'map_hybrid'
 
   def index
+    @page_title = 'Search | Maui Bus Routes'
     search_time = Time.zone.parse(params[:search_time]) rescue Time.zone.now
-    @trip = Trip.new(params[:origin], params[:destination], search_time || Time.zone.now)
+    @trip = Trip.new(params[:origin], params[:destination], search_time)
 
     if @trip.has_same_points?
       request.flash[:alert] = "You're already there!"

@@ -4,7 +4,7 @@ class Region
   attr_reader :routes
 
   def initialize
-    @routes = self.instance_variables.map { |name| self.instance_variable_get(name) }
+    @routes = instance_variables.map { |name| instance_variable_get(name) }
   end
 
   def find_bus(name)
@@ -23,7 +23,7 @@ class Region
     end
 
     def load_all
-      all.sort.map { |region| Region.find(region.downcase) }
+      all.sort.map { |region| find(region.downcase) }
     end
   end
 

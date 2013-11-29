@@ -2,9 +2,8 @@ class RegionsController < ApplicationController
 
   def index
     @regions = Region.all.sort
-
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @regions }
     end
   end
@@ -14,13 +13,10 @@ class RegionsController < ApplicationController
     @routes = BusData.routes
   end
 
-  # GET /regions/1
-  # GET /regions/1.json
   def show
     @region = Region.find(params[:name])
-
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @region }
     end
   rescue Region::RecordNotFound

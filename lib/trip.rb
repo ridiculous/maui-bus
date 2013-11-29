@@ -15,10 +15,10 @@ class Trip
 
   attr_accessor :origin, :destination, :courses, :course_options
 
-  def initialize(origin = nil, destination = nil, custom_time = Time.zone.now)
+  def initialize(origin = nil, destination = nil, custom_time = nil)
     @origin = origin || 'liholiho_kanaloa_ave'
     @destination = destination || 'queen_kaahumanu'
-    @current_time = custom_time
+    @current_time = custom_time || Time.zone.now
     @courses = []
     @course_options = []
   end
