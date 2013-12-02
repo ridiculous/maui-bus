@@ -6,7 +6,7 @@ require 'course'
 # -node_map- and search its nodes for the destination. When found, the destination
 # node is returned and we build the route by climbing up the node tree, from parent to parent.
 # Starts with the first leg of the course, the origin
-# finds any inbetween legs, in case of indirect routes, and puts it in other_legs.
+# finds any inbetween legs, in case of indirect routes, and stores it in other_legs.
 # Adds the destinations to the last legs of the course. Filter out dups and try
 # to work with legs where the start/stop at are the same. Deal with this issue
 # by replacing -first_leg- with a later leg, i.e. -last_legs- || -other_legs-.
@@ -28,17 +28,14 @@ class Trip
     collect_course_nodes
     complete_course_legs
     plot_course
-    limit_results!
   end
 
   # find pertinent routes and create a Course with each one
   def collect_starting_routes
     BusData.routes.each do |route|
-      stops = route.stops.map { |s| s.true_location }.uniq
+      stops = route.locations
       if stops.include?(origin)
-        course = Course.new(Leg.new(route.name, origin), [], []) # first_leg, last_legs, other_legs
-        course.first_leg.stop_at = destination if stops.include?(destination) && course.first_leg.start_at != destination
-        course_options << course
+        course_options << Course.new(Leg.new(route.name, origin, (destination if stops.include?(destination))))
       end
     end
     nil

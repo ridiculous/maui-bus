@@ -27,6 +27,14 @@ function BaseMap(options) {
         return markers;
     };
 
+    this.connectPoints = function (point_a, point_b) {
+        return this.addRoute({
+            origin: maui.latLngByName(point_a),
+            destination: maui.latLngByName(point_b),
+            travelMode: google.maps.TravelMode.DRIVING
+        })
+    };
+
     this.addRoute = function (route_obj) {
         var direct_service = new google.maps.DirectionsService(),
             direct_display = new google.maps.DirectionsRenderer({suppressMarkers: true});
@@ -37,5 +45,6 @@ function BaseMap(options) {
                 direct_display.setDirections(result);
             }
         });
+        return direct_display;
     }
 }

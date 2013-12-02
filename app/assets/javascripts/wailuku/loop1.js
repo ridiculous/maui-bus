@@ -2,16 +2,15 @@ function Loop1(bus_stops) {
     maui.setMapName('Wailuku Loop Route #1');
     maui.loadBusStops(bus_stops || Locations); // map location to name
 
-    var piihana_terrace = maui.bus_stops.findObject(maui.piihana_terrace, 'name')
-        , piihana_terrace_coords = new google.maps.LatLng(piihana_terrace.lat, piihana_terrace.long)
-        , makaala_makamua = maui.bus_stops.findObject(maui.makaala_makamua_st, 'name')
-        , makaala_hale_mahaolu = maui.bus_stops.findObject(maui.makaala_hale_mahaolu, 'name')
-        , waiehu_heights_aukai = maui.bus_stops.findObject(maui.waiehu_heights_aukai, 'name')
-        , waiehu_heights_wailupe = maui.bus_stops.findObject(maui.waiehu_heights_wailupe, 'name')
-        , eha_st_sack_n_save = maui.bus_stops.findObject(maui.eha_st_sack_n_save, 'name')
-        , wailuku_community_center = maui.bus_stops.findObject(maui.wailuku_community_center, 'name')
-        , liholiho_kanaloa_ave = maui.bus_stops.findObject(maui.liholiho_kanaloa_ave, 'name')
-        , kanaloa_baseball_field = maui.bus_stops.findObject(maui.kanaloa_baseball_field, 'name')
+    var piihana_terrace_coords = maui.latLngByName('piihana_terrace')
+        , makaala_makamua = maui.latLngByName('makaala_makamua_st')
+        , makaala_hale_mahaolu = maui.latLngByName('makaala_hale_mahaolu')
+        , waiehu_heights_aukai = maui.latLngByName('waiehu_heights_aukai')
+        , waiehu_heights_wailupe = maui.latLngByName('waiehu_heights_wailupe')
+        , eha_st_sack_n_save = maui.latLngByName('eha_st_sack_n_save')
+        , wailuku_community_center = maui.latLngByName('wailuku_community_center')
+        , liholiho_kanaloa_ave = maui.latLngByName('liholiho_kanaloa_ave')
+        , kanaloa_baseball_field = maui.latLngByName('kanaloa_baseball_field')
 
     maui.drawRoute(maui.gmap.Mall, piihana_terrace_coords,
         [
@@ -34,29 +33,29 @@ function Loop1(bus_stops) {
             travelMode: google.maps.TravelMode.DRIVING,
             waypoints: [
                 {
-                    location: new google.maps.LatLng(makaala_makamua.lat, makaala_makamua.long)
+                    location: makaala_makamua
                 },
                 {
-                    location: new google.maps.LatLng(makaala_hale_mahaolu.lat, makaala_hale_mahaolu.long)
+                    location: makaala_hale_mahaolu
                 },
                 {
-                    location: new google.maps.LatLng(waiehu_heights_aukai.lat, waiehu_heights_aukai.long),
+                    location: waiehu_heights_aukai,
                     stopover: false
                 },
                 {
-                    location: new google.maps.LatLng(waiehu_heights_wailupe.lat, waiehu_heights_wailupe.long)
+                    location: waiehu_heights_wailupe
                 },
                 {
-                    location: new google.maps.LatLng(eha_st_sack_n_save.lat, eha_st_sack_n_save.long)
+                    location: eha_st_sack_n_save
                 },
                 {
-                    location: new google.maps.LatLng(wailuku_community_center.lat, wailuku_community_center.long)
+                    location: wailuku_community_center
                 },
                 {
-                    location: new google.maps.LatLng(liholiho_kanaloa_ave.lat, liholiho_kanaloa_ave.long)
+                    location: liholiho_kanaloa_ave
                 },
                 {
-                    location: new google.maps.LatLng(kanaloa_baseball_field.lat, kanaloa_baseball_field.long)
+                    location: kanaloa_baseball_field
                 }
             ]
         });

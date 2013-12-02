@@ -293,7 +293,7 @@ describe Trip do
             ]
       end
 
-      it 'should plan! (takes awhile)' do
+      it 'should plan!' do
         trip.plan!
         trip.should have(8).course_options
         trip.should have(2).courses
@@ -387,6 +387,32 @@ describe Trip do
         course2.should have(0).other_legs
         course2.last_legs.should be_nil
       end
+    end
+  end
+  context 'Going from the airport to Kula' do
+    let(:trip) { Trip.new('kahului_airport', 'kula_hardware', Time.zone.parse('10:00 AM')) }
+
+    it 'should recommend Upcountry Islander #40 as starting route' do
+      trip.plan!
+      trip.should have(4).courses
+      trip.courses.sort!
+      trip.limit_results!(1)
+      trip.should have(2).courses
+      course = trip.courses[0]
+      course.should have(0).other_legs
+      leg1 = course.first_leg
+      leg1.name.should == Upcountry.islander.name
+      leg1.start_at.bus_stop.location.should == :kahului_airport
+      leg1.start_at.time.should == Time.zone.parse('10:40 AM')
+      leg1.stop_at.bus_stop.location.should == :pukalani_terrace
+      leg1.stop_at.time.should == Time.zone.parse('11:00 AM')
+
+      leg2 = course.last_legs
+      leg2.name.should == Kula.villager.name
+      leg2.start_at.bus_stop.location.should == :pukalani_terrace
+      leg2.start_at.time.should == Time.zone.parse('11:00 AM')
+      leg2.stop_at.bus_stop.location.should == :kula_hardware
+      leg2.stop_at.time.should == Time.zone.parse('11:18 AM')
     end
   end
 end

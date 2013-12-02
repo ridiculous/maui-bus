@@ -124,6 +124,10 @@ class BusRoute
     nm
   end
 
+  def locations
+    stops.map { |s| s.true_location }
+  end
+
   #
   # = Private
   #

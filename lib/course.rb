@@ -38,22 +38,13 @@ class Course
     nodes.each do |course_node|
       node = course_node
       while node
-        last_transfer = node.transfer
-        has_origin = node.stops.include?(first_leg.start_at)
-        has_destination = node.stops.include?(destination)
-        my_route = BusData.routes.find { |x| x.name == node.name }
-        if has_origin && first_leg.stop_at.nil? && first_leg.name == node.name
-          first_leg.stop_at = node.transfer # start_at is already set to origin
-        elsif has_destination
-          last_legs << Leg.new(my_route.name, node.transfer, destination)
+        set_first_leg_stop(node)
+        if node.stops.include?(destination)
+          last_legs << Leg.new(node.name, node.transfer, destination)
         elsif transfers.exclude?(node.transfer)
-          stop_at = node.find_stop_or_default(other_legs[-1].try(:start_at))
-          stop_at ||= node.find_stop_or_default(last_legs[-1].try(:start_at), node.transfer)
-          start_at = node.find_stop_or_default(first_leg.stop_at, last_transfer)
-          other_legs << Leg.new(my_route.name, start_at, stop_at) unless start_at == stop_at
+          set_other_legs(node)
           transfers << node.transfer
         end
-
         node = node.parent
       end
     end
@@ -84,15 +75,51 @@ class Course
   end
 
   def complete?(trip)
-    points.include?(trip.origin) && points.include?(trip.destination)
+    ([trip.origin, trip.destination] - start_and_stop_points).empty?
   end
 
-  def points
+  def stopping_points
     [
-        first_leg.start_at.true_location,
-        first_leg.stop_at.true_location,
-        last_legs.try(:start_at).try(:true_location),
-        last_legs.try(:stop_at).try(:true_location)
-    ].uniq
+        starting_points,
+        *middle_points,
+        ending_points
+    ]
   end
+
+  def start_and_stop_points
+    [*starting_points, *ending_points].uniq
+  end
+
+  private
+
+  # start_at is already set to origin
+  def set_first_leg_stop(node)
+    return if first_leg.stop_at
+    start_route = BusData.routes.find { |x| x.name == first_leg.name }
+    has_origin = node.stops.include?(first_leg.start_at) || node.stops.include?(node.transfer)
+
+    if has_origin && start_route.locations.include?(node.transfer)
+      first_leg.stop_at = node.transfer
+    end
+  end
+
+  def set_other_legs(node)
+    stop_at = node.find_stop_or_default(other_legs[-1].try(:start_at))
+    stop_at ||= node.find_stop_or_default(last_legs[-1].try(:start_at), node.transfer)
+    start_at = node.find_stop_or_default(first_leg.stop_at, node.transfer)
+    other_legs << Leg.new(node.name, start_at, stop_at) unless start_at == stop_at
+  end
+
+  def starting_points
+    [start_at_location, first_leg.stop_at.true_location]
+  end
+
+  def middle_points
+    other_legs.map { |ol| [ol.start_at.true_location, ol.stop_at.true_location] }
+  end
+
+  def ending_points
+    [last_legs.try(:start_at).try(:true_location), last_legs.try(:stop_at).try(:true_location)].compact
+  end
+
 end

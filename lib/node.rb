@@ -9,7 +9,7 @@ class Node
     @transfers = route.transfer_locations
     @nodes = []
     @parent = parent
-    @stops = route.stops.map(&:true_location).uniq
+    @stops = route.locations.uniq
   end
 
   # find this node if not already found, else search its nodes (recursive)
