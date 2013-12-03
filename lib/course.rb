@@ -106,10 +106,9 @@ class Course
 
   # start_at is already set to origin
   def set_first_leg_stop(node)
-    start_route = BusData.routes.find { |x| x.name == first_leg.name }
     has_origin = node.stops.include?(first_leg.start_at) || node.stops.include?(node.transfer)
 
-    if has_origin && start_route.locations.include?(node.transfer)
+    if has_origin && first_leg.route.locations.include?(node.transfer)
       first_leg.stop_at = node.transfer
     end
   end
