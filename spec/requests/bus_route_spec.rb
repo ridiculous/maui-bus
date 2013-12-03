@@ -22,10 +22,6 @@ describe BusRoute do
       nxt2.stop_at.bus_stop.location.should == :piilani_shopping_center
     end
 
-    it 'should find the last time for a route' do
-      Kihei.islander.last_stop_time.should == Time.zone.parse('9:30 PM')
-    end
-
     it 'should find upcoming stops for a given time (default now)' do
       buses = Kihei.villager.next_stops(5, Time.zone.parse('12:00 PM'))
       buses.length.should == 1

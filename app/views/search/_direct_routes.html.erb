@@ -18,7 +18,7 @@
               <th>Drop off</th>
               <td><%= link_to_map(time_at_name(course.first_leg.stop_at.time, course.first_leg.stop_at.bus_stop.name), course.first_leg.route.path_parts, course.first_leg.stop_at.bus_stop.location) %></td>
             </tr>
-            <% (course.other_legs + [course.last_legs]).compact.each do |dr| %>
+            <% (course.other_legs + [course.last_leg]).compact.each do |dr| %>
                 <tr>
                   <th class="bus-1">Transfer</th>
                   <td class="bus-1" style="font-weight: bold;font-size: 14px;">

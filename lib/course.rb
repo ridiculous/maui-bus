@@ -1,7 +1,7 @@
 require 'leg'
 
 class Course
-  attr_accessor :first_leg, :last_legs, :other_legs, :nodes
+  attr_accessor :first_leg, :last_leg, :other_legs, :nodes
 
   class Legs < Array
     def completed
@@ -11,6 +11,7 @@ class Course
 
   def initialize(first_leg = nil, last_legs = [], others = [])
     @first_leg = first_leg
+    @last_leg = nil
     @last_legs = Legs.new(last_legs)
     @other_legs = others
     @nodes = []
@@ -21,7 +22,7 @@ class Course
   end
 
   def leg_length
-    1 + other_legs.length + (last_legs ? 1 : 0)
+    1 + other_legs.length + (last_leg ? 1 : 0)
   end
 
   def <=>(other)
@@ -38,11 +39,11 @@ class Course
     nodes.each do |course_node|
       node = course_node
       while node
-        set_first_leg_stop(node)
+        first_leg.stop_at || set_first_leg_stop(node)
         if node.stops.include?(destination)
-          last_legs << Leg.new(node.name, node.transfer, destination)
+          @last_legs << Leg.new(node.name, node.transfer, destination)
         elsif transfers.exclude?(node.transfer)
-          set_other_legs(node)
+          add_to_other_legs(node)
           transfers << node.transfer
         end
         node = node.parent
@@ -52,8 +53,8 @@ class Course
 
   # true when origin is a transfer, try to take a different one instead
   def origin_is_transfer_workaround
-    if first_leg.start_at == first_leg.stop_at && first_leg.start_at == (other_legs[-1] || last_legs[-1]).start_at
-      @first_leg = other_legs.any? ? other_legs.pop : last_legs.pop
+    if first_leg.start_at == first_leg.stop_at && first_leg.start_at == (other_legs[-1] || @last_legs[-1]).start_at
+      @first_leg = other_legs.any? ? other_legs.pop : @last_legs.pop
     end
   end
 
@@ -90,11 +91,21 @@ class Course
     [*starting_points, *ending_points].uniq
   end
 
+  def completed_last_legs
+    @last_legs.completed
+  end
+
+  def set_last_leg(other_course)
+    latest_time = latest_leg.stop_at.time
+    @last_leg = other_course.completed_last_legs.map { |leg|
+      leg.find_stops(latest_time).sort[0] if leg.start_at == stop_at_location
+    }.compact.sort[0]
+  end
+
   private
 
   # start_at is already set to origin
   def set_first_leg_stop(node)
-    return if first_leg.stop_at
     start_route = BusData.routes.find { |x| x.name == first_leg.name }
     has_origin = node.stops.include?(first_leg.start_at) || node.stops.include?(node.transfer)
 
@@ -103,9 +114,9 @@ class Course
     end
   end
 
-  def set_other_legs(node)
+  def add_to_other_legs(node)
     stop_at = node.find_stop_or_default(other_legs[-1].try(:start_at))
-    stop_at ||= node.find_stop_or_default(last_legs[-1].try(:start_at), node.transfer)
+    stop_at ||= node.find_stop_or_default(@last_legs[-1].try(:start_at), node.transfer)
     start_at = node.find_stop_or_default(first_leg.stop_at, node.transfer)
     other_legs << Leg.new(node.name, start_at, stop_at) unless start_at == stop_at
   end
@@ -119,7 +130,7 @@ class Course
   end
 
   def ending_points
-    [last_legs.try(:start_at).try(:true_location), last_legs.try(:stop_at).try(:true_location)].compact
+    [last_leg.try(:start_at).try(:true_location), last_leg.try(:stop_at).try(:true_location)].compact
   end
 
 end

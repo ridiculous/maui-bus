@@ -20,4 +20,9 @@ class Leg < Struct.new(:name, :start_at, :stop_at)
     start_at == stop_at
   end
 
+  def find_stops(start_time)
+    route = BusData.routes.find { |x| x.name == name }
+    route.find_between(start_at, stop_at, start_time)
+  end
+
 end

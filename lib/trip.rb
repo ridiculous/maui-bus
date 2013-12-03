@@ -80,16 +80,14 @@ class Trip
   def plot_course
     course_options.each do |course|
       next if course.first_leg.has_same_points?
-      find_stops_for(course.first_leg).each do |start_dir_route|
+      course.first_leg.find_stops(@current_time).each do |start_dir_route|
         my_course = Course.new(start_dir_route)
         course.other_legs.each do |leg|
           if leg.start_at == my_course.stop_at_location
-            my_course.other_legs << find_stops_for(leg, my_course.latest_leg.stop_at.time).sort[0]
+            my_course.other_legs << leg.find_stops(my_course.latest_leg.stop_at.time).sort[0]
           end
         end
-        latest_time = my_course.latest_leg.stop_at.time
-        last_legs = course.last_legs.completed.map { |l| find_stops_for(l, latest_time).sort[0] if l.start_at == my_course.stop_at_location }
-        my_course.last_legs = last_legs.compact.sort[0]
+        my_course.set_last_leg(course)
         next if my_course.incomplete?(self) || @courses.find { |c| c.same_as?(my_course) }
         @courses << my_course
       end
@@ -99,26 +97,6 @@ class Trip
 
   def has_same_points?
     origin == destination
-  end
-
-  #
-  # = Private Helpers
-  #
-
-  private
-
-  def find_stops_for(leg, start_time = nil)
-    route = BusData.routes.find { |x| x.name == leg.name }
-    route.find_between(leg.start_at, leg.stop_at, start_time || current_time(route))
-  end
-
-  # search morning routes if all routes finished for the day
-  def current_time(route)
-    if @current_time >= route.last_stop_time
-      @current_time - 18.hours
-    else
-      @current_time
-    end
   end
 
 end

@@ -14,10 +14,6 @@ class BusRoute
     stops.map(&:times).map(&:length).sort[-1]
   end
 
-  def last_stop_time
-    Time.zone.parse(stops.map(&:times).flatten.reject(&:empty?).last)
-  end
-
   def class_name
     full_class_name.sub(/^.+_/, '').downcase
   end
@@ -40,14 +36,14 @@ class BusRoute
   end
 
   # @return _next_stops {2D Array}
-  def next_stops(count = 5, current_time = Time.zone.now)
+  def next_stops(count = 5, my_time = Time.zone.now)
     bus_count.times.map do |bus|
-      if delayed_bus?(bus) && !bus_active?(current_time)
+      if delayed_bus?(bus) && !bus_active?(my_time)
         []
       else
         nxt = []
         stops.each do |my_stop|
-          nxt_time = find_times(my_stop, bus, current_time).detect { |t| t >= current_time }
+          nxt_time = find_times(my_stop, bus, my_time).detect { |t| t >= my_time }
           if nxt_time && !nxt.find { |nx| nx.time == nxt_time }
             nxt << NextStop.new(my_stop, nxt_time)
           end
@@ -67,12 +63,12 @@ class BusRoute
 
   #! -time_advanced- is to account for upcoming stops
   #
-  # @param current_time {ActiveSupport::TimeWithZone}
+  # @param my_time {ActiveSupport::TimeWithZone}
   # @param time_advanced
-  def bus_active?(current_time, time_advanced=TIME_ADVANCED)
-    is_bus_active = options[:start_time] && options[:start_time] < (current_time + time_advanced)
+  def bus_active?(my_time, time_advanced=TIME_ADVANCED)
+    is_bus_active = options[:start_time] && options[:start_time] < (my_time + time_advanced)
     if is_bus_active && options[:end_time]
-      options[:end_time] > current_time
+      options[:end_time] > my_time
     else
       is_bus_active
     end
@@ -86,13 +82,13 @@ class BusRoute
     nxt_ups
   end
 
-  def bus_about_active?(current_time)
-    current_time < options[:end_time] && current_time >= options[:start_time] - TIME_ADVANCED
+  def bus_about_active?(my_time)
+    my_time < options[:end_time] && my_time >= options[:start_time] - TIME_ADVANCED
   end
 
-  def find_between(point_a, point_b, current_time=Time.zone.now)
+  def find_between(point_a, point_b, my_time=Time.zone.now)
     direct_routes = []
-    next_stops(nil, current_time).each_with_index do |nxt_stops, start_bus|
+    next_stops(nil, my_time).each_with_index do |nxt_stops, start_bus|
       # each stop for this bus
       nxt_stops.each do |nxt|
         # check for starting location
@@ -134,8 +130,8 @@ class BusRoute
 
   private
 
-  def find_times(my_stop, bus, current_time)
-    if bus_count > 1 && (no_delay || bus_active?(current_time) || bus_about_active?(current_time))
+  def find_times(my_stop, bus, my_time)
+    if bus_count > 1 && (no_delay || bus_active?(my_time) || bus_about_active?(my_time))
       my_times = BusStop.sort_times(my_stop.times.each_with_index.reject { |t, i| i % bus_count != bus }.map { |t| t[0] })
       if options[:end_time] && options[:bus] == bus
         my_times.reject { |t| t > options[:end_time] }
