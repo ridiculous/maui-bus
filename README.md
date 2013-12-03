@@ -48,7 +48,6 @@ Run `rspec . -fs` from the repo root and the output should be something like:
     BusRoute
       Finders
         should find_between point_a and point_b at current_time
-        should find the last time for a route
         should find upcoming stops for a given time (default now)
         should find next stops for each bus on the route
       Helpers
@@ -102,11 +101,10 @@ Run `rspec . -fs` from the repo root and the output should be something like:
         Kahului to Napili
           should start by finding all routes stopping at the mall
           should plan!
-        A late night in town
-          should start by finding all routes stopping at the mall
-          should plan! ... for tomorrow, 'cause its late
-    
-    Finished in 19.89 seconds
-    46 examples, 0 failures
+      Going from the airport to Kula
+        should recommend Upcountry Islander #40 as starting route
+
+    Finished in 18.4 seconds
+    44 examples, 0 failures
       
 If you are looking for an API, please let me know and I'll get motivated to make it happen.

@@ -330,27 +330,8 @@ describe Trip do
         course2.last_leg.stop_at.time.should == Time.zone.parse('4:30 PM')
       end
     end
-    context 'A late night in town' do
-
-      let(:trip) { Trip.new('queen_kaahumanu', 'kahului_safeway', Time.zone.parse('10:00 PM')) }
-
-      it 'should start by finding all routes stopping at the mall' do
-        trip.collect_starting_routes
-        trip.should have(8).course_options
-        trip.course_options.map(&:first_leg).map(&:name).should ==
-            [
-                "Haiku Islander Route #35",
-                "Kahului Loop Route #5",
-                "Kahului Loop Route #6 (reverse)",
-                "Kihei Islander Route #10",
-                "Lahaina Islander #20",
-                "Upcountry Islander #40",
-                "Wailuku Loop Route #1",
-                "Wailuku Loop Route #2 (reverse)"
-            ]
-      end
-    end
   end
+
   context 'Going from the airport to Kula' do
     let(:trip) { Trip.new('kahului_airport', 'kula_hardware', Time.zone.parse('10:00 AM')) }
 
