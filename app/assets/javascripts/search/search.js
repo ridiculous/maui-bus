@@ -113,14 +113,14 @@ var maui = new Maui()
         origin.value = points[0].replace('#', '');
         destination.value = points[1];
         search_time.value = points[2].replace(/_/g, ' ');
-        agile.send({origin: origin.value, destination: destination.value, search_time: search_time.value});
+        requestSearchResults();
     }
 
     if (document.getElementById('is_desktop')) {
         tryResizeSearchBox()
     }
 
-    jUtils.addEvent([origin, destination, search_time], 'change', function () {
+    jUtils.addEvent([search_time], 'change', function () {
         requestSearchResults();
     });
 

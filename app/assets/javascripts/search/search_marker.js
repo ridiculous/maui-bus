@@ -27,13 +27,11 @@ function SearchMarker(location_key, gmap_options, marker_content) {
 
         jUtils.addEvent(jUtils.findByClass('destination'), 'click', function (e) {
             destination.value = location_key;
-            jUtils.fireEvent(destination, 'change');
             info_window.close();
             e.stopPropagation();
         });
         jUtils.addEvent(jUtils.findByClass('origin'), 'click', function (e) {
             origin.value = location_key;
-            jUtils.fireEvent(origin, 'change');
             info_window.close();
             e.stopPropagation();
         });
