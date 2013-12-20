@@ -11,8 +11,8 @@ class BusStop
             else
               options[:name]
             end
-    @true_location = location.to_s.sub(Location::PARTNER_PATTERN, '')
-    @destination = options[:destination]
+    @true_location = options[:true_location]
+    @destination = options[:destination] if options[:destination]
   end
 
   def transfer?

@@ -1,0 +1,381 @@
+-
+  location: :wharf_cinema
+  times:
+  - '8:00'
+  - '9:00'
+  - '10:00'
+  - '11:00'
+  - '12:00'
+  - '13:00'
+  - '15:00'
+  - '16:00'
+  - '17:00'
+  - '18:00'
+  - '19:00'
+  - '20:00'
+  - '21:00'
+  - '22:00'
+  name: Wharf Cinema Center
+  true_location: wharf_cinema
+-
+  location: :front_street_505
+  times:
+  - '8:04'
+  - '9:04'
+  - '10:04'
+  - '11:04'
+  - '12:04'
+  - '13:04'
+  - '15:04'
+  - '16:04'
+  - '17:04'
+  - '18:04'
+  - '19:04'
+  - '20:04'
+  - '21:04'
+  - '22:04'
+  name: 505 Front Street
+  true_location: front_street_505
+-
+  location: :na_halee
+  times:
+  - '8:08'
+  - '9:08'
+  - '10:08'
+  - '11:08'
+  - '12:08'
+  - '13:08'
+  - '15:08'
+  - '16:08'
+  - '17:08'
+  - '18:08'
+  - '19:08'
+  - '20:08'
+  - '21:08'
+  - '22:08'
+  name: Na Halee O Wainee
+  true_location: na_halee
+-
+  location: :lahaina_aquatic_center
+  times:
+  - '8:09'
+  - '9:09'
+  - '10:09'
+  - '11:09'
+  - '12:09'
+  - '13:09'
+  - '15:09'
+  - '16:09'
+  - '17:09'
+  - '18:09'
+  - '19:09'
+  - '20:09'
+  - '21:09'
+  - '22:09'
+  name: Lahaina Aquatics Center
+  true_location: lahaina_aquatic_center
+-
+  location: :lahainaluna_kuhua
+  times:
+  - '8:12'
+  - '9:12'
+  - '10:12'
+  - '11:12'
+  - '12:12'
+  - '13:12'
+  - '15:12'
+  - '16:12'
+  - '17:12'
+  - '18:12'
+  - '19:12'
+  - '20:12'
+  - '21:12'
+  - '22:12'
+  name: Lahainaluna Rd. / Kuhua St.
+  true_location: lahainaluna_kuhua
+-
+  location: :liloa_hokeo
+  times:
+  - '8:14'
+  - '9:14'
+  - '10:14'
+  - '11:14'
+  - '12:14'
+  - '13:14'
+  - '15:14'
+  - '16:14'
+  - '17:14'
+  - '18:14'
+  - '19:14'
+  - '20:14'
+  - '21:14'
+  - '22:14'
+  name: Liloa St. / Hokeo St.
+  true_location: liloa_hokeo
+-
+  location: :kuailua_kumukahi_lahaina
+  times:
+  - '8:15'
+  - '9:15'
+  - '10:15'
+  - '11:15'
+  - '12:15'
+  - '13:15'
+  - '15:15'
+  - '16:15'
+  - '17:15'
+  - '18:15'
+  - '19:15'
+  - '20:15'
+  - '21:15'
+  - '22:15'
+  name: Kuailua Street / Kumukahi Street
+  true_location: kuailua_kumukahi_lahaina
+-
+  location: :kalena_pikanele_lahaina
+  times:
+  - '8:16'
+  - '9:16'
+  - '10:16'
+  - '11:16'
+  - '12:16'
+  - '13:16'
+  - '15:16'
+  - '16:16'
+  - '17:16'
+  - '18:16'
+  - '19:16'
+  - '20:16'
+  - '21:16'
+  - '22:16'
+  name: Kalena Street / Pikanele Street
+  true_location: kalena_pikanele_lahaina
+-
+  location: :hale_mahaolu_eono
+  times:
+  - '8:17'
+  - '9:17'
+  - '10:17'
+  - '11:17'
+  - '12:17'
+  - '13:17'
+  - '15:17'
+  - '16:17'
+  - '17:17'
+  - '18:17'
+  - '19:17'
+  - '20:17'
+  - '21:17'
+  - '22:17'
+  name: Hale Mahaolu Eono
+  true_location: hale_mahaolu_eono
+-
+  location: :lahainaluna_kuhua_across
+  times:
+  - '8:19'
+  - '9:19'
+  - '10:19'
+  - '11:19'
+  - '12:19'
+  - '13:19'
+  - '15:19'
+  - '16:19'
+  - '17:19'
+  - '18:19'
+  - '19:19'
+  - '20:19'
+  - '21:19'
+  - '22:19'
+  name: Lahainaluna Rd. / Kuhua St.
+  true_location: lahainaluna_kuhua
+-
+  location: :lahaina_gateway
+  times:
+  - '8:23'
+  - '9:23'
+  - '10:23'
+  - '11:23'
+  - '12:23'
+  - '13:23'
+  - '15:23'
+  - '16:23'
+  - '17:23'
+  - '18:23'
+  - '19:23'
+  - '20:23'
+  - '21:23'
+  - '22:23'
+  name: Lahaina Gateway
+  true_location: lahaina_gateway
+-
+  location: :ainakea_malolo_lahaina
+  times:
+  - '8:26'
+  - '9:26'
+  - '10:26'
+  - '11:26'
+  - '12:26'
+  - '13:26'
+  - '15:26'
+  - '16:26'
+  - '17:26'
+  - '18:26'
+  - '19:26'
+  - '20:26'
+  - '21:26'
+  - '22:26'
+  name: Ainakea Road / Malolo St.
+  true_location: ainakea_malolo_lahaina
+-
+  location: :ainakea_fleming_lahaina
+  times:
+  - '8:27'
+  - '9:27'
+  - '10:27'
+  - '11:27'
+  - '12:27'
+  - '13:27'
+  - '15:27'
+  - '16:27'
+  - '17:27'
+  - '18:27'
+  - '19:27'
+  - '20:27'
+  - '21:27'
+  - '22:27'
+  name: Ainakea Road / Fleming Road
+  true_location: ainakea_fleming_lahaina
+-
+  location: :ainakea_park_lahaina
+  times:
+  - '8:28'
+  - '9:28'
+  - '10:28'
+  - '11:28'
+  - '12:28'
+  - '13:28'
+  - '15:28'
+  - '16:28'
+  - '17:28'
+  - '18:28'
+  - '19:28'
+  - '20:28'
+  - '21:28'
+  - '22:28'
+  name: Ainakea Park
+  true_location: ainakea_park_lahaina
+-
+  location: :ainakea_kaniau_lahaina
+  times:
+  - '8:29'
+  - '9:29'
+  - '10:29'
+  - '11:29'
+  - '12:29'
+  - '13:29'
+  - '15:29'
+  - '16:29'
+  - '17:29'
+  - '18:29'
+  - '19:29'
+  - '20:29'
+  - '21:29'
+  - '22:29'
+  name: Ainakea Road / Kaniau Road
+  true_location: ainakea_kaniau_lahaina
+-
+  location: :leialii_parkway_lahaina
+  times:
+  - '8:31'
+  - '9:31'
+  - '10:31'
+  - '11:31'
+  - '12:31'
+  - '13:31'
+  - '15:31'
+  - '16:31'
+  - '17:31'
+  - '18:31'
+  - '19:31'
+  - '20:31'
+  - '21:31'
+  - '22:31'
+  name: Leialii Parkway / Near Hooli Street
+  true_location: leialii_parkway_lahaina
+-
+  location: :lahaina_civic_center
+  times:
+  - '8:34'
+  - '9:34'
+  - '10:34'
+  - '11:34'
+  - '12:34'
+  - '13:34'
+  - '15:34'
+  - '16:34'
+  - '17:34'
+  - '18:34'
+  - '19:34'
+  - '20:34'
+  - '21:34'
+  - '22:34'
+  name: Lahaina Civic Center (back)
+  true_location: lahaina_civic_center
+  destination: true
+-
+  location: :lahaina_cannery_mall
+  times:
+  - '8:42'
+  - '9:42'
+  - '10:42'
+  - '11:42'
+  - '12:42'
+  - '13:42'
+  - '15:42'
+  - '16:42'
+  - '17:42'
+  - '18:42'
+  - '19:42'
+  - '20:42'
+  - '21:42'
+  - '22:42'
+  name: Lahaina Cannery Mall
+  true_location: lahaina_cannery_mall
+-
+  location: :papalaua_st
+  times:
+  - '8:48'
+  - '9:48'
+  - '10:48'
+  - '11:48'
+  - '12:48'
+  - '13:48'
+  - '15:48'
+  - '16:48'
+  - '17:48'
+  - '18:48'
+  - '19:48'
+  - '20:48'
+  - '21:48'
+  - '22:48'
+  name: Papalaua Street
+  true_location: papalaua_st
+-
+  location: :wharf_cinema
+  times:
+  - '9:00'
+  - '10:00'
+  - '11:00'
+  - '12:00'
+  - '13:00'
+  - '14:00'
+  - '16:00'
+  - '17:00'
+  - '18:00'
+  - '19:00'
+  - '20:00'
+  - '21:00'
+  - '22:00'
+  - '23:00'
+  name: Wharf Cinema Center
+  true_location: wharf_cinema

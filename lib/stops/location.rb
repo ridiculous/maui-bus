@@ -189,9 +189,6 @@ class Location
       wailuku_ymca: Detail.new(20.895789, -156.486176, 'YMCA - Mikohu Loop / Kanaloa Ave.', 96793)
   }
 
-  # some locations have "partners" which are usually on the other side of the street
-  PARTNER_PATTERN = /_(across|parkside|makai|mauka)$/
-
   class << self
 
     def [](name)
@@ -202,8 +199,9 @@ class Location
       LIST.dup
     end
 
+    # some locations have "partners" which are usually on the other side of the street
     def unique
-      all.reject { |k, v| k =~ PARTNER_PATTERN }
+      all.reject { |k, v| k =~ /_(across|parkside|makai|mauka)$/ }
     end
 
     def transfers_only(list)

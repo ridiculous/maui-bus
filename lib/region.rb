@@ -1,5 +1,5 @@
 class Region
-  LIST = Dir.open('lib/regions').reject { |t| t !~ /rb/ }.map { |name| name.sub(%r{.rb}, '').titleize }
+  LIST = Dir['lib/regions/*.rb'].map { |name| name.match(%r|/(\w+).rb|)[1].titleize }
 
   attr_reader :routes
 

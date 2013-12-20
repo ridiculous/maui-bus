@@ -10,6 +10,16 @@ class BusRoute
   attr_writer :buses
   attr_accessor :_visible_stops, :options
 
+  def self.load_stops(klass)
+    YAML.load(open("config/routes/#{klass.to_s.downcase.gsub('::', '/')}.yml")).map { |x| BusStop.new(x.symbolize_keys) }
+  end
+
+  def write
+    open("config/routes/#{self.class.to_s.downcase.gsub('::', '/')}.yml", 'w') do |f|
+      f.puts stops.to_yaml.sub('---', '').gsub('- !ruby/object:BusStop', '-')
+    end
+  end
+
   def max_stop_length
     stops.map(&:times).map(&:length).sort[-1]
   end
