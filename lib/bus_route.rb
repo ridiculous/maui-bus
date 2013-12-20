@@ -11,13 +11,8 @@ class BusRoute
   attr_accessor :_visible_stops, :options
 
   def self.load_stops(klass)
-    YAML.load(open("config/routes/#{klass.to_s.downcase.gsub('::', '/')}.yml")).map { |x| BusStop.new(x.symbolize_keys) }
-  end
-
-  def write
-    open("config/routes/#{self.class.to_s.downcase.gsub('::', '/')}.yml", 'w') do |f|
-      f.puts stops.to_yaml.sub('---', '').gsub('- !ruby/object:BusStop', '-')
-    end
+    data_file = open("config/routes/#{klass.to_s.downcase.gsub('::', '/')}.yml")
+    YAML.load(data_file).map { |data| BusStop.new(data.symbolize_keys) }
   end
 
   def max_stop_length
@@ -106,12 +101,10 @@ class BusRoute
           # upcoming stops w/ the start time as the cut off, so stopping point >= starting point
           next_stops(nil, nxt.time).each_with_index do |origin_stops, stop_bus|
             stop_at = origin_stops.find { |s| s.bus_stop.true_location == point_b }
-
             # make sure this is the same bus
             if stop_at && start_bus == stop_bus
               direct_routes << DirectRoute.new(self, nxt, stop_at)
             end
-
           end
         end
       end
@@ -133,10 +126,6 @@ class BusRoute
   def locations
     stops.map { |s| s.true_location }
   end
-
-  #
-  # = Private
-  #
 
   private
 
