@@ -11,7 +11,7 @@ class BusRoute
   attr_accessor :_visible_stops, :options
 
   def self.load_stops(klass)
-    data_file = open("config/routes/#{klass.to_s.downcase.gsub('::', '/')}.yml")
+    data_file = open("config/routes/#{klass.to_s.downcase.sub('::', '/')}.yml")
     YAML.load(data_file).map { |data| BusStop.new(data.symbolize_keys) }
   end
 
