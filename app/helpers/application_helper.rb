@@ -60,24 +60,12 @@ module ApplicationHelper
     end
   end
 
-  #
-  # TODO: I should really just change the format of the times, from "20:45" to "8:45 PM"
-  #
-
   def time_cells(route, stop)
     nxt_ups = route.next_stops_as_hash
     route.max_stop_length.times.each_with_index.map do |s, i|
-      my_time = stop.times[s]
-      nxt_stop = nxt_ups["#{stop.name}#{my_time}"]
+      nxt_stop = nxt_ups["#{stop.name}#{stop.times[s]}"]
       concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}") do
-        if my_time && !my_time.empty?
-          hr = my_time.to_i # converts '12:55' to 12
-          if hr > 11
-            "#{hr == 12 ? hr : hr - 12}#{my_time.slice(2, 5)} PM"
-          else
-            "#{my_time} AM"
-          end
-        end
+        stop.time_to_s(s)
       end)
     end.join.html_safe
   end

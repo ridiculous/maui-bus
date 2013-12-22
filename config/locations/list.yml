@@ -1,785 +1,785 @@
-- haiku_community_center:
+haiku_community_center:
   - 20.929556
   - -156.321201
   - Haiku Community Center
   - 96708
-- haiku_marketplace:
+haiku_marketplace:
   - 20.913502
   - -156.322564
   - Haiku Marketplace
   - 96708
-- kahului_airport:
+kahului_airport:
   - 20.8943
   - -156.4377
   - 'Airport Pick-up Zone #3'
   - 96732
-- hale_mahaolu_elua:
+hale_mahaolu_elua:
   - 20.882385
   - -156.474543
   - Hale Mahaolu Elua
   - 96732
-- kahului_community_center:
+kahului_community_center:
   - 20.880508
   - -156.480251
   - Kahului Community Center
   - 96732
-- kahului_community_center_across:
+kahului_community_center_across:
   - 20.880546
   - -156.480339
   - Kahului Community Center
   - 96732
-- kahului_salvation_army:
+kahului_salvation_army:
   - 20.88789
   - -156.4676064
   - Salvation Army
   - 96732
-- kahului_salvation_army_across:
+kahului_salvation_army_across:
   - 20.8881
   - -156.467757
   - Salvation Army
   - 96732
-- kahului_safeway:
+kahului_safeway:
   - 20.889237
   - -156.464077
   - Kahului Safeway
   - 96732
-- kahului_safeway_across:
+kahului_safeway_across:
   - 20.889402
   - -156.464152
   - Safeway / Maui Mall Entrance
   - 96732
-- kahului_shopping_center:
+kahului_shopping_center:
   - 20.890359
   - -156.468675
   - Kahului Shopping Center
   - 96732
-- kanaloa_baseball_field:
+kanaloa_baseball_field:
   - 20.890099
   - -156.486951
   - Kanaloa Ave. / Little League Field
   - 96732
-- kamehameha_ave_molokai_akua_st:
+kamehameha_ave_molokai_akua_st:
   - 20.875762
   - -156.477534
   - Kamehameha Ave. / Molokai Akua St.
   - 96732
-- kamehameha_ave_molokai_akua_st_across:
+kamehameha_ave_molokai_akua_st_across:
   - 20.875742
   - -156.477432
   - Kamehameha Ave. / Molokai Akua St.
   - 96732
-- kamehameha_ave_laau_st_across:
+kamehameha_ave_laau_st_across:
   - 20.878802
   - -156.47531
   - Kamehameha Ave. / Laau St.
   - 96732
-- kamehameha_ave_laau_st:
+kamehameha_ave_laau_st:
   - 20.878832
   - -156.475393
   - Kamehameha Ave. / Laau St.
   - 96732
-- kmart:
+kmart:
   - 20.886029
   - -156.451567
   - K-Mart
   - 96732
-- luana_gardens:
+luana_gardens:
   - 20.872717
   - -156.476686
   - Luana Gardens
   - 96732
-- luana_gardens_across:
+luana_gardens_across:
   - 20.87283
   - -156.476673
   - Luana Gardens
   - 96732
-- maui_college:
+maui_college:
   - 20.891191
   - -156.47671
   - Harbor Lights / UH Maui College
   - 96732
-- maui_market_place:
+maui_market_place:
   - 20.87998
   - -156.455398
   - Maui Marketplace Food Court
   - 96732
-- onehee_papa_ave_across:
+onehee_papa_ave_across:
   - 20.877661
   - -156.482308
   - Onehee / S. Papa Ave.
   - 96732
-- onehee_papa_ave:
+onehee_papa_ave:
   - 20.877629
   - -156.482206
   - Onehee / S. Papa Ave.
   - 96732
-- papa_ave_kea_st:
+papa_ave_kea_st:
   - 20.88279
   - -156.485657
   - Papa Ave. / Kea St.
   - 96732
-- papa_ave_kea_across:
+papa_ave_kea_across:
   - 20.882741
   - -156.485586
   - Papa Ave. / Kea St.
   - 96732
-- queen_kaahumanu:
+queen_kaahumanu:
   - 20.88657
   - -156.475375
   - Queen Kaahumanu Mall
   - 96732
   - true
-- roselani_place:
+roselani_place:
   - 20.887098
   - -156.484196
   - Roselani Place
   - 96732
-- roselani_place_across:
+roselani_place_across:
   - 20.886721
   - -156.48436
   - Roselani Place
   - 96732
-- walmart_back:
+walmart_back:
   - 20.877052
   - -156.455591
   - Pakaula St. / Wal-Mart back Entrance
   - 96732
-- walmart_across:
+walmart_across:
   - 20.877014
   - -156.455652
   - Pakaula St. / Wal-Mart back Entrance
   - 96732
-- west_papa_lanai_st:
+west_papa_lanai_st:
   - 20.879076
   - -156.463215
   - W. Papa Ave. / S Lanai St.
   - 96732
-- west_papa_lanai_st_across:
+west_papa_lanai_st_across:
   - 20.878882
   - -156.463552
   - W. Papa Ave. / S Lanai St.
   - 96732
-- west_papa_laau_st_across:
+west_papa_laau_st_across:
   - 20.874649
   - -156.467512
   - W. Papa Ave. / Laau St.
   - 96732
-- west_papa_laau_st:
+west_papa_laau_st:
   - 20.874616
   - -156.467445
   - W. Papa Ave. / Laau St.
   - 96732
-- maalaea_harbor:
+maalaea_harbor:
   - 20.792111
   - -156.513081
   - Maalaea Harbor
   - 96753
   - true
-- uwapo_south_kihei:
+uwapo_south_kihei:
   - 20.781604
   - -156.462809
   - Uwapo Rd. / S. Kihei Rd.
   - 96753
-- uwapo_south_kihei_mauka:
+uwapo_south_kihei_mauka:
   - 20.781346
   - -156.462543
   - Uwapo Rd. / S. Kihei Rd.
   - 96753
-- ohukai_south_kihei:
+ohukai_south_kihei:
   - 20.77461
   - -156.460244
   - Ohukai Rd. / S. Kihei Rd.
   - 96753
-- kaonoulu_south_kihei_makai:
+kaonoulu_south_kihei_makai:
   - 20.766397
   - -156.458482
   - Kaonoulu St. / S. Kihei Rd.
   - 96753
-- kaonoulu_south_kihei:
+kaonoulu_south_kihei:
   - 20.765203
   - -156.45823
   - Kaonoulu St. / S. Kihei Rd.
   - 96753
-- kulanihakoi_south_kihei:
+kulanihakoi_south_kihei:
   - 20.7612
   - -156.45779
   - Kulanihakoi St. / S. Kihei Rd.
   - 96753
-- waipuilani_south_kihei:
+waipuilani_south_kihei:
   - 20.755096
   - -156.45661
   - Waipuilani Rd. / S. Kihei Rd.
   - 96753
-- waipuilani_south_kihei_makai:
+waipuilani_south_kihei_makai:
   - 20.755813
   - -156.456884
   - Waipuilani Rd. / S. Kihei Rd.
   - 96753
-- piikea_south_kihei_across:
+piikea_south_kihei_across:
   - 20.750235
   - -156.455124
   - Piikea Ave. / S. Kihei Rd.
   - 96753
-- piikea_south_kihei:
+piikea_south_kihei:
   - 20.75039
   - -156.454879
   - Piikea Ave. / S. Kihei Rd.
   - 96753
-- piilani_shopping_center:
+piilani_shopping_center:
   - 20.751888
   - -156.448445
   - Piilani Shopping Center
   - 96753
   - true
-- lipoa_liloa:
+lipoa_liloa:
   - 20.748173
   - -156.450178
   - E Lipoa St. / Liloa Dr.
   - 96753
-- lipoa_liloa_across:
+lipoa_liloa_across:
   - 20.748032
   - -156.449851
   - E Lipoa St. / Liloa Dr.
   - 96753
-- st_theresas_church:
+st_theresas_church:
   - 20.747009
   - -156.455033
   - St Theresa's Church
   - 96753
-- welakahao_south_kihei:
+welakahao_south_kihei:
   - 20.739706
   - -156.454144
   - Welakahao Rd. / S. Kihei Rd.
   - 96753
-- welakahao_south_kihei_mauka:
+welakahao_south_kihei_mauka:
   - 20.740292
   - -156.454136
   - Welakahao Rd. / S. Kihei Rd.
   - 96753
-- lipoa_street:
+lipoa_street:
   - 20.747614
   - -156.454702
   - Lipoa St.
   - 96753
-- keala_place_south_kihei:
+keala_place_south_kihei:
   - 20.732112
   - -156.452235
   - Keala Pl. / South Kihei
   - 96753
-- keala_place_south_kihei_mauka:
+keala_place_south_kihei_mauka:
   - 20.73289
   - -156.452435
   - Keala Pl. / South Kihei
   - 96753
-- walaka_south_kihei:
+walaka_south_kihei:
   - 20.726697
   - -156.44851
   - Walaka St. / South Kihei
   - 96753
-- kamaole_beach_1:
+kamaole_beach_1:
   - 20.721211
   - -156.447162
   - Kamaole Beach I
   - 96753
-- kamaole_shopping_center:
+kamaole_shopping_center:
   - 20.718593
   - -156.446616
   - Kamaole Shopping Center
   - 96753
-- kamaole_beach_3:
+kamaole_beach_3:
   - 20.712895
   - -156.445337
   - Kamaole Beach III
   - 96753
-- mana_kai_resort_south:
+mana_kai_resort_south:
   - 20.705098
   - -156.444966
   - Mana Kai Resort (South)
   - 96753
-- kilohana_south_kihei:
+kilohana_south_kihei:
   - 20.702001
   - -156.444658
   - Kilohana Dr. / S. Kihei Rd.
   - 96753
-- okolani_wailea:
+okolani_wailea:
   - 20.69826
   - -156.442818
   - Okolani / Wailea Alanui Dr.
   - 96753
-- wailea_ike:
+wailea_ike:
   - 20.686904
   - -156.437995
   - Wailea Ike Drive
   - 96753
-- waimele_place_kula:
+waimele_place_kula:
   - 20.791424
   - -156.324731
   - Lower Kula Rd. / Waimele Place
   - 96790
-- lower_kimo_drive:
+lower_kimo_drive:
   - 20.787352
   - -156.325396
   - Lower Kula Rd. / Lower Kimo Dr.
   - 96790
-- kula_hardware:
+kula_hardware:
   - 20.776915
   - -156.325844
   - Kula Hardware
   - 96790
-- kula_community_center:
+kula_community_center:
   - 20.763643
   - -156.326635
   - Kula Community Center
   - 96790
-- kula_gym:
+kula_gym:
   - 20.759625
   - -156.327381
   - Kula Community Center
   - 96790
-- naalae_road:
+naalae_road:
   - 20.749447
   - -156.329543
   - Lower Kula Rd. / Naalae Rd.
   - 96790
-- rice_park:
+rice_park:
   - 20.741641
   - -156.332327
   - Rice Park
   - 96790
-- wharf_cinema:
+wharf_cinema:
   - 20.872799
   - -156.676799
   - Wharf Cinema Center Luakini Street
   - 96761
   - true
-- papalaua_st:
+papalaua_st:
   - 20.877316
   - -156.680821
   - Papalaua Street
   - 96761
-- lahaina_cannery_mall:
+lahaina_cannery_mall:
   - 20.886098
   - -156.683599
   - Lahaina Cannery Mall
   - 96761
-- lahaina_gateway:
+lahaina_gateway:
   - 20.885035
   - -156.681439
   - Lahaina Gateway
   - 96761
-- ainakea_malolo_lahaina:
+ainakea_malolo_lahaina:
   - 20.890104
   - -156.682558
   - Ainakea Rd / Malolo St.
   - 96761
-- ainakea_fleming_lahaina:
+ainakea_fleming_lahaina:
   - 20.893979
   - -156.682797
   - Ainakea Rd / Fleming St.
   - 96761
-- ainakea_park_lahaina:
+ainakea_park_lahaina:
   - 20.895868
   - -156.682952
   - Ainakea Rd / Kaniau Rd
   - 96761
-- ainakea_kaniau_lahaina:
+ainakea_kaniau_lahaina:
   - 20.899398
   - -156.683192
   - Ainakea Rd / Kaniau Rd
   - 96761
-- leialii_parkway_lahaina:
+leialii_parkway_lahaina:
   - 20.90159
   - -156.682066
   - Leialii Parkway
   - 96761
-- lahaina_civic_center:
+lahaina_civic_center:
   - 20.905604
   - -156.684018
   - Lahaina Civic Center
   - 96761
-- whalers_village:
+whalers_village:
   - 20.921345
   - -156.693918
   - Whalers Village
   - 96761
   - true
-- front_street_505:
+front_street_505:
   - 20.867962
   - -156.675119
   - 505 Front Street
   - 96761
-- lahaina_aquatic_center:
+lahaina_aquatic_center:
   - 20.869246
   - -156.670994
   - Lahaina Aquatic Center
   - 96761
-- kuailua_kumukahi_lahaina:
+kuailua_kumukahi_lahaina:
   - 20.885413
   - -156.665247
   - Kuailua Street / Kumukahi Street
   - 96761
-- kalena_pikanele_lahaina:
+kalena_pikanele_lahaina:
   - 20.882914
   - -156.671184
   - Kalena Street / Pikanele Street
   - 96761
-- hale_mahaolu_eono:
+hale_mahaolu_eono:
   - 20.88121
   - -156.671852
   - Hale Mahaolu Eono
   - 96761
-- lahainaluna_kuhua:
+lahainaluna_kuhua:
   - 20.878601
   - -156.675486
   - Lahainaluna Rd. / Kuhua St.
   - 96761
-- lahainaluna_kuhua_across:
+lahainaluna_kuhua_across:
   - 20.878639
   - -156.67554
   - Lahainaluna Rd. / Kuhua St.
   - 96761
-- liloa_hokeo:
+liloa_hokeo:
   - 20.886057
   - -156.667657
   - Liloa St. / Hokeo St.
   - 96761
-- na_halee:
+na_halee:
   - 20.868956
   - -156.667994
   - Na Halee O Wainee
   - 96761
-- kekaa_drive:
+kekaa_drive:
   - 20.925355
   - -156.690942
   - Keka'a Drive
   - 96761
-- kaanapali_beach_club:
+kaanapali_beach_club:
   - 20.948582
   - -156.689587
   - Kaanapali Beach Club
   - 96761
-- kaanapali_shores:
+kaanapali_shores:
   - 20.949199
   - -156.687894
   - Kaanapali Shores
   - 96761
-- nahono_place:
+nahono_place:
   - 20.950401
   - -156.687419
   - Nahono Place
   - 96761
-- honokowai_villa:
+honokowai_villa:
   - 20.951468
   - -156.68714
   - Honokowai Villa
   - 96761
-- honokowai_beach_park:
+honokowai_beach_park:
   - 20.9538
   - -156.68622
   - Sunset Terrace (Honokowai Beach Park)
   - 96761
-- honokowai_beach_park_makai:
+honokowai_beach_park_makai:
   - 20.954103
   - -156.686204
   - Honokowai Beach Park
   - 96761
-- makani_sands:
+makani_sands:
   - 20.957264
   - -156.684847
   - Makani Sands
   - 96761
-- kuleana:
+kuleana:
   - 20.961377
   - -156.683369
   - Kuleana
   - 96761
-- polynesian_shores:
+polynesian_shores:
   - 20.963686
   - -156.68249
   - Polynesian Shores
   - 96761
-- pohaku_park:
+pohaku_park:
   - 20.967478
   - -156.681076
   - Pohaku Park (S-Turns)
   - 96761
-- valley_isle_resort:
+valley_isle_resort:
   - 20.970798
   - -156.678409
   - Valley Isle Resort
   - 96761
-- kahana_manor:
+kahana_manor:
   - 20.971195
   - -156.678408
   - Kahana Manor
   - 96761
-- royal_kahana:
+royal_kahana:
   - 20.972387
   - -156.67876
   - Royal Kahana
   - 96761
-- kahana_outrigger:
+kahana_outrigger:
   - 20.975601
   - -156.677404
   - Kahana Outrigger/Kepola Place
   - 96761
-- omaikai_place:
+omaikai_place:
   - 20.977574
   - -156.676578
   - Omaikai Place
   - 96761
-- kahana_sunset:
+kahana_sunset:
   - 20.983765
   - -156.672176
   - Kahana Sunset
   - 96761
-- alaeloa_across:
+alaeloa_across:
   - 20.9862
   - -156.670802
   - Alaeloa (Mauka)
   - 96761
-- alaeloa:
+alaeloa:
   - 20.986645
   - -156.670128
   - Alaeloa
   - 96761
-- napili_plaza:
+napili_plaza:
   - 20.985072
   - -156.667196
   - Napili Plaza
   - 96761
-- napili_shores:
+napili_shores:
   - 20.992067
   - -156.667072
   - Napili Shores
   - 96761
-- napili_village:
+napili_village:
   - 20.994691
   - -156.665382
   - Napili Village
   - 96761
-- napili_kai:
+napili_kai:
   - 20.997119
   - -156.665188
   - Napili Kai
   - 96761
-- alana_place_makawao:
+alana_place_makawao:
   - 20.844813
   - -156.32019
   - Alana Place / Makawao Ave
   - 96768
-- haliimaile:
+haliimaile:
   - 20.868697
   - -156.338598
   - Haliimaile Park
   - 96768
-- koehana_place_makawao:
+koehana_place_makawao:
   - 20.838378
   - -156.32663
   - Koehana Place / Makawao Ave
   - 96768
-- longs_pukalani:
+longs_pukalani:
   - 20.823136
   - -156.329269
   - Longs Drugs Store / Kula Highway
   - 96768
-- eddie_tam:
+eddie_tam:
   - 20.850275
   - -156.315563
   - Mahola St / Makawao Ave (Eddie Tam)
   - 96768
-- makani_road_makawao:
+makani_road_makawao:
   - 20.848289
   - -156.317975
   - Makani Road / Makawao Ave
   - 96768
-- makawao_library:
+makawao_library:
   - 20.853548
   - -156.310623
   - Makawao Library
   - 96768
-- poalima_place_makawao:
+poalima_place_makawao:
   - 20.846347
   - -156.319157
   - Poalima Place / Makawao Ave
   - 96768
-- pukalani_terrace:
+pukalani_terrace:
   - 20.838579
   - -156.341693
   - Pukalani Terrace
   - 96768
   - true
-- paia_entrance:
+paia_entrance:
   - 20.915426
   - -156.383058
   - 134 Hana Highway (Baldwin Side)
   - 96779
-- paia_charleys:
+paia_charleys:
   - 20.916779
   - -156.380424
   - Charley's Restaurant
   - 96779
-- kuau_mart:
+kuau_mart:
   - 20.927542
   - -156.366777
   - Kuau Mart
   - 96779
-- eha_st_ohukai:
+eha_st_ohukai:
   - 20.905449
   - -156.487441
   - Eha St. / Ohukai St.
   - 96793
-- eha_st_sack_n_save:
+eha_st_sack_n_save:
   - 20.905261
   - -156.487777
   - Eha St. - In Front Sack N Save
   - 96793
-- hawaiian_homes_makai:
+hawaiian_homes_makai:
   - 20.908586
   - -156.490213
   - Hawaiian Homes (Makai)
   - 96793
-- hawaiian_homes:
+hawaiian_homes:
   - 20.908812
   - -156.490473
   - Hawaiian Homes
   - 96793
-- ka_hale_ake_ola:
+ka_hale_ake_ola:
   - 20.875702
   - -156.499342
   - Ka Hale A Ke Ola
   - 96793
-- kahekili_terrace:
+kahekili_terrace:
   - 20.891196
   - -156.503605
   - Kahekili Terrace
   - 96793
-- kamole_st_kehalani_sub:
+kamole_st_kehalani_sub:
   - 20.87599
   - -156.502519
   - Kamole Street / Kehalani Subdivision
   - 96793
-- lihi_kanaloa_ave_parkside:
+lihi_kanaloa_ave_parkside:
   - 20.897463
   - -156.48535
   - Lihi St. / Kanaloa Ave. (Parkside)
   - 96793
-- lihi_kanaloa_ave:
+lihi_kanaloa_ave:
   - 20.897736
   - -156.485189
   - Lihi St. / Kanaloa Ave.
   - 96793
-- liholiho_kanaloa_ave:
+liholiho_kanaloa_ave:
   - 20.898852
   - -156.482544
   - Liholiho St. / Kanaloa Ave.
   - 96793
-- liholiho_kanaloa_ave_parkside:
+liholiho_kanaloa_ave_parkside:
   - 20.898734
   - -156.482517
   - Liholiho St. / Kanaloa Ave. (Parkside)
   - 96793
-- makaala_hale_mahaolu:
+makaala_hale_mahaolu:
   - 20.910959
   - -156.492613
   - Makaala Drive - In Front Hale Mahaolu
   - 96793
-- makaala_kilihau_st:
+makaala_kilihau_st:
   - 20.908817
   - -156.496119
   - Makaala Drive / Kilihau St.
   - 96793
-- makaala_kilihau_st_across:
+makaala_kilihau_st_across:
   - 20.908568
   - -156.496456
   - Makaala Drive / Kilihau St.
   - 96793
-- makaala_alihilani_st:
+makaala_alihilani_st:
   - 20.905104
   - -156.49744
   - Makaala Drive / Alihilani St.
   - 96793
-- makaala_kuhio_pl:
+makaala_kuhio_pl:
   - 20.903947
   - -156.498434
   - Makaala Drive / Kuhio Place
   - 96793
-- makaala_makamua_st:
+makaala_makamua_st:
   - 20.903248
   - -156.500495
   - Makaala Drive / Makamua St.
   - 96793
-- makaala_makamua_st_across:
+makaala_makamua_st_across:
   - 20.903278
   - -156.500271
   - Makaala Drive / Makamua St.
   - 96793
-- ke_ola_health_clinic:
+ke_ola_health_clinic:
   - 20.889012
   - -156.499604
   - Malama I Ke Ola Health Clinic
   - 96793
-- maui_lani_parkway:
+maui_lani_parkway:
   - 20.887706
   - -156.491017
   - Maui Lani Parkway
   - 96793
-- maui_memorial_hospital:
+maui_memorial_hospital:
   - 20.884227
   - -156.488586
   - Maui Memorial Hospital
   - 96793
-- maui_memorial_hospital_across:
+maui_memorial_hospital_across:
   - 20.884395
   - -156.488147
   - Maui Memorial Hospital (Across)
   - 96793
-- piihana_terrace:
+piihana_terrace:
   - 20.893834
   - -156.504926
   - Pi'ihana Terrace
   - 96793
-- state_bldg:
+state_bldg:
   - 20.886598
   - -156.504729
   - State Office Building
   - 96793
-- state_bldg_wells_st:
+state_bldg_wells_st:
   - 20.886182
   - -156.503795
   - State Building / Wells St.
   - 96793
-- waiehu_heights_wailupe:
+waiehu_heights_wailupe:
   - 20.914519
   - -156.495191
   - Waiehu Heights / Wailupe Drive
   - 96793
-- waiehu_heights_aukai:
+waiehu_heights_aukai:
   - 20.914254
   - -156.497498
   - Waiehu Heights / Aukai Place
   - 96793
-- waikapu:
+waikapu:
   - 20.854728
   - -156.50362
   - Waikapu
   - 96793
-- wailuku_post_office:
+wailuku_post_office:
   - 20.893896
   - -156.49871
   - Wailuku Post Office
   - 96793
-- wailuku_community_center_across:
+wailuku_community_center_across:
   - 20.900398
   - -156.491205
   - Wailuku Community Center (Across)
   - 96793
-- wailuku_community_center:
+wailuku_community_center:
   - 20.900613
   - -156.491691
   - Wailuku Community Center
   - 96793
-- wailuku_ymca:
+wailuku_ymca:
   - 20.895789
   - -156.486176
   - YMCA - Mikohu Loop / Kanaloa Ave.

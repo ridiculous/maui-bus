@@ -34,7 +34,8 @@ class Location
     def load_locations
       data_file = open('config/locations/list.yml')
       YAML.load(data_file).inject({}) do |result, loc| 
-         result[loc.keys.first.intern] = Detail.new(*loc.values.first);result
+         result[loc[0].intern] = Detail.new(*loc[1])
+         result
       end
     end
   end

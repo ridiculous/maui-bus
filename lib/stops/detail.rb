@@ -20,10 +20,4 @@ class Detail
   def transfer?
     transfer
   end
-
-  def to_yaml
-    a = [lat, long, name, zip]
-    a << transfer if transfer
-    a
-  end
 end

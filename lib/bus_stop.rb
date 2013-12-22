@@ -33,6 +33,18 @@ class BusStop
     self.class.sort_times(times)
   end
 
+  def time_to_s(s)
+    my_time = times[s]
+    if my_time && !my_time.empty?
+      hr = my_time.to_i # converts '12:55' to 12
+      if hr > 11
+        "#{hr == 12 ? hr : hr - 12}#{my_time.slice(2, 5)} PM"
+      else
+        "#{my_time} AM"
+      end
+    end
+  end
+
   #
   # = Class Methods
   #
