@@ -9,7 +9,7 @@ class Kula < Region
     super
   end
 
-  class Villager < BasicRoute
+  class Villager < Bus::Route
     STOPS = load_stops(self)
 
     def initialize(name='Kula Villager Route #39')

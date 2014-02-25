@@ -32,7 +32,7 @@ class Trip
 
   # find pertinent routes and create a Course with each one
   def collect_starting_routes
-    BusData.routes.each do |route|
+    Bus::Data.routes.each do |route|
       stops = route.locations
       if stops.include?(origin)
         course_options << Course.new(Leg.new(route.name, origin, (destination if stops.include?(destination))))
@@ -45,7 +45,7 @@ class Trip
   def collect_course_nodes
     incomplete_course_options.each do |co|
       others = []
-      node_map = BusData.node_map[co.first_leg.name]
+      node_map = Bus::Data.node_map[co.first_leg.name]
       while result = node_map.find_by_name(destination, others)
         others << result.name
         co.nodes << result

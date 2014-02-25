@@ -1,6 +1,5 @@
 <%= content_for(:title) { "#{params[:name].titleize} | Maui Bus Routes" } %>
 <h3 class="well app-subheader">Routes for <%= params[:name].titleize %></h3>
-<%#= render('modal') %>
 <div class="regions">
   <% @region.routes.each do |route| %>
       <a name="<%= route.full_class_name %>"></a>
@@ -13,15 +12,12 @@
           <%= link_to('<span class="icon icon-globe icon-white"></span>Map'.html_safe, show_bus_map_path(params[:name], route.class_name), class: 'btn btn-success list') %>
         </div>
         <div class="c">
-          <% if route.note %>
-              <div class="c pad5" style="font-size: 13px;"><%= route.note.html_safe %></div>
-          <% end %>
           <%= upcoming_stops_box(route) %>
           <div class="c"></div>
         </div>
         <div style="padding-bottom: 10px;">
           <%= schedule_for(route) %>
-          <%# clear the attribute used for caching %>
+          <%# empty the cached object %>
           <% route.buses = nil %>
         </div>
       </div>

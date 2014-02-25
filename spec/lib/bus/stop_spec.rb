@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BusStop do
+describe Bus::Stop do
 
   context 'Helpers' do
 
@@ -34,7 +34,7 @@ describe BusStop do
     end
 
     it 'should sort list of times in military format and convert to TimeWithZone' do
-      sorted_times = BusStop.sort_times(['12:00', '06:55', '13:21', '09:30'])
+      sorted_times = Bus::Stop.sort_times(['12:00', '06:55', '13:21', '09:30'])
       sorted_times.each { |a| a.should be_a(ActiveSupport::TimeWithZone) }
       sorted_times.map { |a| a.strftime('%l:%M %p').strip }.should == ["6:55 AM", "9:30 AM", "12:00 PM", "1:21 PM"]
     end

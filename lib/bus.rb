@@ -1,10 +1,10 @@
-class Bus
+require 'bus/data'
+require 'bus/direct_route'
+require 'bus/next_stop'
+require 'bus/node'
+require 'bus/node_map'
+require 'bus/route'
+require 'bus/stop'
 
-  attr_reader :next_stops, :path_parts # for the map path
-
-  def initialize(nxt_stops, link_path_parts)
-    @next_stops = nxt_stops
-    @path_parts = link_path_parts
-  end
-
+module Bus
 end

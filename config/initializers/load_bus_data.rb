@@ -1,2 +1,1 @@
-BusData.routes.length
-BusData.node_map.length
+Bus::Data.load

@@ -25,7 +25,7 @@ class Leg < Struct.new(:name, :start_at, :stop_at)
   end
 
   def route
-    BusData.routes.find { |x| x.name == name }
+    Bus::Data.routes.find { |x| x.name == name }
   end
 
 end

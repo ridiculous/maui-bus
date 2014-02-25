@@ -1,4 +1,3 @@
-
 module RegionClassMethods
 
   # i.e Haiku.islander

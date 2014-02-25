@@ -78,6 +78,11 @@ kamehameha_ave_laau_st:
   - -156.475393
   - Kamehameha Ave. / Laau St.
   - 96732
+kuihelani_park_ride:
+  - 20.874881
+  - -156.462253
+  - Kuihelani Hwy. Park & Ride
+  - 96732
 kmart:
   - 20.886029
   - -156.451567
@@ -619,6 +624,11 @@ paia_charleys:
   - -156.380424
   - Charley's Restaurant
   - 96779
+paia_community_center:
+  - 20.918722
+  - -156.377925
+  - Paia Community Center
+  - 96779
 kuau_mart:
   - 20.927542
   - -156.366777
@@ -714,6 +724,11 @@ makaala_makamua_st_across:
   - -156.500271
   - Makaala Drive / Makamua St.
   - 96793
+makena:
+  - 20.646769
+  - -156.439959
+  - Makena
+  - 96753
 ke_ola_health_clinic:
   - 20.889012
   - -156.499604
@@ -784,3 +799,8 @@ wailuku_ymca:
   - -156.486176
   - YMCA - Mikohu Loop / Kanaloa Ave.
   - 96793
+war_memorial:
+  - 20.892723
+  - -156.486844
+  - War Memorial Stadium
+  - 96732

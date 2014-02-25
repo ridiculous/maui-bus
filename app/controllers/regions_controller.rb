@@ -10,7 +10,7 @@ class RegionsController < ApplicationController
 
   def schedule
     @regions = Region.all.sort
-    @routes = BusData.routes
+    @routes = Bus::Data.routes
   end
 
   def show
@@ -20,7 +20,7 @@ class RegionsController < ApplicationController
       format.json { render json: @region }
     end
   rescue Region::RecordNotFound
-    redirect_to root_path, alert: 'Error! Maybe the region couldnt be found. Please inform @arebuckley'
+    redirect_to root_path, alert: "Couldn't find region '#{params[:name]}'"
   end
 
 end

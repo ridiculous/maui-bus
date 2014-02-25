@@ -9,7 +9,7 @@ class Napili < Region
     super
   end
 
-  class Islander < BasicRoute
+  class Islander < Bus::Route
     STOPS = load_stops(self)
 
     def initialize(name='Napili Islander Route #30')

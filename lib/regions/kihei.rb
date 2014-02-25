@@ -10,7 +10,7 @@ class Kihei < Region
     super
   end
 
-  class Islander < BasicRoute
+  class Islander < Bus::Route
     STOPS = load_stops(self)
 
     def initialize(name='Kihei Islander Route #10')
@@ -18,7 +18,7 @@ class Kihei < Region
     end
   end
 
-  class Villager < BasicRoute
+  class Villager < Bus::Route
     STOPS = load_stops(self)
 
     def initialize(name='Kihei Villager Route #15')

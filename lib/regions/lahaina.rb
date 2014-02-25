@@ -13,7 +13,7 @@ class Lahaina < Region
   #
   # Lahaina Islander #20
   #
-  class Islander < BasicRoute
+  class Islander < Bus::Route
     STOPS = load_stops(self)
 
     def initialize(name='Lahaina Islander #20')
@@ -25,7 +25,7 @@ class Lahaina < Region
   # Lahaina Villager #23
   #
 
-  class Villager < BasicRoute
+  class Villager < Bus::Route
     STOPS = load_stops(self)
 
     def initialize(name='Lahaina Villager #23')

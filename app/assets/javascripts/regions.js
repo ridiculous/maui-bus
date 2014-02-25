@@ -10,13 +10,20 @@ jUtils.addEvent(window, 'load', function () {
             } else {
                 var link = this
                     , region_route = this.rel.split('_')
-                    , region = region_route[0]
-                    , route = region_route[1]
-                    , container = document.createElement('div')
+                    , region = region_route.shift()
+                    , route = region_route.join('_')
+                    , container_id = region + route
+                    , container = document.getElementById(container_id)
                     , agile = new AjaxService('/regions/' + region + '/routes/' + route + '/schedule', 'GET');
 
+                if (container) {
+                    container.style.display = 'block';
+                } else {
+                    container = document.createElement('div');
+                    container.id = container_id;
+                    document.getElementById(this.rel).parentNode.appendChild(container);
+                }
                 container.innerHTML = '<h5 class="loader">Loading ... </h5>';
-                document.getElementById(this.rel).parentNode.appendChild(container);
                 agile.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
                 agile.on('success', function (data) {
                     container.innerHTML = data.responseText;
@@ -31,6 +38,9 @@ jUtils.addEvent(window, 'load', function () {
                         }
                         jUtils.addEvent(time_frame_link, 'click', changeTimeFrame);
                     }
+                });
+                agile.on('failure', function (xhr) {
+                    container.innerHTML = '<h5 class="loader">' + xhr.responseText + '</h5>';
                 });
                 agile.send();
             }

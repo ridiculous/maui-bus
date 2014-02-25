@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'node_map'
 
-describe NodeMap do
+describe Bus::NodeMap do
 
   context 'Wailuku' do
     let(:node_map) { Wailuku.loop_one.node_map }

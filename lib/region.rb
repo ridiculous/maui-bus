@@ -8,7 +8,9 @@ class Region
   end
 
   def find_bus(name)
-    self.class.const_get(name.titleize).new
+    self.class.const_get(name.camelcase).new
+  rescue NameError
+    raise RecordNotFound, "Could not find the route '#{name.camelcase}' for #{self.class}"
   end
 
   class << self
@@ -17,7 +19,7 @@ class Region
     end
 
     def find(name)
-      Module.const_get(name.titleize).new
+      Module.const_get(name.camelcase).new
     rescue NameError
       raise RecordNotFound, 'Could not find the region!'
     end

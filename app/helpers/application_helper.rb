@@ -43,7 +43,6 @@ module ApplicationHelper
   def table_rows(route, stop)
     content_tag(:tr, class: cycle('odd', '', name: 'times_table')) do
       concat(content_tag(:td, class: 'row-header') do
-        #link_to_static_map(stop.name, stop)
         link_to_map(stop.name, route.path_parts, stop.location) + badges(stop)
       end)
       time_cells(route, stop)
@@ -62,10 +61,10 @@ module ApplicationHelper
 
   def time_cells(route, stop)
     nxt_ups = route.next_stops_as_hash
-    route.max_stop_length.times.each_with_index.map do |s, i|
-      nxt_stop = nxt_ups["#{stop.name}#{stop.times[s]}"]
+    route.max_stop_length.times.map do |i|
+      nxt_stop = nxt_ups[stop.to_key(i)]
       concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}") do
-        stop.time_to_s(s)
+        stop.time_to_s(i)
       end)
     end.join.html_safe
   end

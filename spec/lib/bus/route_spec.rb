@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BusRoute do
+describe Bus::Route do
 
   context 'Finders' do
 
@@ -8,8 +8,8 @@ describe BusRoute do
       next_stops = Kihei.new.islander.find_between('queen_kaahumanu', 'piilani_shopping_center', Time.zone.parse('6:00 PM'))
       next_stops.length.should == 2
       nxt = next_stops[0]
-      nxt.should be_a(DirectRoute)
-      nxt.start_at.should be_a(NextStop)
+      nxt.should be_a(Bus::DirectRoute)
+      nxt.start_at.should be_a(Bus::NextStop)
       nxt.start_at.time.should == Time.zone.parse('7:30 PM')
       nxt.start_at.bus_stop.location.should == :queen_kaahumanu
       nxt.stop_at.time.should == Time.zone.parse('8:03 PM')
@@ -37,12 +37,6 @@ describe BusRoute do
       next_stops[3].bus_stop.location.should == :kaonoulu_south_kihei_makai
       next_stops[4].time.should == Time.zone.parse('12:22 PM')
       next_stops[4].bus_stop.location.should == :kulanihakoi_south_kihei
-    end
-
-    it 'should find next stops for each bus on the route' do
-      Kihei.islander.should have(2).buses
-      Kihei.villager.should have(1).buses
-      Kihei.islander.buses.each { |b| b.should be_a(Bus) }
     end
   end
 

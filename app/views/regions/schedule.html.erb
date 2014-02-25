@@ -34,9 +34,6 @@
         </div>
         <div id="<%= route.full_class_name %>" class="hidden-tablet hidden-phone a-route">
           <div class="c">
-            <% if route.note %>
-                <div class="c pad5" style="font-size: 13px;"><%= route.note.html_safe %></div>
-            <% end %>
             <%= upcoming_stops_box(route) %>
             <div class="c"></div>
           </div>
@@ -47,6 +44,5 @@
   <% end %>
 </div>
 <div style="display: none;visibility: hidden;" id="delay"></div>
-<%#= render('modal') %>
 <%= render('insight') %>
 <%= javascript_include_tag(:region_manifest) %>
