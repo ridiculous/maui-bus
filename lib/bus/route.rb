@@ -14,7 +14,7 @@ module Bus
 
     def initialize(name, bus_count=1, options={})
       @name = name
-      @stops = self.class::STOPS.dup
+      @stops = self.class::STOPS.clone
       @bus_count = bus_count
       @options = options
     end
@@ -148,7 +148,7 @@ module Bus
     end
 
     def transfers
-      stops.reject { |s| !s.transfer? }
+      stops.select { |s| s.transfer? }
     end
   end
 end

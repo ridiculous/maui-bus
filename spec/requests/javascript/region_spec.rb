@@ -5,20 +5,18 @@ describe 'Region', js: true do
   describe 'Time management with JavaScript', js: true do
 
     let(:show_islander) { page.find('.time-list[rel=haiku_islander]') }
-    before(:each) { visit show_region_path('haiku') }
+    before(:each) { visit show_region_path('haiku', anchor: 'haiku_islander') }
 
     it 'should toggle times' do
-      show_islander = page.find('.time-list[rel=haiku_islander]')
-      show_islander.click
-      page.should have_css('#haiku_islander_container', visible: true)
       show_islander.click
       page.should have_css('#haiku_islander_container', visible: false)
       show_islander.click
       page.should have_css('#haiku_islander_container', visible: true)
+      show_islander.click
+      page.should have_css('#haiku_islander_container', visible: false)
     end
 
     it 'should filter times by time-frame (morning and evening)' do
-      show_islander.click
       page.should have_css('#haiku_islander_container', visible: true)
       click_on('Morning')
       page.has_text?(:visible, '5:30 AM').should be_true
@@ -31,7 +29,6 @@ describe 'Region', js: true do
     end
 
     it 'should start with appropriate default time-frame' do
-      show_islander.click
       page.should have_css('#haiku_islander_container', visible: true)
       is_morning = Time.zone.now.hour < 12
       time_frame = is_morning ? 'morning' : 'afternoon'
