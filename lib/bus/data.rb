@@ -7,6 +7,10 @@ module Bus
       node_map.length
     end
 
+    def clear
+      @_bus_routes = @_node_map = nil
+    end
+
     def routes
       @_bus_routes ||= Region.load_all.map(&:routes).flatten
     end
