@@ -30,6 +30,10 @@ group :test do
   gem 'headless', '~> 1.0.1'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
 # gem 'jquery-rails'
 
 # gem 'thin'
