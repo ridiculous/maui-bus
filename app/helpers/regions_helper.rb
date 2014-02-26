@@ -27,9 +27,9 @@ module RegionsHelper
   end
 
   def upcoming_stops_box(route)
-    route.buses.each_with_index.map do |stops, i|
+    route.next_stops_cache.each_with_index.map do |stops, i|
       content_tag(:div, class: "fl mr15 bus-#{i + 1}") do
-        content_tag(:h5, "Upcoming Stops#{(content_tag(:span, " - Bus #{i + 1}") if route.buses.length > 1)}".html_safe, class: 'well mini') +
+        content_tag(:h5, "Upcoming Stops#{(content_tag(:span, " - Bus #{i + 1}") if route.next_stops_cache.length > 1)}".html_safe, class: 'well mini') +
             content_tag(:ul, stops.any? ? upcoming_stops(stops) : content_tag(:li, 'Nothing going on here'), class: 'mba-list')
       end
     end.join.html_safe

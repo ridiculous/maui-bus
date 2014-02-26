@@ -17,8 +17,7 @@
         </div>
         <div style="padding-bottom: 10px;">
           <%= schedule_for(route) %>
-          <%# empty the cached object %>
-          <% route.buses = nil %>
+          <% route.clear_cache %>
         </div>
       </div>
   <% end %>
