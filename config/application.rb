@@ -73,6 +73,7 @@ module MauiBusRoutes
     #config.time_zone = 'Adelaide' # - 4.5 hours
     #config.time_zone = 'Seoul' # - 5 hours
     #config.time_zone = 'Beijing' # - 6 hours
+    #config.time_zone = 'Athens' # + 12 hours
 
 
     # Version of your assets, change this if you want to expire all your assets

@@ -50,6 +50,10 @@ module Bus
       "#{name}#{times[i]}"
     end
 
+    def times_for_bus(total_buses, bus)
+      times.each_with_index.select { |_, i| i % total_buses == bus }.map { |t| t[0] }
+    end
+
     #
     # = Class Methods
     #

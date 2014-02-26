@@ -15,10 +15,10 @@ module Bus
       YAML.load(data_file).map { |data| Stop.new(data.symbolize_keys) }
     end
 
-    def initialize(name, bus_count=1, options={})
+    def initialize(name, total_buses=1, options={})
       @name = name
       @stops = self.class::STOPS.clone
-      @operator = Operator.new(self, bus_count, options)
+      @operator = Operator.new(self, total_buses, options)
     end
 
     def max_stop_length

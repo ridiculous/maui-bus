@@ -13,7 +13,7 @@ class Kaanapali < Region
     STOPS = load_stops(self)
 
     def initialize(name='Kaanapali Islander #25')
-      # route, bus_count, and delay bus #2 until 2:30pm
+      # route, total number of buses, and delay bus #2 until 2:30pm
       super(name, 2,
             {
                 bus: 1,

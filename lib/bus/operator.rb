@@ -1,10 +1,10 @@
 module Bus
-  class Operator < Struct.new(:route, :bus_count, :options)
+  class Operator < Struct.new(:route, :total_buses, :options)
     TIME_ADVANCED = 30.minutes
 
     # @return 2D Array for number of buses and next stops
     def next_stops(count = 5, my_time = Time.zone.now)
-      bus_count.times.map do |bus|
+      total_buses.times.map do |bus|
         delayed_bus?(bus) && !bus_active?(my_time) ? [] : upcoming_stops(bus, my_time).sort.take(count || 1000)
       end
     end
@@ -29,8 +29,8 @@ module Bus
     end
 
     def find_times(my_stop, bus, my_time)
-      if bus_count > 1 && (no_delay || bus_active?(my_time) || bus_about_active?(my_time))
-        my_times = Stop.sort_times(my_stop.times.each_with_index.reject { |t, i| i % bus_count != bus }.map { |t| t[0] })
+      if total_buses > 1 && (no_delay || bus_active?(my_time) || bus_about_active?(my_time))
+        my_times = Stop.sort_times(my_stop.times_for_bus(total_buses, bus))
         if options[:end_time] && options[:bus] == bus
           my_times.reject { |t| t > options[:end_time] }
         else
@@ -42,24 +42,21 @@ module Bus
     end
 
     def find_between(point_a, point_b, my_time = Time.zone.now)
-      direct_routes = []
-      next_stops(nil, my_time).each_with_index do |nxt_stops, start_bus|
-        # each stop for this bus
-        nxt_stops.each do |nxt|
-          # check for starting location
-          if nxt.bus_stop.true_location == point_a
-            # upcoming stops w/ the start time as the cut off, so stopping point >= starting point
-            next_stops(nil, nxt.time).each_with_index do |origin_stops, stop_bus|
-              stop_at = origin_stops.find { |s| s.bus_stop.true_location == point_b }
-              # make sure this is the same bus
-              if stop_at && start_bus == stop_bus
-                direct_routes << DirectRoute.new(route, nxt, stop_at)
+      [].tap do |direct_routes|
+        next_stops(nil, my_time).each_with_index do |nxt_stops, start_bus|
+          # each stop for this bus
+          nxt_stops.each do |nxt|
+            # check for starting location
+            if nxt.bus_stop.true_location == point_a
+              # upcoming stops w/ the start time as the cut off, so stopping point >= starting point
+              next_stops(nil, nxt.time).each_with_index do |origin_stops, stop_bus|
+                stop_at = origin_stops.find { |s| s.bus_stop.true_location == point_b }
+                direct_routes << DirectRoute.new(route, nxt, stop_at) if stop_at && start_bus == stop_bus
               end
             end
           end
         end
       end
-      direct_routes
     end
 
     #! -time_advanced- is to account for upcoming stops
