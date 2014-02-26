@@ -68,8 +68,7 @@ var maui = new Maui()
                     }
                 }
             } catch (e) {
-                debugger;
-                console.log('error in drawing route: ' + e);
+                if (console) console.log('error in drawing route: ' + e);
             }
         };
 

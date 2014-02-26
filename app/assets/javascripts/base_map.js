@@ -28,20 +28,28 @@ function BaseMap(options) {
     };
 
     this.connectPoints = function (point_a, point_b) {
-        return this.addRoute({
-            origin: maui.latLngByName(point_a),
-            destination: maui.latLngByName(point_b),
-            travelMode: google.maps.TravelMode.DRIVING
-        })
+        return this.addRoute(
+            {
+                origin: maui.latLngByName(point_a),
+                destination: maui.latLngByName(point_b),
+                travelMode: google.maps.TravelMode.DRIVING
+            },
+            {
+                preserveViewport: true
+            }
+        )
     };
 
-    this.addRoute = function (route_obj) {
+    this.addRoute = function (route_obj, options) {
         var direct_service = new google.maps.DirectionsService(),
             direct_display = new google.maps.DirectionsRenderer({suppressMarkers: true});
 
         direct_display.setMap(this.map);
         direct_service.route(route_obj, function (result, status) {
             if (status == google.maps.DirectionsStatus.OK) {
+                if (options) {
+                    direct_display.setOptions(options);
+                }
                 direct_display.setDirections(result);
             }
         });
