@@ -1,4 +1,3 @@
-require 'indirect_routes'
 class Region
   LIST = Dir['lib/regions/*.rb'].map { |name| name.match(%r|/(\w+).rb|)[1].titleize }
 

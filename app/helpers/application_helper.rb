@@ -24,6 +24,7 @@ module ApplicationHelper
     route.stops.each do |s|
       statement.page.add(mobile_table_rows(route, s))
     end
+    route.clear_cache
     statement
   end
 
@@ -71,11 +72,35 @@ module ApplicationHelper
   end
 
   def time_cells(route, stop)
+    if request.format.pdf?
+      pdf_time_cells(route, stop)
+    else
+      html_time_cells(route, stop)
+    end
+  end
+
+  def html_time_cells(route, stop)
     nxt_ups = route.next_stops_as_hash
     route.max_stop_length.times.map do |i|
       nxt_stop = nxt_ups[stop.to_key(i)]
       concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}") do
         stop.time_to_s(i)
+      end)
+    end.join.html_safe
+  end
+
+  def pdf_time_cells(route, stop)
+    nxt_ups = route.next_stops_as_hash
+    route.max_stop_length.times.map do |i|
+      nxt_stop = nxt_ups[stop.to_key(i)]
+      my_time = stop.times[i]
+      td_classes = "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}"
+      my_time =~ /(\d+):/
+      concat(content_tag(:td, class: td_classes) do
+        if my_time && !my_time.empty?
+          td_classes.send(:<<, $1.to_i < 12 ? ' am' : ' pm') if $1.is_a?(String)
+          in_format(Time.zone.parse(my_time))
+        end
       end)
     end.join.html_safe
   end

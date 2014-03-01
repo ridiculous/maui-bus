@@ -17,7 +17,7 @@ class RegionsController < ApplicationController
       end
       format.pdf do
         @regions = Region.load_all
-        file_name = "maui_bus_schedule_#{Time.now.strftime('%m_%d_%Y_%H%S')}"
+        file_name = "maui_bus_schedule_#{Time.now.strftime('%m_%d_%Y')}"
         pdf_file = Rails.root.join('private', "#{file_name}.pdf")
         render :pdf => file_name,
                :formats => [:pdf],

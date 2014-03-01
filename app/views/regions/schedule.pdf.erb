@@ -86,8 +86,6 @@
     <% @regions.each do |region| %>
         <% region.routes.each do |route| %>
             <% statement = pdf_schedule_for(route, statement) %>
-            <%# empty the cached object %>
-            <% route.buses = nil %>
         <% end %>
     <% end %>
     <% statement.pages.each do |page| %>
