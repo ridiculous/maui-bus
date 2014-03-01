@@ -1,0 +1,361 @@
+-
+  location: :queen_kaahumanu
+  times:
+  - '6:30'
+  - '7:30'
+  - '8:30'
+  - '9:30'
+  - '10:30'
+  - '11:30'
+  - '12:30'
+  - '13:30'
+  - '14:30'
+  - '15:30'
+  - '16:30'
+  - '17:30'
+  - '18:30'
+  - '19:30'
+  - '20:30'
+  name: Queen Kaahumanu Mall
+  true_location: queen_kaahumanu
+-
+  location: :maui_college
+  times:
+  - '6:38'
+  - '7:38'
+  - '8:38'
+  - '9:38'
+  - '10:38'
+  - '11:38'
+  - '12:38'
+  - '13:38'
+  - '14:38'
+  - '15:38'
+  - '16:38'
+  - '17:38'
+  - '18:38'
+  - '19:38'
+  - '20:38'
+  name: Harbor Lights / UH Maui College
+  true_location: maui_college
+-
+  location: :roselani_place
+  times:
+  - '6:41'
+  - '7:41'
+  - '8:41'
+  - '9:41'
+  - '10:41'
+  - '11:41'
+  - '12:41'
+  - '13:41'
+  - '14:41'
+  - '15:41'
+  - '16:41'
+  - '17:41'
+  - '18:41'
+  - '19:41'
+  - '20:41'
+  name: Roselani Place
+  true_location: roselani_place
+-
+  location: :papa_ave_kea_st
+  times:
+  - '6:42'
+  - '7:42'
+  - '8:42'
+  - '9:42'
+  - '10:42'
+  - '11:42'
+  - '12:42'
+  - '13:42'
+  - '14:42'
+  - '15:42'
+  - '16:42'
+  - '17:42'
+  - '18:42'
+  - '19:42'
+  - '20:42'
+  name: Papa Ave. / Kea St.
+  true_location: papa_ave_kea_st
+-
+  location: :onehee_papa_ave
+  times:
+  - '6:44'
+  - '7:44'
+  - '8:44'
+  - '9:44'
+  - '10:44'
+  - '11:44'
+  - '12:44'
+  - '13:44'
+  - '14:44'
+  - '15:44'
+  - '16:44'
+  - '17:44'
+  - '18:44'
+  - '19:44'
+  - '20:44'
+  name: Onehee / S. Papa Ave.
+  true_location: onehee_papa_ave
+-
+  location: :kahului_community_center
+  times:
+  - '6:45'
+  - '7:45'
+  - '8:45'
+  - '9:45'
+  - '10:45'
+  - '11:45'
+  - '12:45'
+  - '13:45'
+  - '14:45'
+  - '15:45'
+  - '16:45'
+  - '17:45'
+  - '18:45'
+  - '19:45'
+  - '20:45'
+  name: Kahului Community Center
+  true_location: kahului_community_center
+-
+  location: :hale_mahaolu_elua
+  times:
+  - '6:47'
+  - '7:47'
+  - '8:47'
+  - '9:47'
+  - '10:47'
+  - '11:47'
+  - '12:47'
+  - '13:47'
+  - '14:47'
+  - '15:47'
+  - '16:47'
+  - '17:47'
+  - '18:47'
+  - '19:47'
+  - '20:47'
+  name: Hale Mahaolu Elua
+  true_location: hale_mahaolu_elua
+-
+  location: :kamehameha_ave_laau_st
+  times:
+  - '6:48'
+  - '7:48'
+  - '8:48'
+  - '9:48'
+  - '10:48'
+  - '11:48'
+  - '12:48'
+  - '13:48'
+  - '14:48'
+  - '15:48'
+  - '16:48'
+  - '17:48'
+  - '18:48'
+  - '19:48'
+  - '20:48'
+  name: Kamehameha Ave. / Laau St.
+  true_location: kamehameha_ave_laau_st
+-
+  location: :kamehameha_ave_molokai_akua_st
+  times:
+  - '6:49'
+  - '7:49'
+  - '8:49'
+  - '9:49'
+  - '10:49'
+  - '11:49'
+  - '12:49'
+  - '13:49'
+  - '14:49'
+  - '15:49'
+  - '16:49'
+  - '17:49'
+  - '18:49'
+  - '19:49'
+  - '20:49'
+  name: Kamehameha Ave. / Molokai Akua St.
+  true_location: kamehameha_ave_molokai_akua_st
+-
+  location: :luana_gardens
+  times:
+  - '6:51'
+  - '7:51'
+  - '8:51'
+  - '9:51'
+  - '10:51'
+  - '11:51'
+  - '12:51'
+  - '13:51'
+  - '14:51'
+  - '15:51'
+  - '16:51'
+  - '17:51'
+  - '18:51'
+  - '19:51'
+  - '20:51'
+  name: Luana Gardens
+  true_location: luana_gardens
+-
+  location: :west_papa_laau_st
+  times:
+  - '6:53'
+  - '7:53'
+  - '8:53'
+  - '9:53'
+  - '10:53'
+  - '11:53'
+  - '12:53'
+  - '13:53'
+  - '14:53'
+  - '15:53'
+  - '16:53'
+  - '17:53'
+  - '18:53'
+  - '19:53'
+  - '20:53'
+  name: W. Papa Ave. / Laau St.
+  true_location: west_papa_laau_st
+-
+  location: :west_papa_lanai_st
+  times:
+  - '6:54'
+  - '7:54'
+  - '8:54'
+  - '9:54'
+  - '10:54'
+  - '11:54'
+  - '12:54'
+  - '13:54'
+  - '14:54'
+  - '15:54'
+  - '16:54'
+  - '17:54'
+  - '18:54'
+  - '19:54'
+  - '20:54'
+  name: W. Papa Ave. / S Lanai St.
+  true_location: west_papa_lanai_st
+-
+  location: :walmart_back
+  times:
+  - '7:00'
+  - '8:00'
+  - '9:00'
+  - '10:00'
+  - '11:00'
+  - '12:00'
+  - '13:00'
+  - '14:00'
+  - '15:00'
+  - '16:00'
+  - '17:00'
+  - '18:00'
+  - '19:00'
+  - '20:00'
+  - '21:00'
+  name: Pakaula St. / Wal-Mart back Entrance
+  true_location: walmart_back
+  destination: true
+-
+  location: :maui_market_place
+  times:
+  - '7:03'
+  - '8:03'
+  - '9:03'
+  - '10:03'
+  - '11:03'
+  - '12:03'
+  - '13:03'
+  - '14:03'
+  - '15:03'
+  - '16:03'
+  - '17:03'
+  - '18:03'
+  - '19:03'
+  - '20:03'
+  - '21:03'
+  name: Maui Marketplace Food Court
+  true_location: maui_market_place
+-
+  location: :kmart
+  times:
+  - '7:08'
+  - '8:08'
+  - '9:08'
+  - '10:08'
+  - '11:08'
+  - '12:08'
+  - '13:08'
+  - '14:08'
+  - '15:08'
+  - '16:08'
+  - '17:08'
+  - '18:08'
+  - '19:08'
+  - '20:08'
+  - '21:08'
+  name: K-Mart
+  true_location: kmart
+-
+  location: :kahului_safeway_across
+  times:
+  - '7:14'
+  - '8:14'
+  - '9:14'
+  - '10:14'
+  - '11:14'
+  - '12:14'
+  - '13:14'
+  - '14:14'
+  - '15:14'
+  - '16:14'
+  - '17:14'
+  - '18:14'
+  - '19:14'
+  - '20:14'
+  - ''
+  name: Safeway / Maui Mall Entrance
+  true_location: kahului_safeway
+-
+  location: :kahului_shopping_center
+  times:
+  - '7:17'
+  - '8:17'
+  - '9:17'
+  - '10:17'
+  - '11:17'
+  - '12:17'
+  - '13:17'
+  - '14:17'
+  - '15:17'
+  - '16:17'
+  - '17:17'
+  - '18:17'
+  - '19:17'
+  - '20:17'
+  - ''
+  name: Kahului Shopping Center
+  true_location: kahului_shopping_center
+-
+  location: :queen_kaahumanu
+  times:
+  - '7:30'
+  - '8:30'
+  - '9:30'
+  - '10:30'
+  - '11:30'
+  - '12:30'
+  - '13:30'
+  - '14:30'
+  - '15:30'
+  - '16:30'
+  - '17:30'
+  - '18:30'
+  - '19:30'
+  - '20:30'
+  - ''
+  name: Queen Kaahumanu Mall
+  true_location: queen_kaahumanu

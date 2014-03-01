@@ -1,18 +1,62 @@
-var Schedules = {}, Toga = new Toggler(); //, SM = new StaticMap()
+var Schedules = {}, Toga = new Toggler();
 
 jUtils.addEvent(window, 'load', function () {
 
-    var show_times = jUtils.findByClass('time-list');
+    var show_times = jUtils.findByClass('time-list')
+        , mobile_flag = jUtils.hasClass(document.getElementsByTagName('body')[0], 'mobile') ? 1 : 0
+        , loadBusSchedule = function () {
+            // if the container is present, great we're good to go, else load the table for this bus
+            if (document.getElementById(this.rel + '_container')) {
+                Toga.tableToggle.call(this);
+            } else {
+                var link = this
+                    , region_route = this.rel.split('_')
+                    , region = region_route.shift()
+                    , route = region_route.join('_')
+                    , container_id = region + route
+                    , container = document.getElementById(container_id)
+                    , agile = new AjaxService('/regions/' + region + '/routes/' + route + '/schedule?m=' + mobile_flag, 'GET');
 
-//    jUtils.addEvent(jUtils.findByClass('show-static-map'), 'click', SM.init);
-//    jUtils.addEvent(document.getElementById('close_modal'), 'click', SM.hideModal);
-    jUtils.addEvent(show_times, 'click', Toga.tableToggle);
+                if (container) {
+                    container.style.display = 'block';
+                } else {
+                    container = document.createElement('div');
+                    container.id = container_id;
+                    document.getElementById(this.rel).parentNode.appendChild(container);
+                }
+                container.innerHTML = '<h5 class="loader">Loading ... </h5>';
+                agile.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                agile.on('success', function (data) {
+                    container.innerHTML = data.responseText;
+                    Toga.tableToggle.call(link);
+                    container = document.getElementById(link.rel + '_container');
+
+                    // loop through all the <li> nav pills (morning, evening, all)
+                    for (var a = 0, pills = container.childNodes[1].childNodes; a < pills.length; a++) {
+                        var time_frame_link = pills[a].childNodes[0];
+                        if (pills[a].className == 'active') {
+                            changeTimeFrame.call(time_frame_link);
+                        }
+                        jUtils.addEvent(time_frame_link, 'click', changeTimeFrame);
+                    }
+                });
+                agile.on('failure', function (xhr) {
+                    container.innerHTML = '<h5 class="loader">' + xhr.responseText + '</h5>';
+                });
+                agile.send();
+            }
+        };
+
+    jUtils.addEvent(show_times, 'click', loadBusSchedule);
     jUtils.addEvent(jUtils.findByClass('next-stop-list'), 'click', Toga.nextStopsToggle);
-    jUtils.addEvent(jUtils.findByClass('time-frame'), 'click', changeTimeFrame);
 
-    // trigger time frames with morning/afternoon nav pill
-    for (var a = 0, pills = jUtils.findByClass('active'); a < pills.length; a++) {
-        changeTimeFrame.call(pills[a].childNodes[0]);
+    if (!document.getElementById('delay')) {
+        jUtils.addEvent(jUtils.findByClass('time-frame'), 'click', changeTimeFrame);
+
+        // trigger time frames with morning/afternoon nav pill
+        for (var a = 0, pills = jUtils.findByClass('active'); a < pills.length; a++) {
+            changeTimeFrame.call(pills[a].childNodes[0]);
+        }
     }
 
     // the glyphicons are the largest asset loaded so lets load it afterward as not to delay DOM +ready+

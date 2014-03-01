@@ -40,7 +40,7 @@ function Maui() {
                     mowee.gmap.directionsDisplay.setDirections(result);
                 }
             });
-            this.gmap.addMarkers(this.bus_stops, this.map_name);
+            this.addMarkers();
         }
     };
 
@@ -84,4 +84,17 @@ function Maui() {
             name: "Back of Queen Kaahumanu"
         });
     };
+
+    this.addMarkers = function () {
+        this.gmap.addMarkers(this.bus_stops, this.map_name);
+    };
+
+    // depends on +loadBusStops+ being run first
+    this.latLngByName = function (name) {
+        return this.convertToGoogleLatLng(this.bus_stops.findObject(this[name], 'name'))
+    };
+
+    this.convertToGoogleLatLng = function (the_stop) {
+        return new google.maps.LatLng(the_stop.lat, the_stop.long)
+    }
 }

@@ -22,13 +22,16 @@ function SearchMarker(location_key, gmap_options, marker_content) {
         info_window.setContent(marker_content);
         info_window.open(gmap, marker);
 
+        var destination = document.getElementById('destination')
+            , origin = document.getElementById('origin');
+
         jUtils.addEvent(jUtils.findByClass('destination'), 'click', function (e) {
-            document.getElementById('destination').value = location_key;
+            destination.value = location_key;
             info_window.close();
             e.stopPropagation();
         });
         jUtils.addEvent(jUtils.findByClass('origin'), 'click', function (e) {
-            document.getElementById('origin').value = location_key;
+            origin.value = location_key;
             info_window.close();
             e.stopPropagation();
         });

@@ -1,16 +1,17 @@
 require 'indirect_routes'
 class Region
-
-  LIST = Dir.open('lib/regions').reject { |t| t !~ /rb/ }.map { |name| name.sub(%r{.rb}, '').titleize }
+  LIST = Dir['lib/regions/*.rb'].map { |name| name.match(%r|/(\w+).rb|)[1].titleize }
 
   attr_reader :routes
 
   def initialize
-    @routes = self.instance_variables.map { |name| self.instance_variable_get(name) }
+    @routes = instance_variables.map { |name| instance_variable_get(name) }
   end
 
   def find_bus(name)
-    self.class.const_get(name.titleize).new
+    self.class.const_get(name.camelcase).new
+  rescue NameError
+    raise RecordNotFound, "Could not find the route '#{name.camelcase}' for #{self.class}"
   end
 
   class << self
@@ -19,13 +20,13 @@ class Region
     end
 
     def find(name)
-      Module.const_get(name.titleize).new
+      Module.const_get(name.camelcase).new
     rescue NameError
       raise RecordNotFound, 'Could not find the region!'
     end
 
     def load_all
-      all.sort.map { |region| Region.find(region.downcase) }
+      all.sort.map { |region| find(region.downcase) }
     end
   end
 

@@ -1,0 +1,58 @@
+-
+  times:
+  - '5:30'
+  location: :haiku_community_center
+-
+  times:
+  - '5:40'
+  location: :paia_community_center
+-
+  times:
+  - '6:00'
+  location: :war_memorial
+-
+  times:
+  - '6:10'
+  location: :kuihelani_park_ride
+-
+  times:
+  - '6:25'
+  location: :piilani_shopping_center
+-
+  times:
+  - '6:45'
+  name: Wailea Hotels
+-
+  times:
+  - '7:00'
+  location: :makena
+  destination: true
+-
+  times:
+  - '16:15'
+  location: :makena
+  name: Makena
+-
+  times:
+  - '16:30'
+  name: Wailea Hotels
+-
+  times:
+  - '16:55'
+  location: :piilani_shopping_center
+-
+  times:
+  - '17:15'
+  location: :kuihelani_park_ride
+-
+  times:
+  - '17:30'
+  location: :war_memorial
+-
+  times:
+  - '17:50'
+  location: :paia_community_center
+-
+  times:
+  - '18:00'
+  location: :haiku_community_center

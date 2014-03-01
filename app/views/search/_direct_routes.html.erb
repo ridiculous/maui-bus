@@ -1,117 +1,45 @@
-<% if @trips.empty? && @indirect_routes.try(:empty?) && @voyages.empty? %>
+<% if request.flash.any? || @courses.empty? %>
     <div class="pad5 well app-subheader" style="font-size: 16px;margin-top: 10px;margin-bottom: 0;">
-      <b>No routes found</b>
+      <%= request.flash.discard.map { |k, msg| msg }.first || '<b>Nothing found</b>. Maybe change the time?'.html_safe %>
     </div>
 <% else %>
     <h3>Routes</h3>
-    <% if @trips.any? %>
-        <% @trips.each do |t| %>
-            <div class="well app-subheader fl c" style="margin-bottom: 3px;">
+    <% @courses.each do |course| %>
+        <div class="well app-subheader fl c" style="margin-bottom: 3px;">
 
-              <b><%= link_to(t.name, show_region_path(t.route.path_parts[0])) %></b>
-              <table class="plain align-left padcol table" style="margin-bottom: 1px;">
-                <tbody>
+          <b><%= link_to(course.first_leg.name, show_region_path(course.first_leg.route.path_parts[0])) %></b>
+          <table class="plain align-left padcol table" style="margin-bottom: 1px;">
+            <tbody>
+            <tr>
+              <th>Pick up</th>
+              <td><%= link_to_map(time_at_name(course.first_leg.start_at.time, course.first_leg.start_at.bus_stop.name), course.first_leg.route.path_parts, course.first_leg.start_at.bus_stop.location) %></td>
+            </tr>
+            <tr>
+              <th>Drop off</th>
+              <td><%= link_to_map(time_at_name(course.first_leg.stop_at.time, course.first_leg.stop_at.bus_stop.name), course.first_leg.route.path_parts, course.first_leg.stop_at.bus_stop.location) %></td>
+            </tr>
+            <% (course.other_legs + [course.last_leg]).compact.each do |dr| %>
                 <tr>
-                  <th>Pick up</th>
-                  <td><%= link_to_map(time_at_name(t.start_at.time, t.start_at.bus_stop.name), t.route.path_parts, t.start_at.bus_stop.location) %></td>
-                </tr>
-                <tr>
-                  <th>Drop off</th>
-                  <td><%= link_to_map(time_at_name(t.stop_at.time, t.stop_at.bus_stop.name), t.route.path_parts, t.stop_at.bus_stop.location) %></td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-        <% end %>
-    <% end %>
-
-    <% if @indirect_routes.try(:any?) %>
-        <% @indirect_routes.each do |idr| %>
-            <div class="well app-subheader fl c" style="margin-bottom: 3px;">
-
-              <b><%= link_to(idr.point_a.route.name, show_region_path(idr.point_a.route.path_parts[0])) %></b>
-              <table class="plain align-left padcol table" style="margin-bottom: 2px;border-top: 1px solid #000">
-                <tbody>
-                <tr>
-                  <th>Pick up</th>
-                  <td>
-                    <%= link_to_map(time_at_name(idr.point_a.start_at.time, idr.point_a.start_at.bus_stop.name), idr.point_a.route.path_parts, idr.point_a.start_at.bus_stop.location) %>
+                  <th class="bus-1">Transfer</th>
+                  <td class="bus-1" style="font-weight: bold;font-size: 14px;">
+                    <%= link_to(dr.route.name, show_region_path(dr.route.path_parts[0])) %>
                   </td>
                 </tr>
                 <tr>
-                  <th>Drop off</th>
+                  <th>Depart</th>
                   <td>
-                    <%= link_to_map(time_at_name(idr.point_a.stop_at.time, idr.point_a.stop_at.bus_stop.name), idr.point_a.route.path_parts, idr.point_a.stop_at.bus_stop.location) %>
-                  </td>
-                </tr>
-                <% bs_length = idr.point_bs.length;idr.sorted_point_bs.each_with_index do |dr, i| %>
-                    <tr>
-                      <td colspan="2" class="bus-1" style="font-weight: bold;font-size: 14px;text-align: center;">
-                        Transfer <%= bs_length > 1 ? "- Option #{i + 1}<br />".html_safe : 'to' %>
-                        <%= link_to(dr.route.name, show_region_path(dr.route.path_parts[0])) %>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Depart</th>
-                      <td>
-                        <%= link_to_map(time_at_name(dr.start_at.time, dr.start_at.bus_stop.name), dr.route.path_parts, dr.start_at.bus_stop.location) %>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Arrive</th>
-                      <td>
-                        <%= link_to_map(time_at_name(dr.stop_at.time, dr.stop_at.bus_stop.name), dr.route.path_parts, dr.stop_at.bus_stop.location) %>
-                      </td>
-                    </tr>
-                <% end %>
-                </tbody>
-              </table>
-            </div>
-        <% end %>
-    <% end %>
-    <% if @voyages.try(:any?) %>
-        <% @voyages.each do |voyage| %>
-            <div class="well app-subheader fl c" style="margin-bottom: 3px;">
-
-              <b><%= link_to(voyage.leg_1.route.name, show_region_path(voyage.leg_1.route.path_parts[0])) %></b>
-              <table class="plain align-left padcol table" style="margin-bottom: 2px;border-top: 1px solid #000">
-                <tbody>
-                <tr>
-                  <th>Pick up</th>
-                  <td>
-                    <%= link_to_map(time_at_name(voyage.leg_1.start_at.time, voyage.leg_1.start_at.bus_stop.name), voyage.leg_1.route.path_parts, voyage.leg_1.start_at.bus_stop.location) %>
+                    <%= link_to_map(time_at_name(dr.start_at.time, dr.start_at.bus_stop.name), dr.route.path_parts, dr.start_at.bus_stop.location) %>
                   </td>
                 </tr>
                 <tr>
-                  <th>Drop off</th>
+                  <th>Arrive</th>
                   <td>
-                    <%= link_to_map(time_at_name(voyage.leg_1.stop_at.time, voyage.leg_1.stop_at.bus_stop.name), voyage.leg_1.route.path_parts, voyage.leg_1.stop_at.bus_stop.location) %>
+                    <%= link_to_map(time_at_name(dr.stop_at.time, dr.stop_at.bus_stop.name), dr.route.path_parts, dr.stop_at.bus_stop.location) %>
                   </td>
                 </tr>
-                <% [voyage.leg_2, voyage.leg_3].each do |dr| %>
-                    <tr>
-                      <td colspan="2" class="bus-1" style="font-weight: bold;font-size: 14px;text-align: center;">
-                        <div>
-                          Transfer to <%= link_to(dr.route.name, show_region_path(dr.route.path_parts[0])) %>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Depart</th>
-                      <td>
-                        <%= link_to_map(time_at_name(dr.start_at.time, dr.start_at.bus_stop.name), dr.route.path_parts, dr.start_at.bus_stop.location) %>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Arrive</th>
-                      <td>
-                        <%= link_to_map(time_at_name(dr.stop_at.time, dr.stop_at.bus_stop.name), dr.route.path_parts, dr.stop_at.bus_stop.location) %>
-                      </td>
-                    </tr>
-                <% end %>
-                </tbody>
-              </table>
-            </div>
-        <% end %>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
     <% end %>
 <% end %>

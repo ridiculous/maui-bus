@@ -7,11 +7,14 @@
         </div>
         <div class="field">
           <%= label_tag(:destination, nil, style: 'font-weight: bold;') %>
-          <%= select_tag(:destination, options_for_select(@locations, params[:destination] || @locations[17])) %>
+          <%= select_tag(:destination, options_for_select(@locations, params[:destination] || @locations[18])) %>
         </div>
-        <div class="field">
+        <div class="field" style="width: 300px;">
           <%= submit_tag('Search', class: 'btn btn-primary', id: 'submit_search', name: nil) %>
           <%= link_to('Reset', search_path, class: 'btn') %>
+          &nbsp;
+          <%= select_tag(:search_time, options_for_select(times_for_select, params[:search_time] || 'Now'), style: 'width: 100px;', class: 'fr') %>
+          <div class="c"></div>
         </div>
     <% end %>
     <div id="direct_routes">

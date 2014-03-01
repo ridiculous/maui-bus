@@ -1,0 +1,316 @@
+-
+  location: :maalaea_harbor
+  times:
+  - ''
+  - '6:05'
+  - '7:05'
+  - '8:05'
+  - '9:05'
+  - '10:05'
+  - '11:05'
+  - '12:05'
+  - '13:05'
+  - '14:05'
+  - '15:05'
+  - '16:05'
+  - '17:05'
+  - '18:05'
+  - '19:05'
+  - '20:05'
+  name: Maalaea Harbor Village
+  true_location: maalaea_harbor
+-
+  location: :uwapo_south_kihei
+  times:
+  - ''
+  - '6:17'
+  - '7:17'
+  - '8:17'
+  - '9:17'
+  - '10:17'
+  - '11:17'
+  - '12:17'
+  - '13:17'
+  - '14:17'
+  - '15:17'
+  - '16:17'
+  - '17:17'
+  - '18:17'
+  - '19:17'
+  - '20:17'
+  name: Uwapo Rd. / S. Kihei Rd.
+  true_location: uwapo_south_kihei
+-
+  location: :ohukai_south_kihei
+  times:
+  - ''
+  - '6:19'
+  - '7:19'
+  - '8:19'
+  - '9:19'
+  - '10:19'
+  - '11:19'
+  - '12:19'
+  - '13:19'
+  - '14:19'
+  - '15:19'
+  - '16:19'
+  - '17:19'
+  - '18:19'
+  - '19:19'
+  - '20:19'
+  name: Ohukai St. / S. Kihei Rd.
+  true_location: ohukai_south_kihei
+-
+  location: :kaonoulu_south_kihei_makai
+  times:
+  - ''
+  - '6:21'
+  - '7:21'
+  - '8:21'
+  - '9:21'
+  - '10:21'
+  - '11:21'
+  - '12:21'
+  - '13:21'
+  - '14:21'
+  - '15:21'
+  - '16:21'
+  - '17:21'
+  - '18:21'
+  - '19:21'
+  - '20:21'
+  name: Kaonoulu / S. Kihei Rd.
+  true_location: kaonoulu_south_kihei
+-
+  location: :kulanihakoi_south_kihei
+  times:
+  - ''
+  - '6:22'
+  - '7:22'
+  - '8:22'
+  - '9:22'
+  - '10:22'
+  - '11:22'
+  - '12:22'
+  - '13:22'
+  - '14:22'
+  - '15:22'
+  - '16:22'
+  - '17:22'
+  - '18:22'
+  - '19:22'
+  - '20:22'
+  name: Kulanihakoi / S. Kihei Rd.
+  true_location: kulanihakoi_south_kihei
+-
+  location: :waipuilani_south_kihei_makai
+  times:
+  - ''
+  - '6:24'
+  - '7:24'
+  - '8:24'
+  - '9:24'
+  - '10:24'
+  - '11:24'
+  - '12:24'
+  - '13:24'
+  - '14:24'
+  - '15:24'
+  - '16:24'
+  - '17:24'
+  - '18:24'
+  - '19:24'
+  - '20:24'
+  name: Waipuilani Rd. / S. Kihei Rd.
+  true_location: waipuilani_south_kihei
+-
+  location: :piikea_south_kihei_across
+  times:
+  - ''
+  - '6:26'
+  - '7:26'
+  - '8:26'
+  - '9:26'
+  - '10:26'
+  - '11:26'
+  - '12:26'
+  - '13:26'
+  - '14:26'
+  - '15:26'
+  - '16:26'
+  - '17:26'
+  - '18:26'
+  - '19:26'
+  - '20:26'
+  name: Piikea Ave. / S. Kihei Rd.
+  true_location: piikea_south_kihei
+-
+  location: :piilani_shopping_center
+  times:
+  - '5:30'
+  - '6:30'
+  - '7:30'
+  - '8:30'
+  - '9:30'
+  - '10:30'
+  - '11:30'
+  - '12:30'
+  - '13:30'
+  - '14:30'
+  - '15:30'
+  - '16:30'
+  - '17:30'
+  - '18:30'
+  - '19:30'
+  - '20:30'
+  name: Piilani Shopping Center
+  true_location: piilani_shopping_center
+  destination: true
+-
+  location: :piikea_south_kihei
+  times:
+  - '5:33'
+  - '6:33'
+  - '7:33'
+  - '8:33'
+  - '9:33'
+  - '10:33'
+  - '11:33'
+  - '12:33'
+  - '13:33'
+  - '14:33'
+  - '15:33'
+  - '16:33'
+  - '17:33'
+  - '18:33'
+  - '19:33'
+  - '20:33'
+  name: Piikea Ave. / S. Kihei Rd.
+  true_location: piikea_south_kihei
+-
+  location: :waipuilani_south_kihei
+  times:
+  - '5:35'
+  - '6:35'
+  - '7:35'
+  - '8:35'
+  - '9:35'
+  - '10:35'
+  - '11:35'
+  - '12:35'
+  - '13:35'
+  - '14:35'
+  - '15:35'
+  - '16:35'
+  - '17:35'
+  - '18:35'
+  - '19:35'
+  - '20:35'
+  name: Waipuilani Rd. / S. Kihei Rd.
+  true_location: waipuilani_south_kihei
+-
+  location: :kulanihakoi_south_kihei
+  times:
+  - '5:36'
+  - '6:36'
+  - '7:36'
+  - '8:36'
+  - '9:36'
+  - '10:36'
+  - '11:36'
+  - '12:36'
+  - '13:36'
+  - '14:36'
+  - '15:36'
+  - '16:36'
+  - '17:36'
+  - '18:36'
+  - '19:36'
+  - '20:36'
+  name: Kulanihakoi / S. Kihei Rd.
+  true_location: kulanihakoi_south_kihei
+-
+  location: :kaonoulu_south_kihei
+  times:
+  - '5:37'
+  - '6:37'
+  - '7:37'
+  - '8:37'
+  - '9:37'
+  - '10:37'
+  - '11:37'
+  - '12:37'
+  - '13:37'
+  - '14:37'
+  - '15:37'
+  - '16:37'
+  - '17:37'
+  - '18:37'
+  - '19:37'
+  - '20:37'
+  name: Kaonoulu / S. Kihei Rd.
+  true_location: kaonoulu_south_kihei
+-
+  location: :ohukai_south_kihei
+  times:
+  - '5:39'
+  - '6:39'
+  - '7:39'
+  - '8:39'
+  - '9:39'
+  - '10:39'
+  - '11:39'
+  - '12:39'
+  - '13:39'
+  - '14:39'
+  - '15:39'
+  - '16:39'
+  - '17:39'
+  - '18:39'
+  - '19:39'
+  - '20:39'
+  name: Ohukai St. / S. Kihei Rd.
+  true_location: ohukai_south_kihei
+-
+  location: :uwapo_south_kihei_mauka
+  times:
+  - '5:41'
+  - '6:41'
+  - '7:41'
+  - '8:41'
+  - '9:41'
+  - '10:41'
+  - '11:41'
+  - '12:41'
+  - '13:41'
+  - '14:41'
+  - '15:41'
+  - '16:41'
+  - '17:41'
+  - '18:41'
+  - '19:41'
+  - '20:41'
+  name: Uwapo Rd. / S. Kihei Rd.
+  true_location: uwapo_south_kihei
+-
+  location: :maalaea_harbor
+  times:
+  - '5:55'
+  - '6:55'
+  - '7:55'
+  - '8:55'
+  - '9:55'
+  - '10:55'
+  - '11:55'
+  - '12:55'
+  - '13:55'
+  - '14:55'
+  - '15:55'
+  - '16:55'
+  - '17:55'
+  - '18:55'
+  - '19:55'
+  - '20:55'
+  name: Maalaea Harbor Village
+  true_location: maalaea_harbor

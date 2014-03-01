@@ -1,0 +1,461 @@
+-
+  location: :queen_kaahumanu
+  times:
+  - '6:30'
+  - '7:30'
+  - '8:30'
+  - '9:30'
+  - '10:30'
+  - '11:30'
+  - '12:30'
+  - '13:30'
+  - '14:30'
+  - '15:30'
+  - '16:30'
+  - '17:30'
+  - '18:30'
+  - '19:30'
+  - '20:30'
+  name: Queen Kaahumanu Mall
+  true_location: queen_kaahumanu
+-
+  location: :maui_memorial_hospital
+  times:
+  - '6:37'
+  - '7:37'
+  - '8:37'
+  - '9:37'
+  - '10:37'
+  - '11:37'
+  - '12:37'
+  - '13:37'
+  - '14:37'
+  - '15:37'
+  - '16:37'
+  - '17:37'
+  - '18:37'
+  - '19:37'
+  - '20:37'
+  name: Maui Memorial Hospital
+  true_location: maui_memorial_hospital
+-
+  location: :maui_lani_parkway
+  times:
+  - '6:39'
+  - '7:39'
+  - '8:39'
+  - '9:39'
+  - '10:39'
+  - '11:39'
+  - '12:39'
+  - '13:39'
+  - '14:39'
+  - '15:39'
+  - '16:39'
+  - '17:39'
+  - '18:39'
+  - '19:39'
+  - '20:39'
+  name: Maui Lani Parkway
+  true_location: maui_lani_parkway
+-
+  location: :kamole_st_kehalani_sub
+  times:
+  - '6:46'
+  - '7:46'
+  - '8:46'
+  - '9:46'
+  - '10:46'
+  - '11:46'
+  - '12:46'
+  - '13:46'
+  - '14:46'
+  - '15:46'
+  - '16:46'
+  - '17:46'
+  - '18:46'
+  - '19:46'
+  - '20:46'
+  name: Kamole Street / Kehalani Subdivision
+  true_location: kamole_st_kehalani_sub
+-
+  location: :ka_hale_ake_ola
+  times:
+  - '6:47'
+  - '7:47'
+  - '8:47'
+  - '9:47'
+  - '10:47'
+  - '11:47'
+  - '12:47'
+  - '13:47'
+  - '14:47'
+  - '15:47'
+  - '16:47'
+  - '17:47'
+  - '18:47'
+  - '19:47'
+  - '20:47'
+  name: Ka Hale A Ke Ola
+  true_location: ka_hale_ake_ola
+-
+  location: :state_bldg
+  times:
+  - '6:52'
+  - '7:52'
+  - '8:52'
+  - '9:52'
+  - '10:52'
+  - '11:52'
+  - '12:52'
+  - '13:52'
+  - '14:52'
+  - '15:52'
+  - '16:52'
+  - '17:52'
+  - '18:52'
+  - '19:52'
+  - '20:52'
+  name: State Office Building
+  true_location: state_bldg
+-
+  location: :ke_ola_health_clinic
+  times:
+  - '6:55'
+  - '7:55'
+  - '8:55'
+  - '9:55'
+  - '10:55'
+  - '11:55'
+  - '12:55'
+  - '13:55'
+  - '14:55'
+  - '15:55'
+  - '16:55'
+  - '17:55'
+  - '18:55'
+  - '19:55'
+  - '20:55'
+  name: Malama I Ke Ola Health Clinic
+  true_location: ke_ola_health_clinic
+-
+  location: :wailuku_post_office
+  times:
+  - '6:58'
+  - '7:58'
+  - '8:58'
+  - '9:58'
+  - '10:58'
+  - '11:58'
+  - '12:58'
+  - '13:58'
+  - '14:58'
+  - '15:58'
+  - '16:58'
+  - '17:58'
+  - '18:58'
+  - '19:58'
+  - '20:58'
+  name: Wailuku Post Office
+  true_location: wailuku_post_office
+-
+  location: :kahekili_terrace
+  times:
+  - '7:02'
+  - '8:02'
+  - '9:02'
+  - '10:02'
+  - '11:02'
+  - '12:02'
+  - '13:02'
+  - '14:02'
+  - '15:02'
+  - '16:02'
+  - '17:02'
+  - '18:02'
+  - '19:02'
+  - '20:02'
+  - '21:02'
+  name: Kahekili Terrace
+  true_location: kahekili_terrace
+-
+  location: :piihana_terrace
+  times:
+  - '7:03'
+  - '8:03'
+  - '9:03'
+  - '10:03'
+  - '11:03'
+  - '12:03'
+  - '13:03'
+  - '14:03'
+  - '15:03'
+  - '16:03'
+  - '17:03'
+  - '18:03'
+  - '19:03'
+  - '20:03'
+  - '21:03'
+  name: Pi'ihana Terrace
+  true_location: piihana_terrace
+-
+  location: :makaala_makamua_st
+  times:
+  - '7:05'
+  - '8:05'
+  - '9:05'
+  - '10:05'
+  - '11:05'
+  - '12:05'
+  - '13:05'
+  - '14:05'
+  - '15:05'
+  - '16:05'
+  - '17:05'
+  - '18:05'
+  - '19:05'
+  - '20:05'
+  - '21:05'
+  name: Makaala Drive / Makamua St.
+  true_location: makaala_makamua_st
+-
+  location: :makaala_alihilani_st
+  times:
+  - '7:06'
+  - '8:06'
+  - '9:06'
+  - '10:06'
+  - '11:06'
+  - '12:06'
+  - '13:06'
+  - '14:06'
+  - '15:06'
+  - '16:06'
+  - '17:06'
+  - '18:06'
+  - '19:06'
+  - '20:06'
+  - '21:06'
+  name: Makaala Drive / Alihilani St.
+  true_location: makaala_alihilani_st
+-
+  location: :makaala_kilihau_st_across
+  times:
+  - '7:07'
+  - '8:07'
+  - '9:07'
+  - '10:07'
+  - '11:07'
+  - '12:07'
+  - '13:07'
+  - '14:07'
+  - '15:07'
+  - '16:07'
+  - '17:07'
+  - '18:07'
+  - '19:07'
+  - '20:07'
+  - '21:07'
+  name: Makaala Drive / Kilihau St.
+  true_location: makaala_kilihau_st
+-
+  location: :makaala_hale_mahaolu
+  times:
+  - '7:08'
+  - '8:08'
+  - '9:08'
+  - '10:08'
+  - '11:08'
+  - '12:08'
+  - '13:08'
+  - '14:08'
+  - '15:08'
+  - '16:08'
+  - '17:08'
+  - '18:08'
+  - '19:08'
+  - '20:08'
+  - '21:08'
+  name: Makaala Drive - In Front Hale Mahaolu
+  true_location: makaala_hale_mahaolu
+-
+  location: :waiehu_heights_aukai
+  times:
+  - '7:10'
+  - '8:10'
+  - '9:10'
+  - '10:10'
+  - '11:10'
+  - '12:10'
+  - '13:10'
+  - '14:10'
+  - '15:10'
+  - '16:10'
+  - '17:10'
+  - '18:10'
+  - '19:10'
+  - '20:10'
+  - '21:10'
+  name: Waiehu Heights / Aukai Place
+  true_location: waiehu_heights_aukai
+  destination: true
+-
+  location: :waiehu_heights_wailupe
+  times:
+  - '7:11'
+  - '8:11'
+  - '9:11'
+  - '10:11'
+  - '11:11'
+  - '12:11'
+  - '13:11'
+  - '14:11'
+  - '15:11'
+  - '16:11'
+  - '17:11'
+  - '18:11'
+  - '19:11'
+  - '20:11'
+  - '21:11'
+  name: Waiehu Heights / Wailupe Drive
+  true_location: waiehu_heights_wailupe
+-
+  location: :hawaiian_homes
+  times:
+  - '7:12'
+  - '8:12'
+  - '9:12'
+  - '10:12'
+  - '11:12'
+  - '12:12'
+  - '13:12'
+  - '14:12'
+  - '15:12'
+  - '16:12'
+  - '17:12'
+  - '18:12'
+  - '19:12'
+  - '20:12'
+  - '21:12'
+  name: Hawaiian Homes
+  true_location: hawaiian_homes
+-
+  location: :eha_st_sack_n_save
+  times:
+  - '7:13'
+  - '8:13'
+  - '9:13'
+  - '10:13'
+  - '11:13'
+  - '12:13'
+  - '13:13'
+  - '14:13'
+  - '15:13'
+  - '16:13'
+  - '17:13'
+  - '18:13'
+  - '19:13'
+  - '20:13'
+  - '21:13'
+  name: Eha St. - In Front Sack N Save
+  true_location: eha_st_sack_n_save
+-
+  location: :wailuku_community_center
+  times:
+  - '7:15'
+  - '8:15'
+  - '9:15'
+  - '10:15'
+  - '11:15'
+  - '12:15'
+  - '13:15'
+  - '14:15'
+  - '15:15'
+  - '16:15'
+  - '17:15'
+  - '18:15'
+  - '19:15'
+  - '20:15'
+  - '21:15'
+  name: Wailuku Community Center
+  true_location: wailuku_community_center
+-
+  location: :liholiho_kanaloa_ave
+  times:
+  - '7:20'
+  - '8:20'
+  - '9:20'
+  - '10:20'
+  - '11:20'
+  - '12:20'
+  - '13:20'
+  - '14:20'
+  - '15:20'
+  - '16:20'
+  - '17:20'
+  - '18:20'
+  - '19:20'
+  - '20:20'
+  - '21:20'
+  name: Liholiho St. / Kanaloa Ave.
+  true_location: liholiho_kanaloa_ave
+-
+  location: :lihi_kanaloa_ave
+  times:
+  - '7:21'
+  - '8:21'
+  - '9:21'
+  - '10:21'
+  - '11:21'
+  - '12:21'
+  - '13:21'
+  - '14:21'
+  - '15:21'
+  - '16:21'
+  - '17:21'
+  - '18:21'
+  - '19:21'
+  - '20:21'
+  - '21:21'
+  name: Lihi St. / Kanaloa Ave.
+  true_location: lihi_kanaloa_ave
+-
+  location: :kanaloa_baseball_field
+  times:
+  - '7:22'
+  - '8:22'
+  - '9:22'
+  - '10:22'
+  - '11:22'
+  - '12:22'
+  - '13:22'
+  - '14:22'
+  - '15:22'
+  - '16:22'
+  - '17:22'
+  - '18:22'
+  - '19:22'
+  - '20:22'
+  - '21:22'
+  name: Kanaloa Ave. / Little League Field
+  true_location: kanaloa_baseball_field
+-
+  location: :queen_kaahumanu
+  times:
+  - '7:30'
+  - '8:30'
+  - '9:30'
+  - '10:30'
+  - '11:30'
+  - '12:30'
+  - '13:30'
+  - '14:30'
+  - '15:30'
+  - '16:30'
+  - '17:30'
+  - '18:30'
+  - '19:30'
+  - '20:30'
+  - '21:30'
+  name: Queen Kaahumanu Mall
+  true_location: queen_kaahumanu

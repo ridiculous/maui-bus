@@ -2,7 +2,11 @@ class Detail
   attr_reader :lat, :long, :name, :zip, :transfer
 
   def initialize(*args)
-    @lat, @long, @name, @zip, @transfer = *args
+    @lat = args[0]
+    @long = args[1]
+    @name = args[2]
+    @zip = args[3]
+    @transfer  = args[4] if args[4]
   end
 
   def coords

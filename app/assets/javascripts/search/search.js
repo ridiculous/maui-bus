@@ -24,20 +24,21 @@ var maui = new Maui()
                         map: my_map,
                         title: my_stop.name
                     };
-                    markers.push(new SearchMarker(my_stop.key, gmap_options, gmap_options.title + bubble_html));
+                    markers.push(new SearchMarker(my_stop.location, gmap_options, gmap_options.title + bubble_html));
                 }
             }
         }
         , destination = document.getElementById('destination')
         , origin = document.getElementById('origin')
+        , search_time = document.getElementById('search_time')
         , submit_search = document.getElementById('submit_search')
         , agile = new AjaxService('/search', 'GET')
+        , renderers = [maui.gmap.directionsDisplay]
         , tryResizeSearchBox = function () {
             try {
                 var search_box = document.getElementById('search_box')
                     , map_canvas = document.getElementById('map_canvas')
-                    , map_canvas_height = map_canvas.offsetHeight
-                    , val = 0;
+                    , map_canvas_height = map_canvas.offsetHeight;
 
                 if (search_box.offsetHeight > map_canvas_height - (search_box.style.overflowY == 'scroll' ? 54 : 40)) {
                     search_box.style.maxHeight = (map_canvas_height - 75) + 'px';
@@ -49,17 +50,39 @@ var maui = new Maui()
             } catch (e) {
                 if (window.console) console.log('Error setting height of search box! ' + e);
             }
+        }, requestSearchResults = function () {
+            submit_search.value = 'Searching';
+            submit_search.disabled = true;
+            agile.send({origin: origin.value, destination: destination.value, search_time: search_time.value});
+            window.location.hash = origin.value + '-' + destination.value + '-' + search_time.value.replace(/\s/g, '_');
+        }, plotRoute = function (points) {
+            try {
+                for (var r = 0; r < renderers.length; r++) {
+                    if (renderers[r]) {
+                        renderers[r].setMap(null);
+                    }
+                }
+                for (var i = 0; i < points.length; i++) {
+                    if (points[i].length) {
+                        renderers.push(maui.gmap.connectPoints(points[i][0], points[i][1]));
+                    }
+                }
+            } catch (e) {
+                if (console) console.log('error in drawing route: ' + e);
+            }
         };
 
     addMarkers();
     my_map.setCenter(maui.gmap.Mall);
     my_map.setZoom(my_map.getZoom() + 4);
 
-    agile.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    agile.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); // to play nice with rails (allows request.xhr?)
     agile.on('success', function (data) {
-        document.getElementById('direct_routes').innerHTML = data.responseText;
+        var response = JSON.parse(data.responseText);
+        document.getElementById('direct_routes').innerHTML = response.html;
         submit_search.disabled = false;
         submit_search.value = 'Search';
+        plotRoute(response.points);
         tryResizeSearchBox();
     });
     agile.on('failure', function (response) {
@@ -76,10 +99,7 @@ var maui = new Maui()
 
     jUtils.addEvent(submit_search, 'click', function (e) {
         var evt = jUtils.getEvent(e);
-        this.value = 'Searching';
-        this.disabled = true;
-        agile.send({origin: origin.value, destination: destination.value});
-        window.location.hash = origin.value + '-' + destination.value;
+        requestSearchResults();
         if (typeof evt.preventDefault === 'function') {
             evt.preventDefault();
         }
@@ -88,15 +108,20 @@ var maui = new Maui()
 
     var points = window.location.hash.split('-');
 
-    if (points.length === 2) {
+    if (points.length === 3) {
         origin.value = points[0].replace('#', '');
         destination.value = points[1];
-        agile.send({origin: origin.value, destination: destination.value});
+        search_time.value = points[2].replace(/_/g, ' ');
+        requestSearchResults();
     }
 
     if (document.getElementById('is_desktop')) {
         tryResizeSearchBox()
     }
+
+    jUtils.addEvent([search_time], 'change', function () {
+        requestSearchResults();
+    });
 
 })();
 

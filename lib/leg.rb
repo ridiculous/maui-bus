@@ -1,12 +1,4 @@
-class Leg
-
-  attr_accessor :start_at, :stop_at, :transfers, :order
-
-  def initialize(start = nil, finish = nil, trnsfers = [])
-    @start_at = start
-    @stop_at = finish
-    @transfers = trnsfers
-  end
+class Leg < Struct.new(:name, :start_at, :stop_at)
 
   def valid?
     !stop_at.nil? || !start_at.nil?
@@ -22,6 +14,18 @@ class Leg
 
   def incomplete?
     !complete?
+  end
+
+  def has_same_points?
+    start_at == stop_at
+  end
+
+  def find_stops(start_time)
+    route.find_between(start_at, stop_at, start_time)
+  end
+
+  def route
+    Bus::Data.routes.find { |x| x.name == name }
   end
 
 end

@@ -2,7 +2,7 @@ module ApplicationHelper
 
   #! DEPRECATED (kinda useful still)
   # @param name String
-  # @param bus_stop BusStop
+  # @param bus_stop Bus::Stop
   def link_to_static_map(name, bus_stop)
     bus_stop_location = Location[bus_stop.location]
     options = {
@@ -54,7 +54,6 @@ module ApplicationHelper
   def table_rows(route, stop)
     content_tag(:tr, class: cycle('odd', '', name: 'times_table')) do
       concat(content_tag(:td, class: 'row-header') do
-        #link_to_static_map(stop.name, stop)
         link_to_map(stop.name, route.path_parts, stop.location) + badges(stop)
       end)
       time_cells(route, stop)
@@ -71,22 +70,12 @@ module ApplicationHelper
     end
   end
 
-  #
-  # NOTE: It takes 1 sec to load the full schedule, of that 500ms is spent here formatting the time :/
-  #
-
   def time_cells(route, stop)
     nxt_ups = route.next_stops_as_hash
-    route.max_stop_length.times.each_with_index.map do |s, i|
-      my_time = stop.times[s]
-      nxt_stop = nxt_ups["#{stop.name}#{my_time}"]
-      td_classes = "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}"
-      my_time =~ /(\d+):/
-      concat(content_tag(:td, class: td_classes) do
-        if my_time && !my_time.empty?
-          td_classes.send(:<<, $1.to_i < 12 ? ' am' : ' pm') if $1.is_a?(String)
-          in_format(Time.zone.parse(my_time))
-        end
+    route.max_stop_length.times.map do |i|
+      nxt_stop = nxt_ups[stop.to_key(i)]
+      concat(content_tag(:td, class: "#{route.full_class_name}-time-cell-#{i} #{nxt_stop ? "bus-#{nxt_stop}" : ''}") do
+        stop.time_to_s(i)
       end)
     end.join.html_safe
   end
@@ -102,7 +91,7 @@ module ApplicationHelper
   end
 
   def mobile_device?
-    @is_mobile ||= params[:m] || request.user_agent =~ /Mobile|webOS/
+    @is_mobile ||= params[:m] == '1' || request.user_agent =~ /Mobile|webOS/
   end
 
   def in_format(the_time)
@@ -124,6 +113,14 @@ module ApplicationHelper
     else
       content_tag(:span, txt)
     end
+  end
+
+  def link_to_schedule_pdf
+    link_to('Maui Bus Schedule as PDF - 08/24/13', '/maui_bus_schedule_08_24_2013_1414.pdf')
+  end
+
+  def times_for_select
+    ['Now'] + ((4...23).to_a + (4...23).to_a).sort.each_with_index.map { |a, i| in_format("#{a < 10 ? '0' : ''}#{a}:#{i % 2 == 0 ? '00' : '30'}:00".to_time).strip }
   end
 
 end

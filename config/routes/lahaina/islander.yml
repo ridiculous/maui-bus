@@ -1,0 +1,181 @@
+-
+  location: :queen_kaahumanu
+  times:
+  - '5:30'
+  - '6:30'
+  - '7:30'
+  - '8:30'
+  - '9:30'
+  - '10:30'
+  - '11:30'
+  - '12:30'
+  - '13:30'
+  - '14:30'
+  - '15:30'
+  - '16:30'
+  - '17:30'
+  - '18:30'
+  - '19:30'
+  name: Queen Kaahumanu Mall
+  true_location: queen_kaahumanu
+-
+  location: :state_bldg_wells_st
+  times:
+  - '5:40'
+  - '6:40'
+  - '7:40'
+  - '8:40'
+  - '9:40'
+  - '10:40'
+  - '11:40'
+  - '12:40'
+  - '13:40'
+  - '14:40'
+  - '15:40'
+  - '16:40'
+  - '17:40'
+  - '18:40'
+  - '19:40'
+  name: State Office Building / Wells St.
+  true_location: state_bldg_wells_st
+-
+  location: :waikapu
+  times:
+  - '5:45'
+  - '6:45'
+  - '7:45'
+  - '8:45'
+  - '9:45'
+  - '10:45'
+  - '11:45'
+  - '12:45'
+  - '13:45'
+  - '14:45'
+  - '15:45'
+  - '16:45'
+  - '17:45'
+  - '18:45'
+  - '19:45'
+  name: Waikapu
+  true_location: waikapu
+-
+  location: :maalaea_harbor
+  times:
+  - '5:55'
+  - '6:55'
+  - '7:55'
+  - '8:55'
+  - '9:55'
+  - '10:55'
+  - '11:55'
+  - '12:55'
+  - '13:55'
+  - '14:55'
+  - '15:55'
+  - '16:55'
+  - '17:55'
+  - '18:55'
+  - '19:55'
+  name: Maalaea Harbor Village
+  true_location: maalaea_harbor
+-
+  location: :wharf_cinema
+  times:
+  - '6:30'
+  - '7:30'
+  - '8:30'
+  - '9:30'
+  - '10:30'
+  - '11:30'
+  - '12:30'
+  - '13:30'
+  - '14:30'
+  - '15:30'
+  - '16:30'
+  - '17:30'
+  - '18:30'
+  - '19:30'
+  - '20:30'
+  name: Wharf Cinema Center
+  true_location: wharf_cinema
+  destination: true
+-
+  location: :maalaea_harbor
+  times:
+  - '7:05'
+  - '8:05'
+  - '9:05'
+  - '10:05'
+  - '11:05'
+  - '12:05'
+  - '13:05'
+  - '14:05'
+  - '15:05'
+  - '16:05'
+  - '17:05'
+  - '18:05'
+  - '19:05'
+  - '20:05'
+  - '21:05'
+  name: Maalaea Harbor Village
+  true_location: maalaea_harbor
+-
+  location: :waikapu
+  times:
+  - '7:15'
+  - '8:15'
+  - '9:15'
+  - '10:15'
+  - '11:15'
+  - '12:15'
+  - '13:15'
+  - '14:15'
+  - '15:15'
+  - '16:15'
+  - '17:15'
+  - '18:15'
+  - '19:15'
+  - '20:15'
+  - '21:15'
+  name: Waikapu
+  true_location: waikapu
+-
+  location: :state_bldg
+  times:
+  - '7:18'
+  - '8:18'
+  - '9:18'
+  - '10:18'
+  - '11:18'
+  - '12:18'
+  - '13:18'
+  - '14:18'
+  - '15:18'
+  - '16:18'
+  - '17:18'
+  - '18:18'
+  - '19:18'
+  - '20:18'
+  - '21:18'
+  name: State Office Building
+  true_location: state_bldg
+-
+  location: :queen_kaahumanu
+  times:
+  - '7:30'
+  - '8:30'
+  - '9:30'
+  - '10:30'
+  - '11:30'
+  - '12:30'
+  - '13:30'
+  - '14:30'
+  - '15:30'
+  - '16:30'
+  - '17:30'
+  - '18:30'
+  - '19:30'
+  - '20:30'
+  - '21:30'
+  name: Queen Kaahumanu Mall
+  true_location: queen_kaahumanu

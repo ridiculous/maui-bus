@@ -1,0 +1,673 @@
+-
+  location: :whalers_village
+  times:
+  - ''
+  - '6:00'
+  - '7:00'
+  - '8:00'
+  - '9:00'
+  - '10:00'
+  - '11:00'
+  - '12:00'
+  - '13:00'
+  - '14:00'
+  - '15:00'
+  - '16:00'
+  - '17:00'
+  - '18:00'
+  - '19:00'
+  - '20:00'
+  name: Whalers Village
+  true_location: whalers_village
+-
+  location: :kaanapali_beach_club
+  times:
+  - ''
+  - '6:10'
+  - '7:10'
+  - '8:10'
+  - '9:10'
+  - '10:10'
+  - '11:10'
+  - '12:10'
+  - '13:10'
+  - '14:10'
+  - '15:10'
+  - '16:10'
+  - '17:10'
+  - '18:10'
+  - '19:10'
+  - '20:10'
+  name: Kaanapali Beach Club
+  true_location: kaanapali_beach_club
+-
+  location: :kaanapali_shores
+  times:
+  - ''
+  - '6:11'
+  - '7:11'
+  - '8:11'
+  - '9:11'
+  - '10:11'
+  - '11:11'
+  - '12:11'
+  - '13:11'
+  - '14:11'
+  - '15:11'
+  - '16:11'
+  - '17:11'
+  - '18:11'
+  - '19:11'
+  - '20:11'
+  name: Kaanapali Shores
+  true_location: kaanapali_shores
+-
+  location: :nahono_place
+  times:
+  - ''
+  - '6:12'
+  - '7:12'
+  - '8:12'
+  - '9:12'
+  - '10:12'
+  - '11:12'
+  - '12:12'
+  - '13:12'
+  - '14:12'
+  - '15:12'
+  - '16:12'
+  - '17:12'
+  - '18:12'
+  - '19:12'
+  - '20:12'
+  name: Nahono Place
+  true_location: nahono_place
+-
+  location: :honokowai_beach_park
+  times:
+  - ''
+  - '6:13'
+  - '7:13'
+  - '8:13'
+  - '9:13'
+  - '10:13'
+  - '11:13'
+  - '12:13'
+  - '13:13'
+  - '14:13'
+  - '15:13'
+  - '16:13'
+  - '17:13'
+  - '18:13'
+  - '19:13'
+  - '20:13'
+  name: Sunset Terrace (Honokowai Beach Park)
+  true_location: honokowai_beach_park
+-
+  location: :makani_sands
+  times:
+  - ''
+  - '6:14'
+  - '7:14'
+  - '8:14'
+  - '9:14'
+  - '10:14'
+  - '11:14'
+  - '12:14'
+  - '13:14'
+  - '14:14'
+  - '15:14'
+  - '16:14'
+  - '17:14'
+  - '18:14'
+  - '19:14'
+  - '20:14'
+  name: Makani Sands
+  true_location: makani_sands
+-
+  location: :polynesian_shores
+  times:
+  - ''
+  - '6:15'
+  - '7:15'
+  - '8:15'
+  - '9:15'
+  - '10:15'
+  - '11:15'
+  - '12:15'
+  - '13:15'
+  - '14:15'
+  - '15:15'
+  - '16:15'
+  - '17:15'
+  - '18:15'
+  - '19:15'
+  - '20:15'
+  name: Polynesian Shores
+  true_location: polynesian_shores
+-
+  location: :pohaku_park
+  times:
+  - ''
+  - '6:16'
+  - '7:16'
+  - '8:16'
+  - '9:16'
+  - '10:16'
+  - '11:16'
+  - '12:16'
+  - '13:16'
+  - '14:16'
+  - '15:16'
+  - '16:16'
+  - '17:16'
+  - '18:16'
+  - '19:16'
+  - '20:16'
+  name: Pohaku Park (S-Turns)
+  true_location: pohaku_park
+-
+  location: :kahana_manor
+  times:
+  - ''
+  - '6:17'
+  - '7:17'
+  - '8:17'
+  - '9:17'
+  - '10:17'
+  - '11:17'
+  - '12:17'
+  - '13:17'
+  - '14:17'
+  - '15:17'
+  - '16:17'
+  - '17:17'
+  - '18:17'
+  - '19:17'
+  - '20:17'
+  name: Kahana Manor
+  true_location: kahana_manor
+-
+  location: :royal_kahana
+  times:
+  - ''
+  - '6:18'
+  - '7:18'
+  - '8:18'
+  - '9:18'
+  - '10:18'
+  - '11:18'
+  - '12:18'
+  - '13:18'
+  - '14:18'
+  - '15:18'
+  - '16:18'
+  - '17:18'
+  - '18:18'
+  - '19:18'
+  - '20:18'
+  name: Royal Kahana
+  true_location: royal_kahana
+-
+  location: :kahana_outrigger
+  times:
+  - ''
+  - '6:20'
+  - '7:20'
+  - '8:20'
+  - '9:20'
+  - '10:20'
+  - '11:20'
+  - '12:20'
+  - '13:20'
+  - '14:20'
+  - '15:20'
+  - '16:20'
+  - '17:20'
+  - '18:20'
+  - '19:20'
+  - '20:20'
+  name: Kahana Outrigger/Kepola Place
+  true_location: kahana_outrigger
+-
+  location: :alaeloa_across
+  times:
+  - ''
+  - '6:21'
+  - '7:21'
+  - '8:21'
+  - '9:21'
+  - '10:21'
+  - '11:21'
+  - '12:21'
+  - '13:21'
+  - '14:21'
+  - '15:21'
+  - '16:21'
+  - '17:21'
+  - '18:21'
+  - '19:21'
+  - '20:21'
+  name: Alaeloa (Mauka)
+  true_location: alaeloa
+-
+  location: :napili_plaza
+  times:
+  - ''
+  - '6:24'
+  - '7:24'
+  - '8:24'
+  - '9:24'
+  - '10:24'
+  - '11:24'
+  - '12:24'
+  - '13:24'
+  - '14:24'
+  - '15:24'
+  - '16:24'
+  - '17:24'
+  - '18:24'
+  - '19:24'
+  - '20:24'
+  name: Napili Plaza
+  true_location: napili_plaza
+-
+  location: :napili_shores
+  times:
+  - ''
+  - '6:29'
+  - '7:29'
+  - '8:29'
+  - '9:29'
+  - '10:29'
+  - '11:29'
+  - '12:29'
+  - '13:29'
+  - '14:29'
+  - '15:29'
+  - '16:29'
+  - '17:29'
+  - '18:29'
+  - '19:29'
+  - '20:29'
+  name: Napili Shores
+  true_location: napili_shores
+-
+  location: :napili_kai
+  times:
+  - '5:30'
+  - '6:30'
+  - '7:30'
+  - '8:30'
+  - '9:30'
+  - '10:30'
+  - '11:30'
+  - '12:30'
+  - '13:30'
+  - '14:30'
+  - '15:30'
+  - '16:30'
+  - '17:30'
+  - '18:30'
+  - '19:30'
+  - '20:30'
+  name: Napili Kai
+  true_location: napili_kai
+  destination: true
+-
+  location: :napili_village
+  times:
+  - '5:32'
+  - '6:32'
+  - '7:32'
+  - '8:32'
+  - '9:32'
+  - '10:32'
+  - '11:32'
+  - '12:32'
+  - '13:32'
+  - '14:32'
+  - '15:32'
+  - '16:32'
+  - '17:32'
+  - '18:32'
+  - '19:32'
+  - '20:32'
+  name: Napili Village
+  true_location: napili_village
+-
+  location: :napili_shores
+  times:
+  - '5:33'
+  - '6:33'
+  - '7:33'
+  - '8:33'
+  - '9:33'
+  - '10:33'
+  - '11:33'
+  - '12:33'
+  - '13:33'
+  - '14:33'
+  - '15:33'
+  - '16:33'
+  - '17:33'
+  - '18:33'
+  - '19:33'
+  - '20:33'
+  name: Napili Shores
+  true_location: napili_shores
+-
+  location: :napili_plaza
+  times:
+  - '5:37'
+  - '6:37'
+  - '7:37'
+  - '8:37'
+  - '9:37'
+  - '10:37'
+  - '11:37'
+  - '12:37'
+  - '13:37'
+  - '14:37'
+  - '15:37'
+  - '16:37'
+  - '17:37'
+  - '18:37'
+  - '19:37'
+  - '20:37'
+  name: Napili Plaza
+  true_location: napili_plaza
+-
+  location: :alaeloa
+  times:
+  - '5:38'
+  - '6:38'
+  - '7:38'
+  - '8:38'
+  - '9:38'
+  - '10:38'
+  - '11:38'
+  - '12:38'
+  - '13:38'
+  - '14:38'
+  - '15:38'
+  - '16:38'
+  - '17:38'
+  - '18:38'
+  - '19:38'
+  - '20:38'
+  name: Alaeloa
+  true_location: alaeloa
+-
+  location: :kahana_sunset
+  times:
+  - '5:40'
+  - '6:40'
+  - '7:40'
+  - '8:40'
+  - '9:40'
+  - '10:40'
+  - '11:40'
+  - '12:40'
+  - '13:40'
+  - '14:40'
+  - '15:40'
+  - '16:40'
+  - '17:40'
+  - '18:40'
+  - '19:40'
+  - '20:40'
+  name: Kahana Sunset
+  true_location: kahana_sunset
+-
+  location: :omaikai_place
+  times:
+  - '5:41'
+  - '6:41'
+  - '7:41'
+  - '8:41'
+  - '9:41'
+  - '10:41'
+  - '11:41'
+  - '12:41'
+  - '13:41'
+  - '14:41'
+  - '15:41'
+  - '16:41'
+  - '17:41'
+  - '18:41'
+  - '19:41'
+  - '20:41'
+  name: Omaikai Place
+  true_location: omaikai_place
+-
+  location: :kahana_outrigger
+  times:
+  - '5:42'
+  - '6:42'
+  - '7:42'
+  - '8:42'
+  - '9:42'
+  - '10:42'
+  - '11:42'
+  - '12:42'
+  - '13:42'
+  - '14:42'
+  - '15:42'
+  - '16:42'
+  - '17:42'
+  - '18:42'
+  - '19:42'
+  - '20:42'
+  name: Kahana Outrigger/Kepola Place
+  true_location: kahana_outrigger
+-
+  location: :valley_isle_resort
+  times:
+  - '5:43'
+  - '6:43'
+  - '7:43'
+  - '8:43'
+  - '9:43'
+  - '10:43'
+  - '11:43'
+  - '12:43'
+  - '13:43'
+  - '14:43'
+  - '15:43'
+  - '16:43'
+  - '17:43'
+  - '18:43'
+  - '19:43'
+  - '20:43'
+  name: Valley Isle Resort
+  true_location: valley_isle_resort
+-
+  location: :pohaku_park
+  times:
+  - '5:44'
+  - '6:44'
+  - '7:44'
+  - '8:44'
+  - '9:44'
+  - '10:44'
+  - '11:44'
+  - '12:44'
+  - '13:44'
+  - '14:44'
+  - '15:44'
+  - '16:44'
+  - '17:44'
+  - '18:44'
+  - '19:44'
+  - '20:44'
+  name: Pohaku Park (S-Turns)
+  true_location: pohaku_park
+-
+  location: :polynesian_shores
+  times:
+  - '5:45'
+  - '6:45'
+  - '7:45'
+  - '8:45'
+  - '9:45'
+  - '10:45'
+  - '11:45'
+  - '12:45'
+  - '13:45'
+  - '14:45'
+  - '15:45'
+  - '16:45'
+  - '17:45'
+  - '18:45'
+  - '19:45'
+  - '20:45'
+  name: Polynesian Shores
+  true_location: polynesian_shores
+-
+  location: :kuleana
+  times:
+  - '5:46'
+  - '6:46'
+  - '7:46'
+  - '8:46'
+  - '9:46'
+  - '10:46'
+  - '11:46'
+  - '12:46'
+  - '13:46'
+  - '14:46'
+  - '15:46'
+  - '16:46'
+  - '17:46'
+  - '18:46'
+  - '19:46'
+  - '20:46'
+  name: Kuleana
+  true_location: kuleana
+-
+  location: :makani_sands
+  times:
+  - '5:47'
+  - '6:47'
+  - '7:47'
+  - '8:47'
+  - '9:47'
+  - '10:47'
+  - '11:47'
+  - '12:47'
+  - '13:47'
+  - '14:47'
+  - '15:47'
+  - '16:47'
+  - '17:47'
+  - '18:47'
+  - '19:47'
+  - '20:47'
+  name: Makani Sands
+  true_location: makani_sands
+-
+  location: :honokowai_beach_park_makai
+  times:
+  - '5:48'
+  - '6:48'
+  - '7:48'
+  - '8:48'
+  - '9:48'
+  - '10:48'
+  - '11:48'
+  - '12:48'
+  - '13:48'
+  - '14:48'
+  - '15:48'
+  - '16:48'
+  - '17:48'
+  - '18:48'
+  - '19:48'
+  - '20:48'
+  name: Honokowai Beach Park
+  true_location: honokowai_beach_park
+-
+  location: :honokowai_villa
+  times:
+  - '5:49'
+  - '6:49'
+  - '7:49'
+  - '8:49'
+  - '9:49'
+  - '10:49'
+  - '11:49'
+  - '12:49'
+  - '13:49'
+  - '14:49'
+  - '15:49'
+  - '16:49'
+  - '17:49'
+  - '18:49'
+  - '19:49'
+  - '20:49'
+  name: Honokowai Villa
+  true_location: honokowai_villa
+-
+  location: :kaanapali_beach_club
+  times:
+  - '5:50'
+  - '6:50'
+  - '7:50'
+  - '8:50'
+  - '9:50'
+  - '10:50'
+  - '11:50'
+  - '12:50'
+  - '13:50'
+  - '14:50'
+  - '15:50'
+  - '16:50'
+  - '17:50'
+  - '18:50'
+  - '19:50'
+  - '20:50'
+  name: Kaanapali Beach Club
+  true_location: kaanapali_beach_club
+-
+  location: :kekaa_drive
+  times:
+  - '5:58'
+  - '6:58'
+  - '7:58'
+  - '8:58'
+  - '9:58'
+  - '10:58'
+  - '11:58'
+  - '12:58'
+  - '13:58'
+  - '14:58'
+  - '15:58'
+  - '16:58'
+  - '17:58'
+  - '18:58'
+  - '19:58'
+  - '20:58'
+  name: Keka'a Drive
+  true_location: kekaa_drive
+-
+  location: :whalers_village
+  times:
+  - '6:00'
+  - '7:00'
+  - '8:00'
+  - '9:00'
+  - '10:00'
+  - '11:00'
+  - '12:00'
+  - '13:00'
+  - '14:00'
+  - '15:00'
+  - '16:00'
+  - '17:00'
+  - '18:00'
+  - '19:00'
+  - '20:00'
+  - '21:00'
+  name: Whalers Village
+  true_location: whalers_village
