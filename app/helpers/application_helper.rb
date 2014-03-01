@@ -103,7 +103,7 @@ module ApplicationHelper
   end
 
   def link_to_schedule_pdf
-    link_to('Maui Bus Schedule as PDF - 08/24/13', '/maui_bus_schedule_08_24_2013_1414.pdf')
+    link_to('Maui Bus Schedule as PDF - 03/01/14', 'https://github.com/ridiculous/maui-bus/raw/pdf/private/maui_bus_schedule_03_01_2014.pdf')
   end
 
   def times_for_select
