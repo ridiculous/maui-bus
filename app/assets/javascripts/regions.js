@@ -3,6 +3,7 @@ var Schedules = {}, Toga = new Toggler();
 jUtils.addEvent(window, 'load', function () {
 
     var show_times = jUtils.findByClass('time-list')
+        , mobile_flag = jUtils.hasClass(document.getElementsByTagName('body')[0], 'mobile') ? 1 : 0
         , loadBusSchedule = function () {
             // if the container is present, great we're good to go, else load the table for this bus
             if (document.getElementById(this.rel + '_container')) {
@@ -14,7 +15,7 @@ jUtils.addEvent(window, 'load', function () {
                     , route = region_route.join('_')
                     , container_id = region + route
                     , container = document.getElementById(container_id)
-                    , agile = new AjaxService('/regions/' + region + '/routes/' + route + '/schedule', 'GET');
+                    , agile = new AjaxService('/regions/' + region + '/routes/' + route + '/schedule?m=' + mobile_flag, 'GET');
 
                 if (container) {
                     container.style.display = 'block';

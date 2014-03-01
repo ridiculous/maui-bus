@@ -2,7 +2,7 @@ module ApplicationHelper
 
   #! DEPRECATED (kinda useful still)
   # @param name String
-  # @param bus_stop BusStop
+  # @param bus_stop Bus::Stop
   def link_to_static_map(name, bus_stop)
     bus_stop_location = Location[bus_stop.location]
     options = {
