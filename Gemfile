@@ -40,6 +40,8 @@ end
 gem 'twitter-bootstrap-rails', '~> 2.2.6'
 #gem 'newrelic_rpm', '3.6.6.147'
 
+gem 'wicked_pdf', '~> 0.7.9' # PDF generation
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

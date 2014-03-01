@@ -9,8 +9,27 @@ class RegionsController < ApplicationController
   end
 
   def schedule
-    @regions = Region.all.sort
     @routes = Bus::Data.routes
+
+    respond_to do |format|
+      format.html do
+        @regions = Region.all.sort
+      end
+      format.pdf do
+        @regions = Region.load_all
+        file_name = "maui_bus_schedule_#{Time.now.strftime('%m_%d_%Y')}"
+        pdf_file = Rails.root.join('private', "#{file_name}.pdf")
+        render :pdf => file_name,
+               :formats => [:pdf],
+               :save_to_file => pdf_file,
+               :save_only => true,
+               :page_size => "Letter",
+               :header => {right: '[page] of [topage]'},
+               :footer => {center: 'mauibus.net'}
+
+        send_file(pdf_file, type: 'application/pdf')
+      end
+    end
   end
 
   def show
