@@ -79,7 +79,7 @@ module ApplicationHelper
   end
 
   def mobile_device?
-    @is_mobile ||= params[:m] || request.user_agent =~ /Mobile|webOS/
+    @is_mobile ||= params[:m] == '1' || request.user_agent =~ /Mobile|webOS/
   end
 
   def in_format(the_time)
