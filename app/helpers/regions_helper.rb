@@ -34,4 +34,16 @@ module RegionsHelper
       end
     end.join.html_safe
   end
+
+  def icon(css_class, name)
+    "<span class='icon icon-#{css_class}'></span>#{name}".html_safe
+  end
+
+  def icon_times
+    icon('time', 'Times')
+  end
+
+  def icon_map
+    icon('globe', 'Map')
+  end
 end

@@ -21,7 +21,7 @@ module ApplicationHelper
   # has mobile detection
   def schedule_for(route)
     reset_cycle('times_table')
-    content_tag(:div, id: "#{route.full_class_name}_container", style: 'display:none;visibility:visible;') do
+    content_tag(:div, id: "#{route.full_class_name}_container", class: 'hidden-but-visible') do
       concat(content_tag(:h5, 'Times', class: 'bus-schedule-header fl'))
       concat(time_frames(route.full_class_name))
 
@@ -104,10 +104,6 @@ module ApplicationHelper
 
   def link_to_schedule_pdf
     link_to('Maui Bus Schedule as PDF - 03/01/14', 'https://github.com/ridiculous/maui-bus/raw/pdf/private/maui_bus_schedule_03_01_2014.pdf')
-  end
-
-  def times_for_select
-    ['Now'] + ((4...23).to_a + (4...23).to_a).sort.each_with_index.map { |a, i| in_format("#{a < 10 ? '0' : ''}#{a}:#{i % 2 == 0 ? '00' : '30'}:00".to_time).strip }
   end
 
 end

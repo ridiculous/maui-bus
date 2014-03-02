@@ -45,40 +45,26 @@ Run `rspec . -fs` from the repo root and the output should be something like:
         should not find routes when origin == destination
         should respond with a partial when requested via AJAX
 
-    BusRoute
+    Bus::NodeMap
+      Wailuku
+        should find a bus stop using the node map
+
+    Bus::Route
       Finders
         should find_between point_a and point_b at current_time
         should find upcoming stops for a given time (default now)
-        should find next stops for each bus on the route
       Helpers
         class_name should be the instance's class name
         full_class_name should be instance and parent class name joined w/ underscore
         transfer_locations should be unique transfer locations as Array
 
-    BusStop
+    Bus::Stop
       Helpers
         true_location should remove the terms 'across', 'makai', 'parkside'
         should find upcoming times without params (default now)
         should find upcoming times with valid params
         should sort list of times in military format and convert to TimeWithZone
         should sort list of times for an instance
-
-    Region
-      Time management with JavaScript
-        should toggle times
-        should filter times by time-frame (morning and evening)
-        should start with appropriate default time-frame
-
-    Schedule
-      Time management with JavaScript
-        should request bus times asynchronously and add to DOM
-        should toggle times
-        should filter times by time-frame (morning and evening)
-        should start with appropriate default time-frame
-
-    NodeMap
-      Wailuku
-        should find a bus stop using the node map
 
     Trip
       Planning a simple trip
@@ -104,7 +90,23 @@ Run `rspec . -fs` from the repo root and the output should be something like:
       Going from the airport to Kula
         should recommend Upcountry Islander #40 as starting route
 
-    Finished in 18.4 seconds
+    Region
+      Time management with JavaScript
+        desktop
+          should toggle times
+          should filter times by time-frame (morning and evening)
+          should start with appropriate default time-frame
+        mobile
+          should filter times by time-frame (morning, afternoon, and evening)
+
+    Schedule
+      Time management with JavaScript
+        should request bus times asynchronously and add to DOM
+        should toggle times
+        should filter times by time-frame (morning and evening)
+        should start with appropriate default time-frame
+
+    Finished in 35.25 seconds
     44 examples, 0 failures
       
 If you are looking for an API, please let me know and I'll get motivated to make it happen.

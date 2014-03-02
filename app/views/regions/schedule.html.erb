@@ -19,18 +19,9 @@
           <h4 class="fl">
             <%= link_to(route.name, show_region_path(region_name, anchor: route.full_class_name), style: 'float:none') %>
           </h4>
-          <%= link_to('<span class="icon icon-globe"></span>Map'.html_safe,
-                      show_bus_map_path(*route.path_parts),
-                      class: 'btn btn-success list fr mt5 mr10'
-              ) %>
-          <%= link_to_void('<span class="icon icon-time"></span>Times',
-                           class: 'btn btn-info list time-list fr mt5 mr10',
-                           rel: route.full_class_name
-              ) %>
-          <%= link_to_void('<span class="icon icon-road"></span>Upcoming',
-                           class: 'btn btn-primary hidden-desktop list next-stop-list fr mt5 mr10',
-                           rel: route.full_class_name
-              ) %>
+          <%= link_to(icon_map, show_bus_map_path(*route.path_parts), class: 'btn btn-success list fr mt5 mr10') %>
+          <%= link_to_void(icon_times, class: 'btn btn-info list time-list fr mt5 mr10', rel: route.full_class_name) %>
+          <%= link_to_void(icon('road', 'Upcoming'), class: 'btn btn-primary hidden-desktop list next-stop-list fr mt5 mr10', rel: route.full_class_name) %>
         </div>
         <div id="<%= route.full_class_name %>" class="hidden-tablet hidden-phone a-route">
           <div class="c">
@@ -42,6 +33,6 @@
       </div>
   <% end %>
 </div>
-<div style="display: none;visibility: hidden;" id="delay"></div>
+<div class="hidden" id="delay"></div>
 <%= render('insight') %>
 <%= javascript_include_tag(:region_manifest) %>

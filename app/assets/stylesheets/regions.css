@@ -270,9 +270,16 @@ table.padcol td {
 .plain.table th, plain.table td {
     padding: 4px;
 }
+
 .route-wrap h5 {
     margin-top: 2px;
 }
+
 .route-wrap h5.loader {
     margin-top: 0;
+}
+
+.hidden-but-visible {
+    display: none;
+    visibility: visible;
 }

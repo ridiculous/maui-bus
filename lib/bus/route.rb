@@ -4,11 +4,10 @@ module Bus
   class Route
     extend Forwardable
 
-    def_delegators :operator, :next_stops, :next_stops_as_hash, :find_between
-
     attr_reader :_class_name, :name, :stops, :operator
-    attr_accessor :_visible_stops, :options
     attr_writer :next_stops_cache
+
+    def_delegators :operator, :next_stops, :next_stops_as_hash, :find_between
 
     def self.load_stops(klass)
       data_file = open("config/routes/#{klass.to_s.underscore}.yml")
