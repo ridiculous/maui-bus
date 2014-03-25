@@ -9,6 +9,7 @@ gem 'therubyracer', '~> 0.12.0', platforms: :ruby
 gem 'uglifier', '~> 2.2.1'
 gem 'unicorn', '~> 4.6.3'
 gem 'rails_12factor', group: :production
+gem 'duck_puncher'
 
 group :development, :test do
   gem 'better_errors', '~> 1.1.0'

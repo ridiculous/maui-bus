@@ -12,4 +12,8 @@ module SearchHelper
   def pad_hour(t)
     "#{'0' if t < 10}#{t}"
   end
+
+  def first_flash_message
+    request.flash.discard.map { |k, msg| msg }.first
+  end
 end

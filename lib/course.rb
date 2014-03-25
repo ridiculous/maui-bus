@@ -17,10 +17,6 @@ class Course
     @nodes = []
   end
 
-  def latest_leg
-    other_legs[-1] || first_leg
-  end
-
   def leg_length
     1 + other_legs.length + (last_leg ? 1 : 0)
   end
@@ -56,6 +52,10 @@ class Course
     if first_leg.start_at == first_leg.stop_at && first_leg.start_at == (other_legs[-1] || @last_legs[-1]).start_at
       @first_leg = other_legs.any? ? other_legs.pop : @last_legs.pop
     end
+  end
+
+  def latest_leg
+    other_legs[-1] || first_leg
   end
 
   # expects leg to be a NextStop
@@ -100,6 +100,18 @@ class Course
     @last_leg = other_course.completed_last_legs.map { |leg|
       leg.find_stops(latest_time).sort[0] if leg.start_at == stop_at_location
     }.compact.sort[0]
+  end
+
+  def start_at
+    first_leg.start_at.time
+  end
+
+  def stop_at
+    (last_leg || other_legs[-1] || first_leg).stop_at.time
+  end
+
+  def time
+    stop_at - start_at
   end
 
   private

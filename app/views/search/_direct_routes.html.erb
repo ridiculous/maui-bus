@@ -1,12 +1,12 @@
 <% if request.flash.any? || @courses.empty? %>
     <div class="pad5 well app-subheader" style="font-size: 16px;margin-top: 10px;margin-bottom: 0;">
-      <%= request.flash.discard.map { |k, msg| msg }.first || '<b>Nothing found</b>. Maybe change the time?'.html_safe %>
+      <%= first_flash_message || '<b>Nothing found</b>. Maybe change the time?'.html_safe %>
     </div>
 <% else %>
     <h3>Routes</h3>
     <% @courses.each do |course| %>
         <div class="well app-subheader fl c" style="margin-bottom: 3px;">
-
+          <div class="fr"><%= course.time.to_duration %></div>
           <b><%= link_to(course.first_leg.name, show_region_path(course.first_leg.route.path_parts[0])) %></b>
           <table class="plain align-left padcol table" style="margin-bottom: 1px;">
             <tbody>
