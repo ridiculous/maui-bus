@@ -14,7 +14,7 @@ class Lahaina < Region
   # Lahaina Islander #20
   #
   class Islander < Bus::Route
-    STOPS = load_stops(self)
+    load_stops(self)
 
     def initialize(name='Lahaina Islander #20')
       super(name, 2) # name and # of buses
@@ -26,7 +26,7 @@ class Lahaina < Region
   #
 
   class Villager < Bus::Route
-    STOPS = load_stops(self)
+    load_stops(self)
 
     def initialize(name='Lahaina Villager #23')
       super

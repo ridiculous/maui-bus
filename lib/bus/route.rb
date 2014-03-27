@@ -1,22 +1,27 @@
 require 'forwardable'
-# Kaanapali starts up another bus in the middle of the day, making this kind of complicated ...
 module Bus
+  # meant to be used as a template
   class Route
     extend Forwardable
 
-    attr_reader :_class_name, :name, :stops, :operator
+    attr_accessor :name, :stops, :operator
+    attr_reader :_class_name
     attr_writer :next_stops_cache
 
     def_delegators :operator, :next_stops, :next_stops_as_hash, :find_between
 
     def self.load_stops(klass)
       data_file = open("config/routes/#{klass.to_s.underscore}.yml")
-      YAML.load(data_file).map { |data| Stop.new(data.symbolize_keys) }
+      klass.const_set(:STOPS, YAML.load(data_file).map { |data| Stop.new(data.symbolize_keys) })
+    end
+
+    def self.reset_stops
+      remove_const(:STOPS)
     end
 
     def initialize(name, total_buses=1, options={})
       @name = name
-      @stops = self.class::STOPS.clone
+      @stops = self.class.const_get(:STOPS).clone
       @operator = Operator.new(self, total_buses, options)
     end
 
@@ -63,6 +68,10 @@ module Bus
 
     def clear_cache
       @next_stops_cache = nil
+    end
+
+    def stops_at?(location)
+      !stops.detect { |s| s.location == location }.nil?
     end
 
     private

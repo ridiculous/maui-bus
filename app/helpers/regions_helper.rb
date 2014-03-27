@@ -9,8 +9,8 @@ module RegionsHelper
   def time_frames(route_name)
     content_tag(:ul, class: 'nav nav-pills schedule-nav-pills') do
       content_tag(:li, link_to_void('Morning', class: 'time-frame morning', rel: route_name), class: ('active' if morning?)) +
-          content_tag(:li, link_to_void('Afternoon', class: 'time-frame afternoon', rel: route_name), class: ('active' unless morning?)) +
-          content_tag(:li, link_to_void('All', class: 'time-frame all', rel: route_name))
+        content_tag(:li, link_to_void('Afternoon', class: 'time-frame afternoon', rel: route_name), class: ('active' unless morning?)) +
+        content_tag(:li, link_to_void('All', class: 'time-frame all', rel: route_name))
     end
   end
 
@@ -22,15 +22,11 @@ module RegionsHelper
     }.join.html_safe
   end
 
-  def all_stops
-    Location.unique.map { |key, detail| {location: key, name: detail.to_s, lat: detail.lat, long: detail.long} }.to_json.html_safe
-  end
-
   def upcoming_stops_box(route)
     route.next_stops_cache.each_with_index.map do |stops, i|
       content_tag(:div, class: "fl mr15 bus-#{i + 1}") do
         content_tag(:h5, "Upcoming Stops#{(content_tag(:span, " - Bus #{i + 1}") if route.next_stops_cache.length > 1)}".html_safe, class: 'well mini') +
-            content_tag(:ul, stops.any? ? upcoming_stops(stops) : content_tag(:li, 'Nothing going on here'), class: 'mba-list')
+          content_tag(:ul, stops.any? ? upcoming_stops(stops) : content_tag(:li, 'Nothing going on here'), class: 'mba-list')
       end
     end.join.html_safe
   end

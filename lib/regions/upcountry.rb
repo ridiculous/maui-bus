@@ -10,7 +10,7 @@ class Upcountry < Region
   end
 
   class Islander < Bus::Route
-    STOPS = load_stops(self)
+    load_stops(self)
 
     def initialize(name='Upcountry Islander #40')
       super

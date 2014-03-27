@@ -1,5 +1,6 @@
 var maui = new Maui()
     , Locations = Locations || {};
+
 (function () {
     maui.gmap = new BaseMap({
         zoom: 10,
@@ -13,7 +14,6 @@ var maui = new Maui()
     maui.loadBusStops(Locations); // map location to name
 
     var my_map = maui.gmap.map
-        , bubble_html = '<br /><a href="javascript:;" class="origin">Set as Origin</a><br /><a href="javascript:;" class="destination">Set as Destination</a>'
         , addMarkers = function () {
             var markers = [], bus_stops = maui.bus_stops;
             for (var i = 0; i < bus_stops.length; i++) {
@@ -24,7 +24,7 @@ var maui = new Maui()
                         map: my_map,
                         title: my_stop.name
                     };
-                    markers.push(new SearchMarker(my_stop.location, gmap_options, gmap_options.title + bubble_html));
+                    markers.push(new SearchMarker(my_stop.location, gmap_options, my_stop.html));
                 }
             }
         }
@@ -34,6 +34,7 @@ var maui = new Maui()
         , submit_search = document.getElementById('submit_search')
         , agile = new AjaxService('/search', 'GET')
         , renderers = [maui.gmap.directionsDisplay]
+        , points = window.location.hash.split('-')
         , tryResizeSearchBox = function () {
             try {
                 var search_box = document.getElementById('search_box')
@@ -50,12 +51,14 @@ var maui = new Maui()
             } catch (e) {
                 if (window.console) console.log('Error setting height of search box! ' + e);
             }
-        }, requestSearchResults = function () {
+        }
+        , requestSearchResults = function () {
             submit_search.value = 'Searching';
             submit_search.disabled = true;
             agile.send({origin: origin.value, destination: destination.value, search_time: search_time.value});
             window.location.hash = origin.value + '-' + destination.value + '-' + search_time.value.replace(/\s/g, '_');
-        }, plotRoute = function (points) {
+        }
+        , plotRoute = function (points) {
             try {
                 for (var r = 0; r < renderers.length; r++) {
                     if (renderers[r]) {
@@ -97,17 +100,6 @@ var maui = new Maui()
         submit_search.value = 'Search';
     });
 
-    jUtils.addEvent(submit_search, 'click', function (e) {
-        var evt = jUtils.getEvent(e);
-        requestSearchResults();
-        if (typeof evt.preventDefault === 'function') {
-            evt.preventDefault();
-        }
-        return false;
-    });
-
-    var points = window.location.hash.split('-');
-
     if (points.length === 3) {
         origin.value = points[0].replace('#', '');
         destination.value = points[1];
@@ -119,7 +111,16 @@ var maui = new Maui()
         tryResizeSearchBox()
     }
 
-    jUtils.addEvent([search_time], 'change', function () {
+    jUtils.addEvent(submit_search, 'click', function (e) {
+        var evt = jUtils.getEvent(e);
+        requestSearchResults();
+        if (typeof evt.preventDefault === 'function') {
+            evt.preventDefault();
+        }
+        return false;
+    });
+
+    jUtils.addEvent(search_time, 'change', function () {
         requestSearchResults();
     });
 

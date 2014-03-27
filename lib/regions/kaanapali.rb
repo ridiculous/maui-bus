@@ -10,7 +10,7 @@ class Kaanapali < Region
   end
 
   class Islander < Bus::Route
-    STOPS = load_stops(self)
+    load_stops(self)
 
     def initialize(name='Kaanapali Islander #25')
       # route, total number of buses, and delay bus #2 until 2:30pm

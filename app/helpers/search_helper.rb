@@ -16,4 +16,36 @@ module SearchHelper
   def first_flash_message
     request.flash.discard.map { |k, msg| msg }.first
   end
+
+  def all_stops
+    bus_stops = []
+    Location.unique.each do |key, detail|
+      bus_stops << {
+        location: key,
+        name: detail.to_s,
+        lat: detail.lat,
+        long: detail.long,
+        html: bubble_html(key, detail)
+      }
+    end
+    bus_stops.to_json.html_safe
+  end
+
+  def bubble_html(key, detail)
+    "<b>#{detail}</b><br />#{search_bubble_links}<br />#{sub_header}<ul>#{routes_for(key).join}</ul>"
+  end
+
+  def routes_for(location)
+    Bus::Data.routes.select { |route| route.stops_at?(location) }.map do |route|
+      content_tag(:li, route.name)
+    end
+  end
+
+  def search_bubble_links
+    '<a href="javascript:;" class="origin">Set as Origin</a><br /><a href="javascript:;" class="destination">Set as Destination</a>'
+  end
+
+  def sub_header
+    content_tag(:div, 'Routes that stop here:')
+  end
 end

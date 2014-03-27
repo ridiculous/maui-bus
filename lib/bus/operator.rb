@@ -1,3 +1,5 @@
+# Kaanapali starts up another bus in the middle of the day, making this kind of complicated ...
+# Options used to specify bus delay specifics: { bus: 1, start_time: ..., end_time: ... }
 module Bus
   class Operator < Struct.new(:route, :total_buses, :options)
     TIME_ADVANCED = 30.minutes
@@ -9,6 +11,7 @@ module Bus
       end
     end
 
+    # should look like: {"Salvation Army11:18"=>1, "Queen Kaahumanu Mall11:30"=>1}
     def next_stops_as_hash
       {}.tap do |h|
         route.next_stops_cache.each_with_index do |bus, i|
@@ -25,19 +28,6 @@ module Bus
             nxt << NextStop.new(my_stop, nxt_time, route.path_parts)
           end
         end
-      end
-    end
-
-    def find_times(my_stop, bus, my_time)
-      if total_buses > 1 && (no_delay || bus_active?(my_time) || bus_about_active?(my_time))
-        my_times = Stop.sort_times(my_stop.times_for_bus(total_buses, bus))
-        if options[:end_time] && options[:bus] == bus
-          my_times.reject { |t| t > options[:end_time] }
-        else
-          my_times
-        end
-      else
-        my_stop.sorted_times
       end
     end
 
@@ -59,6 +49,19 @@ module Bus
       end
     end
 
+    def find_times(my_stop, bus, my_time)
+      if total_buses > 1 && (no_delay? || bus_active?(my_time) || bus_about_active?(my_time))
+        my_times = Stop.sort_times(my_stop.times_for_bus(total_buses, bus))
+        if options[:end_time] && options[:bus] == bus
+          my_times.reject { |t| t > options[:end_time] }
+        else
+          my_times
+        end
+      else
+        my_stop.sorted_times
+      end
+    end
+
     #! -time_advanced- is to account for upcoming stops
     #
     # @param my_time {ActiveSupport::TimeWithZone}
@@ -76,7 +79,7 @@ module Bus
       my_time < options[:end_time] && my_time >= options[:start_time] - TIME_ADVANCED
     end
 
-    def no_delay
+    def no_delay?
       options[:start_time].nil?
     end
 

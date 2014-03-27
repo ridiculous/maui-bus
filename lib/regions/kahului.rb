@@ -11,7 +11,7 @@ class Kahului < Region
   end
 
   class Loop5 < Bus::Route
-    STOPS = load_stops(self)
+    load_stops(self)
 
     def initialize(name='Kahului Loop Route #5')
       super
@@ -20,7 +20,7 @@ class Kahului < Region
 
   # reverse
   class Loop6 < Bus::Route
-    STOPS = load_stops(self)
+    load_stops(self)
 
     def initialize(name='Kahului Loop Route #6 (reverse)')
       super

@@ -11,7 +11,7 @@ class Haiku < Region
   end
 
   class Islander < Bus::Route
-    STOPS = load_stops(self)
+    load_stops(self)
 
     def initialize(name='Haiku Islander Route #35')
       super
@@ -19,7 +19,7 @@ class Haiku < Region
   end
 
   class CommuterWailea < Bus::Route
-    STOPS = load_stops(self)
+    load_stops(self)
 
     def initialize(name='Haiku-Wailea Commuter')
       super

@@ -1,5 +1,6 @@
 var info_window = null,
     last_stop = '';
+
 function SearchMarker(location_key, gmap_options, marker_content) {
     var gmap = maui.gmap.map
         , marker = new google.maps.Marker(gmap_options);
@@ -8,7 +9,7 @@ function SearchMarker(location_key, gmap_options, marker_content) {
         if (info_window) {
             info_window.close();
         }
-        // toggle essentially
+        // toggle
         if (this.title === last_stop) {
             last_stop = '';
             return;
