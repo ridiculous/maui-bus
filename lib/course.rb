@@ -114,6 +114,10 @@ class Course
     stop_at - start_at
   end
 
+  def legs
+    (other_legs + [last_leg]).compact
+  end
+
   private
 
   # start_at is already set to origin
