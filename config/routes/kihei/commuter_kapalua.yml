@@ -39,7 +39,7 @@
   times:
   - '6:27'
 -
-  location: :waipuilani_south_kihei_makai
+  location: :waipuilani_south_kihei
   times:
   - '6:33'
 -
@@ -47,7 +47,7 @@
   times:
   - '6:34'
 -
-  location: :kaonoulu_south_kihei_makai
+  location: :kaonoulu_south_kihei
   times:
   - '6:36'
 -
@@ -56,6 +56,7 @@
   - '6:38'
 -
   location: :uwapo_south_kihei_mauka
+  true_location: uwapo_south_kihei
   times:
   - '6:40'
 -
@@ -83,6 +84,10 @@
   times:
   - '7:20'
 -
+  location: :kekaa_drive
+  times:
+  - '7:23'
+-
   location: :maui_eldorado
   times:
   - '7:24'
@@ -100,6 +105,7 @@
   - '7:45'
 -
   location: :ritz_carlton
+  destination: true
   times:
   - '16:05'
 -
@@ -114,6 +120,10 @@
   location: :maui_eldorado
   times:
   - '16:30'
+-
+  location: :kekaa_drive
+  times:
+  - '16:31'
 -
   location: :kaanapali_sheraton
   times:
@@ -139,7 +149,7 @@
   times:
   - '16:40'
 -
-  location: :uwapo_south_kihei_mauka
+  location: :uwapo_south_kihei
   times:
   - '17:19'
 -
@@ -148,6 +158,7 @@
   - '17:20'
 -
   location: :kaonoulu_south_kihei_makai
+  true_location: kaonoulu_south_kihei
   times:
   - '17:22'
 -
@@ -156,6 +167,7 @@
   - '17:23'
 -
   location: :waipuilani_south_kihei_makai
+  true_location: waipuilani_south_kihei
   times:
   - '17:24'
 -
