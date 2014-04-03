@@ -266,6 +266,11 @@ lipoa_street:
   - -156.454702
   - Lipoa St.
   - 96753
+kihei_aquatics_center:
+  - 20.748999
+  - -156.447212
+  - Kihei Aquatics Center
+  - 96753
 keala_place_south_kihei:
   - 20.732112
   - -156.452235
@@ -804,3 +809,43 @@ war_memorial:
   - -156.486844
   - War Memorial Stadium
   - 96732
+kaanapali_hyatt_regency:
+  - 20.913364
+  - -156.692322
+  - Hyatt Regency
+  - 96761
+kaanapali_marriot:
+  - 20.916270
+  - -156.694629
+  - Marriot
+  - 96761
+kaanapali_alii:
+  - 20.918034
+  - -156.694672
+  - Kaanapali Alii
+  - 96761
+kaanapali_westin:
+  - 20.919808
+  - -156.693996
+  - The Westin
+  - 96761
+kaanapali_beach_hotel:
+  - 20.923967
+  - -156.692977
+  - Kaanapali Beach Hotel
+  - 96761
+kaanapali_sheraton:
+  - 20.926923
+  - -156.693578
+  - Sheraton
+  - 96761
+maui_eldorado:
+  - 20.927765
+  - -156.690509
+  - Maui Eldorado
+  - 96761
+ritz_carlton:
+  - 21.000613
+  - -156.654310
+  - The Ritz-Carlton
+  - 96761

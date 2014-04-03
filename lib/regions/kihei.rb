@@ -2,11 +2,12 @@ class Kihei < Region
 
   extend RegionClassMethods
 
-  attr_reader :islander, :villager
+  attr_reader :islander, :villager, :commuter
 
   def initialize
     @islander = Islander.new
     @villager = Villager.new
+    @commuter = CommuterKapalua.new
     super
   end
 
@@ -22,6 +23,14 @@ class Kihei < Region
     load_stops(self)
 
     def initialize(name='Kihei Villager Route #15')
+      super
+    end
+  end
+
+  class CommuterKapalua < Bus::Route
+    load_stops(self)
+
+    def initialize(name='Kihei-Kapalua Commuter')
       super
     end
   end
