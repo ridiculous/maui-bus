@@ -1,7 +1,7 @@
 -
+  location: :kilohana_south_kihei
   times:
   - '6:15'
-  location: :kilohana_south_kihei
 -
   location: :mana_kai_resort_south
   times:
@@ -101,11 +101,11 @@
   - '7:37'
 -
   location: :ritz_carlton
+  destination: true
   times:
   - '7:45'
 -
   location: :ritz_carlton
-  destination: true
   times:
   - '16:05'
 -
