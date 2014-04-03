@@ -1,13 +1,16 @@
 <div class="regions">
-  <h3 class="well app-subheader">Pick a Region</h3>
-  <ul class="inline" style="margin-bottom: 17px;">
-    <% @regions.each do |region| %>
-        <li><%= link_to(region, show_region_path(region.downcase), class: 'btn list btn-large') %></li>
-    <% end %>
-  </ul>
-  <%= render('general_info') %>
-  <div class="well app-subheader comment mt10">
-    <b>IN THE NEWS</b> - Check out the new double-decker bus [on <a href="http://www.khon2.com/2013/07/05/mauis-double-decker-bus-service-kicks-off-saturday/" target="_blank" title="New double-decker bus on Maui">KHON2.com</a>] now operating a Kihei route. The article says it ran on route #2, but I usually see it on route #10.
+  <div class="well">
+    <h3 class="well-header app-subheader">
+      Pick a Region
+    </h3>
+    <div class="well-content">
+      <ul class="inline">
+        <% @regions.each do |region| %>
+          <li><%= link_to(region, show_region_path(region.downcase), class: 'btn list btn-large') %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
+  <%= render('general_info') %>
   <%= render('insight') %>
 </div>
