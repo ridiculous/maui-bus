@@ -12,6 +12,7 @@ function Villager(bus_stops) {
         new google.maps.LatLng(destination.lat, destination.long),
         // waypoints
         [
+            'waipuilani_south_kihei_makai',
             'piikea_south_kihei_across'
         ]
     );
