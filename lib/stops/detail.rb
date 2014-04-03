@@ -21,6 +21,10 @@ class Detail
     !transfer.nil?
   end
 
+  def <=>(other)
+    [Location::ZIP_CODES[zip], name] <=> [Location::ZIP_CODES[other.zip], other.name]
+  end
+
   def distance_to(point)
     lat1_rad = lat.to_rad
     lat2_rad = point.lat.to_rad

@@ -24,7 +24,7 @@ class SearchController < ApplicationController
           points: @courses.any? ? @courses[0].stopping_points : []
       }
     else
-      @locations = Location.unique.map { |key, val| [val.to_s, key] }
+      @locations = Location.sorted.map { |key, val| [val.to_s, key] }
     end
   end
 end

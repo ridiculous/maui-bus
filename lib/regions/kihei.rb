@@ -31,6 +31,7 @@ class Kihei < Region
     load_stops(self)
 
     def initialize(name='Kihei-Kapalua Commuter')
+      @note = "Will pick-up at all bus stops on South Kihei Road. Let the driver know where you are going and they'll drop you off as close as possible."
       super
     end
   end

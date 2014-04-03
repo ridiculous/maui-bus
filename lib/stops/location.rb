@@ -36,6 +36,12 @@ class Location
       all.reject { |k, _| k =~ PARTNER_PATTERN }
     end
 
+    # a[0] => name   {Symbol}
+    # a[1] => detail {Detail}
+    def sorted
+      unique.sort { |a, b| a[1] <=> b[1] }
+    end
+
     #  <# latitude, longitude, address, zip >
     def load_locations
       data_file = open('config/locations/list.yml')

@@ -4,7 +4,7 @@ module Bus
   class Route
     extend Forwardable
 
-    attr_accessor :name, :stops, :operator
+    attr_accessor :name, :stops, :operator, :note
     attr_reader :_class_name
     attr_writer :next_stops_cache
 

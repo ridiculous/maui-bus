@@ -6,8 +6,8 @@ module ApplicationHelper
   def link_to_static_map(name, bus_stop)
     bus_stop_location = Location[bus_stop.location]
     options = {
-        title: "Show location of #{name}",
-        class: 'show-static-map'
+      title: "Show location of #{name}",
+      class: 'show-static-map'
     }
 
     if bus_stop_location
@@ -22,6 +22,7 @@ module ApplicationHelper
   def schedule_for(route)
     reset_cycle('times_table')
     content_tag(:div, id: "#{route.full_class_name}_container", class: 'hidden-but-visible') do
+      concat(note_for(route))
       concat(content_tag(:h5, 'Times', class: 'bus-schedule-header fl'))
       concat(time_frames(route.full_class_name))
 
@@ -71,7 +72,7 @@ module ApplicationHelper
 
   def badges(bus_stop)
     content_tag(:span, 'Destination', class: (bus_stop.destination ? 'badge badge-dest ml5' : 'hide')) +
-        content_tag(:span, 'Transfer', class: (bus_stop.transfer? ? 'badge badge-success ml5' : 'hide'))
+      content_tag(:span, 'Transfer', class: (bus_stop.transfer? ? 'badge badge-success ml5' : 'hide'))
   end
 
   def morning?
@@ -106,6 +107,14 @@ module ApplicationHelper
     link_to('Maui Bus Schedule as PDF - 03/01/14', 'https://github.com/ridiculous/maui-bus/raw/pdf/private/maui_bus_schedule_03_01_2014.pdf')
   end
 
+  def note_for(route)
+    if route.note
+      content_tag(:div, class: 'well mb5') do
+        content_tag(:div, content_tag(:b, 'Note: ') + route.note, class: 'well-content')
+      end
+    end
+  end
+
   #
   # From Twitter Bootstrap Rails
   #
@@ -120,13 +129,13 @@ module ApplicationHelper
 
       type = type.to_sym
       type = :success if type == :notice
-      type = :error   if type == :alert
+      type = :error if type == :alert
       next unless ALERT_TYPES.include?(type)
 
       Array(message).each do |msg|
         text = content_tag(:div,
-                           content_tag(:button, raw("&times;"), :class => "close", "data-dismiss" => "alert") +
-                               msg.html_safe, :class => "alert fade in alert-#{type}")
+          content_tag(:button, raw("&times;"), :class => "close", "data-dismiss" => "alert") +
+            msg.html_safe, :class => "alert fade in alert-#{type}")
         flash_messages << text if msg
       end
     end
