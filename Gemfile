@@ -17,6 +17,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'debugger'
   gem 'rspec-rails', '~> 2.13.1'
   gem 'spork-rails', github: 'A-gen/spork-rails'
   gem 'capybara', '~> 2.1.0'

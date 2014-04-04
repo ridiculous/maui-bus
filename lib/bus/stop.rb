@@ -54,6 +54,10 @@ module Bus
       times.each_with_index.select { |_, i| i % total_buses == bus }.map { |t| t[0] }
     end
 
+    def find_time(the_time)
+      times.find { |t| t == the_time }
+    end
+
     #
     # = Class Methods
     #

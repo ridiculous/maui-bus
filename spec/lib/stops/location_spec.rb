@@ -16,7 +16,7 @@ describe Location do
   context '#all' do
     it 'should return all locations' do
       key = :haiku_community_center
-      Location.all.length.should == 160
+      Location.all.length.should == 169
       Location.all.first.should == [key, Location[key]]
       Location.all[key].should == Location[key]
     end

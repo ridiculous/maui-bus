@@ -48,4 +48,13 @@ module SearchHelper
   def sub_header
     content_tag(:div, 'Routes that stop here:')
   end
+
+  # @locations in format of: [["Kahului - Queen Kaahumanu Mall", :queen_kaahumanu], ...]
+  def default_destination
+    @locations.find { |x| x[1] == :queen_kaahumanu }
+  end
+
+  def default_origin
+    @locations.find { |x| x[1] == :kahului_airport }
+  end
 end

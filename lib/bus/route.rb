@@ -74,6 +74,10 @@ module Bus
       !stops.detect { |s| s.location == location }.nil?
     end
 
+    def find(name)
+      stops.select { |s| s.location == name.to_sym }
+    end
+
     private
 
     def transfers

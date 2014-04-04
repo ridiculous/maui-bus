@@ -3,11 +3,11 @@
     <%= form_tag({}, method: :get) do %>
         <div class="field">
           <%= label_tag(:origin, nil, style: 'font-weight: bold;') %>
-          <%= select_tag(:origin, options_for_select(@locations, params[:origin] || @locations[2])) %>
+          <%= select_tag(:origin, options_for_select(@locations, params[:origin] || default_origin)) %>
         </div>
         <div class="field">
           <%= label_tag(:destination, nil, style: 'font-weight: bold;') %>
-          <%= select_tag(:destination, options_for_select(@locations, params[:destination] || @locations[18])) %>
+          <%= select_tag(:destination, options_for_select(@locations, params[:destination] || default_destination)) %>
         </div>
         <div class="field" style="width: 300px;">
           <%= submit_tag('Search', class: 'btn btn-primary', id: 'submit_search', name: nil) %>
