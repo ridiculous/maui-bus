@@ -1,0 +1,121 @@
+-
+  location: :eddie_tam_gym
+  times:
+  - '5:30'
+-
+  location: :pukalani_community_center
+  times:
+  - '5:40'
+-
+  location: :war_memorial
+  times:
+  - '6:00'
+-
+  location: :waikapu
+  times:
+  - '6:15'
+-
+  location: :kaanapali_sheraton
+  times:
+  - '6:50'
+-
+  location: :kaanapali_beach_hotel
+  times:
+  - '6:51'
+-
+  location: :kaanapali_westin
+  times:
+  - '6:52'
+-
+  location: :kaanapali_alii
+  times:
+  - '6:53'
+-
+  location: :kaanapali_marriot
+  times:
+  - '6:54'
+-
+  location: :kaanapali_hyatt_regency
+  times:
+  - '6:55'
+-
+  location: :kekaa_drive
+  times:
+  - '6:58'
+-
+  location: :maui_eldorado
+  times:
+  - '6:59'
+-
+  location: :napili_shores
+  times:
+  - '7:10'
+-
+  location: :napili_kai
+  times:
+  - '7:15'
+-
+  location: :ritz_carlton
+  destination: true
+  times:
+  - '7:30'
+-
+  location: :ritz_carlton
+  times:
+  - '16:00'
+-
+  location: :napili_kai
+  times:
+  - '16:10'
+-
+  location: :napili_shores
+  times:
+  - '16:15'
+-
+  location: :maui_eldorado
+  times:
+  - '16:25'
+-
+  location: :kekaa_drive
+  times:
+  - '16:26'
+-
+  location: :kaanapali_hyatt_regency
+  times:
+  - '16:29'
+-
+  location: :kaanapali_marriot
+  times:
+  - '16:30'
+-
+  location: :kaanapali_alii
+  times:
+  - '16:31'
+-
+  location: :kaanapali_westin
+  times:
+  - '16:32'
+-
+  location: :kaanapali_beach_hotel
+  times:
+  - '16:33'
+-
+  location: :kaanapali_sheraton
+  times:
+  - '16:34'
+-
+  location: :waikapu
+  times:
+  - '17:15'
+-
+  location: :war_memorial
+  times:
+  - '17:30'
+-
+  location: :pukalani_community_center
+  times:
+  - '17:50'
+-
+  location: :eddie_tam_gym
+  times:
+  - '18:00'

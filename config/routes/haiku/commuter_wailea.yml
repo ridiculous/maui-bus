@@ -19,9 +19,25 @@
   - '6:25'
   location: :piilani_shopping_center
 -
+  location: :andaz_wailea
+  times:
+  - '6:37'
+-
+  location: :wailea_marriot
+  times:
+  - '6:40'
+-
+  location: :grand_wailea
+  times:
+  - '6:41'
+-
+  location: :four_seasons
+  times:
+  - '6:43'
+-
+  location: :hotel_wailea
   times:
   - '6:45'
-  name: Wailea Hotels
 -
   times:
   - '7:00'
@@ -33,9 +49,25 @@
   location: :makena
   name: Makena
 -
+  location: :hotel_wailea
   times:
   - '16:30'
-  name: Wailea Hotels
+-
+  location: :four_seasons
+  times:
+  - '16:32'
+-
+  location: :grand_wailea
+  times:
+  - '16:35'
+-
+  location: :wailea_marriot
+  times:
+  - '16:36'
+-
+  location: :andaz_wailea
+  times:
+  - '16:37'
 -
   times:
   - '16:55'

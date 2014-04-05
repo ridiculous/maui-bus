@@ -598,6 +598,11 @@ eddie_tam:
   - -156.315563
   - Mahola St / Makawao Ave (Eddie Tam)
   - 96768
+eddie_tam_gym:
+  - 20.851040
+  - -156.317232
+  - Eddie Tam Gym (tennis court lot)
+  - 96768
 makani_road_makawao:
   - 20.848289
   - -156.317975
@@ -619,6 +624,11 @@ pukalani_terrace:
   - Pukalani Terrace
   - 96768
   - true
+pukalani_community_center:
+  - 20.838916
+  - -156.343088
+  - Pukalani Community Center (below pool)
+  - 96768
 paia_entrance:
   - 20.915426
   - -156.383058
@@ -849,3 +859,28 @@ ritz_carlton:
   - -156.654310
   - The Ritz-Carlton
   - 96761
+andaz_wailea:
+  - 20.692965
+  - -156.441826
+  - Andaz Maui at Wailea
+  - 96753
+wailea_marriot:
+  - 20.688488
+  - -156.441826
+  - Wailea Beach Marriott Resort
+  - 96753
+grand_wailea:
+  - 20.683841
+  - -156.439948
+  - Grand Wailea
+  - 96753
+four_seasons:
+  - 20.679886
+  - -156.442759
+  - Four Seasons Hotel
+  - 96753
+hotel_wailea:
+  - 20.675852
+  - -156.431692
+  - Hotel Wailea
+  - 96753

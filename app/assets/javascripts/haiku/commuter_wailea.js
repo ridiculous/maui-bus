@@ -13,7 +13,11 @@ function CommuterWailea(bus_stops) {
             'paia_community_center',
             'war_memorial',
             'kuihelani_park_ride',
-            'piilani_shopping_center'
+            'piilani_shopping_center',
+            'andaz_wailea',
+            'wailea_marriot',
+            'four_seasons',
+            'hotel_wailea'
         ]
     );
 }
