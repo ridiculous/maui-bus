@@ -12,7 +12,7 @@ module Bus
     end
 
     def routes
-      @_bus_routes ||= Region.load_all.map(&:routes).flatten
+      @_bus_routes ||= Collection.new(Region.load_all.map(&:routes).flatten)
     end
 
     def node_map
