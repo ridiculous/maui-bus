@@ -23,7 +23,7 @@ class Trip
     @course_options = []
   end
 
-  def plan!
+  def plan
     collect_starting_routes
     collect_course_nodes
     complete_course_legs

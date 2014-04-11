@@ -162,12 +162,12 @@ Run `rspec . -fs` from the repo root and the output should be something like:
         should find routes and set course_options in collect_starting_routes
         should collect_course_nodes but exclude these routes, no node map required
         should plot_course after collecting data
-        should plan!, limit, and sort by fastest route
+        should plan, limit, and sort by fastest route
       Planning a trip with a single transfer
         should find routes and set course_options in collect_starting_routes
         should collect_course_nodes
         should complete_course_legs
-        should plan!, limit, and sort by fastest route
+        should plan, limit, and sort by fastest route
       Planning the farthest possible trip
         should find routes and set course_options in collect_starting_routes
         should collect_course_nodes
@@ -177,7 +177,7 @@ Run `rspec . -fs` from the repo root and the output should be something like:
       Transfer as point of origin
         Kahului to Napili
           should start by finding all routes stopping at the mall
-          should plan!
+          should plan
       Going from the airport to Kula
         should recommend Upcountry Islander #40 as starting route
 

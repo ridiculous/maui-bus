@@ -12,7 +12,7 @@ class SearchController < ApplicationController
     if trip.has_same_points?
       request.flash[:alert] = "You're already there!"
     else
-      trip.plan!
+      trip.plan
       trip.courses.sort!
       trip.limit_results!(1)
       @courses = trip.courses

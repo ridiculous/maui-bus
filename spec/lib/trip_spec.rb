@@ -47,8 +47,8 @@ describe Trip do
       course1.first_leg.start_at.should be_a(Bus::NextStop)
     end
 
-    it 'should plan!, limit, and sort by fastest route' do
-      trip.plan!
+    it 'should plan, limit, and sort by fastest route' do
+      trip.plan
       trip.should have(4).courses
       trip.courses.map(&:first_leg).map(&:name).uniq.length.should == 2
       trip.courses.each { |c| c.should be_a(Course) }
@@ -122,8 +122,8 @@ describe Trip do
       c2.first_leg.stop_at.should == 'queen_kaahumanu'
       end
 
-    it 'should plan!, limit, and sort by fastest route' do
-      trip.plan!
+    it 'should plan, limit, and sort by fastest route' do
+      trip.plan
       trip.should have(2).courses
       trip.courses.map(&:first_leg).map(&:name).uniq.length.should == 2
       trip.courses.each { |c| c.should be_a(Course) }
@@ -251,7 +251,7 @@ describe Trip do
 
     it 'should exclude incomplete trips' do
       my_trip = Trip.new('rice_park', 'napili_kai', Time.zone.parse('7:00 PM'))
-      my_trip.plan!
+      my_trip.plan
       my_trip.should have(1).course_options
       my_trip.should have(0).courses
     end
@@ -279,8 +279,8 @@ describe Trip do
             ]
       end
 
-      it 'should plan!' do
-        trip.plan!
+      it 'should plan' do
+        trip.plan
         trip.should have(8).course_options
         trip.should have(2).courses
         course = trip.courses.sort[0]
@@ -336,7 +336,7 @@ describe Trip do
     let(:trip) { Trip.new('kahului_airport', 'kula_hardware', Time.zone.parse('10:00 AM')) }
 
     it 'should recommend Upcountry Islander #40 as starting route' do
-      trip.plan!
+      trip.plan
       trip.should have(4).courses
       trip.courses.sort!
       trip.limit_results!(1)
