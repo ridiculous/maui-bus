@@ -34,7 +34,6 @@ var maui = new Maui()
         , submit_search = document.getElementById('submit_search')
         , agile = new AjaxService('/search', 'GET')
         , renderers = [maui.gmap.directionsDisplay]
-        , points = window.location.hash.split('-')
         , tryResizeSearchBox = function () {
             try {
                 var search_box = document.getElementById('search_box')
@@ -58,20 +57,30 @@ var maui = new Maui()
             agile.send({origin: origin.value, destination: destination.value, search_time: search_time.value});
             window.location.hash = origin.value + '-' + destination.value + '-' + search_time.value.replace(/\s/g, '_');
         }
-        , plotRoute = function (points) {
+        , plotRoute = function (stops) {
             try {
                 for (var r = 0; r < renderers.length; r++) {
                     if (renderers[r]) {
                         renderers[r].setMap(null);
                     }
                 }
-                for (var i = 0; i < points.length; i++) {
-                    if (points[i].length) {
-                        renderers.push(maui.gmap.connectPoints(points[i][0], points[i][1]));
+                for (var i = 0; i < stops.length; i++) {
+                    if (stops[i].length) {
+                        renderers.push(maui.gmap.connectPoints(stops[i][0], stops[i][1]));
                     }
                 }
             } catch (e) {
                 if (console) console.log('error in drawing route: ' + e);
+            }
+        },
+        onHashChange = function () {
+            var points = window.location.hash.split('-');
+
+            if (points.length === 3) {
+                origin.value = points[0].replace('#', '');
+                destination.value = points[1];
+                search_time.value = points[2].replace(/_/g, ' ');
+                requestSearchResults();
             }
         };
 
@@ -100,13 +109,6 @@ var maui = new Maui()
         submit_search.value = 'Search';
     });
 
-    if (points.length === 3) {
-        origin.value = points[0].replace('#', '');
-        destination.value = points[1];
-        search_time.value = points[2].replace(/_/g, ' ');
-        requestSearchResults();
-    }
-
     if (document.getElementById('is_desktop')) {
         tryResizeSearchBox()
     }
@@ -123,6 +125,10 @@ var maui = new Maui()
     jUtils.addEvent(search_time, 'change', function () {
         requestSearchResults();
     });
+
+    jUtils.addEvent(window, 'hashchange', onHashChange);
+
+    onHashChange();
 
 })();
 
