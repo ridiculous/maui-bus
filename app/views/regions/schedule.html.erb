@@ -1,4 +1,12 @@
 <%= content_for(:title) { 'Bus Schedules | Maui Bus Routes' } %>
+<% if Date.current < Date.parse('Saturday, August 9, 2014') %>
+	<div class="mb10">
+		<h3 class="well app-subheader comment alert-comment">
+			<b>Alert</b> - County Will Suspend Maui Bus Service Thursday & Friday Because of Storms Iselle & Julio.
+			Read more at <a href="http://mauifeed.com/maui-news/county-will-suspend-maui-bus-service-thursday-friday-because-of-storms-iselle-julio/">mauifeed.com</a>
+		</h3>
+	</div>
+<% end %>
 <div class="well app-subheader mt10">
   <h3 class="fl" style="margin: 0;"><span class="hidden-phone">Bus</span> Schedule</h3>
   <ul class="unstyled inline fl">

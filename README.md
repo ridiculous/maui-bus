@@ -17,6 +17,12 @@ Features
   5. __Maps__            - every route has a map and every bus stop is marked using its coordinates
   6. __PDF__             - capable of generating a PDF for the bus schedule
 
+TODO
+=========
+
+Allow visitors to sign up for a user account that enables them to submit feedback on which routes, stops and
+times they commonly use. Also allow them to say whether or not the bus was on time.
+
 Documentation
 =========
 
