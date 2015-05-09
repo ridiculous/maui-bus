@@ -1,7 +1,7 @@
 Maui Bus Routes Application
 ========
 
-[![Code Climate](https://codeclimate.com/github/ridiculous/maui-bus.png)](https://codeclimate.com/github/ridiculous/maui-bus)
+[![Code Climate](https://codeclimate.com/github/ridiculous/maui-bus/badges/gpa.svg)](https://codeclimate.com/github/ridiculous/maui-bus)
 
 A Ruby web app aimed at better organizing the Maui County Bus information. The data is stored in classes for speed and ease of use. Locations have coordinates, which are used in conjunction with Google Maps API V3 to create map markers and draw routes. Responsive and optimized for mobile devices.
 
