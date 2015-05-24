@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 ruby File.read('.ruby-version').strip
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.1'
+gem 'sass-rails'
 gem 'therubyracer', '~> 0.12', platforms: :ruby
 gem 'uglifier', '~> 2.7'
 gem 'unicorn', '~> 4.9'
