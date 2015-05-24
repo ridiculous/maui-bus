@@ -1,6 +1,8 @@
 require 'spec_helper'
 
-describe 'Region'do
+describe 'Region', js: true do
+
+  before(:each) { page.driver.block_unknown_urls }
 
   context 'Time management with JavaScript' do
 
@@ -28,7 +30,7 @@ describe 'Region'do
         time_frame = is_morning ? 'morning' : 'afternoon'
         ex_time = is_morning ? '5:30 AM' : '7:00 PM'
         page.should have_css("#haiku_islander_container li.active .#{time_frame}")
-        page.has_text?(:visible, ex_time).should be_true
+        page.has_text?(:visible, ex_time).should be_truthy
       end
     end
 

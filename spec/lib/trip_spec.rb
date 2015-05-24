@@ -58,14 +58,14 @@ describe Trip do
       option1.first_leg.start_at.time.should == Time.zone.parse('12:43:00')
       option1.first_leg.stop_at.bus_stop.name.should == "Queen Kaahumanu Mall"
       option1.first_leg.stop_at.time.should == Time.zone.parse('13:00:00')
-      (option1.first_leg.stop_at.time > option1.first_leg.start_at.time).should be_true
+      (option1.first_leg.stop_at.time > option1.first_leg.start_at.time).should be_truthy
 
       option2 = sorted_courses[1]
       option2.first_leg.start_at.bus_stop.name.should == "Airport Pick-up Zone #3"
       option2.first_leg.start_at.time.should == Time.zone.parse('13:11:00')
       option2.first_leg.stop_at.bus_stop.name.should == "Queen Kaahumanu Mall"
       option2.first_leg.stop_at.time.should == Time.zone.parse('13:30:00')
-      (option2.first_leg.stop_at.time > option2.first_leg.start_at.time).should be_true
+      (option2.first_leg.stop_at.time > option2.first_leg.start_at.time).should be_truthy
     end
   end
 

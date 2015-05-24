@@ -19,25 +19,25 @@ describe Bus::Operator do
       subject { Bus::Operator.new(kaanapali, 2, options) }
 
       it 'should #bus_active?' do
-        subject.bus_active?(start_time).should be_true
-        subject.bus_active?(start_time - 10.minutes, 40.minutes).should be_true
-        subject.bus_active?(end_time - 1.minute).should be_true
+        subject.bus_active?(start_time).should be_truthy
+        subject.bus_active?(start_time - 10.minutes, 40.minutes).should be_truthy
+        subject.bus_active?(end_time - 1.minute).should be_truthy
       end
 
       it 'should not be #bus_active?' do
-        subject.bus_active?(start_time - 31.minutes).should be_false
-        subject.bus_active?(end_time).should be_false
+        subject.bus_active?(start_time - 31.minutes).should be_falsey
+        subject.bus_active?(end_time).should be_falsey
       end
 
       it 'should #bus_about_active?' do
-        subject.bus_about_active?(start_time).should be_true
-        subject.bus_about_active?(start_time - Bus::Operator::TIME_ADVANCED).should be_true
+        subject.bus_about_active?(start_time).should be_truthy
+        subject.bus_about_active?(start_time - Bus::Operator::TIME_ADVANCED).should be_truthy
       end
 
       it 'should not be #bus_about_active?' do
-        subject.bus_about_active?(start_time - 31.minutes).should be_false
-        subject.bus_about_active?(end_time + 1.minute).should be_false
-        subject.bus_about_active?(end_time).should be_false
+        subject.bus_about_active?(start_time - 31.minutes).should be_falsey
+        subject.bus_about_active?(end_time + 1.minute).should be_falsey
+        subject.bus_about_active?(end_time).should be_falsey
       end
 
       it 'should #no_delay?' do
@@ -45,8 +45,8 @@ describe Bus::Operator do
       end
 
       it 'should be #delayed_bus?' do
-         subject.delayed_bus?(1).should be_true
-         subject.delayed_bus?(2).should be_false
+         subject.delayed_bus?(1).should be_truthy
+         subject.delayed_bus?(2).should be_falsey
       end
     end
   end

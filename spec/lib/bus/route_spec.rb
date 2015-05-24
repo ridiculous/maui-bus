@@ -35,9 +35,9 @@ describe Bus::Route do
     end
 
     it 'should know where it stops_at?' do
-      subject.stops_at?(:queen_kaahumanu).should be_true
-      subject.stops_at?(:maalaea_harbor).should be_true
-      subject.stops_at?(:kahului_safeway).should be_false
+      subject.stops_at?(:queen_kaahumanu).should be_truthy
+      subject.stops_at?(:maalaea_harbor).should be_truthy
+      subject.stops_at?(:kahului_safeway).should be_falsey
     end
 
     context 'caching #next_stops' do
