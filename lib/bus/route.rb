@@ -1,4 +1,6 @@
 require 'forwardable'
+require 'yaml'
+
 module Bus
   # meant to be used as a template
   class Route
@@ -12,7 +14,7 @@ module Bus
 
     def self.load_stops(klass)
       data_file = open("config/routes/#{klass.to_s.underscore}.yml")
-      klass.const_set(:STOPS, YAML.load(data_file).map { |data| Stop.new(data.symbolize_keys) })
+      klass.const_set(:STOPS, ::YAML.load(data_file).map { |data| Stop.new(data.symbolize_keys) })
     end
 
     def self.reset_stops

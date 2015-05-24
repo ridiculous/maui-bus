@@ -52,15 +52,7 @@ MauiBusRoutes::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile << Proc.new { |path|
-    if path =~ /\.(css|js|png)\z/
-      full_path = Rails.application.assets.resolve(path).to_path
-      app_assets_path = Rails.root.join('app', 'assets').to_path
-      full_path.starts_with?(app_assets_path)
-    else
-      false
-    end
-  }
+  config.assets.precompile += %w[ *.js *.png *.css ]
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
