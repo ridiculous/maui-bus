@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe 'Region', js: true do
 
-  before(:each) { page.driver.block_unknown_urls }
-
   context 'Time management with JavaScript' do
 
     let(:show_islander) { page.find('.time-list[rel=haiku_islander]') }

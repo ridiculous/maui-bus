@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe 'Schedule', js: true do
 
-  before(:each) { page.driver.block_unknown_urls }
-
   describe 'Time management with JavaScript', js: true do
 
     before(:each) { visit schedule_path }
