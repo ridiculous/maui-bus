@@ -17,3 +17,4 @@ pickle-email-*.html
 .idea
 .DS_Store
 .rvmrc
+public/assets

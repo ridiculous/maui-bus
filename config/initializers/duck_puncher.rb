@@ -1,0 +1,1 @@
+DuckPuncher.load_all!
