@@ -1,1 +1,1 @@
-DuckPuncher.load_all!
+DuckPuncher.punch_all!
