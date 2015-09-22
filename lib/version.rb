@@ -1,3 +1,3 @@
 module Version
-  CURRENT = '0.12.0'
+  CURRENT = '0.13.0'
 end
