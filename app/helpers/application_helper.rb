@@ -142,15 +142,4 @@ module ApplicationHelper
     flash_messages.join("\n").html_safe
   end
 
-  def maui_bus_alert
-    if Date.current <= Date.parse('2015-09-24')
-        %Q(<div class="mb10">
-        <h3 class="well app-subheader comment alert-comment">
-        <b>Alert</b> - Maui bus to be re-routed during Maui Fair parade. Read more at
-          <a href="http://mauinow.com/2015/09/21/maui-bus-to-be-re-routed-during-maui-fair-parade">mauinow.com</a>
-        </h3>
-      </div>).html_safe
-    end
-  end
-
 end
