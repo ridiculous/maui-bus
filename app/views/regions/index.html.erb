@@ -1,13 +1,21 @@
 <div class="regions">
-  <%#= maui_bus_alert %>
+  <div class="mb10">
+    <h3 class="well app-subheader comment alert-comment">
+      <b>News</b> - The County has released a mobile app for the Maui Bus that provides realtime bus tracking!
+      Check out the web version at <a href="http://mauibus.transloc.com/" target="_blank">mauibus.transloc.com</a> or
+      download the app (<a href="https://itunes.apple.com/us/app/transloc-rider-transit-tracking/id751972942?mt=8" target="_blank">iOS</a>,
+      <a href="https://play.google.com/store/apps/details?id=com.transloc.android&hl=en" target="_blank">Android</a>).
+    </h3>
+  </div>
   <div class="well">
     <h3 class="well-header app-subheader">
       Pick a Region
     </h3>
+
     <div class="well-content">
       <ul class="inline">
         <% @regions.each do |region| %>
-          <li><%= link_to(region, show_region_path(region.downcase), class: 'btn list btn-large') %></li>
+            <li><%= link_to(region, show_region_path(region.downcase), class: 'btn list btn-large') %></li>
         <% end %>
       </ul>
     </div>
