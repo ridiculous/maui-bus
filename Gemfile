@@ -21,8 +21,8 @@ group :test do
   gem 'rspec-rails', '~> 3.3.3'
   gem 'rspec-collection_matchers', '~> 1.1.2'
   gem 'rspec-its', '~> 1.2.0'
-  gem 'capybara', '~> 2.5.0'
-  gem 'capybara-screenshot', '~> 1.0.11'
-  gem 'capybara-webkit', '~> 1.7.0'
+  gem 'capybara'
+  gem 'capybara-screenshot'
+  gem 'capybara-webkit'
   gem 'headless', '~> 2.2.0'
 end

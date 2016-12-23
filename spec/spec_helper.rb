@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'capybara/rspec'
+require 'capybara/webkit'
 require 'headless'
 
 Capybara.default_wait_time = 5
@@ -14,8 +15,8 @@ require 'rspec/rails'
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
-  Capybara::Webkit.configure do |config|
-    config.block_unknown_urls
+  ::Capybara::Webkit.configure do |c|
+    c.block_unknown_urls
   end
   config.include Capybara::DSL
   config.infer_base_class_for_anonymous_controllers = false
