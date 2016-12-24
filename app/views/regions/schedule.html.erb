@@ -1,10 +1,5 @@
 <%= content_for(:title) { 'Bus Schedules | Maui Bus Routes' } %>
-<h3 class="well app-subheader comment alert-comment">
-  <b>News</b> - The County has released a mobile app for the Maui Bus that provides realtime bus tracking!
-  Check out the web version at <a href="http://mauibus.transloc.com/" target="_blank">mauibus.transloc.com</a> or
-  download the app (<a href="https://itunes.apple.com/us/app/transloc-rider-transit-tracking/id751972942?mt=8" target="_blank">iOS</a>,
-  <a href="https://play.google.com/store/apps/details?id=com.transloc.android&hl=en" target="_blank">Android</a>).
-</h3>
+<%= render('mobile_app') %>
 <div class="well app-subheader mt10">
   <h3 class="fl" style="margin: 0;"><span class="hidden-phone">Bus</span> Schedule</h3>
   <ul class="unstyled inline fl">
@@ -16,6 +11,11 @@
   <div><b>$2 GENERAL BOARDING </b>- All Routes</div>
   <div class="pad5" style="padding-left: 0"><%= link_to_schedule_pdf %></div>
 </div>
+<h3 class="well app-subheader comment">
+  <b>Bus Rules</b> - The Maui Bus has <a href="http://www.co.maui.hi.us/606/Bus-Rules" target="_blank">a list of rules to follow</a> when riding the bus.
+  An important one to note: if you are coming from the <b>airport</b>, beware, <b>you cannot bring a suite case or large bag onto the bus</B>.
+  <a href="javascript:;" class="closable-x" id="bus_rules_1">Okay, got it</a>
+</h3>
 <div style="padding-bottom: 30px;">
   <% @routes.each do |route| %>
       <a name="<%= region_name = route.full_class_name.split('_')[0] %>"></a>
@@ -42,3 +42,29 @@
 <div class="hidden" id="delay"></div>
 <%= render('insight') %>
 <%= javascript_include_tag(:region_manifest) %>
+<script type="application/javascript">
+  (function () {
+    if (window.localStorage) {
+      var cache = window.localStorage;
+      var key = 'alertSettings';
+      var settings = [];
+      if (cache[key]) {
+        settings = JSON.parse(cache[key]);
+      }
+      var closable = document.querySelectorAll('.closable-x');
+      for (var x = 0; x < settings.length; x++) {
+        if (settings[x]) {
+          var element = document.getElementById(settings[x]);
+          if (element) element.parentElement.style.display = 'none';
+        }
+      }
+      for (var i = 0; i < closable.length; i++) {
+        closable[i].addEventListener('click', function (e) {
+          this.parentElement.style.display = 'none';
+          settings.push(this.id);
+          cache[key] = JSON.stringify(settings);
+        });
+      }
+    }
+  })()
+</script>
