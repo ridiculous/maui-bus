@@ -2,18 +2,16 @@
   <div class="mb10">
     <%= render('mobile_app') %>
   </div>
-  <div class="well">
-    <h3 class="well-header app-subheader">
-      Pick a Region
-    </h3>
+  <h3 class="well well-header app-subheader">
+    Pick a Region
+  </h3>
 
-    <div class="well-content">
-      <ul class="inline">
-        <% @regions.each do |region| %>
-            <li class="button-list"><%= link_to(region, show_region_path(region.downcase), class: 'btn list btn-large') %></li>
-        <% end %>
-      </ul>
-    </div>
+  <div class="well-content">
+    <ul class="inline">
+      <% @regions.each do |region| %>
+          <li class="button-list"><%= link_to(region, show_region_path(region.downcase), class: 'btn list btn-large') %></li>
+      <% end %>
+    </ul>
   </div>
   <%= render('general_info') %>
   <%= render('rules') %>
@@ -21,28 +19,28 @@
 </div>
 
 <script type="application/javascript">
-  (function () {
-    if (window.localStorage) {
-      var cache = window.localStorage;
-      var key = 'alertSettings';
-      var settings = [];
-      if (cache[key]) {
-        settings = JSON.parse(cache[key]);
-      }
-      var closable = document.querySelectorAll('.closable-x');
-      for (var x = 0; x < settings.length; x++) {
-        if (settings[x]) {
-          var element = document.getElementById(settings[x]);
-          if (element) element.parentElement.style.display = 'none';
+    (function () {
+        if (window.localStorage) {
+            var cache = window.localStorage;
+            var key = 'alertSettings';
+            var settings = [];
+            if (cache[key]) {
+                settings = JSON.parse(cache[key]);
+            }
+            var closable = document.querySelectorAll('.closable-x');
+            for (var x = 0; x < settings.length; x++) {
+                if (settings[x]) {
+                    var element = document.getElementById(settings[x]);
+                    if (element) element.parentElement.style.display = 'none';
+                }
+            }
+            for (var i = 0; i < closable.length; i++) {
+                closable[i].addEventListener('click', function (e) {
+                    this.parentElement.style.display = 'none';
+                    settings.push(this.id);
+                    cache[key] = JSON.stringify(settings);
+                });
+            }
         }
-      }
-      for (var i = 0; i < closable.length; i++) {
-        closable[i].addEventListener('click', function (e) {
-          this.parentElement.style.display = 'none';
-          settings.push(this.id);
-          cache[key] = JSON.stringify(settings);
-        });
-      }
-    }
-  })()
+    })()
 </script>
