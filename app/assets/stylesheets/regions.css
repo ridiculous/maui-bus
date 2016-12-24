@@ -129,6 +129,20 @@ footer a:hover {
     .content-wrap {
         padding-bottom: 20px;
     }
+
+  .button-list {
+    padding: 0;
+    margin: 0;
+  }
+
+  .button-list {
+    width: 100%;
+    display: block;
+  }
+
+  .btn.list {
+    display: block;
+  }
 }
 
 .schedule-nav-pills {

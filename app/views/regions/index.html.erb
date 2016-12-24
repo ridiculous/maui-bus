@@ -10,7 +10,7 @@
     <div class="well-content">
       <ul class="inline">
         <% @regions.each do |region| %>
-            <li><%= link_to(region, show_region_path(region.downcase), class: 'btn list btn-large') %></li>
+            <li class="button-list"><%= link_to(region, show_region_path(region.downcase), class: 'btn list btn-large') %></li>
         <% end %>
       </ul>
     </div>
