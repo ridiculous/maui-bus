@@ -11,37 +11,7 @@
   <div><b>$2 GENERAL BOARDING </b>- All Routes</div>
   <div class="pad5" style="padding-left: 0"><%= link_to_schedule_pdf %></div>
 </div>
-<h3 class="well app-subheader comment">
-  <b>Bus Rules</b> - The Maui Bus has <a href="http://www.co.maui.hi.us/606/Bus-Rules" target="_blank">a list of rules to follow</a> when riding the bus.
-  An important one to note: if you are coming from the <b>airport</b>, beware, <b>you cannot bring a suite case or large bag onto the bus</B>.
-  <a href="javascript:;" class="closable-x" id="bus_rules_1">Okay, got it</a>
-</h3>
-<div style="padding-bottom: 30px;">
-  <% @routes.each do |route| %>
-      <a name="<%= region_name = route.full_class_name.split('_')[0] %>"></a>
-
-      <div class="route-wrap">
-        <div class="clearfix">
-          <h4 class="fl">
-            <%= link_to(route.name, show_region_path(region_name, anchor: route.full_class_name), style: 'float:none') %>
-          </h4>
-          <%= link_to(icon_map, show_bus_map_path(*route.path_parts), class: 'btn btn-success list fr mt5 mr10') %>
-          <%= link_to_void(icon_times, class: 'btn btn-info list time-list fr mt5 mr10', rel: route.full_class_name) %>
-          <%= link_to_void(icon('road', 'Upcoming'), class: 'btn btn-primary hidden-desktop list next-stop-list fr mt5 mr10', rel: route.full_class_name) %>
-        </div>
-        <div id="<%= route.full_class_name %>" class="hidden-tablet hidden-phone a-route">
-          <div class="c">
-            <%= upcoming_stops_box(route) %>
-            <div class="c"></div>
-          </div>
-        </div>
-        <% route.clear_cache %>
-      </div>
-  <% end %>
-</div>
-<div class="hidden" id="delay"></div>
-<%= render('insight') %>
-<%= javascript_include_tag(:region_manifest) %>
+<%= render('rules') %>
 <script type="application/javascript">
   (function () {
     if (window.localStorage) {
@@ -68,3 +38,29 @@
     }
   })()
 </script>
+<div class="mt10" style="padding-bottom: 30px;">
+  <% @routes.each do |route| %>
+      <a name="<%= region_name = route.full_class_name.split('_')[0] %>"></a>
+
+      <div class="route-wrap">
+        <div class="clearfix">
+          <h4 class="fl">
+            <%= link_to(route.name, show_region_path(region_name, anchor: route.full_class_name), style: 'float:none') %>
+          </h4>
+          <%= link_to(icon_map, show_bus_map_path(*route.path_parts), class: 'btn btn-success list fr mt5 mr10') %>
+          <%= link_to_void(icon_times, class: 'btn btn-info list time-list fr mt5 mr10', rel: route.full_class_name) %>
+          <%= link_to_void(icon('road', 'Upcoming'), class: 'btn btn-primary hidden-desktop list next-stop-list fr mt5 mr10', rel: route.full_class_name) %>
+        </div>
+        <div id="<%= route.full_class_name %>" class="hidden-tablet hidden-phone a-route">
+          <div class="c">
+            <%= upcoming_stops_box(route) %>
+            <div class="c"></div>
+          </div>
+        </div>
+        <% route.clear_cache %>
+      </div>
+  <% end %>
+</div>
+<div class="hidden" id="delay"></div>
+<%= render('insight') %>
+<%= javascript_include_tag(:region_manifest) %>
